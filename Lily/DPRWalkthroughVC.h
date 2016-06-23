@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EAIntroView.h"
+#import "EAIntroPage.h"
+
 
 @interface DPRWalkthroughVC : UIViewController <EAIntroDelegate, UIWebViewDelegate>
 

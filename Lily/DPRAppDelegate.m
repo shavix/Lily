@@ -26,7 +26,8 @@
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
     
     // REMOVE LATER
-    bool testing = YES;
+    bool testing = NO;
+    
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]
                              stringForKey:@"accessToken"];
@@ -61,7 +62,7 @@
     
     // set root view controller
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
     
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
@@ -71,15 +72,15 @@
 - (void)createWalkthrough{
     
     // set venmoViewController as initialViewController
-    /*
+    
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    DPRWalkthroughVC *vc = [aStoryboard instantiateViewControllerWithIdentifier:@"venmoVC"];
+    DPRWalkthroughVC *vc = [aStoryboard instantiateViewControllerWithIdentifier:@"walkthroughVC"];
     
     UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:vc];
     
     self.window.rootViewController = navCtrl;
     [self.window makeKeyAndVisible];
-     */
+    
     
 }
 
