@@ -141,6 +141,8 @@
     
     // segue to home page
     self.navigationController.navigationBarHidden = YES;
+    
+    [self performSegueWithIdentifier:@"signedInSegue" sender:self];
 
 }
 

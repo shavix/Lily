@@ -7,7 +7,28 @@
 //
 
 #import "DPRGraphsVC.h"
+#import "DPRUIHelper.h"
+
+#import "UIColor+CustomColors.h"
 
 @implementation DPRGraphsVC
+
+#pragma mark - on load
+
+- (void)viewDidLoad {
+    
+    [self setupUI];
+    
+}
+
+- (void)setupUI{
+    
+    DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
+    [UIHelper setupTabUI:self withTitle:@"Graphs"];
+    
+}
+
+
+
 
 @end

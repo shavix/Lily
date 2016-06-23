@@ -46,7 +46,7 @@
         }
     }
     else{
-        [self createLoginWithInformation:userInformation andAccessToken:accessToken];
+        [self createWalkthrough];
     }
     
     return YES;
