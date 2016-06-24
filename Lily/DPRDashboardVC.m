@@ -17,14 +17,17 @@
 
 @interface DPRDashboardVC()
 
+// IB
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 // 4 UIViews & container view
-@property DPRProfileView *profileView;
-@property DPRBalanceView *balanceView;
-@property DPRTransactionsView *transactionsView;
-@property DPRCashFlowView *cashFlowView;
+@property (weak, nonatomic) IBOutlet DPRProfileView *profileView;
+@property (weak, nonatomic) IBOutlet DPRBalanceView *balanceView;
+@property (weak, nonatomic) IBOutlet DPRTransactionsView *transactionsView;
+@property (weak, nonatomic) IBOutlet DPRCashFlowView *cashFlowView;
 
 @end
-
 
 @implementation DPRDashboardVC
 
@@ -41,7 +44,15 @@
     
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
     [UIHelper setupTabUI:self withTitle:@"Dashboard"];
-
+    
+    // colors
+    _settingsButton.tintColor = [UIColor lightGreenColor];
+    _contentView.backgroundColor = [UIColor charcoalColor];
+    _profileView.backgroundColor = [UIColor lightGreenColor];
+    _balanceView.backgroundColor = [UIColor lightGreenColor];
+    _transactionsView.backgroundColor = [UIColor lightGreenColor];
+    _cashFlowView.backgroundColor = [UIColor lightGreenColor];
+    
 }
 
 
