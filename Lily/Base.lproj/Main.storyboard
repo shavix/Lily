@@ -135,7 +135,7 @@
                                                         <state key="normal" image="rightArrow"/>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.85882352939999995" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="qAT-e6-aNg" firstAttribute="width" secondItem="uye-vF-Os6" secondAttribute="width" multiplier="0.99" id="3Uv-R2-vlp"/>
                                                     <constraint firstItem="rKy-4r-jEq" firstAttribute="top" secondItem="AQb-bz-rKH" secondAttribute="bottom" constant="10" id="3rG-5J-60l"/>
@@ -196,7 +196,7 @@
                                                         <state key="normal" image="rightArrow"/>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.85882352939999995" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="LUH-Wn-S5O" firstAttribute="leading" secondItem="RNj-6u-N07" secondAttribute="leading" constant="20" id="77K-nH-kKB"/>
                                                     <constraint firstItem="nXz-bY-nK1" firstAttribute="top" secondItem="RNj-6u-N07" secondAttribute="top" constant="10" id="HBP-qi-oiC"/>
@@ -235,7 +235,7 @@
                                                         <state key="normal" image="rightArrow"/>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.85882352939999995" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="gS9-1v-TGr" firstAttribute="width" secondItem="ZGa-Y7-VBG" secondAttribute="width" multiplier="0.99" id="EWo-7t-hPl"/>
                                                     <constraint firstItem="gS9-1v-TGr" firstAttribute="top" secondItem="enl-o6-Jlb" secondAttribute="bottom" constant="2" id="Yqk-ml-pLu"/>
@@ -267,7 +267,7 @@
                                                         <state key="normal" image="rightArrow"/>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.85882352939999995" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="pH8-nr-2eS" firstAttribute="centerX" secondItem="FXP-Ko-HYZ" secondAttribute="centerX" id="7Qv-4e-Jt7"/>
                                                     <constraint firstAttribute="trailing" secondItem="cmA-I5-qwB" secondAttribute="trailing" constant="5" id="HeR-qS-Yum"/>

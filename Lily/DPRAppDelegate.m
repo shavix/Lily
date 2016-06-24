@@ -27,7 +27,7 @@
     [[UILabel appearance] setFont:[UIFont boldSystemFontOfSize:16.0]];
     
     // REMOVE LATER
-    bool testing = NO;
+    bool testing = YES;
     
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]
@@ -47,7 +47,7 @@
         }
     }
     else{
-        [self createWalkthrough];
+        [self createLoginWithInformation:userInformation andAccessToken:accessToken];
     }
     
     return YES;
