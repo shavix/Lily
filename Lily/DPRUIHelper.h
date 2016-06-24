@@ -12,5 +12,6 @@
 @interface DPRUIHelper : NSObject
 
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title;
+- (void)setupDashboardViewUI:(UIView *)view;
 
 @end

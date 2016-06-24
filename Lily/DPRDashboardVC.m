@@ -62,13 +62,16 @@
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
     [UIHelper setupTabUI:self withTitle:@"Dashboard"];
     
+    // views
+    [UIHelper setupDashboardViewUI:_profileView];
+    [UIHelper setupDashboardViewUI:_balanceView];
+    [UIHelper setupDashboardViewUI:_transactionsView];
+    [UIHelper setupDashboardViewUI:_cashFlowView];
+    
     // colors
     _settingsButton.tintColor = [UIColor lightGreenColor];
     _contentView.backgroundColor = [UIColor charcoalColor];
-    _profileView.backgroundColor = [UIColor lightGreenColor];
-    _balanceView.backgroundColor = [UIColor lightGreenColor];
-    _transactionsView.backgroundColor = [UIColor lightGreenColor];
-    _cashFlowView.backgroundColor = [UIColor lightGreenColor];
+    
     
     [self setupProfileView];
     [self setupBalanceView];
@@ -81,31 +84,38 @@
 
 #pragma mark - views
 
+// PROFILE
 - (void)setupProfileView{
     
     _profilePictureView.image = _user.pictureImage;
+    _profilePictureView.layer.cornerRadius = 10;
     _profileNameLabel.text = _user.displayName;
+    _profileNameLabel.textColor = [UIColor lightGreenColor];
     
     NSString *username = [NSString stringWithFormat:@"@%@", _user.username];
     _profileNicknameLabel.text = username;
-    _profileNicknameLabel.textColor = [UIColor charcoalColor];
+    _profileNicknameLabel.textColor = [UIColor lightGreenColor];
+    _profileNicknameLabel.alpha = 0.8;
     _profileNicknameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     
 }
 
+// BALANCE
 - (void)setupBalanceView{
     
     NSString *balanceStr = [NSString stringWithFormat:@"$%@", _user.balance];
     _balanceLabel.text = balanceStr;
-    _balanceLabel.textColor = [UIColor charcoalColor];
-    _balanceLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    _balanceLabel.textColor = [UIColor lightGreenColor];
+    _balanceLabel.font = [UIFont boldSystemFontOfSize:16.0f];
 
 }
 
+// TRANSACTIONS
 - (void)setupTransactionsView{
     
 }
 
+// CASH FLOW
 - (void)setupCashFlowView{
     
 }
