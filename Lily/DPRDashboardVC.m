@@ -20,6 +20,9 @@
 // IB
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *profileNicknameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
 
 // 4 UIViews & container view
 @property (weak, nonatomic) IBOutlet DPRProfileView *profileView;
@@ -30,6 +33,7 @@
 @end
 
 @implementation DPRDashboardVC
+
 
 
 #pragma mark - on load
@@ -52,6 +56,31 @@
     _balanceView.backgroundColor = [UIColor lightGreenColor];
     _transactionsView.backgroundColor = [UIColor lightGreenColor];
     _cashFlowView.backgroundColor = [UIColor lightGreenColor];
+    
+    [self setupProfileView];
+    [self setupBalanceView];
+    [self setupTransactionsView];
+    [self setupCashFlowView];
+    
+}
+
+
+
+#pragma mark - views
+
+- (void)setupProfileView{
+    
+}
+
+- (void)setupBalanceView{
+    
+}
+
+- (void)setupTransactionsView{
+    
+}
+
+- (void)setupCashFlowView{
     
 }
 
