@@ -138,6 +138,7 @@
     NSDictionary *userInformation = [venmoHelper userInformationWithAccessToken:_accessToken];
     DPRUser *user = [DPRUser sharedModel];
     [user userInformation:userInformation andAccessToken:_accessToken];
+    user.pictureImage = [venmoHelper profilePictureWithImageURL:user.pictureURL];
     
     // segue to home page
     self.navigationController.navigationBarHidden = YES;

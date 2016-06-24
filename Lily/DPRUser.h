@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DPRUser : NSObject
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSNumber *balance;
 @property (strong, nonatomic) NSString *pictureURL;
 @property (strong, nonatomic) NSMutableArray *transactions;
+@property (strong, nonatomic) UIImage *pictureImage;
 
 //@property (strong, nonatomic) NSString *dateJoined;
 

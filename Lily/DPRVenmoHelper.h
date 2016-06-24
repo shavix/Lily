@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DPRVenmoHelper : NSObject
 
 // venmo calls
 - (NSDictionary *)userInformationWithAccessToken:(NSString *)accessToken;
+
+// network calls
+- (UIImage *)profilePictureWithImageURL:(NSString *)imageURL;
+
 
 @end

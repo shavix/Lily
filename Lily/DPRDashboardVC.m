@@ -12,17 +12,22 @@
 #import "DPRTransactionsView.h"
 #import "DPRCashFlowView.h"
 #import "DPRUIHelper.h"
+#import "DPRUser.h"
 
 #import "UIColor+CustomColors.h"
 
 @interface DPRDashboardVC()
 
+// data
+@property (strong, nonatomic) DPRUser *user;
+
 // IB
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 @property (weak, nonatomic) IBOutlet UILabel *profileNicknameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 
 // 4 UIViews & container view
 @property (weak, nonatomic) IBOutlet DPRProfileView *profileView;
@@ -40,7 +45,15 @@
 
 - (void)viewDidLoad {
     
+    [self setupData];
+    
     [self setupUI];
+    
+}
+
+- (void)setupData{
+    
+    self.user = [DPRUser sharedModel];
     
 }
 
@@ -70,10 +83,23 @@
 
 - (void)setupProfileView{
     
+    _profilePictureView.image = _user.pictureImage;
+    _profileNameLabel.text = _user.displayName;
+    
+    NSString *username = [NSString stringWithFormat:@"@%@", _user.username];
+    _profileNicknameLabel.text = username;
+    _profileNicknameLabel.textColor = [UIColor charcoalColor];
+    _profileNicknameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    
 }
 
 - (void)setupBalanceView{
     
+    NSString *balanceStr = [NSString stringWithFormat:@"$%@", _user.balance];
+    _balanceLabel.text = balanceStr;
+    _balanceLabel.textColor = [UIColor charcoalColor];
+    _balanceLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+
 }
 
 - (void)setupTransactionsView{

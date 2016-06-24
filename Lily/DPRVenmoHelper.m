@@ -36,5 +36,15 @@
     
 }
 
+// network call to get profile picture
+- (UIImage *)profilePictureWithImageURL:(NSString *)imageURL {
+    
+    // load UIImage
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
+    
+    return image;
+    
+}
+
 
 @end

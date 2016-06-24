@@ -24,6 +24,7 @@
     
     // initial settings
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
+    [[UILabel appearance] setFont:[UIFont boldSystemFontOfSize:16.0]];
     
     // REMOVE LATER
     bool testing = NO;
@@ -57,9 +58,11 @@
 - (void)createLoginWithInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken {
     
     // create user
+    DPRVenmoHelper *venmoHelper = [[DPRVenmoHelper alloc] init];
     DPRUser *user = [DPRUser sharedModel];
     [user userInformation:userInformation andAccessToken:accessToken];
-    
+    user.pictureImage = [venmoHelper profilePictureWithImageURL:user.pictureURL];
+
     // set root view controller
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
