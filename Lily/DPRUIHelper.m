@@ -14,19 +14,19 @@
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title{
 
     // setup navigationController
-    viewController.navigationController.navigationBar.barTintColor = [UIColor charcoalColor];
+    viewController.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     viewController.navigationController.navigationBar.translucent = NO;
     viewController.navigationController.navigationBar.topItem.title = title;
     [viewController.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor lightGreenColor]}];
     // setup viewController
-    viewController.view.backgroundColor = [UIColor charcoalColor];
+    viewController.view.backgroundColor = [UIColor lightColor];
     
 }
 
 - (void)setupDashboardViewUI:(UIView *)view {
     
-    view.backgroundColor = [UIColor blackColor];
+    view.backgroundColor = [UIColor whiteColor];
     view.layer.cornerRadius = 5;
     
 }

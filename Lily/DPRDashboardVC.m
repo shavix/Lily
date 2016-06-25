@@ -70,7 +70,7 @@
     
     // colors
     _settingsButton.tintColor = [UIColor lightGreenColor];
-    _contentView.backgroundColor = [UIColor charcoalColor];
+    _contentView.backgroundColor = [UIColor lightColor];
     
     
     [self setupProfileView];
@@ -96,7 +96,7 @@
     _profileNicknameLabel.text = username;
     _profileNicknameLabel.textColor = [UIColor lightGreenColor];
     _profileNicknameLabel.alpha = 0.8;
-    _profileNicknameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    _profileNicknameLabel.font = [UIFont boldSystemFontOfSize:12.0f];
     
 }
 
@@ -106,7 +106,7 @@
     NSString *balanceStr = [NSString stringWithFormat:@"$%@", _user.balance];
     _balanceLabel.text = balanceStr;
     _balanceLabel.textColor = [UIColor lightGreenColor];
-    _balanceLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    _balanceLabel.font = [UIFont boldSystemFontOfSize:14.0f];
 
 }
 

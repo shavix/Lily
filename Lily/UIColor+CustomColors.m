@@ -30,4 +30,10 @@
     
 }
 
++ (UIColor *)lightColor {
+    
+    return [UIColor colorWithRed:245.f/255.f green:245.f/255.f blue:245.f/255.f alpha:1.f];
+    
+}
+
 @end

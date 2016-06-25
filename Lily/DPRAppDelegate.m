@@ -24,10 +24,10 @@
     
     // initial settings
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
-    [[UILabel appearance] setFont:[UIFont boldSystemFontOfSize:16.0]];
+    [[UILabel appearance] setFont:[UIFont boldSystemFontOfSize:14.0]];
     
     // REMOVE LATER
-    bool testing = YES;
+    bool testing = NO;
     
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]

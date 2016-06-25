@@ -13,5 +13,6 @@
 + (UIColor *)charcoalColor;
 + (UIColor *)lightGreenColor;
 + (UIColor *)darkColor;
++ (UIColor *)lightColor;
 
 @end
