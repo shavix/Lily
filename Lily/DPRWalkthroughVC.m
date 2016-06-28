@@ -9,11 +9,15 @@
 #import "DPRWalkthroughVC.h"
 #import "DPRVenmoHelper.h"
 #import "DPRUser.h"
+#import "DPRUser+Customization.h"
+#import "DPRCoreDataHelper.h"
+#import "DPRAppDelegate.h"
 
 @interface DPRWalkthroughVC()
 
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSString *accessToken;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -126,12 +130,28 @@
 
 - (void)signedIn {
     
-    // create user
+    // retrieve user information
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
     venmoHelper.accessToken = self.accessToken;
     NSDictionary *userInformation = [venmoHelper fetchUserInformation];
-    DPRUser *user = [DPRUser sharedModel];
-    [user userInformation:userInformation andAccessToken:_accessToken];
+    
+    // check if user exists in core data
+    DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
+    NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
+    cdHelper.username = username;
+    DPRUser *user = [cdHelper fetchUser];
+    
+    // create new user - insert into Core Data
+    if(!user){
+        user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
+        [user userInformation:userInformation andAccessToken:_accessToken];
+
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+        if(error){
+            // handle error
+        }
+    }
     user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
     
     // segue to home page
@@ -149,6 +169,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+}
+
+// retrieve AppDelegate's managedObjectContext
+- (NSManagedObjectContext *)managedObjectContext {
+    return [(DPRAppDelegate *) [[UIApplication sharedApplication] delegate] managedObjectContext];
 }
 
 

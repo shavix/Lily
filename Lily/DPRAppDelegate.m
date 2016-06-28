@@ -8,9 +8,10 @@
 
 #import "DPRAppDelegate.h"
 #import "DPRVenmoHelper.h"
-#import "DPRUser.h"
+#import "DPRUser+Customization.h"
 #import "DPRWalkthroughVC.h"
-
+#import "DPRUser+Customization.h"
+#import "DPRCoreDataHelper.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRAppDelegate ()
@@ -37,7 +38,7 @@
     venmoHelper.accessToken = accessToken;
     NSDictionary *userInformation = [venmoHelper fetchUserInformation];
     
-#warning change
+    #warning change
     if(!testing){
         // authorized - start login
         if(userInformation){
@@ -61,10 +62,26 @@
     
     // create user
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    DPRUser *user = [DPRUser sharedModel];
-    [user userInformation:userInformation andAccessToken:accessToken];
-    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
+    
+    // check if user exists in core data
+    DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
+    NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
+    cdHelper.username = username;
+    DPRUser *user = [cdHelper fetchUser];
+    
+    // create new user - insert into Core Data
+    if(!user){
+        user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
+        [user userInformation:userInformation andAccessToken:accessToken];
 
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+        if(error){
+            // handle error
+        }
+    }
+    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
+    
     // set root view controller
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];

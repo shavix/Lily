@@ -10,13 +10,16 @@
 //
 
 #import "DPRUser.h"
-#import "DPRTransaction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRUser (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *username;
+@property (nullable, nonatomic, retain) NSString *accessToken;
+@property (nullable, nonatomic, retain) NSString *fullName;
+@property (nullable, nonatomic, retain) NSNumber *balance;
+@property (nullable, nonatomic, retain) NSString *pictureURL;
 @property (nullable, nonatomic, retain) NSSet<DPRTransaction *> *transactionList;
 
 @end

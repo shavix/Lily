@@ -25,33 +25,24 @@
         self.note = [information objectForKey:@"note"];
         self.status = [information objectForKey:@"status"];
         
-        // dates
-        [self parseDatesWithInformation:information];
-        
-        // direction
-        self.direction = [[NSString alloc] init];
-        
-        // category
-        self.category = @"Other";
-        
         // venmo sender
         NSDictionary *senderInformation = [information objectForKey:@"actor"];
         NSString *senderName = [senderInformation objectForKey:@"display_name"];
-
+        
         
         // venmo receiver
         NSDictionary *receiverInformation = [[information objectForKey:@"target"] objectForKey:@"user"];
         NSString *receiverName = [receiverInformation objectForKey:@"display_name"];
         
         // if user is sender
-        if([senderName isEqualToString:user.displayName]) {
+        if([senderName isEqualToString:user.fullName]) {
             if([action isEqualToString:@"charge"]) {
-                self.isIncoming = true;
+                self.isIncoming = [NSNumber numberWithBool:YES];
             }
             else {
                 self.isIncoming = false;
             }
-            self.isSender = true;
+            self.isSender = [NSNumber numberWithBool:YES];
             self.targetName = receiverName;
         }
         // if user is receiver
@@ -60,7 +51,7 @@
                 self.isIncoming = false;
             }
             else {
-                self.isIncoming = true;
+                self.isIncoming = [NSNumber numberWithBool:YES];
             }
             self.isSender = false;
             self.targetName = senderName;
@@ -71,14 +62,6 @@
     return self;
     
 }
-
-
-- (void)parseDatesWithInformation:(NSDictionary *)information {
-
-    
-}
-
-
 
 
 @end

@@ -10,7 +10,6 @@
 //
 
 #import "DPRTransaction.h"
-#import "DPRUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

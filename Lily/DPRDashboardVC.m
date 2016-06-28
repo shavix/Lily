@@ -12,14 +12,17 @@
 #import "DPRTransactionsView.h"
 #import "DPRCashFlowView.h"
 #import "DPRUIHelper.h"
-#import "DPRUser.h"
-
+#import "DPRAppDelegate.h"
+#import "DPRUser+Customization.h"
+#import "DPRCoreDataHelper.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRDashboardVC()
 
 // data
 @property (strong, nonatomic) DPRUser *user;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
+
 
 // IB
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
@@ -53,7 +56,10 @@
 
 - (void)setupData{
     
-    self.user = [DPRUser sharedModel];
+    // retrieve user
+    // check if user exists in core data
+    DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
+    self.user = [cdHelper fetchUser];
     
 }
 
@@ -89,7 +95,7 @@
     
     _profilePictureView.image = _user.pictureImage;
     _profilePictureView.layer.cornerRadius = 10;
-    _profileNameLabel.text = _user.displayName;
+    _profileNameLabel.text = _user.fullName;
     _profileNameLabel.textColor = [UIColor lightGreenColor];
     
     NSString *username = [NSString stringWithFormat:@"@%@", _user.username];
@@ -123,6 +129,10 @@
 
 
 
+// retrieve AppDelegate's managedObjectContext
+- (NSManagedObjectContext *)managedObjectContext {
+    return [(DPRAppDelegate *) [[UIApplication sharedApplication] delegate] managedObjectContext];
+}
 
 
 @end

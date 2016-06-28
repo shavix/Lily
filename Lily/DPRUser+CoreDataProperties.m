@@ -14,6 +14,10 @@
 @implementation DPRUser (CoreDataProperties)
 
 @dynamic username;
+@dynamic accessToken;
+@dynamic fullName;
+@dynamic balance;
+@dynamic pictureURL;
 @dynamic transactionList;
 
 @end
