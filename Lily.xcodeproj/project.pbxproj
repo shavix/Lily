@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; };
-		63782FA31D2201E5003410D3 /* DPRUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782F9C1D2201E5003410D3 /* DPRUser+CoreDataProperties.m */; };
-		63782FA41D2201E5003410D3 /* DPRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782F9E1D2201E5003410D3 /* DPRUser.m */; };
-		63782FA51D2201E5003410D3 /* DPRTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FA01D2201E5003410D3 /* DPRTransaction+CoreDataProperties.m */; };
-		63782FA61D2201E5003410D3 /* DPRTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FA21D2201E5003410D3 /* DPRTransaction.m */; };
-		63782FA91D2202AC003410D3 /* DPRUser+Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FA81D2202AC003410D3 /* DPRUser+Customization.m */; };
 		63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FAD1D220919003410D3 /* DPRCoreDataHelper.m */; };
+		63782FB71D231BD9003410D3 /* DPRTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB01D231BD9003410D3 /* DPRTransaction+CoreDataProperties.m */; };
+		63782FB81D231BD9003410D3 /* DPRTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB21D231BD9003410D3 /* DPRTransaction.m */; };
+		63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */; };
+		63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB61D231BD9003410D3 /* DPRUser.m */; };
+		63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FBC1D231D00003410D3 /* DPRImageTansformer.m */; };
 		6379F5541D1B9B9A0094ED24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5531D1B9B9A0094ED24 /* main.m */; };
 		6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5561D1B9B9A0094ED24 /* DPRAppDelegate.m */; };
 		6379F55D1D1B9B9A0094ED24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6379F55B1D1B9B9A0094ED24 /* Main.storyboard */; };
@@ -74,18 +74,18 @@
 		4F0C29715B4EBC41866695B6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6324666B1D1CA5FD00512931 /* DPRUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUIHelper.h; sourceTree = "<group>"; };
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
-		63782F9B1D2201E5003410D3 /* DPRUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRUser+CoreDataProperties.h"; sourceTree = "<group>"; };
-		63782F9C1D2201E5003410D3 /* DPRUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRUser+CoreDataProperties.m"; sourceTree = "<group>"; };
-		63782F9D1D2201E5003410D3 /* DPRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUser.h; sourceTree = "<group>"; };
-		63782F9E1D2201E5003410D3 /* DPRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUser.m; sourceTree = "<group>"; };
-		63782F9F1D2201E5003410D3 /* DPRTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		63782FA01D2201E5003410D3 /* DPRTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
-		63782FA11D2201E5003410D3 /* DPRTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransaction.h; sourceTree = "<group>"; };
-		63782FA21D2201E5003410D3 /* DPRTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransaction.m; sourceTree = "<group>"; };
-		63782FA71D2202AC003410D3 /* DPRUser+Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRUser+Customization.h"; sourceTree = "<group>"; };
-		63782FA81D2202AC003410D3 /* DPRUser+Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRUser+Customization.m"; sourceTree = "<group>"; };
 		63782FAC1D220919003410D3 /* DPRCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRCoreDataHelper.h; sourceTree = "<group>"; };
 		63782FAD1D220919003410D3 /* DPRCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRCoreDataHelper.m; sourceTree = "<group>"; };
+		63782FAF1D231BD9003410D3 /* DPRTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		63782FB01D231BD9003410D3 /* DPRTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		63782FB11D231BD9003410D3 /* DPRTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransaction.h; sourceTree = "<group>"; };
+		63782FB21D231BD9003410D3 /* DPRTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransaction.m; sourceTree = "<group>"; };
+		63782FB31D231BD9003410D3 /* DPRUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		63782FB51D231BD9003410D3 /* DPRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUser.h; sourceTree = "<group>"; };
+		63782FB61D231BD9003410D3 /* DPRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUser.m; sourceTree = "<group>"; };
+		63782FBB1D231D00003410D3 /* DPRImageTansformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRImageTansformer.h; sourceTree = "<group>"; };
+		63782FBC1D231D00003410D3 /* DPRImageTansformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRImageTansformer.m; sourceTree = "<group>"; };
 		6379F54F1D1B9B9A0094ED24 /* Lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6379F5531D1B9B9A0094ED24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6379F5551D1B9B9A0094ED24 /* DPRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPRAppDelegate.h; sourceTree = "<group>"; };
@@ -180,12 +180,12 @@
 		63782FAB1D220393003410D3 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				63782F9F1D2201E5003410D3 /* DPRTransaction+CoreDataProperties.h */,
-				63782FA01D2201E5003410D3 /* DPRTransaction+CoreDataProperties.m */,
-				63782F9B1D2201E5003410D3 /* DPRUser+CoreDataProperties.h */,
-				63782F9C1D2201E5003410D3 /* DPRUser+CoreDataProperties.m */,
-				63782FA71D2202AC003410D3 /* DPRUser+Customization.h */,
-				63782FA81D2202AC003410D3 /* DPRUser+Customization.m */,
+				63782FAF1D231BD9003410D3 /* DPRTransaction+CoreDataProperties.h */,
+				63782FB01D231BD9003410D3 /* DPRTransaction+CoreDataProperties.m */,
+				63782FB31D231BD9003410D3 /* DPRUser+CoreDataProperties.h */,
+				63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */,
+				63782FBB1D231D00003410D3 /* DPRImageTansformer.h */,
+				63782FBC1D231D00003410D3 /* DPRImageTansformer.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -262,10 +262,10 @@
 		6379F5881D1B9C090094ED24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				63782F9D1D2201E5003410D3 /* DPRUser.h */,
-				63782F9E1D2201E5003410D3 /* DPRUser.m */,
-				63782FA11D2201E5003410D3 /* DPRTransaction.h */,
-				63782FA21D2201E5003410D3 /* DPRTransaction.m */,
+				63782FB11D231BD9003410D3 /* DPRTransaction.h */,
+				63782FB21D231BD9003410D3 /* DPRTransaction.m */,
+				63782FB51D231BD9003410D3 /* DPRUser.h */,
+				63782FB61D231BD9003410D3 /* DPRUser.m */,
 				63782FAB1D220393003410D3 /* Core Data */,
 			);
 			name = Model;
@@ -564,22 +564,22 @@
 				6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */,
 				6379F5541D1B9B9A0094ED24 /* main.m in Sources */,
 				6379F59E1D1BA47F0094ED24 /* DPRDashboardVC.m in Sources */,
-				63782FA51D2201E5003410D3 /* DPRTransaction+CoreDataProperties.m in Sources */,
-				63782FA41D2201E5003410D3 /* DPRUser.m in Sources */,
+				63782FB71D231BD9003410D3 /* DPRTransaction+CoreDataProperties.m in Sources */,
 				6379F5911D1B9DA80094ED24 /* UIColor+CustomColors.m in Sources */,
+				63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */,
 				63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */,
 				6379F5A11D1BA48A0094ED24 /* DPRGraphsVC.m in Sources */,
-				63782FA91D2202AC003410D3 /* DPRUser+Customization.m in Sources */,
 				6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */,
 				6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */,
-				63782FA31D2201E5003410D3 /* DPRUser+CoreDataProperties.m in Sources */,
-				63782FA61D2201E5003410D3 /* DPRTransaction.m in Sources */,
 				6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */,
 				6379F5CC1D1CA23E0094ED24 /* DPRProfileView.m in Sources */,
 				6379F59A1D1BA4450094ED24 /* DPRTabBarController.m in Sources */,
+				63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */,
 				6379F5CF1D1CA2490094ED24 /* DPRBalanceView.m in Sources */,
+				63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */,
 				6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */,
 				6379F5D21D1CA2550094ED24 /* DPRTransactionsView.m in Sources */,
+				63782FB81D231BD9003410D3 /* DPRTransaction.m in Sources */,
 				6379F5601D1B9B9A0094ED24 /* Lily.xcdatamodeld in Sources */,
 				6379F5D51D1CA2600094ED24 /* DPRCashFlowView.m in Sources */,
 			);

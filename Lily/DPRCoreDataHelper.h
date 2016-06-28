@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DPRUser+Customization.h"
+#import "DPRUser.h"
 
 @interface DPRCoreDataHelper : NSObject
 

@@ -2,25 +2,25 @@
 //  DPRUser.m
 //  Lily
 //
-//  Created by David Richardson on 6/27/16.
+//  Created by David Richardson on 6/28/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
 #import "DPRUser.h"
 #import "DPRTransaction.h"
 
+
 @implementation DPRUser
 
 #pragma mark - model
 
-- (void)userInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken{
+- (void)userInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken {
     
     NSDictionary *userInfo = [userInformation objectForKey:@"user"];
     
     self.fullName = [userInfo objectForKey:@"display_name"];
     self.username = [userInfo objectForKey:@"username"];
     //self.dateJoined = [userInfo objectForKey:@"date_joined"];
-    self.pictureURL = [userInfo objectForKey:@"profile_picture_url"];
     self.accessToken = accessToken;
     
     NSString *balanceString = [userInformation objectForKey:@"balance"];
@@ -47,3 +47,4 @@
 
 
 @end
+

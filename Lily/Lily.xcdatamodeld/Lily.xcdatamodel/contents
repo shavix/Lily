@@ -17,12 +17,12 @@
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="balance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pictureURL" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="pictureImage" optional="YES" attributeType="Transformable" valueTransformerName="DPRImageTransformer" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="transactionList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DPRTransaction" inverseName="user" inverseEntity="DPRTransaction" syncable="YES"/>
     </entity>
     <elements>
         <element name="DPRTransaction" positionX="27" positionY="72" width="128" height="210"/>
-        <element name="DPRUser" positionX="117" positionY="-99" width="128" height="30"/>
+        <element name="DPRUser" positionX="117" positionY="-99" width="128" height="135"/>
     </elements>
 </model>

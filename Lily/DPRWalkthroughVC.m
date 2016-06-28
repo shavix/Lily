@@ -9,7 +9,7 @@
 #import "DPRWalkthroughVC.h"
 #import "DPRVenmoHelper.h"
 #import "DPRUser.h"
-#import "DPRUser+Customization.h"
+#import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
 
@@ -152,7 +152,8 @@
             // handle error
         }
     }
-    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
+    NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
+    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:pictureURL];
     
     // segue to home page
     self.navigationController.navigationBarHidden = YES;

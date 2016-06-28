@@ -2,7 +2,7 @@
 //  DPRUser+CoreDataProperties.h
 //  Lily
 //
-//  Created by David Richardson on 6/27/16.
+//  Created by David Richardson on 6/28/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *accessToken;
 @property (nullable, nonatomic, retain) NSString *fullName;
 @property (nullable, nonatomic, retain) NSNumber *balance;
-@property (nullable, nonatomic, retain) NSString *pictureURL;
+@property (nullable, nonatomic, retain) id pictureImage;
 @property (nullable, nonatomic, retain) NSSet<DPRTransaction *> *transactionList;
 
 @end

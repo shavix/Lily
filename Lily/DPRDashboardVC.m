@@ -13,7 +13,6 @@
 #import "DPRCashFlowView.h"
 #import "DPRUIHelper.h"
 #import "DPRAppDelegate.h"
-#import "DPRUser+Customization.h"
 #import "DPRCoreDataHelper.h"
 #import "UIColor+CustomColors.h"
 

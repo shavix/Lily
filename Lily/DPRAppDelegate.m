@@ -8,9 +8,9 @@
 
 #import "DPRAppDelegate.h"
 #import "DPRVenmoHelper.h"
-#import "DPRUser+Customization.h"
+#import "DPRUser.h"
 #import "DPRWalkthroughVC.h"
-#import "DPRUser+Customization.h"
+#import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "UIColor+CustomColors.h"
 
@@ -80,7 +80,8 @@
             // handle error
         }
     }
-    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
+    NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
+    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:pictureURL];
     
     // set root view controller
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
