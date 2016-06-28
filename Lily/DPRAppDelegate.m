@@ -33,9 +33,11 @@
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]
                              stringForKey:@"accessToken"];
     
-    DPRVenmoHelper *venmoHelper = [[DPRVenmoHelper alloc] init];
-    NSDictionary *userInformation = [venmoHelper userInformationWithAccessToken:accessToken];
+    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+    venmoHelper.accessToken = accessToken;
+    NSDictionary *userInformation = [venmoHelper fetchUserInformation];
     
+#warning change
     if(!testing){
         // authorized - start login
         if(userInformation){
@@ -58,10 +60,10 @@
 - (void)createLoginWithInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken {
     
     // create user
-    DPRVenmoHelper *venmoHelper = [[DPRVenmoHelper alloc] init];
+    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
     DPRUser *user = [DPRUser sharedModel];
     [user userInformation:userInformation andAccessToken:accessToken];
-    user.pictureImage = [venmoHelper profilePictureWithImageURL:user.pictureURL];
+    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
 
     // set root view controller
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];

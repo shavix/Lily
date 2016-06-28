@@ -100,7 +100,6 @@
     
     // get substring
     NSString *URLString = [[request URL] absoluteString];
-    NSLog(@"url string = %@\n", URLString);
     NSString *firstPartOfURL = [URLString substringToIndex:22];
     
     // if web redirect - get access token
@@ -119,12 +118,6 @@
     return YES;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    
-    NSLog(@"DONE");
-    
-}
-
 #pragma mark - Sign In
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -134,11 +127,12 @@
 - (void)signedIn {
     
     // create user
-    DPRVenmoHelper *venmoHelper = [[DPRVenmoHelper alloc] init];
-    NSDictionary *userInformation = [venmoHelper userInformationWithAccessToken:_accessToken];
+    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+    venmoHelper.accessToken = self.accessToken;
+    NSDictionary *userInformation = [venmoHelper fetchUserInformation];
     DPRUser *user = [DPRUser sharedModel];
     [user userInformation:userInformation andAccessToken:_accessToken];
-    user.pictureImage = [venmoHelper profilePictureWithImageURL:user.pictureURL];
+    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:user.pictureURL];
     
     // segue to home page
     self.navigationController.navigationBarHidden = YES;

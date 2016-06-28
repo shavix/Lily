@@ -120,9 +120,9 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-e6-aNg">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-e6-aNg" userLabel="Border">
                                                         <rect key="frame" x="3.5" y="31.5" width="564" height="1"/>
-                                                        <color key="backgroundColor" red="0.18653112936443933" green="0.19861904143036482" blue="0.24789020722121213" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="7cU-dD-t4x"/>
                                                         </constraints>
@@ -169,9 +169,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNj-6u-N07" customClass="DPRBalanceView">
                                                 <rect key="frame" x="15" y="172.5" width="570" height="79"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MU-l3-wIi">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MU-l3-wIi" userLabel="Border">
                                                         <rect key="frame" x="3" y="32.5" width="564" height="1"/>
-                                                        <color key="backgroundColor" red="0.1865311294" green="0.1986190414" blue="0.24789020719999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Mse-cM-Qfv"/>
                                                         </constraints>
@@ -212,9 +212,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-Y7-VBG" customClass="DPRTransactionsView">
                                                 <rect key="frame" x="15" y="258.5" width="570" height="132"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-1v-TGr">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-1v-TGr" userLabel="Border">
                                                         <rect key="frame" x="3" y="31.5" width="564" height="1"/>
-                                                        <color key="backgroundColor" red="0.1865311294" green="0.1986190414" blue="0.24789020719999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="uKx-GN-ICj"/>
                                                         </constraints>
@@ -248,9 +248,9 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH8-nr-2eS">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH8-nr-2eS" userLabel="Border">
                                                         <rect key="frame" x="3" y="31.5" width="564" height="1"/>
-                                                        <color key="backgroundColor" red="0.1865311294" green="0.1986190414" blue="0.24789020719999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="oh7-yR-aJZ"/>
                                                         </constraints>

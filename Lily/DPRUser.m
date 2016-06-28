@@ -35,15 +35,6 @@
     
 }
 
-
-- (id)init {
-    
-    self = [super init];
-    
-    return self;
-    
-}
-
 // shared instance
 + (instancetype)sharedModel {
     
