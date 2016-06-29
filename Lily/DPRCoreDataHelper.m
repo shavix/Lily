@@ -8,6 +8,7 @@
 
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
+#import "DPRTransaction.h"
 
 @interface DPRCoreDataHelper()
 
@@ -20,11 +21,8 @@
 - (DPRUser *)fetchUser{
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DPRUser"];
-    
     NSError *error = nil;
-
     NSArray *users = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
     NSLog(@"USERS = %@", users);
 
     // no users
@@ -40,6 +38,19 @@
         }
     }
     return nil;
+}
+
+// populate identifierSet
+- (NSMutableSet *)setupIdentifierSetWithUser:(DPRUser *)user{
+    
+    NSMutableSet *identifierSet = [[NSMutableSet alloc] init];
+    
+    for(DPRTransaction *transaction in user.transactionList){
+        [identifierSet addObject:transaction.identifier];
+    }
+    
+    return identifierSet;
+    
 }
 
 // shared instance

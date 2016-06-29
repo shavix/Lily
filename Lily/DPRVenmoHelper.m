@@ -70,9 +70,9 @@
 
 #pragma mark - Transactions
 
-- (void)fetchTransactions:(NSInteger)count{
+- (void)fetchTransactions:(NSInteger)count withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user{
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.venmo.com/v1/payments?access_token=%@&limit=100", self.accessToken];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.venmo.com/v1/payments?access_token=%@&limit=%d", self.accessToken, count];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [urlRequest setHTTPMethod:@"GET"];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -91,18 +91,36 @@
     
     for(NSDictionary *info in tempTransactionsArray){
         
-        DPRTransaction *transaction = [[DPRTransaction alloc] initWithInformation:info];
-        
+        NSString *status = [info objectForKey:@"status"];
         // valid transaction
-        if(![transaction.status isEqualToString:@"cancelled"]){
-        
+        if(![status isEqualToString:@"cancelled"]){
+            
+            NSString *identifier = [info objectForKey:@"id"];
+            
+            // unique - add to database
+            if(![identifierSet containsObject:identifier]){
+                
+                // create transaction
+                DPRTransaction *newTransaction = [NSEntityDescription insertNewObjectForEntityForName:@"DPRTransaction" inManagedObjectContext:self.managedObjectContext];
+                [newTransaction addInformation:info withUserFullName:user.fullName];
+                
+                [user addTransactionListObject:newTransaction];
+                // add to identifierSet & user
+                [identifierSet addObject:identifier];
+                
+            }
         }
-        
     }
     
     // add to core data
+    error = nil;
+    // always save managedObjectContext
+    [self.managedObjectContext save:&error];
+    
+    if(error){
+        // handle error
+    }
     
 }
-
 
 @end

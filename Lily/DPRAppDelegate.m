@@ -16,6 +16,8 @@
 
 @interface DPRAppDelegate ()
 
+@property (strong, nonatomic) DPRVenmoHelper *venmoHelper;
+
 @end
 
 @implementation DPRAppDelegate
@@ -34,9 +36,9 @@
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]
                              stringForKey:@"accessToken"];
     
-    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    venmoHelper.accessToken = accessToken;
-    NSDictionary *userInformation = [venmoHelper fetchUserInformation];
+    self.venmoHelper = [DPRVenmoHelper sharedModel];
+    self.venmoHelper.accessToken = accessToken;
+    NSDictionary *userInformation = [self.venmoHelper fetchUserInformation];
     
     #warning change
     if(!testing){
@@ -61,8 +63,9 @@
 - (void)createLoginWithInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken {
     
     // create user
-    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    
+    self.venmoHelper = [DPRVenmoHelper sharedModel];
+    self.venmoHelper.managedObjectContext = self.managedObjectContext;
+
     // check if user exists in core data
     DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
     NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
@@ -81,7 +84,7 @@
         }
     }
     NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
-    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:pictureURL];
+    user.pictureImage = [self.venmoHelper fetchProfilePictureWithImageURL:pictureURL];
     
     // set root view controller
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];

@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lily/DPRDashboardVC.m"
-            timestampString = "488873053.608014"
+            filePath = "Lily/DPRAppDelegate.m"
+            timestampString = "488934359.733348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-setupData"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-createLoginWithInformation:andAccessToken:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lily/DPRAppDelegate.m"
-            timestampString = "488840414.759414"
+            filePath = "Lily/DPRVenmoHelper.m"
+            timestampString = "488935769.893931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-createLoginWithInformation:andAccessToken:"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-fetchTransactions:withIdentifierSet:andUser:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lily/DPRCoreDataHelper.m"
+            timestampString = "488935814.675002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-setupIdentifierSetWithUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

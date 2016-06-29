@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DPRUser : NSManagedObject
 
 // methods
-+ (instancetype)sharedModel;
 - (void)userInformation:(NSDictionary *)userInfo andAccessToken:(NSString *)accessToken;
 
 @end

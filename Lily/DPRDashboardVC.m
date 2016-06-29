@@ -14,6 +14,7 @@
 #import "DPRUIHelper.h"
 #import "DPRAppDelegate.h"
 #import "DPRCoreDataHelper.h"
+#import "DPRVenmoHelper.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRDashboardVC()
@@ -62,9 +63,16 @@
 - (void)setupData{
     
     // retrieve user
-    // check if user exists in core data
     DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [cdHelper fetchUser];
+    
+    // setup identifier set
+    NSMutableSet *identifierSet = [cdHelper setupIdentifierSetWithUser:self.user];
+    
+    // retrieve recent transactions
+    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+    [venmoHelper fetchTransactions:10 withIdentifierSet:identifierSet andUser:self.user];
+    
     
 }
 
@@ -85,7 +93,6 @@
     self.profileBorder.backgroundColor = [UIColor lightColor];
     self.balanceBorder.backgroundColor = [UIColor lightColor];
     self.cashFlowBorder.backgroundColor = [UIColor lightColor];
-    
     
     [self setupProfileView];
     [self setupBalanceView];

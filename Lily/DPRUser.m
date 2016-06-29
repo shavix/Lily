@@ -31,20 +31,6 @@
     
 }
 
-// shared instance
-+ (instancetype)sharedModel {
-    
-    static DPRUser *_sharedModel = nil;
-    
-    static dispatch_once_t onceToken;
-    
-    dispatch_once (&onceToken, ^{
-        _sharedModel = [[self alloc] init];
-    });
-    return _sharedModel;
-    
-}
-
 
 @end
 

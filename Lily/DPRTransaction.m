@@ -12,11 +12,7 @@
 @implementation DPRTransaction
 
 // initialize with transaction information
-- (id)initWithInformation:(NSDictionary *)information {
-    
-    self = [super init];
-    
-    DPRUser *user = [DPRUser sharedModel];
+- (void)addInformation:(NSDictionary *)information withUserFullName:(NSString *)fullName {
     
     if(self) {
         
@@ -24,6 +20,7 @@
         self.amount = [information objectForKey:@"amount"];
         self.note = [information objectForKey:@"note"];
         self.status = [information objectForKey:@"status"];
+        self.identifier = [information objectForKey:@"id"];
         
         // venmo sender
         NSDictionary *senderInformation = [information objectForKey:@"actor"];
@@ -35,7 +32,7 @@
         NSString *receiverName = [receiverInformation objectForKey:@"display_name"];
         
         // if user is sender
-        if([senderName isEqualToString:user.fullName]) {
+        if([senderName isEqualToString:fullName]) {
             if([action isEqualToString:@"charge"]) {
                 self.isIncoming = [NSNumber numberWithBool:YES];
             }
@@ -58,8 +55,6 @@
         }
         
     }
-    
-    return self;
     
 }
 

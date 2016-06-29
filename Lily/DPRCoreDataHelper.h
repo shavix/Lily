@@ -11,9 +11,10 @@
 
 @interface DPRCoreDataHelper : NSObject
 
+@property (strong, nonatomic) NSString *username;
+
 + (instancetype)sharedModel;
 - (DPRUser *)fetchUser;
-
-@property (strong, nonatomic) NSString *username;
+- (NSMutableSet *)setupIdentifierSetWithUser:(DPRUser *)user;
 
 @end

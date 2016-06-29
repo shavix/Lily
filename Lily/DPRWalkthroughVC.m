@@ -155,6 +155,9 @@
     NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
     user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:pictureURL];
     
+    // venmo helper managedobjectcontext
+    venmoHelper.managedObjectContext = self.managedObjectContext;
+    
     // segue to home page
     self.navigationController.navigationBarHidden = YES;
     
