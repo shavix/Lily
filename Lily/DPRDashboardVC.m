@@ -30,6 +30,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *profileNicknameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
+@property (weak, nonatomic) IBOutlet UIView *transaction1;
+@property (weak, nonatomic) IBOutlet UIView *transaction2;
+@property (weak, nonatomic) IBOutlet UIView *transaction3;
+@property (weak, nonatomic) IBOutlet UIView *profileBorder;
+@property (weak, nonatomic) IBOutlet UIView *balanceBorder;
+@property (weak, nonatomic) IBOutlet UIView *cashFlowBorder;
 
 // 4 UIViews & container view
 @property (weak, nonatomic) IBOutlet DPRProfileView *profileView;
@@ -76,6 +82,9 @@
     // colors
     _settingsButton.tintColor = [UIColor lightGreenColor];
     _contentView.backgroundColor = [UIColor lightColor];
+    self.profileBorder.backgroundColor = [UIColor lightColor];
+    self.balanceBorder.backgroundColor = [UIColor lightColor];
+    self.cashFlowBorder.backgroundColor = [UIColor lightColor];
     
     
     [self setupProfileView];
@@ -117,6 +126,23 @@
 
 // TRANSACTIONS
 - (void)setupTransactionsView{
+    
+    CGFloat width = self.transactionsView.frame.size.width;
+    // Add a topBorder
+    CALayer *topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0.0f, 0.0f, width, 1.0f);
+    topBorder.backgroundColor = [UIColor lightColor].CGColor;
+    [self.transaction1.layer addSublayer:topBorder];
+    
+    topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0.0f, 0.0f, width, 1.0f);
+    topBorder.backgroundColor = [UIColor lightColor].CGColor;
+    [self.transaction2.layer addSublayer:topBorder];
+    
+    topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0.0f, 0.0f, width, 1.0f);
+    topBorder.backgroundColor = [UIColor lightColor].CGColor;
+    [self.transaction3.layer addSublayer:topBorder];
     
 }
 

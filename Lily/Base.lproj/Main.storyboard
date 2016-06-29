@@ -210,38 +210,70 @@
                                                 </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-Y7-VBG" customClass="DPRTransactionsView">
-                                                <rect key="frame" x="15" y="258.5" width="570" height="132"/>
+                                                <rect key="frame" x="15" y="258.5" width="570" height="184.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-1v-TGr" userLabel="Border">
-                                                        <rect key="frame" x="3" y="31.5" width="564" height="1"/>
-                                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGH-aR-AYF" userLabel="Top">
+                                                        <rect key="frame" x="0.0" y="0.0" width="570" height="46"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Transactions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enl-o6-Jlb">
+                                                                <rect key="frame" x="10" y="10" width="148" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="uKx-GN-ICj"/>
+                                                            <constraint firstItem="enl-o6-Jlb" firstAttribute="leading" secondItem="XGH-aR-AYF" secondAttribute="leading" constant="10" id="VBk-Yz-9tg"/>
+                                                            <constraint firstItem="enl-o6-Jlb" firstAttribute="top" secondItem="XGH-aR-AYF" secondAttribute="top" constant="10" id="ivC-8M-YdZ"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Transactions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enl-o6-Jlb">
-                                                        <rect key="frame" x="10" y="10" width="148" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ey2-HN-3FA">
                                                         <rect key="frame" x="543" y="5" width="22" height="22"/>
                                                         <state key="normal" image="rightArrow"/>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Q0-dW-epP" userLabel="Transaction 1">
+                                                        <rect key="frame" x="0.0" y="46" width="570" height="46"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1H-Rg-EUG" userLabel="Transaction 2">
+                                                        <rect key="frame" x="0.0" y="92" width="570" height="46"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Icr-iT-9XT" userLabel="Transaction 3">
+                                                        <rect key="frame" x="0.0" y="138" width="570" height="46"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="gS9-1v-TGr" firstAttribute="width" secondItem="ZGa-Y7-VBG" secondAttribute="width" multiplier="0.99" id="EWo-7t-hPl"/>
-                                                    <constraint firstItem="gS9-1v-TGr" firstAttribute="top" secondItem="enl-o6-Jlb" secondAttribute="bottom" constant="2" id="Yqk-ml-pLu"/>
+                                                    <constraint firstItem="Icr-iT-9XT" firstAttribute="width" secondItem="ZGa-Y7-VBG" secondAttribute="width" id="2uq-tJ-FON"/>
+                                                    <constraint firstItem="8Q0-dW-epP" firstAttribute="width" secondItem="ZGa-Y7-VBG" secondAttribute="width" id="6EG-QV-FMH"/>
+                                                    <constraint firstItem="8Q0-dW-epP" firstAttribute="top" secondItem="XGH-aR-AYF" secondAttribute="top" id="88D-kU-gH2"/>
+                                                    <constraint firstItem="g1H-Rg-EUG" firstAttribute="top" secondItem="8Q0-dW-epP" secondAttribute="bottom" id="CaF-fM-ny6"/>
+                                                    <constraint firstItem="8Q0-dW-epP" firstAttribute="centerX" secondItem="ZGa-Y7-VBG" secondAttribute="centerX" id="E6i-17-zBj"/>
+                                                    <constraint firstItem="XGH-aR-AYF" firstAttribute="top" secondItem="ZGa-Y7-VBG" secondAttribute="top" id="FMi-Pw-d3e"/>
+                                                    <constraint firstItem="XGH-aR-AYF" firstAttribute="height" secondItem="ZGa-Y7-VBG" secondAttribute="height" multiplier="0.25" id="IKG-ZH-cb0"/>
+                                                    <constraint firstItem="Icr-iT-9XT" firstAttribute="height" secondItem="ZGa-Y7-VBG" secondAttribute="height" multiplier="0.25" id="N7C-H2-jUb"/>
+                                                    <constraint firstItem="Icr-iT-9XT" firstAttribute="centerX" secondItem="ZGa-Y7-VBG" secondAttribute="centerX" id="Qes-M2-ipg"/>
+                                                    <constraint firstItem="g1H-Rg-EUG" firstAttribute="width" secondItem="ZGa-Y7-VBG" secondAttribute="width" id="Web-Vm-LZ2"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ey2-HN-3FA" secondAttribute="trailing" constant="5" id="aAR-ap-5qq"/>
                                                     <constraint firstItem="Ey2-HN-3FA" firstAttribute="top" secondItem="ZGa-Y7-VBG" secondAttribute="top" constant="5" id="aoe-89-xmi"/>
-                                                    <constraint firstItem="gS9-1v-TGr" firstAttribute="centerX" secondItem="ZGa-Y7-VBG" secondAttribute="centerX" id="gjp-mO-1dL"/>
-                                                    <constraint firstItem="enl-o6-Jlb" firstAttribute="leading" secondItem="ZGa-Y7-VBG" secondAttribute="leading" constant="10" id="pev-2f-jkC"/>
-                                                    <constraint firstItem="enl-o6-Jlb" firstAttribute="top" secondItem="ZGa-Y7-VBG" secondAttribute="top" constant="10" id="r5z-Fo-eKv"/>
+                                                    <constraint firstItem="g1H-Rg-EUG" firstAttribute="centerX" secondItem="ZGa-Y7-VBG" secondAttribute="centerX" id="bxl-Zr-4pW"/>
+                                                    <constraint firstItem="g1H-Rg-EUG" firstAttribute="height" secondItem="ZGa-Y7-VBG" secondAttribute="height" multiplier="0.25" id="cRd-9t-363"/>
+                                                    <constraint firstItem="XGH-aR-AYF" firstAttribute="centerX" secondItem="ZGa-Y7-VBG" secondAttribute="centerX" id="fse-R8-Hfu"/>
+                                                    <constraint firstItem="XGH-aR-AYF" firstAttribute="width" secondItem="ZGa-Y7-VBG" secondAttribute="width" id="hzG-pQ-pMn"/>
+                                                    <constraint firstItem="Icr-iT-9XT" firstAttribute="top" secondItem="g1H-Rg-EUG" secondAttribute="bottom" id="i8d-tw-L5u"/>
+                                                    <constraint firstItem="8Q0-dW-epP" firstAttribute="top" secondItem="XGH-aR-AYF" secondAttribute="bottom" id="t5b-JZ-bSV"/>
+                                                    <constraint firstItem="8Q0-dW-epP" firstAttribute="height" secondItem="ZGa-Y7-VBG" secondAttribute="height" multiplier="0.25" id="vQD-GE-KPU"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="88D-kU-gH2"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXP-Ko-HYZ" customClass="DPRCashFlowView">
-                                                <rect key="frame" x="15" y="397.5" width="570" height="132"/>
+                                                <rect key="frame" x="15" y="450" width="570" height="132"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Flow (week)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lr-tI-8YP">
                                                         <rect key="frame" x="10" y="10" width="127.5" height="19.5"/>
@@ -286,7 +318,7 @@
                                             <constraint firstItem="ZGa-Y7-VBG" firstAttribute="centerX" secondItem="8Or-mP-n7m" secondAttribute="centerX" id="XDc-UZ-dvF"/>
                                             <constraint firstItem="RNj-6u-N07" firstAttribute="height" secondItem="8Or-mP-n7m" secondAttribute="height" multiplier="0.15" id="Y6a-Uv-mD7"/>
                                             <constraint firstItem="LUH-Wn-S5O" firstAttribute="leading" secondItem="BJP-qX-UTP" secondAttribute="leading" id="dxC-w8-eG1"/>
-                                            <constraint firstItem="ZGa-Y7-VBG" firstAttribute="height" secondItem="8Or-mP-n7m" secondAttribute="height" multiplier="0.25" id="gUs-iB-EEf"/>
+                                            <constraint firstItem="ZGa-Y7-VBG" firstAttribute="height" secondItem="8Or-mP-n7m" secondAttribute="height" multiplier="0.35" id="gUs-iB-EEf"/>
                                             <constraint firstItem="uye-vF-Os6" firstAttribute="height" secondItem="8Or-mP-n7m" secondAttribute="height" multiplier="0.2" id="kAV-y4-Wxc"/>
                                             <constraint firstItem="RNj-6u-N07" firstAttribute="top" secondItem="uye-vF-Os6" secondAttribute="bottom" constant="7" id="lMu-ll-CX0"/>
                                             <constraint firstItem="RNj-6u-N07" firstAttribute="width" secondItem="8Or-mP-n7m" secondAttribute="width" multiplier="0.95" id="rBi-Rh-0Rw"/>
@@ -318,15 +350,21 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="balanceBorder" destination="1MU-l3-wIi" id="pkE-KG-NVp"/>
                         <outlet property="balanceLabel" destination="LUH-Wn-S5O" id="mGK-ok-ImE"/>
                         <outlet property="balanceView" destination="RNj-6u-N07" id="KzP-sb-HIO"/>
+                        <outlet property="cashFlowBorder" destination="pH8-nr-2eS" id="oy5-Kl-ael"/>
                         <outlet property="cashFlowView" destination="FXP-Ko-HYZ" id="Wu2-H0-QJc"/>
                         <outlet property="contentView" destination="8Or-mP-n7m" id="eoX-6k-iYy"/>
+                        <outlet property="profileBorder" destination="qAT-e6-aNg" id="imj-96-NJw"/>
                         <outlet property="profileNameLabel" destination="BJP-qX-UTP" id="WmM-Sz-Q96"/>
                         <outlet property="profileNicknameLabel" destination="3Wi-FX-GdU" id="X49-8M-n7Y"/>
                         <outlet property="profilePictureView" destination="rKy-4r-jEq" id="Kpq-1T-dmn"/>
                         <outlet property="profileView" destination="uye-vF-Os6" id="S2Y-mQ-oaQ"/>
                         <outlet property="settingsButton" destination="Tgc-ys-Kfw" id="4bO-8B-gpI"/>
+                        <outlet property="transaction1" destination="8Q0-dW-epP" id="Gid-uk-XNu"/>
+                        <outlet property="transaction2" destination="g1H-Rg-EUG" id="hoD-TQ-41Z"/>
+                        <outlet property="transaction3" destination="Icr-iT-9XT" id="4zb-KL-1li"/>
                         <outlet property="transactionsView" destination="ZGa-Y7-VBG" id="ZRP-Af-qob"/>
                     </connections>
                 </viewController>
