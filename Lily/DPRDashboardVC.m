@@ -70,9 +70,10 @@
     NSMutableSet *identifierSet = [cdHelper setupIdentifierSetWithUser:self.user];
     
     // retrieve recent transactions
+    NSInteger numTransactions = 1000;
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    [venmoHelper fetchTransactions:10 withIdentifierSet:identifierSet andUser:self.user];
-    
+    [venmoHelper fetchTransactions:numTransactions withIdentifierSet:identifierSet andUser:self.user];
+    NSArray *transactionsByDate = [cdHelper setupTransactionsByDateWithUser:self.user];
     
 }
 

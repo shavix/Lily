@@ -16,5 +16,6 @@
 + (instancetype)sharedModel;
 - (DPRUser *)fetchUser;
 - (NSMutableSet *)setupIdentifierSetWithUser:(DPRUser *)user;
+- (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user;
 
 @end

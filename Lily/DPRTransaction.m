@@ -58,5 +58,45 @@
     
 }
 
+- (void)parseDatesWithInformation:(NSDictionary *)information {
+    
+    // date strings
+    NSString *dateCreatedString = [information objectForKey:@"date_created"];
+    NSString *dateCompletedString = [information objectForKey:@"date_completed"];
+    
+    // date formatter
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    // get date
+    NSDate *theDate = nil;
+    NSError *error = nil;
+    if (![dateFormatter getObjectValue:&theDate forString:dateCreatedString range:nil error:&error]) {
+        NSLog(@"Date '%@' could not be parsed: %@", dateCreatedString, error);
+    }
+    // set date created
+    self.dateCreated = theDate;
+    
+    // if transaction is not yet complete - dateCompletedString = nil
+    if(![dateCompletedString isEqual:[NSNull null]]){
+        self.isComplete = [NSNumber numberWithBool:YES];
+        // get date
+        theDate = nil;
+        error = nil;
+        if (![dateFormatter getObjectValue:&theDate forString:dateCompletedString range:nil error:&error]) {
+            NSLog(@"Date '%@' could not be parsed: %@", dateCompletedString, error);
+        }
+        // set date completed
+        self.dateCompleted = theDate;
+        
+        #warning potentially add this in core data
+        //self.dateCompletedString = [[NSString stringWithFormat:@"%@ %ld, %ld", _monthCompleted, _dateCompleted.day, _dateCompleted.year] uppercaseString];
+    }
+    else {
+        self.isComplete = [NSNumber numberWithBool:NO];
+    }
+    
+}
+
 
 @end

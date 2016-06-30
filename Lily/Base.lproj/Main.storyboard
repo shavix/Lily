@@ -58,13 +58,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="KRt-hP-HwZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="KRt-hP-HwZ" customClass="DPRTransactionTableViewCell">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRt-hP-HwZ" id="7Ci-ng-yqy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-Ij-ipT">
+                                            <rect key="frame" x="8" y="6" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="qG0-Ij-ipT" secondAttribute="height" multiplier="1:1" id="JnF-fy-YfY"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rm-Cf-ObS">
+                                            <rect key="frame" x="53" y="8" width="31" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-5X-d8v">
+                                            <rect key="frame" x="53" y="22.5" width="31" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YnS-5X-d8v" firstAttribute="leading" secondItem="qG0-Ij-ipT" secondAttribute="trailing" constant="15" id="6zC-4f-08e"/>
+                                        <constraint firstItem="4Rm-Cf-ObS" firstAttribute="leading" secondItem="qG0-Ij-ipT" secondAttribute="trailing" constant="15" id="EDR-3q-cIO"/>
+                                        <constraint firstItem="YnS-5X-d8v" firstAttribute="top" secondItem="4Rm-Cf-ObS" secondAttribute="bottom" id="I2S-Dg-a5a"/>
+                                        <constraint firstItem="qG0-Ij-ipT" firstAttribute="height" secondItem="7Ci-ng-yqy" secondAttribute="height" multiplier="0.7" id="Tdl-vJ-a2A"/>
+                                        <constraint firstItem="qG0-Ij-ipT" firstAttribute="centerY" secondItem="7Ci-ng-yqy" secondAttribute="centerY" id="oyr-lJ-JGM"/>
+                                        <constraint firstItem="4Rm-Cf-ObS" firstAttribute="top" secondItem="7Ci-ng-yqy" secondAttribute="topMargin" id="uDt-q6-fMf"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="qG0-Ij-ipT" secondAttribute="leading" id="vaG-pn-XzH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellImage" destination="qG0-Ij-ipT" id="XpE-gW-QHL"/>
+                                    <outlet property="noteLabel" destination="YnS-5X-d8v" id="7H5-W9-A0z"/>
+                                    <outlet property="transactionLabel" destination="4Rm-Cf-ObS" id="CUW-Of-PlR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -472,6 +506,7 @@
         <image name="Graphs" width="36" height="26"/>
         <image name="Settings" width="22" height="22"/>
         <image name="Transactions" width="30" height="28"/>
+        <image name="UserImage" width="22" height="22"/>
         <image name="rightArrow" width="22" height="22"/>
     </resources>
 </document>

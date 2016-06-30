@@ -14,6 +14,7 @@
 		63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */; };
 		63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB61D231BD9003410D3 /* DPRUser.m */; };
 		63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FBC1D231D00003410D3 /* DPRImageTansformer.m */; };
+		63782FC01D24AABC003410D3 /* DPRTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */; };
 		6379F5541D1B9B9A0094ED24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5531D1B9B9A0094ED24 /* main.m */; };
 		6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5561D1B9B9A0094ED24 /* DPRAppDelegate.m */; };
 		6379F55D1D1B9B9A0094ED24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6379F55B1D1B9B9A0094ED24 /* Main.storyboard */; };
@@ -86,6 +87,8 @@
 		63782FB61D231BD9003410D3 /* DPRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUser.m; sourceTree = "<group>"; };
 		63782FBB1D231D00003410D3 /* DPRImageTansformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRImageTansformer.h; sourceTree = "<group>"; };
 		63782FBC1D231D00003410D3 /* DPRImageTansformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRImageTansformer.m; sourceTree = "<group>"; };
+		63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionTableViewCell.h; sourceTree = "<group>"; };
+		63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionTableViewCell.m; sourceTree = "<group>"; };
 		6379F54F1D1B9B9A0094ED24 /* Lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6379F5531D1B9B9A0094ED24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6379F5551D1B9B9A0094ED24 /* DPRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPRAppDelegate.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 			isa = PBXGroup;
 			children = (
 				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
+				63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */,
+				63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -570,6 +575,7 @@
 				63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */,
 				6379F5A11D1BA48A0094ED24 /* DPRGraphsVC.m in Sources */,
 				6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */,
+				63782FC01D24AABC003410D3 /* DPRTransactionTableViewCell.m in Sources */,
 				6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */,
 				6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */,
 				6379F5CC1D1CA23E0094ED24 /* DPRProfileView.m in Sources */,

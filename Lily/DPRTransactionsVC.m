@@ -8,8 +8,14 @@
 
 #import "DPRTransactionsVC.h"
 #import "DPRUIHelper.h"
-
+#import "DPRTransactionTableViewCell.h"
 #import "UIColor+CustomColors.h"
+
+@interface DPRTransactionsVC()
+
+
+
+@end
 
 @implementation DPRTransactionsVC
 
@@ -36,14 +42,10 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString* CellIdentifier = @"TransactionCell";
+    DPRTransactionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    cell.textLabel.text = @"I'm a UITableViewCell!";
-    cell.imageView.image = [UIImage imageNamed:@"MyReallyCoolImage.png"];
-    
+    cell.transactionLabel.text = @"Test";
+
     return cell;
 }
 
@@ -53,7 +55,7 @@
 // num rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;    //count number of row from counting array hear cataGorry is An Array
+    return 10;    //count number of row from counting array hear cataGorry is An Array
 }
 
 // num sections

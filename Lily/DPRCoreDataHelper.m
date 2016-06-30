@@ -18,6 +18,8 @@
 
 @implementation DPRCoreDataHelper
 
+
+// user
 - (DPRUser *)fetchUser{
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DPRUser"];
@@ -52,6 +54,28 @@
     return identifierSet;
     
 }
+
+// transactionsByDate
+- (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user{
+    
+    NSArray *transactionsByDate;
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateCompleted" ascending:NO];
+    transactionsByDate = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    for(DPRTransaction *transaction in transactionsByDate){
+        
+        NSLog(@"%@", transaction.note);
+        
+    }
+    
+    return transactionsByDate;
+    
+}
+
+
+
+#pragma mark - unimportant
 
 // shared instance
 + (instancetype)sharedModel {

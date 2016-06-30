@@ -93,7 +93,7 @@
         
         NSString *status = [info objectForKey:@"status"];
         // valid transaction
-        if(![status isEqualToString:@"cancelled"]){
+        if([status isEqualToString:@"settled"]){
             
             NSString *identifier = [info objectForKey:@"id"];
             
