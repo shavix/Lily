@@ -29,5 +29,38 @@
 }
 
 
+#pragma mark - UITableView
+
+
+// get cell
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    static NSString* CellIdentifier = @"TransactionCell";
+    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    cell.textLabel.text = @"I'm a UITableViewCell!";
+    cell.imageView.image = [UIImage imageNamed:@"MyReallyCoolImage.png"];
+    
+    return cell;
+}
+
+
+
+
+// num rows
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return 1;    //count number of row from counting array hear cataGorry is An Array
+}
+
+// num sections
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;    //count of section
+}
+
 
 @end

@@ -72,7 +72,7 @@
 
 - (void)fetchTransactions:(NSInteger)count withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user{
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.venmo.com/v1/payments?access_token=%@&limit=%d", self.accessToken, count];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.venmo.com/v1/payments?access_token=%@&limit=%ld", self.accessToken, (long)count];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [urlRequest setHTTPMethod:@"GET"];
     NSURL *url = [NSURL URLWithString:urlString];

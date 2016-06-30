@@ -23,7 +23,7 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DPRUser"];
     NSError *error = nil;
     NSArray *users = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    NSLog(@"USERS = %@", users);
+    NSLog(@"NUM USERS = %ld", (long) users.count);
 
     // no users
     if(error || users.count == 0){
