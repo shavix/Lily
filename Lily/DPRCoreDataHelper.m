@@ -57,14 +57,36 @@
 // transactionsByDate
 - (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user{
     
-    NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
-    
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateCompleted" ascending:NO];
-     NSArray *transactionsByDate = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
+     NSArray *tempTransactionsByDate = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
     
-    for(DPRTransaction *transaction in transactionsByDate){
+    NSMutableArray *transactionsByDate = [[NSMutableArray alloc] init];
+    [transactionsByDate addObject:[[NSMutableArray alloc] init]];
+
+    for(DPRTransaction *transaction in tempTransactionsByDate){
         
+        NSMutableArray *currentDateArray = transactionsByDate[transactionsByDate.count - 1];
         
+        // current date is empty
+        if(currentDateArray.count == 0) {
+            [currentDateArray addObject:transaction];
+        }
+        // check if correct date
+        else {
+            DPRTransaction *currentDateTransaction = currentDateArray[0];
+            
+            // correct date
+            if([transaction.dateCompletedString isEqualToString:currentDateTransaction.dateCompletedString]) {
+                [currentDateArray addObject:transaction];
+            }
+            // next date
+            else {
+                
+                NSMutableArray *newDateArray = [[NSMutableArray alloc] init];
+                [newDateArray addObject:transaction];
+                [transactionsByDate addObject:newDateArray];
+            }
+        }
         
     }
     

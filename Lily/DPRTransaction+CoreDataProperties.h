@@ -2,7 +2,7 @@
 //  DPRTransaction+CoreDataProperties.h
 //  Lily
 //
-//  Created by David Richardson on 6/28/16.
+//  Created by David Richardson on 7/1/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *status;
 @property (nullable, nonatomic, retain) NSString *targetName;
 @property (nullable, nonatomic, retain) NSString *identifier;
+@property (nullable, nonatomic, retain) NSString *dateCompletedString;
 @property (nullable, nonatomic, retain) DPRUser *user;
 
 @end

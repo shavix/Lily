@@ -2,7 +2,7 @@
 //  DPRTransaction.m
 //  Lily
 //
-//  Created by David Richardson on 6/28/16.
+//  Created by David Richardson on 7/1/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
@@ -62,6 +62,8 @@
 
 - (void)parseDatesWithInformation:(NSDictionary *)information {
     
+    NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
+    
     // date strings
     NSString *dateCreatedString = [information objectForKey:@"date_created"];
     NSString *dateCompletedString = [information objectForKey:@"date_completed"];
@@ -91,8 +93,11 @@
         // set date completed
         self.dateCompleted = theDate;
         
-        #warning potentially add this in core data
-        //self.dateCompletedString = [[NSString stringWithFormat:@"%@ %ld, %ld", _monthCompleted, _dateCompleted.day, _dateCompleted.year] uppercaseString];
+        NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:self.dateCompleted];
+        
+        NSString *dateCompletedMonth = months[dateComponents.month - 1];
+        
+        self.dateCompletedString = [[NSString stringWithFormat:@"%@ %ld, %ld", dateCompletedMonth, dateComponents.day, dateComponents.year] uppercaseString];
     }
     else {
         self.isComplete = [NSNumber numberWithBool:NO];

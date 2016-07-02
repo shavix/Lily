@@ -2,7 +2,7 @@
 //  DPRTransaction+CoreDataProperties.m
 //  Lily
 //
-//  Created by David Richardson on 6/28/16.
+//  Created by David Richardson on 7/1/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -23,6 +23,7 @@
 @dynamic status;
 @dynamic targetName;
 @dynamic identifier;
+@dynamic dateCompletedString;
 @dynamic user;
 
 @end

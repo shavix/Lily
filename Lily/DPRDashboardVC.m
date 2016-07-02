@@ -77,6 +77,8 @@
     [venmoHelper fetchTransactions:numTransactions withIdentifierSet:identifierSet andUser:self.user];
     NSArray *transactionsByDate = [cdHelper setupTransactionsByDateWithUser:self.user];
     
+    NSLog(@"here");
+    
 }
 
 - (void)setupUI{

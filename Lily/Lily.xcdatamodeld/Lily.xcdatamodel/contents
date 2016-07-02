@@ -3,6 +3,7 @@
     <entity name="DPRTransaction" representedClassName="DPRTransaction" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dateCompleted" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateCompletedString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isComplete" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -22,7 +23,7 @@
         <relationship name="transactionList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DPRTransaction" inverseName="user" inverseEntity="DPRTransaction" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DPRTransaction" positionX="27" positionY="72" width="128" height="210"/>
+        <element name="DPRTransaction" positionX="27" positionY="72" width="128" height="225"/>
         <element name="DPRUser" positionX="117" positionY="-99" width="128" height="135"/>
     </elements>
 </model>
