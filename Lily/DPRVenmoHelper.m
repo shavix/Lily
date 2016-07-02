@@ -103,7 +103,7 @@
                 // create transaction
                 DPRTransaction *newTransaction = [NSEntityDescription insertNewObjectForEntityForName:@"DPRTransaction" inManagedObjectContext:self.managedObjectContext];
                 [newTransaction addInformation:info withUserFullName:user.fullName];
-                
+                                
                 [user addTransactionListObject:newTransaction];
                 // add to identifierSet & user
                 [identifierSet addObject:identifier];

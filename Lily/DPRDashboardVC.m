@@ -62,6 +62,8 @@
 
 - (void)setupData{
     
+    [self storeUsername];
+    
     // retrieve user
     DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [cdHelper fetchUser];
@@ -166,6 +168,17 @@
 - (NSManagedObjectContext *)managedObjectContext {
     return [(DPRAppDelegate *) [[UIApplication sharedApplication] delegate] managedObjectContext];
 }
+
+
+#pragma mark - accessToken
+
+- (void)storeUsername {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.user.username forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 
 
 @end

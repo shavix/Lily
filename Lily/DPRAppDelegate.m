@@ -17,6 +17,7 @@
 @interface DPRAppDelegate ()
 
 @property (strong, nonatomic) DPRVenmoHelper *venmoHelper;
+@property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 
 @end
 
@@ -29,32 +30,44 @@
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
     [[UILabel appearance] setFont:[UIFont boldSystemFontOfSize:14.0]];
     
-    // REMOVE LATER
-    bool testing = NO;
     
     // check if user is logged in
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults]
-                             stringForKey:@"accessToken"];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
+    NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
     
+    self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.venmoHelper = [DPRVenmoHelper sharedModel];
     self.venmoHelper.accessToken = accessToken;
     NSDictionary *userInformation = [self.venmoHelper fetchUserInformation];
     
-    #warning change
-    if(!testing){
-        // authorized - start login
-        if(userInformation){
-            [self createLoginWithInformation:userInformation andAccessToken:accessToken];
+    // authorized - start login
+    if(userInformation){
+        [self createLoginWithInformation:userInformation andAccessToken:accessToken];
+    }
+    // not authorized
+    else{
+        
+        // check if stay logged in
+        if(username) {
+            self.cdHelper.username = username;
+            DPRUser *user = [self.cdHelper fetchUser];
+            if(!user){
+                [self createWalkthrough];
+            }
+            else{
+                // set root view controller
+                UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+                
+                self.window.rootViewController = tabBarController;
+                [self.window makeKeyAndVisible];
+            }
         }
-        // not authorized - start walkthrough
-        else{
+        else {
             [self createWalkthrough];
         }
     }
-    else{
-        [self createLoginWithInformation:userInformation andAccessToken:accessToken];
-    }
-    
+
     return YES;
 
 }
@@ -67,10 +80,9 @@
     self.venmoHelper.managedObjectContext = self.managedObjectContext;
 
     // check if user exists in core data
-    DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
     NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
-    cdHelper.username = username;
-    DPRUser *user = [cdHelper fetchUser];
+    self.cdHelper.username = username;
+    DPRUser *user = [self.cdHelper fetchUser];
     
     // create new user - insert into Core Data
     if(!user){

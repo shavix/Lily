@@ -25,7 +25,6 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DPRUser"];
     NSError *error = nil;
     NSArray *users = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    NSLog(@"NUM USERS = %ld", (long) users.count);
 
     // no users
     if(error || users.count == 0){
@@ -58,14 +57,14 @@
 // transactionsByDate
 - (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user{
     
-    NSArray *transactionsByDate;
+    NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateCompleted" ascending:NO];
-    transactionsByDate = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
+     NSArray *transactionsByDate = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
     
     for(DPRTransaction *transaction in transactionsByDate){
         
-        NSLog(@"%@", transaction.note);
+        
         
     }
     

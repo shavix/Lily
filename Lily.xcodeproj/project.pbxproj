@@ -220,10 +220,10 @@
 			children = (
 				6379F5551D1B9B9A0094ED24 /* DPRAppDelegate.h */,
 				6379F5561D1B9B9A0094ED24 /* DPRAppDelegate.m */,
-				6379F58A1D1B9C120094ED24 /* Controller */,
 				6379F5881D1B9C090094ED24 /* Model */,
-				6379F58B1D1B9C830094ED24 /* Helper */,
 				6379F5891D1B9C0E0094ED24 /* View */,
+				6379F58A1D1B9C120094ED24 /* Controller */,
+				6379F58B1D1B9C830094ED24 /* Helper */,
 				6379F5521D1B9B9A0094ED24 /* Supporting Files */,
 			);
 			path = Lily;

@@ -22,6 +22,8 @@
         self.status = [information objectForKey:@"status"];
         self.identifier = [information objectForKey:@"id"];
         
+        [self parseDatesWithInformation:information];
+        
         // venmo sender
         NSDictionary *senderInformation = [information objectForKey:@"actor"];
         NSString *senderName = [senderInformation objectForKey:@"display_name"];
