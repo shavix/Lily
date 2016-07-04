@@ -10,6 +10,7 @@
 #import "DPRTransaction.h"
 #import "DPRUIHelper.h"
 #import "DPRUser.h"
+#import "DPRTarget.h"
 #import "DPRTransactionTableViewCell.h"
 #import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
@@ -59,23 +60,26 @@
     
     DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
 
+    // transactionLabel
     cell.transactionLabel.text = transaction.transactionDescription;
+    
+    // noteLabel
     cell.noteLabel.text = transaction.note;
     
     // amount
-    cell.amountLabel.text = [NSString stringWithFormat:@"$%@",transaction.amount];
-    [self colorAmountLabel:cell.amountLabel withTransaction:transaction];
+    [self setupAmountLabel:cell.amountLabel withTransaction:transaction];
     
     // image
-    [self setupImageView:cell.imageView withTransaction:transaction];
+    [self setupImageView:cell.cellImage withTransaction:transaction];
     
     return cell;
 }
 
 
 // amountLabel
-- (void)colorAmountLabel:(UILabel *)amountLabel withTransaction:(DPRTransaction *)transaction{
+- (void)setupAmountLabel:(UILabel *)amountLabel withTransaction:(DPRTransaction *)transaction{
     
+    // color
     if(transaction.isIncoming) {
         amountLabel.textColor = [UIColor lightGreenColor];
     }
@@ -83,6 +87,13 @@
         amountLabel.textColor = [UIColor redColor];
     }
     
+    // format
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setPositiveFormat:@"##.00"];
+
+    amountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:transaction.amount]];
+
 }
 
 // image
@@ -94,7 +105,17 @@
     }
     // target image
     else {
-        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:transaction.target.picture_url]]];
+            
+            if(!image){
+                image = [UIImage imageNamed:@"UserImage"];
+            }
+            
+            dispatch_sync(dispatch_get_main_queue(), ^(void) {
+                imageView.image = image;
+            });
+        });
     }
     
 }

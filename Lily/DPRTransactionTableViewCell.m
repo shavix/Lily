@@ -12,14 +12,14 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
     
     self.cellImage.layer.cornerRadius = self.cellImage.frame.size.width/2;
     self.cellImage.clipsToBounds = YES;
     
-    self.noteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
-    self.amountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
-
+    self.transactionLabel.font = [UIFont boldSystemFontOfSize:12];
+    self.noteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
+    self.amountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -27,5 +27,10 @@
 
     // Configure the view for the selected state
 }
+
+
+
+
+
 
 @end

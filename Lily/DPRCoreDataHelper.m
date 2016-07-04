@@ -56,7 +56,7 @@
 
 - (void)insertIntoDatabse:(NSArray *)tempTransactionsArray withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user {
     
-     for(NSDictionary *info in tempTransactionsArray){
+    for(NSDictionary *info in tempTransactionsArray){
               
          NSString *status = [info objectForKey:@"status"];
          // valid transaction
@@ -76,7 +76,6 @@
              [user addTransactionListObject:newTransaction];
              // add to identifierSet & user
              [identifierSet addObject:identifier];
-             
              }
              
          }
