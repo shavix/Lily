@@ -2,23 +2,23 @@
 //  DPRTransaction.h
 //  Lily
 //
-//  Created by David Richardson on 7/1/16.
+//  Created by David Richardson on 7/3/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DPRUser;
+@class DPRTarget, DPRUser;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRTransaction : NSManagedObject
 
 - (void)addInformation:(NSDictionary *)information withUserFullName:(NSString *)fullName;
+- (void)createTransactionDescription;
 
 @end
-
 
 NS_ASSUME_NONNULL_END
 

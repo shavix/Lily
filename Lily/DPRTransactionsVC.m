@@ -7,13 +7,15 @@
 //
 
 #import "DPRTransactionsVC.h"
+#import "DPRTransaction.h"
 #import "DPRUIHelper.h"
 #import "DPRTransactionTableViewCell.h"
+#import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRTransactionsVC()
 
-
+@property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 
 @end
 
@@ -23,7 +25,14 @@
 
 - (void)viewDidLoad {
     
+    [self setupData];
     [self setupUI];
+    
+}
+
+- (void)setupData {
+    
+    self.transactionSingleton = [DPRTransactionSingleton sharedModel];
     
 }
 
@@ -44,24 +53,38 @@
     static NSString* CellIdentifier = @"TransactionCell";
     DPRTransactionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.transactionLabel.text = @"Test";
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
+
+    cell.transactionLabel.text = transaction.transactionDescription;
+    cell.noteLabel.text = transaction.note;
+    cell.amountLabel.text = [NSString stringWithFormat:@"$%@",transaction.amount];
 
     return cell;
 }
 
 
-
+// section title
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][0];
+    NSString *title = transaction.dateCompletedString;
+    
+    return title;
+    
+}
 
 // num rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 10;    //count number of row from counting array hear cataGorry is An Array
+    return [self.transactionSingleton.transactionsByDate[section] count];
 }
 
 // num sections
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;    //count of section
+    return [self.transactionSingleton.transactionsByDate count];
 }
 
 

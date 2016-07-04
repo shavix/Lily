@@ -54,6 +54,46 @@
     
 }
 
+- (void)insertIntoDatabse:(NSArray *)tempTransactionsArray withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user {
+    
+     for(NSDictionary *info in tempTransactionsArray){
+              
+         NSString *status = [info objectForKey:@"status"];
+         // valid transaction
+         if([status isEqualToString:@"settled"]){
+         
+         NSString *identifier = [info objectForKey:@"id"];
+         
+         // unique - add to database
+         if(![identifierSet containsObject:identifier]){
+         
+             // create transaction
+             DPRTransaction *newTransaction = [NSEntityDescription insertNewObjectForEntityForName:@"DPRTransaction" inManagedObjectContext:self.managedObjectContext];
+             [newTransaction addInformation:info withUserFullName:user.fullName];
+             newTransaction.user = user;
+             [newTransaction createTransactionDescription];
+             
+             [user addTransactionListObject:newTransaction];
+             // add to identifierSet & user
+             [identifierSet addObject:identifier];
+             
+             }
+             
+         }
+         
+     }
+     
+     // add to core data
+     NSError *error = nil;
+     // always save managedObjectContext
+     [self.managedObjectContext save:&error];
+     
+     if(error){
+     // handle error
+     }
+    
+}
+
 // transactionsByDate
 - (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user{
     

@@ -83,6 +83,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkV-wG-cK1">
+                                            <rect key="frame" x="561" y="21" width="31" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="YnS-5X-d8v" firstAttribute="leading" secondItem="qG0-Ij-ipT" secondAttribute="trailing" constant="15" id="6zC-4f-08e"/>
@@ -90,11 +96,14 @@
                                         <constraint firstItem="YnS-5X-d8v" firstAttribute="top" secondItem="4Rm-Cf-ObS" secondAttribute="bottom" id="I2S-Dg-a5a"/>
                                         <constraint firstItem="qG0-Ij-ipT" firstAttribute="height" secondItem="7Ci-ng-yqy" secondAttribute="height" multiplier="0.7" id="Tdl-vJ-a2A"/>
                                         <constraint firstItem="qG0-Ij-ipT" firstAttribute="centerY" secondItem="7Ci-ng-yqy" secondAttribute="centerY" id="oyr-lJ-JGM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="DkV-wG-cK1" secondAttribute="trailing" id="tWB-aF-LJk"/>
                                         <constraint firstItem="4Rm-Cf-ObS" firstAttribute="top" secondItem="7Ci-ng-yqy" secondAttribute="topMargin" id="uDt-q6-fMf"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="DkV-wG-cK1" secondAttribute="bottom" id="vYl-fY-ytQ"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="qG0-Ij-ipT" secondAttribute="leading" id="vaG-pn-XzH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="amountLabel" destination="DkV-wG-cK1" id="Icn-Yp-40B"/>
                                     <outlet property="cellImage" destination="qG0-Ij-ipT" id="XpE-gW-QHL"/>
                                     <outlet property="noteLabel" destination="YnS-5X-d8v" id="7H5-W9-A0z"/>
                                     <outlet property="transactionLabel" destination="4Rm-Cf-ObS" id="CUW-Of-PlR"/>

@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.cellImage.layer.cornerRadius = self.cellImage.frame.size.width/2;
+    self.cellImage.clipsToBounds = YES;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

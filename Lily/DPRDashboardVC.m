@@ -15,14 +15,10 @@
 #import "DPRAppDelegate.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRVenmoHelper.h"
+#import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRDashboardVC()
-
-// data
-@property (strong, nonatomic) DPRUser *user;
-@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
-
 
 // IB
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
@@ -44,6 +40,14 @@
 @property (weak, nonatomic) IBOutlet DPRTransactionsView *transactionsView;
 @property (weak, nonatomic) IBOutlet DPRCashFlowView *cashFlowView;
 
+
+// data
+@property (strong, nonatomic) DPRUser *user;
+@property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
+@property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSArray *transactionsByDate;
+
 @end
 
 @implementation DPRDashboardVC
@@ -54,31 +58,39 @@
 
 - (void)viewDidLoad {
     
+    [self retrieveData];
     [self setupData];
-    
     [self setupUI];
     
 }
 
-- (void)setupData{
+- (void)retrieveData{
     
     [self storeUsername];
     
     // retrieve user
-    DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
-    self.user = [cdHelper fetchUser];
+    self.cdHelper = [DPRCoreDataHelper sharedModel];
+    self.user = [self.cdHelper fetchUser];
     
     // setup identifier set
-    NSMutableSet *identifierSet = [cdHelper setupIdentifierSetWithUser:self.user];
+    NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
     
     // retrieve recent transactions
     NSInteger numTransactions = 1000;
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    [venmoHelper fetchTransactions:numTransactions withIdentifierSet:identifierSet andUser:self.user];
-    NSArray *transactionsByDate = [cdHelper setupTransactionsByDateWithUser:self.user];
+    NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
     
-    NSLog(@"here");
+    // organize transactions
+    [self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
+        
+}
+
+- (void)setupData {
     
+    // transactionsByDate
+    self.transactionSingleton = [DPRTransactionSingleton sharedModel];
+    self.transactionSingleton.transactionsByDate = [self.cdHelper setupTransactionsByDateWithUser:self.user];
+
 }
 
 - (void)setupUI{

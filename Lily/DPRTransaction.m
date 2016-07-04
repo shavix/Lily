@@ -2,12 +2,20 @@
 //  DPRTransaction.m
 //  Lily
 //
-//  Created by David Richardson on 7/1/16.
+//  Created by David Richardson on 7/3/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
 #import "DPRTransaction.h"
+#import "DPRTarget.h"
 #import "DPRUser.h"
+#import "DPRAppDelegate.h"
+
+@interface DPRTransaction()
+
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
+
+@end
 
 @implementation DPRTransaction
 
@@ -28,10 +36,10 @@
         NSDictionary *senderInformation = [information objectForKey:@"actor"];
         NSString *senderName = [senderInformation objectForKey:@"display_name"];
         
-        
         // venmo receiver
         NSDictionary *receiverInformation = [[information objectForKey:@"target"] objectForKey:@"user"];
-        NSString *receiverName = [receiverInformation objectForKey:@"display_name"];
+        
+        NSDictionary *targetInformation;
         
         // if user is sender
         if([senderName isEqualToString:fullName]) {
@@ -42,7 +50,7 @@
                 self.isIncoming = false;
             }
             self.isSender = [NSNumber numberWithBool:YES];
-            self.targetName = receiverName;
+            targetInformation = receiverInformation;
         }
         // if user is receiver
         else {
@@ -53,7 +61,57 @@
                 self.isIncoming = [NSNumber numberWithBool:YES];
             }
             self.isSender = false;
-            self.targetName = senderName;
+            targetInformation = senderInformation;
+        }
+        
+        // create target
+        DPRTarget *target = [NSEntityDescription insertNewObjectForEntityForName:@"DPRTarget" inManagedObjectContext:self.managedObjectContext];
+        [target addInformation:targetInformation];
+        self.target = target;
+        
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+        if(error){
+            // handle error
+        }
+        
+    }
+    
+}
+
+- (void)createTransactionDescription {
+    
+    // sender
+    if(self.isSender) {
+        
+        // charge
+        if(self.isIncoming) {
+            
+            self.transactionDescription = [NSString stringWithFormat:@"%@ charged %@", self.user.fullName, self.target.fullName];
+            
+        }
+        // pay
+        else {
+            
+            self.transactionDescription = [NSString stringWithFormat:@"%@ paid %@", self.user.fullName, self.target.fullName];
+
+        }
+        
+    }
+    // receiver
+    else {
+        
+        // pay
+        if(self.isIncoming) {
+            
+            self.transactionDescription = [NSString stringWithFormat:@"%@ paid %@", self.target.fullName, self.user.fullName];
+
+        }
+        // charge
+        else {
+            
+            self.transactionDescription = [NSString stringWithFormat:@"%@ charged %@", self.target.fullName, self.user.fullName];
+
         }
         
     }
@@ -83,7 +141,6 @@
     
     // if transaction is not yet complete - dateCompletedString = nil
     if(![dateCompletedString isEqual:[NSNull null]]){
-        self.isComplete = [NSNumber numberWithBool:YES];
         // get date
         theDate = nil;
         error = nil;
@@ -99,11 +156,15 @@
         
         self.dateCompletedString = [[NSString stringWithFormat:@"%@ %ld, %ld", dateCompletedMonth, dateComponents.day, dateComponents.year] uppercaseString];
     }
-    else {
-        self.isComplete = [NSNumber numberWithBool:NO];
-    }
     
 }
+
+
+// retrieve AppDelegate's managedObjectContext
+- (NSManagedObjectContext *)managedObjectContext {
+    return [(DPRAppDelegate *) [[UIApplication sharedApplication] delegate] managedObjectContext];
+}
+
 
 
 @end

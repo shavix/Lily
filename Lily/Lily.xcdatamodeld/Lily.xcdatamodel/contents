@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="DPRTarget" representedClassName="DPRTarget" syncable="YES">
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DPRTransaction" inverseName="target" inverseEntity="DPRTransaction" syncable="YES"/>
+    </entity>
     <entity name="DPRTransaction" representedClassName="DPRTransaction" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dateCompleted" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateCompletedString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isComplete" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isIncoming" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isSender" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="targetName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transactionDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DPRTarget" inverseName="transaction" inverseEntity="DPRTarget" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DPRUser" inverseName="transactionList" inverseEntity="DPRUser" syncable="YES"/>
     </entity>
     <entity name="DPRUser" representedClassName="DPRUser" syncable="YES">
@@ -25,5 +31,6 @@
     <elements>
         <element name="DPRTransaction" positionX="27" positionY="72" width="128" height="225"/>
         <element name="DPRUser" positionX="117" positionY="-99" width="128" height="135"/>
+        <element name="DPRTarget" positionX="72" positionY="54" width="128" height="105"/>
     </elements>
 </model>
