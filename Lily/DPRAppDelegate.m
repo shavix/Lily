@@ -28,7 +28,7 @@
     
     // initial settings
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
-    [[UILabel appearance] setFont:[UIFont boldSystemFontOfSize:14.0]];
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     
     
     // check if user is logged in

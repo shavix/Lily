@@ -76,7 +76,7 @@
     NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
     
     // retrieve recent transactions
-    NSInteger numTransactions = 1000;
+    NSInteger numTransactions = 50;
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
     NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
     
@@ -134,7 +134,7 @@
     _profileNicknameLabel.text = username;
     _profileNicknameLabel.textColor = [UIColor lightGreenColor];
     _profileNicknameLabel.alpha = 0.8;
-    _profileNicknameLabel.font = [UIFont boldSystemFontOfSize:12.0f];
+    [_profileNicknameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12.0]];
     
 }
 
@@ -144,7 +144,7 @@
     NSString *balanceStr = [NSString stringWithFormat:@"$%@", _user.balance];
     _balanceLabel.text = balanceStr;
     _balanceLabel.textColor = [UIColor lightGreenColor];
-    _balanceLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    [_balanceLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
 
 }
 

@@ -9,6 +9,7 @@
 #import "DPRTransactionsVC.h"
 #import "DPRTransaction.h"
 #import "DPRUIHelper.h"
+#import "DPRUser.h"
 #import "DPRTransactionTableViewCell.h"
 #import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
@@ -60,9 +61,59 @@
 
     cell.transactionLabel.text = transaction.transactionDescription;
     cell.noteLabel.text = transaction.note;
+    
+    // amount
     cell.amountLabel.text = [NSString stringWithFormat:@"$%@",transaction.amount];
-
+    [self colorAmountLabel:cell.amountLabel withTransaction:transaction];
+    
+    // image
+    [self setupImageView:cell.imageView withTransaction:transaction];
+    
     return cell;
+}
+
+
+// amountLabel
+- (void)colorAmountLabel:(UILabel *)amountLabel withTransaction:(DPRTransaction *)transaction{
+    
+    if(transaction.isIncoming) {
+        amountLabel.textColor = [UIColor lightGreenColor];
+    }
+    else{
+        amountLabel.textColor = [UIColor redColor];
+    }
+    
+}
+
+// image
+- (void)setupImageView:(UIImageView *)imageView withTransaction:(DPRTransaction *)transaction {
+    
+    // user image
+    if(transaction.isSender){
+        imageView.image = transaction.user.pictureImage;
+    }
+    // target image
+    else {
+        
+    }
+    
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
+    
+    #warning clean
+    NSString *cellText = transaction.note;
+    CGSize constraintSize = CGSizeMake(3*self.tableView.frame.size.width/5, MAXFLOAT);
+    UIFont *fontText = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: fontText} context:nil];
+    
+    return labelSize.size.height + 40;
 }
 
 

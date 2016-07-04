@@ -16,6 +16,9 @@
     
     self.cellImage.layer.cornerRadius = self.cellImage.frame.size.width/2;
     self.cellImage.clipsToBounds = YES;
+    
+    self.noteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    self.amountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
 
 }
 
