@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *transactionsBorder;
 @property (weak, nonatomic) IBOutlet UIView *cashFlowBorder;
 @property (weak, nonatomic) IBOutlet UITableView *transactionTableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 // 4 UIViews & container view
 @property (weak, nonatomic) IBOutlet DPRProfileView *profileView;
@@ -140,7 +141,6 @@
     [self setupBalanceView];
     [self setupTransactionsView];
     [self setupCashFlowView];
-    
 }
 
 

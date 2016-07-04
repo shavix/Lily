@@ -152,7 +152,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOL-Oe-9pk">
                                 <rect key="frame" x="0.0" y="24" width="600" height="527"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Or-mP-n7m">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Or-mP-n7m">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="527"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uye-vF-Os6" customClass="DPRProfileView">
@@ -467,11 +467,19 @@
                                     <constraint firstAttribute="bottom" secondItem="8Or-mP-n7m" secondAttribute="bottom" id="HHY-V8-3e8"/>
                                     <constraint firstItem="8Or-mP-n7m" firstAttribute="centerX" secondItem="XOL-Oe-9pk" secondAttribute="centerX" id="P7y-tp-Ilg"/>
                                     <constraint firstAttribute="trailing" secondItem="8Or-mP-n7m" secondAttribute="trailing" id="eOb-Ls-wcD"/>
+                                    <constraint firstItem="8Or-mP-n7m" firstAttribute="centerX" secondItem="XOL-Oe-9pk" secondAttribute="centerX" id="pyy-jx-0ij"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="213-YY-IeV"/>
+                                        <exclude reference="P7y-tp-Ilg"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8Or-mP-n7m" firstAttribute="width" secondItem="HMf-bK-rFh" secondAttribute="width" id="Frc-eN-RkJ"/>
                             <constraint firstItem="PlF-lT-URE" firstAttribute="top" secondItem="XOL-Oe-9pk" secondAttribute="bottom" id="Hrc-aL-Spz"/>
                             <constraint firstItem="ZGa-Y7-VBG" firstAttribute="height" secondItem="HMf-bK-rFh" secondAttribute="height" multiplier="0.42" id="JVk-zl-asu"/>
                             <constraint firstItem="XOL-Oe-9pk" firstAttribute="leading" secondItem="HMf-bK-rFh" secondAttribute="leadingMargin" constant="-20" id="OY7-tu-6rX"/>
@@ -480,7 +488,13 @@
                             <constraint firstItem="RNj-6u-N07" firstAttribute="height" secondItem="HMf-bK-rFh" secondAttribute="height" multiplier="0.15" id="kq0-1Q-TIQ"/>
                             <constraint firstItem="FXP-Ko-HYZ" firstAttribute="height" secondItem="HMf-bK-rFh" secondAttribute="height" multiplier="0.25" id="sh9-cw-whw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XOL-Oe-9pk" secondAttribute="trailing" constant="-20" id="tBA-Iz-bls"/>
+                            <constraint firstItem="8Or-mP-n7m" firstAttribute="height" secondItem="HMf-bK-rFh" secondAttribute="height" multiplier="1.1" id="vdg-eh-tQm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Frc-eN-RkJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="4QI-yT-1tN">
                         <barButtonItem key="rightBarButtonItem" image="Settings" id="Tgc-ys-Kfw">
@@ -499,6 +513,7 @@
                         <outlet property="profileNicknameLabel" destination="3Wi-FX-GdU" id="X49-8M-n7Y"/>
                         <outlet property="profilePictureView" destination="rKy-4r-jEq" id="Kpq-1T-dmn"/>
                         <outlet property="profileView" destination="uye-vF-Os6" id="S2Y-mQ-oaQ"/>
+                        <outlet property="scrollView" destination="XOL-Oe-9pk" id="AA7-G3-cFV"/>
                         <outlet property="settingsButton" destination="Tgc-ys-Kfw" id="4bO-8B-gpI"/>
                         <outlet property="transactionTableView" destination="btf-lk-XSD" id="xP8-ce-GDy"/>
                         <outlet property="transactionsBorder" destination="c9F-Qs-zyy" id="3er-Cp-PWG"/>
