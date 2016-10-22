@@ -42,6 +42,8 @@
     
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
     [UIHelper setupTabUI:self withTitle:@"Transactions"];
+    
+    self.view.backgroundColor = [UIColor darkColor];
 
 }
 
@@ -159,5 +161,11 @@
     return [self.transactionSingleton.transactionsByDate count];
 }
 
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    cell.backgroundColor = [UIColor charcoalColor];
+    
+}
 
 @end

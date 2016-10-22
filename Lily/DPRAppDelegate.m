@@ -26,10 +26,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    NSLog(@"lo%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory  inDomains:NSUserDomainMask] lastObject]);
+
     // initial settings
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
     [[UILabel appearance] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
-    
+    [[UILabel appearance] setTextColor:[UIColor whiteColor]];
     
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];

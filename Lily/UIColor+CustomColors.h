@@ -14,5 +14,6 @@
 + (UIColor *)lightGreenColor;
 + (UIColor *)darkColor;
 + (UIColor *)lightColor;
++ (UIColor *)darkishColor;
 
 @end

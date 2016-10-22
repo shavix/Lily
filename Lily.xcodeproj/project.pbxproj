@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; };
+		635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */; };
 		6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326191D289679001CA480 /* DPRTransactionSingleton.m */; };
 		636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262C1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m */; };
 		636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262E1D2A1BC8001CA480 /* DPRTarget.m */; };
@@ -78,6 +79,8 @@
 		4F0C29715B4EBC41866695B6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6324666B1D1CA5FD00512931 /* DPRUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUIHelper.h; sourceTree = "<group>"; };
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
+		635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphTableViewCell.h; sourceTree = "<group>"; };
+		635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphTableViewCell.m; sourceTree = "<group>"; };
 		636326181D289679001CA480 /* DPRTransactionSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionSingleton.h; sourceTree = "<group>"; };
 		636326191D289679001CA480 /* DPRTransactionSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionSingleton.m; sourceTree = "<group>"; };
 		6363262B1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRTarget+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
 				63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */,
 				63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */,
+				635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */,
+				635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				TargetAttributes = {
 					6379F54E1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = VMJMB92Y2W;
 					};
 					6379F56A1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
@@ -598,6 +604,7 @@
 				6379F5CC1D1CA23E0094ED24 /* DPRProfileView.m in Sources */,
 				6379F59A1D1BA4450094ED24 /* DPRTabBarController.m in Sources */,
 				63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */,
+				635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */,
 				6379F5CF1D1CA2490094ED24 /* DPRBalanceView.m in Sources */,
 				63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */,
 				636326381D2A1EB6001CA480 /* DPRTransaction.m in Sources */,
@@ -747,6 +754,7 @@
 			baseConfigurationReference = 2EFB452003D621F7CCF38BB5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VMJMB92Y2W;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
@@ -759,6 +767,7 @@
 			baseConfigurationReference = 95A1E323D74501F6C791D91E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VMJMB92Y2W;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;

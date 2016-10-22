@@ -77,6 +77,7 @@
     // setup identifier set
     NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
     
+#warning incomplete
     // retrieve recent transactions
     NSInteger numTransactions = 50;
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
@@ -122,6 +123,8 @@
     
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
     [UIHelper setupTabUI:self withTitle:@"Dashboard"];
+    
+    self.view.backgroundColor = [UIColor darkColor];
     
     // views
     [UIHelper setupDashboardViewUI:_profileView];
