@@ -32,7 +32,8 @@
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
     [[UILabel appearance] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     [[UILabel appearance] setTextColor:[UIColor whiteColor]];
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
     NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];

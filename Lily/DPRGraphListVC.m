@@ -6,17 +6,18 @@
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRGraphsVC.h"
+#import "DPRGraphListVC.h"
 #import "DPRUIHelper.h"
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRTransactionSingleton.h"
 #import "DPRVenmoHelper.h"
 #import "DPRGraphTableViewCell.h"
+#import "DPRGraphVC.h"
 
 #import "UIColor+CustomColors.h"
 
-@interface DPRGraphsVC()
+@interface DPRGraphListVC()
 
 // data
 @property (strong, nonatomic) DPRUser *user;
@@ -24,12 +25,11 @@
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSArray *transactionsByDate;
-@property (strong, nonatomic) NSArray *firstTransactions;
 
 
 @end
 
-@implementation DPRGraphsVC
+@implementation DPRGraphListVC
 
 #pragma mark - on load
 
@@ -44,7 +44,7 @@
 - (void)setupUI{
     
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
-    [UIHelper setupTabUI:self withTitle:@"Graphs"];
+    [UIHelper setupTabUI:self withTitle:@"Dashboard"];
     
     self.view.backgroundColor = [UIColor darkColor];
     
@@ -84,21 +84,25 @@
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
     self.transactionSingleton.transactionsByDate = [self.cdHelper setupTransactionsByDateWithUser:self.user];
     
-    // firstTransactions
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    for(int i = 0; i < self.transactionSingleton.transactionsByDate.count; i++){
-        if(tempArray.count >= 3){
-            break;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSInteger section = self.tableView.indexPathForSelectedRow.section;
+    NSInteger row = self.tableView.indexPathForSelectedRow.row;
+    DPRGraphVC *destVC = segue.destinationViewController;
+
+    // FRIENDS
+    if(section == 0){
+        // num transactions
+        if(row == 0){
+            destVC.graphType = @"friendsTransactions";
         }
-        NSMutableArray *currentDateArray = self.transactionSingleton.transactionsByDate[self.transactionSingleton.transactionsByDate.count - 1];
-        for(int j = 0; j < currentDateArray.count; j++){
-            [tempArray addObject:currentDateArray[j]];
-            if(tempArray.count >= 3){
-                break;
-            }
+        // money exchanged
+        if (row == 1){
+            destVC.graphType = @"friendsMoney";
         }
     }
-    self.firstTransactions = tempArray;
     
 }
 

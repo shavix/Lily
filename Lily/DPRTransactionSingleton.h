@@ -12,7 +12,6 @@
 
 + (instancetype)sharedModel;
 
-
 @property (strong, nonatomic) NSArray *transactionsByDate;
 
 @end

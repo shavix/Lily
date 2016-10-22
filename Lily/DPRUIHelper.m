@@ -18,7 +18,7 @@
     viewController.navigationController.navigationBar.translucent = NO;
     viewController.navigationController.navigationBar.topItem.title = title;
     [viewController.navigationController.navigationBar
-     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor lightGreenColor]}];
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     // setup viewController
     viewController.view.backgroundColor = [UIColor darkColor];
     

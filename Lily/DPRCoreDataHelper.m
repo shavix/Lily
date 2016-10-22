@@ -9,6 +9,7 @@
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
 #import "DPRTransaction.h"
+#import "DPRTarget.h"
 
 @interface DPRCoreDataHelper()
 
@@ -130,6 +131,49 @@
     }
     
     return transactionsByDate;
+    
+}
+
+- (NSArray *)setupTransactionsByFriendsWithUser:(DPRUser *)user{
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"target.fullName" ascending:NO];
+    NSArray *tempTransactionsByFriends = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    NSMutableArray *transactionsByFriends = [[NSMutableArray alloc] init];
+    [transactionsByFriends addObject:[[NSMutableArray alloc] init]];
+
+    for(DPRTransaction *transaction in tempTransactionsByFriends){
+
+        NSMutableArray *currentFriendArray = transactionsByFriends[transactionsByFriends.count - 1];
+        
+        // current friend is empty
+        if(currentFriendArray.count == 0){
+            [currentFriendArray addObject:transaction];
+        }
+        // check if correct friend
+        else {
+            DPRTransaction *currentFriendTransaction = currentFriendArray[0];
+            
+            // correct friend
+            if([transaction.target.fullName isEqualToString:currentFriendTransaction.target.fullName]){
+                [currentFriendArray addObject:transaction];
+            }
+            // next friend
+            else {
+                NSMutableArray *newFriendArray = [[NSMutableArray alloc] init];
+                [newFriendArray addObject:transaction];
+                [transactionsByFriends addObject:newFriendArray];
+            }
+        }
+    }
+    
+    NSArray *sortedArray = [transactionsByFriends sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSInteger first = [(NSArray*)a count];
+        NSInteger second = [(NSArray*)b count];
+        return second > first;
+    }];
+    
+    return sortedArray;
     
 }
 

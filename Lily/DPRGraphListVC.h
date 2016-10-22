@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DPRGraphsVC : UITableViewController
+@interface DPRGraphListVC : UITableViewController
+
 
 @end

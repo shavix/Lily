@@ -153,12 +153,12 @@
             </objects>
             <point key="canvasLocation" x="219" y="913"/>
         </scene>
-        <!--Graphs-->
+        <!--Dashboard-->
         <scene sceneID="mXF-Lh-tcR">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1I7-Dv-Qjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="brv-Mh-w8a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Graphs" image="Graphs" id="f3x-lI-4tL"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="Graphs" id="f3x-lI-4tL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vI4-Mn-qUV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -172,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="2868" y="910"/>
         </scene>
-        <!--GraphsVC-->
+        <!--Graph ListVC-->
         <scene sceneID="o9I-3Y-cfV">
             <objects>
-                <tableViewController storyboardIdentifier="graph" id="iPr-yy-KkM" customClass="DPRGraphsVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="graph" id="iPr-yy-KkM" customClass="DPRGraphListVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pGA-Dt-PB5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,6 +235,7 @@
                                     <outlet property="image" destination="CcW-1l-zwZ" id="S0o-Ow-UmD"/>
                                     <outlet property="subtitle" destination="i4T-EL-29o" id="PBb-Bc-glE"/>
                                     <outlet property="title" destination="8lX-h1-jEO" id="67k-4b-9l4"/>
+                                    <segue destination="8Ry-0r-fd8" kind="show" id="wIA-lk-t3a"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -248,6 +249,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSI-e4-Irk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3630" y="910"/>
+        </scene>
+        <!--GraphVC-->
+        <scene sceneID="GSO-9Q-AiR">
+            <objects>
+                <viewController id="8Ry-0r-fd8" customClass="DPRGraphVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nzy-mF-Y3x"/>
+                        <viewControllerLayoutGuide type="bottom" id="qDm-Oc-z6q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LSQ-bh-Ptd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R3M-MY-fZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4221" y="910"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="5js-Vk-iAz">

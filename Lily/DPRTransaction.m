@@ -83,37 +83,25 @@
     
     // sender
     if(self.isSender) {
-        
         // charge
         if(self.isIncoming) {
-            
             self.transactionDescription = [NSString stringWithFormat:@"%@ charged %@", self.user.fullName, self.target.fullName];
-            
         }
         // pay
         else {
-            
             self.transactionDescription = [NSString stringWithFormat:@"%@ paid %@", self.user.fullName, self.target.fullName];
-
         }
-        
     }
     // receiver
     else {
-        
         // pay
         if(self.isIncoming) {
-            
             self.transactionDescription = [NSString stringWithFormat:@"%@ paid %@", self.target.fullName, self.user.fullName];
-
         }
         // charge
         else {
-            
             self.transactionDescription = [NSString stringWithFormat:@"%@ charged %@", self.target.fullName, self.user.fullName];
-
         }
-        
     }
     
 }
