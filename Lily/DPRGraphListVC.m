@@ -13,7 +13,7 @@
 #import "DPRTransactionSingleton.h"
 #import "DPRVenmoHelper.h"
 #import "DPRGraphTableViewCell.h"
-#import "DPRGraphVC.h"
+#import "DPRFriendsTransactionsVC.h"
 
 #import "UIColor+CustomColors.h"
 
@@ -90,7 +90,7 @@
     
     NSInteger section = self.tableView.indexPathForSelectedRow.section;
     NSInteger row = self.tableView.indexPathForSelectedRow.row;
-    DPRGraphVC *destVC = segue.destinationViewController;
+    DPRFriendsTransactionsVC *destVC = segue.destinationViewController;
 
     // FRIENDS
     if(section == 0){

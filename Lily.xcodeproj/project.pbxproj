@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; };
 		635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */; };
-		635F85D21DBB024C006C3CC6 /* DPRGraphVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85D11DBB024C006C3CC6 /* DPRGraphVC.m */; };
+		635F85D21DBB024C006C3CC6 /* DPRFriendsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85D11DBB024C006C3CC6 /* DPRFriendsTransactionsVC.m */; };
 		6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326191D289679001CA480 /* DPRTransactionSingleton.m */; };
 		636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262C1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m */; };
 		636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262E1D2A1BC8001CA480 /* DPRTarget.m */; };
@@ -82,8 +82,9 @@
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
 		635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphTableViewCell.h; sourceTree = "<group>"; };
 		635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphTableViewCell.m; sourceTree = "<group>"; };
-		635F85D01DBB024C006C3CC6 /* DPRGraphVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphVC.h; sourceTree = "<group>"; };
-		635F85D11DBB024C006C3CC6 /* DPRGraphVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphVC.m; sourceTree = "<group>"; };
+		635F85D01DBB024C006C3CC6 /* DPRFriendsTransactionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsTransactionsVC.h; sourceTree = "<group>"; };
+		635F85D11DBB024C006C3CC6 /* DPRFriendsTransactionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsTransactionsVC.m; sourceTree = "<group>"; };
+		635F86281DBD7FE5006C3CC6 /* Lily-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lily-Swift.h"; sourceTree = "<group>"; };
 		636326181D289679001CA480 /* DPRTransactionSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionSingleton.h; sourceTree = "<group>"; };
 		636326191D289679001CA480 /* DPRTransactionSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionSingleton.m; sourceTree = "<group>"; };
 		6363262B1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRTarget+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -261,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				6379F5A81D1BA8DC0094ED24 /* Intro */,
+				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
 				6379F5611D1B9B9A0094ED24 /* Assets.xcassets */,
 				6379F5631D1B9B9A0094ED24 /* LaunchScreen.storyboard */,
 				6379F5661D1B9B9A0094ED24 /* Info.plist */,
@@ -268,6 +270,7 @@
 				6379F5531D1B9B9A0094ED24 /* main.m */,
 				6379F58F1D1B9DA80094ED24 /* UIColor+CustomColors.h */,
 				6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */,
+				635F86281DBD7FE5006C3CC6 /* Lily-Swift.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -310,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				6379F5C91D1CA22C0094ED24 /* Views */,
-				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
 				63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */,
 				63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */,
 				635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */,
@@ -350,8 +352,8 @@
 				6379F5A01D1BA48A0094ED24 /* DPRGraphListVC.m */,
 				6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */,
 				6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */,
-				635F85D01DBB024C006C3CC6 /* DPRGraphVC.h */,
-				635F85D11DBB024C006C3CC6 /* DPRGraphVC.m */,
+				635F85D01DBB024C006C3CC6 /* DPRFriendsTransactionsVC.h */,
+				635F85D11DBB024C006C3CC6 /* DPRFriendsTransactionsVC.m */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -473,6 +475,7 @@
 					6379F54E1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = VMJMB92Y2W;
+						LastSwiftMigration = 0800;
 					};
 					6379F56A1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
@@ -621,7 +624,7 @@
 				6379F5CF1D1CA2490094ED24 /* DPRBalanceView.m in Sources */,
 				63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */,
 				636326381D2A1EB6001CA480 /* DPRTransaction.m in Sources */,
-				635F85D21DBB024C006C3CC6 /* DPRGraphVC.m in Sources */,
+				635F85D21DBB024C006C3CC6 /* DPRFriendsTransactionsVC.m in Sources */,
 				6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */,
 				6379F5D21D1CA2550094ED24 /* DPRTransactionsView.m in Sources */,
 				636326371D2A1EB6001CA480 /* DPRTransaction+CoreDataProperties.m in Sources */,
@@ -773,6 +776,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -786,6 +790,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

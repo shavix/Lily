@@ -6,25 +6,29 @@
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRGraphVC.h"
+#import "DPRFriendsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
 #import "DPRTransactionSingleton.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
 #import "DPRTarget.h"
+#import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
 
-@interface DPRGraphVC ()
+@interface DPRFriendsTransactionsVC () <ChartViewDelegate>
 
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
+@property (strong, nonatomic) DPRUIHelper *uiHelper;
 
 @property (strong, nonatomic) NSArray *transactionsByFriends;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet PieChartView *pieChartView;
 
 @end
 
-@implementation DPRGraphVC
+@implementation DPRFriendsTransactionsVC
 
 - (void)viewDidLoad {
     
@@ -37,6 +41,7 @@
 
 - (void)setupGraph{
     
+    
     for(int i = 0 ; i < self.transactionsByFriends.count; i++){
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 40 + 50*i, 400, 40)];
         label.textColor = [UIColor whiteColor];
@@ -46,7 +51,7 @@
     
         label.text = [NSString stringWithFormat:@"%ld transactions with %@", arr.count, transaction.target.fullName];
         
-        [self.view addSubview:label];
+        [self.mainView addSubview:label];
     }
     
 }
@@ -55,6 +60,7 @@
     
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
+    self.uiHelper = [[DPRUIHelper alloc] init];
 
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
     
@@ -67,7 +73,12 @@
 - (void)setupUI{
     
     self.view.backgroundColor = [UIColor darkColor];
+    self.mainView.backgroundColor = [UIColor darkColor];
+    self.pieChartView.legend.enabled = NO;
+    self.pieChartView.delegate = self;
     
+    [self.uiHelper setupPieChartView:self.pieChartView withTitle:self.graphType];
+
 }
 
 - (void)didReceiveMemoryWarning {

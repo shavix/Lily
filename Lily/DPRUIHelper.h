@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@import Charts;
+
 @interface DPRUIHelper : NSObject
 
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title;
 - (void)setupDashboardViewUI:(UIView *)view;
+- (void)setupPieChartView:(PieChartView *)chartView withTitle:(NSString *)title;
 
 @end

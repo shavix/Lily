@@ -156,7 +156,6 @@
         <!--Dashboard-->
         <scene sceneID="mXF-Lh-tcR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1I7-Dv-Qjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="brv-Mh-w8a" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dashboard" image="Graphs" id="f3x-lI-4tL"/>
                     <toolbarItems/>
@@ -169,6 +168,7 @@
                         <segue destination="iPr-yy-KkM" kind="relationship" relationship="rootViewController" id="Ol3-75-uKP"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1I7-Dv-Qjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2868" y="910"/>
         </scene>
@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="3630" y="910"/>
         </scene>
-        <!--GraphVC-->
+        <!--Friends TransactionsVC-->
         <scene sceneID="GSO-9Q-AiR">
             <objects>
-                <viewController id="8Ry-0r-fd8" customClass="DPRGraphVC" sceneMemberID="viewController">
+                <viewController id="8Ry-0r-fd8" customClass="DPRFriendsTransactionsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nzy-mF-Y3x"/>
                         <viewControllerLayoutGuide type="bottom" id="qDm-Oc-z6q"/>
@@ -261,12 +261,50 @@
                     <view key="view" contentMode="scaleToFill" id="LSQ-bh-Ptd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzt-2O-W2x">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfZ-8y-Psh">
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RjX-HF-kzt" customClass="PieChartView" customModule="Charts">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.12549019610000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="Igz-3c-6R3"/>
+                                            <constraint firstAttribute="trailing" secondItem="RjX-HF-kzt" secondAttribute="trailing" id="Sgd-Gn-5P8"/>
+                                            <constraint firstItem="RjX-HF-kzt" firstAttribute="leading" secondItem="PfZ-8y-Psh" secondAttribute="leading" id="TrE-eO-dkg"/>
+                                            <constraint firstAttribute="bottom" secondItem="RjX-HF-kzt" secondAttribute="bottom" constant="700" id="apa-HS-guv"/>
+                                            <constraint firstItem="RjX-HF-kzt" firstAttribute="top" secondItem="PfZ-8y-Psh" secondAttribute="top" id="m10-Qh-LO7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PfZ-8y-Psh" firstAttribute="top" secondItem="vzt-2O-W2x" secondAttribute="top" id="U14-EZ-tpF"/>
+                                    <constraint firstAttribute="trailing" secondItem="PfZ-8y-Psh" secondAttribute="trailing" id="Z8X-Rl-NJx"/>
+                                    <constraint firstAttribute="bottom" secondItem="PfZ-8y-Psh" secondAttribute="bottom" id="cew-ab-84o"/>
+                                    <constraint firstItem="PfZ-8y-Psh" firstAttribute="leading" secondItem="vzt-2O-W2x" secondAttribute="leading" id="kpF-wZ-KtN"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vzt-2O-W2x" firstAttribute="leading" secondItem="LSQ-bh-Ptd" secondAttribute="leadingMargin" constant="-20" id="3q2-Yn-Kb6"/>
+                            <constraint firstItem="vzt-2O-W2x" firstAttribute="top" secondItem="nzy-mF-Y3x" secondAttribute="bottom" id="3ww-2y-rUz"/>
+                            <constraint firstItem="qDm-Oc-z6q" firstAttribute="top" secondItem="vzt-2O-W2x" secondAttribute="bottom" id="Fx7-P2-uhF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vzt-2O-W2x" secondAttribute="trailing" constant="-20" id="OYv-5X-qdu"/>
+                            <constraint firstItem="PfZ-8y-Psh" firstAttribute="width" secondItem="LSQ-bh-Ptd" secondAttribute="width" id="ZwK-vK-htv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainView" destination="PfZ-8y-Psh" id="ggK-CY-4gO"/>
+                        <outlet property="pieChartView" destination="RjX-HF-kzt" id="JiJ-FX-AGj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R3M-MY-fZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4221" y="910"/>
+            <point key="canvasLocation" x="4629.6000000000004" y="909.89505247376314"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="5js-Vk-iAz">

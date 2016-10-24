@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DPRGraphVC : UIViewController
+@import Charts;
+
+@interface DPRFriendsTransactionsVC : UIViewController
 
 @property (strong, nonatomic) NSString *graphType;
 
