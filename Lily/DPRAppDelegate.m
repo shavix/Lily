@@ -30,13 +30,17 @@
 
     // initial settings
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
-    [[UILabel appearance] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    [[UITabBar appearance] setBarTintColor:[UIColor darkishColor]];
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"Helvetica-Light" size:14.0]];
     [[UILabel appearance] setTextColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor lightGreenColor]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
-    NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
+#warning change this back
+    //NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
+    NSString *username = @"davidpr";
     
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.venmoHelper = [DPRVenmoHelper sharedModel];

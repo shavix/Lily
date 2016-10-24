@@ -12,6 +12,4 @@
 
 @interface DPRFriendsTransactionsVC : UIViewController
 
-@property (strong, nonatomic) NSString *graphType;
-
 @end

@@ -167,13 +167,13 @@
         }
     }
     
-    NSArray *sortedArray = [transactionsByFriends sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+    /*NSArray *sortedArray = [transactionsByFriends sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSInteger first = [(NSArray*)a count];
         NSInteger second = [(NSArray*)b count];
         return second > first;
-    }];
+    }];*/
     
-    return sortedArray;
+    return transactionsByFriends;
     
 }
 

@@ -86,27 +86,29 @@
     
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    NSInteger section = self.tableView.indexPathForSelectedRow.section;
-    NSInteger row = self.tableView.indexPathForSelectedRow.row;
-    DPRFriendsTransactionsVC *destVC = segue.destinationViewController;
+#pragma mark - TableView
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    
     // FRIENDS
     if(section == 0){
-        // num transactions
+        // transactions
         if(row == 0){
-            destVC.graphType = @"friendsTransactions";
+            [self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
         }
-        // money exchanged
-        if (row == 1){
-            destVC.graphType = @"friendsMoney";
+        // money
+        else if(row == 1){
+            
+        }
+        else if(row == 2){
+            [self performSegueWithIdentifier:@"friendsListSegue" sender:self];
         }
     }
     
 }
-
-#pragma mark - TableView
 
 // get cell
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -125,10 +127,15 @@
             cell.title.text = @"Number of transactions";
             cell.subtitle.text = @"An analysis of who, of your friends, you have the most transactions with on Venmo.";
         }
-        else{
+        else if(row == 1){
             cell.image.image = [UIImage imageNamed:@"money.png"];
             cell.title.text = @"Money exchanged";
             cell.subtitle.text = @"An analysis of who, of your friends, you have sent the most money to on Venmo.";
+        }
+        else if(row == 2){
+            cell.image.image = [UIImage imageNamed:@"transactions.png"];
+            cell.title.text = @"Full details";
+            cell.subtitle.text = @"All financial information between you and your friends";
         }
     }
     
@@ -168,11 +175,6 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    cell.backgroundColor = [UIColor charcoalColor];
-    
-}
 
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     
@@ -186,17 +188,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    NSInteger numSections = 1;
-    
-    return numSections;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    NSInteger numRows = 2;
-    
-    return numRows;
+    return 3;
 }
 
 #pragma mark - data persistence

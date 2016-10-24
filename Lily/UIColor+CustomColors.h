@@ -15,5 +15,6 @@
 + (UIColor *)darkColor;
 + (UIColor *)lightColor;
 + (UIColor *)darkishColor;
++ (NSArray *)palet;
 
 @end

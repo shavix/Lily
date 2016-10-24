@@ -42,4 +42,18 @@
     
 }
 
++ (NSArray *)palet{
+    
+    NSArray *arr = [NSArray arrayWithObjects:
+                    [UIColor colorWithRed:200.f/255.f green:0.f/255.f blue:0.f/255.f alpha:1.f],
+                    [UIColor colorWithRed:0.f/255.f green:200.f/255.f blue:0.f/255.f alpha:1.f],
+                    [UIColor colorWithRed:0.f/255.f green:0.f/255.f blue:200.f/255.f alpha:1.f],
+                    [UIColor colorWithRed:0.f/255.f green:200.f/255.f blue:200.f/255.f alpha:1.f],
+                    [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f],
+                    nil];
+    
+    return arr;
+    
+}
+
 @end

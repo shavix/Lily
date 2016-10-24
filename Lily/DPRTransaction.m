@@ -43,24 +43,28 @@
         
         // if user is sender
         if([senderName isEqualToString:fullName]) {
+            
+            self.isSender = [NSNumber numberWithBool:YES];
+
             if([action isEqualToString:@"charge"]) {
                 self.isIncoming = [NSNumber numberWithBool:YES];
             }
             else {
                 self.isIncoming = false;
             }
-            self.isSender = [NSNumber numberWithBool:YES];
             targetInformation = receiverInformation;
         }
         // if user is receiver
         else {
+
+            self.isSender = false;
+            
             if([action isEqualToString:@"charge"]) {
                 self.isIncoming = false;
             }
             else {
                 self.isIncoming = [NSNumber numberWithBool:YES];
             }
-            self.isSender = false;
             targetInformation = senderInformation;
         }
         

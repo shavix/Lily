@@ -92,7 +92,7 @@
     // format
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [formatter setPositiveFormat:@"##.00"];
+    [formatter setPositiveFormat:@"0.00"];
 
     amountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:transaction.amount]];
 
@@ -101,24 +101,20 @@
 // image
 - (void)setupImageView:(UIImageView *)imageView withTransaction:(DPRTransaction *)transaction {
     
-    // user image
-    if(transaction.isSender){
-        imageView.image = transaction.user.pictureImage;
-    }
+    
     // target image
-    else {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:transaction.target.picture_url]]];
-            
-            if(!image){
-                image = [UIImage imageNamed:@"UserImage"];
-            }
-            
-            dispatch_sync(dispatch_get_main_queue(), ^(void) {
-                imageView.image = image;
-            });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:transaction.target.picture_url]]];
+        
+        if(!image){
+            image = [UIImage imageNamed:@"UserImage"];
+        }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^(void) {
+            imageView.image = image;
         });
-    }
+    });
+
     
 }
 
@@ -136,7 +132,8 @@
     UIFont *fontText = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: fontText} context:nil];
     
-    return labelSize.size.height + 40;
+    //return labelSize.size.height + 40;
+    return 70;
 }
 
 

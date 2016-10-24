@@ -42,31 +42,69 @@
 - (void)setupGraph{
     
     
-    for(int i = 0 ; i < self.transactionsByFriends.count; i++){
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 40 + 50*i, 400, 40)];
-        label.textColor = [UIColor whiteColor];
-        
-        NSArray *arr = self.transactionsByFriends[i];
-        DPRTransaction *transaction = arr[0];
+    self.pieChartView.legend.enabled = NO;
+    self.pieChartView.delegate = self;
+    [self.pieChartView setExtraOffsetsWithLeft:20.f top:0.f right:20.f bottom:0.f];
+
+    [self.pieChartView animateWithYAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
     
-        label.text = [NSString stringWithFormat:@"%ld transactions with %@", arr.count, transaction.target.fullName];
-        
-        [self.mainView addSubview:label];
+    [self updateChartData];
+    
+}
+
+- (void)updateChartData
+{
+    [self setDataCount:10 range:10];
+}
+
+- (void)setDataCount:(int)count range:(double)range
+{    
+    NSMutableArray *entries = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < count; i++)
+    {
+        DPRTransaction *transaction = _transactionsByFriends[i][0];
+        NSArray *friendsArray = _transactionsByFriends[i];
+        [entries addObject:[[PieChartDataEntry alloc] initWithValue:friendsArray.count label:transaction.target.fullName]];
     }
     
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:entries label:@"Friends by transactions"];
+    dataSet.sliceSpace = 2.0;
+    
+    // add a lot of colors
+    NSMutableArray *colors = [[NSMutableArray alloc] init];
+    [colors addObjectsFromArray:[UIColor palet]];
+    
+    dataSet.colors = colors;
+    
+    dataSet.valueLinePart1OffsetPercentage = 1;
+    dataSet.valueLinePart1Length = 0.7;
+    dataSet.valueLinePart2Length = 0.3;
+    dataSet.valueLineColor = [UIColor whiteColor];
+    //dataSet.xValuePosition = PieChartValuePositionOutsideSlice;
+    dataSet.yValuePosition = PieChartValuePositionOutsideSlice;
+    
+    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
+    
+    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
+    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
+    pFormatter.maximumFractionDigits = 1;
+    pFormatter.multiplier = @1.f;
+    pFormatter.percentSymbol = @" %";
+    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
+    [data setValueFont:[UIFont boldSystemFontOfSize:12.f]];
+    [data setValueTextColor:UIColor.whiteColor];
+    
+    self.pieChartView.data = data;
+    [self.pieChartView highlightValues:nil];
+
 }
 
 - (void)setupData{
     
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
-    self.uiHelper = [[DPRUIHelper alloc] init];
-
-    self.transactionSingleton = [DPRTransactionSingleton sharedModel];
-    
-    if([self.graphType isEqualToString:@"friendsTransactions"]){
-        self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
-    }
+    self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
     
 }
 
@@ -74,10 +112,10 @@
     
     self.view.backgroundColor = [UIColor darkColor];
     self.mainView.backgroundColor = [UIColor darkColor];
-    self.pieChartView.legend.enabled = NO;
-    self.pieChartView.delegate = self;
+    self.pieChartView.backgroundColor = [UIColor darkColor];
     
-    [self.uiHelper setupPieChartView:self.pieChartView withTitle:self.graphType];
+    self.uiHelper = [[DPRUIHelper alloc] init];
+    [self.uiHelper setupPieChartView:self.pieChartView withTitle:@"Friends"];
 
 }
 

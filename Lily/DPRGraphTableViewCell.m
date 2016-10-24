@@ -7,6 +7,7 @@
 //
 
 #import "DPRGraphTableViewCell.h"
+#import "UIColor+CustomColors.h"
 
 @implementation DPRGraphTableViewCell
 
@@ -16,6 +17,9 @@
     
     self.title.font = [UIFont boldSystemFontOfSize:14];
     self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+    self.backgroundColor = [UIColor charcoalColor];
+    
+
     
 }
 
