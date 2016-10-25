@@ -11,41 +11,26 @@
 
 @implementation DPRUIHelper
 
-- (void)setupPieChartView:(PieChartView *)chartView withTitle:(NSString *)title{
-    
-    chartView.usePercentValuesEnabled = YES;
-    chartView.holeRadiusPercent = 0.25;
-    chartView.holeColor = [UIColor clearColor];
-    chartView.transparentCircleRadiusPercent = 0.3;
-    chartView.chartDescription.enabled = YES;
-    chartView.drawCenterTextEnabled = YES;
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:title];
-    [centerText setAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
-                                NSParagraphStyleAttributeName: paragraphStyle
-                                } range:NSMakeRange(0, centerText.length)];
-    chartView.centerAttributedText = centerText;
-    chartView.descriptionTextColor = [UIColor whiteColor];
-    
-    chartView.drawHoleEnabled = YES;
-    chartView.rotationAngle = 30.0;
-    chartView.rotationEnabled = YES;
-    chartView.highlightPerTapEnabled = YES;
-    
-    ChartLegend *l = chartView.legend;
-    l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
-    l.verticalAlignment = ChartLegendVerticalAlignmentTop;
-    l.orientation = ChartLegendOrientationVertical;
-    l.drawInside = NO;
-    l.xEntrySpace = 7.0;
-    l.yEntrySpace = 0.0;
-    l.yOffset = 0.0;
 
+- (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title
+{
+    chartView.chartDescription.enabled = NO;
+    
+    chartView.drawGridBackgroundEnabled = NO;
+    
+    chartView.dragEnabled = YES;
+    [chartView setScaleEnabled:YES];
+    chartView.pinchZoomEnabled = NO;
+    
+    // ChartYAxis *leftAxis = chartView.leftAxis;
+    
+    ChartXAxis *xAxis = chartView.xAxis;
+    xAxis.labelPosition = XAxisLabelPositionBottom;
+    chartView.xAxis.labelTextColor = [UIColor whiteColor];
+    chartView.leftAxis.labelTextColor = [UIColor whiteColor];
+    chartView.rightAxis.labelTextColor = [UIColor whiteColor];
+    
+    chartView.rightAxis.enabled = NO;
 }
 
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title{

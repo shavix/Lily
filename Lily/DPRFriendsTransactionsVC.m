@@ -1,8 +1,8 @@
 //
-//  DPRGraphVC.m
+//  DPRFriendsGraphVC.m
 //  Lily
 //
-//  Created by David Richardson on 10/21/16.
+//  Created by David Richardson on 10/24/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
@@ -14,6 +14,8 @@
 #import "DPRTarget.h"
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
+#import "xAxisValueFormatter.h"
+
 
 @interface DPRFriendsTransactionsVC () <ChartViewDelegate>
 
@@ -23,81 +25,101 @@
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
 
 @property (strong, nonatomic) NSArray *transactionsByFriends;
-@property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet PieChartView *pieChartView;
+@property (weak, nonatomic) IBOutlet BarChartView *barChartView;
+
 
 @end
 
 @implementation DPRFriendsTransactionsVC
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     [self setupUI];
     [self setupData];
     [self setupGraph];
+    [self setDataCount];
+
+}
+
+- (void)setDataCount
+{
+    NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
+    
+    NSInteger numFriends = self.transactionsByFriends.count;
+    
+    // insert friends data
+    for (int i = 0; i < numFriends; i++)
+    {
+        NSArray *transactionsArray = self.transactionsByFriends[i];
+        NSInteger numTransactions = transactionsArray.count;
+        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:numTransactions]];
+    }
+    
+    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Friends"];
+    [set1 setColors:ChartColorTemplates.material];
+    
+    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+    [dataSets addObject:set1];
+    
+    BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
+    [data setValueTextColor:[UIColor whiteColor]];
+    
+    data.barWidth = 0.9f;
+    
+    _barChartView.data = data;
     
 }
 
 - (void)setupGraph{
     
+    _barChartView.delegate = self;
     
-    self.pieChartView.legend.enabled = NO;
-    self.pieChartView.delegate = self;
-    [self.pieChartView setExtraOffsetsWithLeft:20.f top:0.f right:20.f bottom:0.f];
-
-    [self.pieChartView animateWithYAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
+    _barChartView.drawBarShadowEnabled = NO;
+    _barChartView.drawValueAboveBarEnabled = YES;
+    _barChartView.maxVisibleCount = 60;
     
-    [self updateChartData];
+    ChartXAxis *xAxis = _barChartView.xAxis;
+    xAxis.labelPosition = XAxisLabelPositionBottom;
+    xAxis.labelFont = [UIFont systemFontOfSize:10.f];
+    xAxis.drawGridLinesEnabled = NO;
+    xAxis.granularity = 1.0; // only intervals of 1 day
+    xAxis.labelCount = 7;
+    xAxis.valueFormatter = [[xAxisValueFormatter alloc] initForChart:_barChartView andArray:self.transactionsByFriends];
     
-}
-
-- (void)updateChartData
-{
-    [self setDataCount:10 range:10];
-}
-
-- (void)setDataCount:(int)count range:(double)range
-{    
-    NSMutableArray *entries = [[NSMutableArray alloc] init];
+    NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
+    //leftAxisFormatter.minimumFractionDigits = 0;
+    //leftAxisFormatter.maximumFractionDigits = 1;
+    //leftAxisFormatter.negativeSuffix = @" $";
+    //leftAxisFormatter.positiveSuffix = @" $";
     
-    for (int i = 0; i < count; i++)
-    {
-        DPRTransaction *transaction = _transactionsByFriends[i][0];
-        NSArray *friendsArray = _transactionsByFriends[i];
-        [entries addObject:[[PieChartDataEntry alloc] initWithValue:friendsArray.count label:transaction.target.fullName]];
-    }
+    ChartYAxis *leftAxis = _barChartView.leftAxis;
+    leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
+    leftAxis.labelCount = 8;
+    leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
+    leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
+    leftAxis.spaceTop = 0.15;
+    leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
     
-    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:entries label:@"Friends by transactions"];
-    dataSet.sliceSpace = 2.0;
+    ChartYAxis *rightAxis = _barChartView.rightAxis;
+    rightAxis.enabled = YES;
+    rightAxis.drawGridLinesEnabled = NO;
+    rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
+    rightAxis.labelCount = 10;
+    rightAxis.valueFormatter = leftAxis.valueFormatter;
+    rightAxis.spaceTop = 0.15;
+    rightAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
     
-    // add a lot of colors
-    NSMutableArray *colors = [[NSMutableArray alloc] init];
-    [colors addObjectsFromArray:[UIColor palet]];
+    ChartLegend *l = _barChartView.legend;
+    l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
+    l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
+    l.orientation = ChartLegendOrientationHorizontal;
+    l.drawInside = NO;
+    l.form = ChartLegendFormSquare;
+    l.formSize = 9.0;
+    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
+    l.xEntrySpace = 4.0;
     
-    dataSet.colors = colors;
-    
-    dataSet.valueLinePart1OffsetPercentage = 1;
-    dataSet.valueLinePart1Length = 0.7;
-    dataSet.valueLinePart2Length = 0.3;
-    dataSet.valueLineColor = [UIColor whiteColor];
-    //dataSet.xValuePosition = PieChartValuePositionOutsideSlice;
-    dataSet.yValuePosition = PieChartValuePositionOutsideSlice;
-    
-    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
-    
-    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
-    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
-    pFormatter.maximumFractionDigits = 1;
-    pFormatter.multiplier = @1.f;
-    pFormatter.percentSymbol = @" %";
-    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
-    [data setValueFont:[UIFont boldSystemFontOfSize:12.f]];
-    [data setValueTextColor:UIColor.whiteColor];
-    
-    self.pieChartView.data = data;
-    [self.pieChartView highlightValues:nil];
-
 }
 
 - (void)setupData{
@@ -111,12 +133,11 @@
 - (void)setupUI{
     
     self.view.backgroundColor = [UIColor darkColor];
-    self.mainView.backgroundColor = [UIColor darkColor];
-    self.pieChartView.backgroundColor = [UIColor darkColor];
+    self.barChartView.backgroundColor = [UIColor darkColor];
     
     self.uiHelper = [[DPRUIHelper alloc] init];
-    [self.uiHelper setupPieChartView:self.pieChartView withTitle:@"Friends"];
-
+    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
+    
 }
 
 - (void)didReceiveMemoryWarning {

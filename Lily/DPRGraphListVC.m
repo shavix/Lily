@@ -97,7 +97,7 @@
     if(section == 0){
         // transactions
         if(row == 0){
-            [self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
+            [self performSegueWithIdentifier:@"friendsGraphSegue" sender:self];
         }
         // money
         else if(row == 1){
