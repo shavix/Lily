@@ -29,12 +29,25 @@
                         axis:(ChartAxisBase *)axis{
     
     NSArray *friendArray = transactionsByFriends[(int)value];
-    
     DPRTransaction *transaction = friendArray[0];
     
     NSString *title = transaction.target.fullName;
     
-    return title;
+    NSArray *arr = [title componentsSeparatedByString:@" "];
+    NSString *firstName = arr[0];
+    NSString *name;
+    
+    if(arr.count > 1){
+        NSString *lastName = arr[1];
+        NSString *initial = [NSString stringWithFormat:@"%c.", [lastName characterAtIndex:0]];
+        name = [NSString stringWithFormat:@"%@ %@", firstName, initial];
+    }
+    else {
+        name = firstName;
+    }
+    
+    
+    return name;
 }
 
 @end

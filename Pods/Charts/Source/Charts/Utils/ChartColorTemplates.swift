@@ -19,6 +19,31 @@ import CoreGraphics
 
 open class ChartColorTemplates: NSObject
 {
+    
+    // best colors
+    open class func many() ->[NSUIColor]
+    {
+        return[
+            NSUIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0),
+            NSUIColor(red: 241/255.0, green: 196/255.0, blue: 15/255.0, alpha: 1.0),
+            NSUIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0),
+            NSUIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0),
+            
+            NSUIColor(red: 217/255.0, green: 80/255.0, blue: 138/255.0, alpha: 1.0),
+            NSUIColor(red: 254/255.0, green: 149/255.0, blue: 7/255.0, alpha: 1.0),
+            NSUIColor(red: 254/255.0, green: 247/255.0, blue: 120/255.0, alpha: 1.0),
+            NSUIColor(red: 106/255.0, green: 167/255.0, blue: 134/255.0, alpha: 1.0),
+            NSUIColor(red: 53/255.0, green: 194/255.0, blue: 209/255.0, alpha: 1.0),
+            
+            NSUIColor(red: 192/255.0, green: 255/255.0, blue: 140/255.0, alpha: 1.0),
+            NSUIColor(red: 255/255.0, green: 247/255.0, blue: 140/255.0, alpha: 1.0),
+            NSUIColor(red: 255/255.0, green: 208/255.0, blue: 140/255.0, alpha: 1.0),
+            NSUIColor(red: 140/255.0, green: 234/255.0, blue: 255/255.0, alpha: 1.0),
+            NSUIColor(red: 255/255.0, green: 140/255.0, blue: 157/255.0, alpha: 1.0)
+        ]
+    }
+    
+    // eerie shades of blue
     open class func liberty () -> [NSUIColor]
     {
         return [
@@ -30,6 +55,7 @@ open class ChartColorTemplates: NSObject
         ]
     }
     
+    // not bad
     open class func joyful () -> [NSUIColor]
     {
         return [
@@ -41,6 +67,7 @@ open class ChartColorTemplates: NSObject
         ]
     }
     
+    // no
     open class func pastel () -> [NSUIColor]
     {
         return [
@@ -52,6 +79,7 @@ open class ChartColorTemplates: NSObject
         ]
     }
     
+    // autumn - interesting
     open class func colorful () -> [NSUIColor]
     {
         return [
@@ -63,6 +91,7 @@ open class ChartColorTemplates: NSObject
         ]
     }
     
+    // light colors
     open class func vordiplom () -> [NSUIColor]
     {
         return [
@@ -74,6 +103,7 @@ open class ChartColorTemplates: NSObject
         ]
     }
     
+    // good
     open class func material () -> [NSUIColor]
     {
         return [

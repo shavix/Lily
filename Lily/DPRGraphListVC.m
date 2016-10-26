@@ -97,11 +97,11 @@
     if(section == 0){
         // transactions
         if(row == 0){
-            [self performSegueWithIdentifier:@"friendsGraphSegue" sender:self];
+            [self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
         }
         // money
         else if(row == 1){
-            
+            [self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
         }
         else if(row == 2){
             [self performSegueWithIdentifier:@"friendsListSegue" sender:self];
@@ -124,16 +124,16 @@
     {
         if(row == 0){
             cell.image.image = [UIImage imageNamed:@"give_money.png"];
-            cell.title.text = @"Number of transactions";
+            cell.title.text = @"Number of Transactions";
             cell.subtitle.text = @"An analysis of who, of your friends, you have the most transactions with on Venmo.";
         }
         else if(row == 1){
             cell.image.image = [UIImage imageNamed:@"money.png"];
-            cell.title.text = @"Money exchanged";
-            cell.subtitle.text = @"An analysis of who, of your friends, you have sent the most money to on Venmo.";
+            cell.title.text = @"Net Income";
+            cell.subtitle.text = @"An analysis of your net income with friends.";
         }
         else if(row == 2){
-            cell.image.image = [UIImage imageNamed:@"transactions.png"];
+            cell.image.image = [UIImage imageNamed:@"details.png"];
             cell.title.text = @"Full details";
             cell.subtitle.text = @"All financial information between you and your friends";
         }
@@ -145,9 +145,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSInteger height = self.view.frame.size.height;
+    //NSInteger height = self.view.frame.size.height;
     
-    NSInteger rowHeight = height/6;
+    NSInteger rowHeight = 100;
     
     return rowHeight;
     
@@ -188,7 +188,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

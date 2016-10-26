@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *subtitle;
+@property (weak, nonatomic) NSNumber *height;
 
 @end

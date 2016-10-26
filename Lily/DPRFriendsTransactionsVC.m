@@ -8,7 +8,6 @@
 
 #import "DPRFriendsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
-#import "DPRTransactionSingleton.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
 #import "DPRTarget.h"
@@ -19,13 +18,14 @@
 
 @interface DPRFriendsTransactionsVC () <ChartViewDelegate>
 
-@property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
 
 @property (strong, nonatomic) NSArray *transactionsByFriends;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 
 @end
@@ -33,6 +33,7 @@
 @implementation DPRFriendsTransactionsVC
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self setupUI];
     [self setupData];
@@ -56,7 +57,8 @@
     }
     
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Friends"];
-    [set1 setColors:ChartColorTemplates.material];
+    
+    [set1 setColors:ChartColorTemplates.many];
     
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:set1];
@@ -81,21 +83,17 @@
     
     ChartXAxis *xAxis = _barChartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
-    xAxis.labelFont = [UIFont systemFontOfSize:10.f];
+    xAxis.labelFont = [UIFont systemFontOfSize:11.f];
     xAxis.drawGridLinesEnabled = NO;
-    xAxis.granularity = 1.0; // only intervals of 1 day
-    xAxis.labelCount = 7;
+    xAxis.granularity = 1.0;
+    xAxis.labelCount = 5;
     xAxis.valueFormatter = [[xAxisValueFormatter alloc] initForChart:_barChartView andArray:self.transactionsByFriends];
     
     NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
-    //leftAxisFormatter.minimumFractionDigits = 0;
-    //leftAxisFormatter.maximumFractionDigits = 1;
-    //leftAxisFormatter.negativeSuffix = @" $";
-    //leftAxisFormatter.positiveSuffix = @" $";
     
     ChartYAxis *leftAxis = _barChartView.leftAxis;
     leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-    leftAxis.labelCount = 8;
+    leftAxis.labelCount = 10;
     leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
     leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
     leftAxis.spaceTop = 0.15;
@@ -111,6 +109,7 @@
     rightAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
     
     ChartLegend *l = _barChartView.legend;
+    l.textColor = [UIColor whiteColor];
     l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
     l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
     l.orientation = ChartLegendOrientationHorizontal;
@@ -132,12 +131,27 @@
 
 - (void)setupUI{
     
+    self.title = @"Friends";
+    self.titleLabel.text = @"Number of Transactions";
+    self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+
     self.view.backgroundColor = [UIColor darkColor];
     self.barChartView.backgroundColor = [UIColor darkColor];
+    self.topView.backgroundColor = [UIColor darkColor];
     
     self.uiHelper = [[DPRUIHelper alloc] init];
     [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
     
+}
+
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+{
+    NSLog(@"chartValueSelected");
+}
+
+- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+{
+    NSLog(@"chartValueNothingSelected");
 }
 
 - (void)didReceiveMemoryWarning {

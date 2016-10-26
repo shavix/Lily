@@ -22,8 +22,6 @@
     [chartView setScaleEnabled:YES];
     chartView.pinchZoomEnabled = NO;
     
-    // ChartYAxis *leftAxis = chartView.leftAxis;
-    
     ChartXAxis *xAxis = chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
     chartView.xAxis.labelTextColor = [UIColor whiteColor];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */; };
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; };
 		635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */; };
 		6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326191D289679001CA480 /* DPRTransactionSingleton.m */; };
@@ -81,6 +82,8 @@
 /* Begin PBXFileReference section */
 		2EFB452003D621F7CCF38BB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4F0C29715B4EBC41866695B6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsNetIncomeVC.h; sourceTree = "<group>"; };
+		632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsNetIncomeVC.m; sourceTree = "<group>"; };
 		6324666B1D1CA5FD00512931 /* DPRUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUIHelper.h; sourceTree = "<group>"; };
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
 		635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphTableViewCell.h; sourceTree = "<group>"; };
@@ -365,6 +368,8 @@
 		6379F59B1D1BA46E0094ED24 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */,
+				632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */,
 				63C765E51DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.h */,
 				63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */,
 				63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */,
@@ -636,6 +641,7 @@
 				6379F5CC1D1CA23E0094ED24 /* DPRProfileView.m in Sources */,
 				63C765EA1DBEFB94005D55F6 /* xAxisValueFormatter.m in Sources */,
 				6379F59A1D1BA4450094ED24 /* DPRTabBarController.m in Sources */,
+				632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */,
 				63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */,
 				63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */,
 				635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */,

@@ -19,7 +19,18 @@
     self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
     self.backgroundColor = [UIColor charcoalColor];
     
-
+    CALayer *topBorder = [CALayer layer];
+    topBorder.borderColor = [UIColor lightGrayColor].CGColor;
+    topBorder.borderWidth = 1;
+    topBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.contentView.frame), 1);
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
+    bottomBorder.borderWidth = 1;
+    bottomBorder.frame = CGRectMake(0, 99, CGRectGetWidth(self.contentView.frame), 1);
+    
+    [self.contentView.layer addSublayer:topBorder];
+    [self.contentView.layer addSublayer:bottomBorder];
     
 }
 
