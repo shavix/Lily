@@ -57,6 +57,7 @@
 		6379F5D51D1CA2600094ED24 /* DPRCashFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5D41D1CA2600094ED24 /* DPRCashFlowView.m */; };
 		63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */; };
 		63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */; };
+		63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */; };
 		63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */; };
 		63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E31DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m */; };
 		63C765E71DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */; };
@@ -168,6 +169,8 @@
 		63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsExpendituresVC.m; sourceTree = "<group>"; };
 		63C2DE541DC27B80009F64F8 /* DPRMonthsNetIncomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsNetIncomeVC.h; sourceTree = "<group>"; };
 		63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsNetIncomeVC.m; sourceTree = "<group>"; };
+		63C2DE571DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsDetailsTVC.h; sourceTree = "<group>"; };
+		63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsDetailsTVC.m; sourceTree = "<group>"; };
 		63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTVC.h; sourceTree = "<group>"; };
 		63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsListTVC.m; sourceTree = "<group>"; };
 		63C765E21DBEAD09005D55F6 /* DPRFriendsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTableViewCell.h; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 				63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */,
 				63C2DE541DC27B80009F64F8 /* DPRMonthsNetIncomeVC.h */,
 				63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */,
+				63C2DE571DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.h */,
+				63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */,
 			);
 			name = Months;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				6379F5D21D1CA2550094ED24 /* DPRTransactionsView.m in Sources */,
 				636326371D2A1EB6001CA480 /* DPRTransaction+CoreDataProperties.m in Sources */,
 				6379F5601D1B9B9A0094ED24 /* Lily.xcdatamodeld in Sources */,
+				63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */,
 				6379F5D51D1CA2600094ED24 /* DPRCashFlowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

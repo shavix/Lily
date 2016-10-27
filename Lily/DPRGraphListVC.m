@@ -143,12 +143,12 @@
     if(section == 0)
     {
         if(row == 0){
-            cell.image.image = [UIImage imageNamed:@"give_money.png"];
+            cell.image.image = [UIImage imageNamed:@"handshake.png"];
             cell.title.text = @"Number of Transactions";
             cell.subtitle.text = @"An analysis of your transaction frequency with friends.";
         }
         else if(row == 1){
-            cell.image.image = [UIImage imageNamed:@"money.png"];
+            cell.image.image = [UIImage imageNamed:@"businessman.png"];
             cell.title.text = @"Net Income";
             cell.subtitle.text = @"An analysis of your net income with friends.";
         }
@@ -162,17 +162,17 @@
     else if(section == 1)
     {
         if(row == 0){
-            cell.image.image = [UIImage imageNamed:@"give_money.png"];
+            cell.image.image = [UIImage imageNamed:@"payment.png"];
             cell.title.text = @"Expenditures";
             cell.subtitle.text = @"An analysis of your expenditures on a monthly basis.";
         }
         else if(row == 1){
-            cell.image.image = [UIImage imageNamed:@"money.png"];
+            cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
             cell.title.text = @"Net Income";
             cell.subtitle.text = @"An analysis of your net income on a monthly basis.";
         }
         else if(row == 2){
-            cell.image.image = [UIImage imageNamed:@"details.png"];
+            cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
             cell.title.text = @"Full details";
             cell.subtitle.text = @"All your financial information on a monthly basis.";
         }
