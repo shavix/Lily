@@ -118,7 +118,7 @@
         }
         // net income
         else if(row == 1){
-            //[self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
+            [self performSegueWithIdentifier:@"monthsNetIncomeSegue" sender:self];
         }
         // full details
         else if(row == 2){

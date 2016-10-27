@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="119.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRt-hP-HwZ" id="7Ci-ng-yqy">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-Ij-ipT">
@@ -185,7 +185,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LI9-gZ-L7v" id="OiJ-cQ-B4X">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-1l-zwZ">
@@ -250,6 +250,7 @@
                         <segue destination="wU4-j3-An4" kind="show" identifier="friendsTransactionsSegue" id="1Dk-Oh-5jI"/>
                         <segue destination="ljn-GY-Ac8" kind="show" identifier="friendsNetIncomeSegue" id="60h-vI-Bmw"/>
                         <segue destination="xOv-fr-RiQ" kind="show" identifier="monthsExpendituresSegue" id="BGa-fA-9T4"/>
+                        <segue destination="rhI-HP-BIR" kind="show" identifier="monthsNetIncomeSegue" id="goa-yB-gqY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSI-e4-Irk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +323,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xUb-JZ-8TB" id="apm-PX-Bua">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="8kU-Ex-egf">
@@ -547,6 +548,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8P-au-aMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4537" y="1348"/>
+        </scene>
+        <!--Months Net IncomeVC-->
+        <scene sceneID="ruO-Nt-JOf">
+            <objects>
+                <viewController id="rhI-HP-BIR" customClass="DPRMonthsNetIncomeVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AXZ-P0-tcM"/>
+                        <viewControllerLayoutGuide type="bottom" id="VWg-ix-DK2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W1S-Fc-dUG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-dd-5eY">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woi-In-rdl">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="woi-In-rdl" firstAttribute="centerY" secondItem="BoA-dd-5eY" secondAttribute="centerY" multiplier="1.5" id="4WH-wQ-cVC"/>
+                                    <constraint firstItem="woi-In-rdl" firstAttribute="centerX" secondItem="BoA-dd-5eY" secondAttribute="centerX" id="Rbl-kx-SAp"/>
+                                    <constraint firstItem="woi-In-rdl" firstAttribute="width" secondItem="BoA-dd-5eY" secondAttribute="width" id="vRh-Bq-VsC"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-lH-y1a" customClass="BarChartView" customModule="Charts">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VWg-ix-DK2" firstAttribute="top" secondItem="tDB-lH-y1a" secondAttribute="bottom" constant="20" id="82u-n2-OFH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tDB-lH-y1a" secondAttribute="trailing" id="9pR-Na-Hgf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BoA-dd-5eY" secondAttribute="trailing" constant="-20" id="SeD-ch-RkV"/>
+                            <constraint firstItem="tDB-lH-y1a" firstAttribute="top" secondItem="BoA-dd-5eY" secondAttribute="bottom" id="T1t-72-mpv"/>
+                            <constraint firstItem="tDB-lH-y1a" firstAttribute="leading" secondItem="W1S-Fc-dUG" secondAttribute="leadingMargin" id="WnC-Rw-Uor"/>
+                            <constraint firstItem="BoA-dd-5eY" firstAttribute="leading" secondItem="W1S-Fc-dUG" secondAttribute="leadingMargin" constant="-20" id="dyf-t2-0j1"/>
+                            <constraint firstItem="BoA-dd-5eY" firstAttribute="top" secondItem="AXZ-P0-tcM" secondAttribute="bottom" id="gN5-wk-8kq"/>
+                            <constraint firstItem="BoA-dd-5eY" firstAttribute="height" secondItem="W1S-Fc-dUG" secondAttribute="height" multiplier="0.1" id="nUs-U9-9dV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="tDB-lH-y1a" id="8oa-dP-yxR"/>
+                        <outlet property="titleLabel" destination="woi-In-rdl" id="IDg-lI-5YH"/>
+                        <outlet property="topView" destination="BoA-dd-5eY" id="jzI-IZ-gBA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tVL-iy-pSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5366" y="1348"/>
         </scene>
     </scenes>
     <resources>

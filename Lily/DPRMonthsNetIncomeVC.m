@@ -1,43 +1,45 @@
 //
-//  DPRFriendsNetIncomeVC.m
+//  DPRMonthsNetIncomeVC.m
 //  Lily
 //
-//  Created by David Richardson on 10/25/16.
+//  Created by David Richardson on 10/27/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRFriendsNetIncomeVC.h"
+#import "DPRMonthsNetIncomeVC.h"
 #import "UIColor+CustomColors.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
 #import "DPRTarget.h"
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
-#import "xAxisValueFormatter.h"
+#import "DPRTransactionSingleton.h"
 
-@interface DPRFriendsNetIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
+@interface DPRMonthsNetIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet BarChartView *barChartView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
-
-@property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet BarChartView *barChartView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-@property (strong, nonatomic) NSArray *transactionsByFriends;
-@property (strong, nonatomic) NSMutableArray *dataList;
+@property (strong, nonatomic) NSArray *transactionsByMonth;
+@property (strong, nonatomic) NSMutableArray *months;
 
 @end
 
-@implementation DPRFriendsNetIncomeVC
+@implementation DPRMonthsNetIncomeVC{
+    NSInteger currMonth;
+    NSInteger currYear;
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self setupUI];
+    
     [self setupData];
+    [self setupUI];
     [self setDataCount];
     [self setupChart];
     
@@ -45,71 +47,33 @@
 
 - (void)setDataCount
 {
-    self.dataList = [[NSMutableArray alloc] init];
-    int i = 0;
-    // iterate through friends
-    for(NSArray *currArr in _transactionsByFriends){
-        
-        double amountSent = 0;
-        double amountReceived = 0;
-        
-        // iterate through transactions
-        for(DPRTransaction *transaction in currArr){
-            
-            NSNumber *amount = transaction.amount;
-            
-            if(transaction.isIncoming){
-                amountReceived += amount.doubleValue;
-            }
-            else{
-                amountSent += amount.doubleValue;
-            }
-            
-        }
-        
-        double netIncome = amountReceived - amountSent;
-        
-        DPRTransaction *transaction = currArr[0];
-        
-        NSString *title = transaction.target.fullName;
-        NSArray *arr = [title componentsSeparatedByString:@" "];
-        NSString *firstName = arr[0];
-        NSString *name;
-        
-        if(arr.count > 1){
-            NSString *lastName = arr[1];
-            NSString *initial = [NSString stringWithFormat:@"%c.", [lastName characterAtIndex:0]];
-            name = [NSString stringWithFormat:@"%@ %@", firstName, initial];
-        }
-        else {
-            name = firstName;
-        }
-        
-        [_dataList addObject:@{@"xValue":@(i),
-                             @"yValue":@(netIncome),
-                              @"xLabel":name}];
-                                 
-         i++;
-        
-    }
     
     NSMutableArray<BarChartDataEntry *> *values = [[NSMutableArray alloc] init];
     NSMutableArray<UIColor *> *colors = [[NSMutableArray alloc] init];
     
     UIColor *green = [UIColor colorWithRed:110/255.f green:190/255.f blue:102/255.f alpha:1.f];
     UIColor *red = [UIColor colorWithRed:211/255.f green:74/255.f blue:88/255.f alpha:1.f];
-    NSInteger count = _dataList.count;
+    NSInteger numMonths = 12;
+    NSInteger index2 = 0;
     
-    for (int i = 0; i < count; i++)
+    // insert friends data
+    for (NSInteger i = currMonth; i < numMonths + currMonth; i++)
     {
-        NSDictionary *d = _dataList[i];
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:[d[@"xValue"] doubleValue] y:[d[@"yValue"] doubleValue]];
-        [values addObject:entry];
+        NSInteger index = i;
+        if(index >= numMonths){
+            index -= 12;
+        }
+        NSDictionary *monthDict = self.transactionsByMonth[index];
+        NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
+        [values addObject:[[BarChartDataEntry alloc] initWithX:index2++ y:netIncome.integerValue]];
         
         // specific colors
-        if ([d[@"yValue"] doubleValue] <= 0.f)
+        if ([netIncome doubleValue] < 0.f)
         {
             [colors addObject:red];
+        }
+        else if([netIncome doubleValue] == 0.f){
+            [colors addObject:[UIColor whiteColor]];
         }
         else
         {
@@ -130,16 +94,16 @@
     axisFormatter.positivePrefix = @"$";
     [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
     
-    data.barWidth = 0.8;
+    data.barWidth = 0.9f;
     
     _barChartView.data = data;
-
+    
 }
 
 - (void)setupChart{
     
     _barChartView.delegate = self;
-
+    
     _barChartView.drawBarShadowEnabled = NO;
     _barChartView.drawValueAboveBarEnabled = YES;
     _barChartView.chartDescription.enabled = NO;
@@ -194,14 +158,34 @@
     
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
-    self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
+    DPRTransactionSingleton *transactionSingleton = [DPRTransactionSingleton sharedModel];
+    self.transactionsByMonth = transactionSingleton.transactionsByMonth;
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    currMonth = [components month];
+    currYear = [components year];
+    
+    NSArray *months = @[
+                        @"Jan", @"Feb", @"Mar",
+                        @"Apr", @"May", @"Jun",
+                        @"Jul", @"Aug", @"Sep",
+                        @"Oct", @"Nov", @"Dec"
+                        ];
+    self.months = [[NSMutableArray alloc] init];
+    
+    for (NSInteger i = currMonth; i < 12 + currMonth; i++){
+        NSInteger index = i;
+        if(index >= 12){
+            index -= 12;
+        }
+        [self.months addObject:months[index]];
+    }
     
 }
 
 - (void)setupUI{
     
-    self.title = @"Friends";
-    self.titleLabel.text = @"Net Income";
+    self.title = @"Monthly";
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     
     self.view.backgroundColor = [UIColor darkColor];
@@ -209,23 +193,40 @@
     self.topView.backgroundColor = [UIColor darkColor];
     
     self.uiHelper = [[DPRUIHelper alloc] init];
-    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
+    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Monthly"];
+    
+    NSString *title;
+    if(currMonth == 12){
+        title = [NSString stringWithFormat:@"Net Income (%ld)", currYear];
+    }
+    else{
+        title = [NSString stringWithFormat:@"Net Income (%ld - %ld)", (currYear - 1), currYear];
+    }
+    self.titleLabel.text = title;
     
 }
+
+- (NSString *)stringForValue:(double)value
+                        axis:(ChartAxisBase *)axis{
+    
+    return self.months[(int)value];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (NSString *)stringForValue:(double)value
-                        axis:(ChartAxisBase *)axis
-{
-    if(value < 0){
-        return nil;
-    }
-    return _dataList[MIN(MAX((int) value, 0), _dataList.count - 1)][@"xLabel"];
-}
+/*
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

@@ -110,7 +110,7 @@
         
         // netIncome
         NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
-        [monthDict setValue:@(netIncome.doubleValue - sent.doubleValue) forKey:@"netIncome"];
+        [monthDict setValue:@(netIncome.doubleValue - transactionAmount) forKey:@"netIncome"];
     }
     
     // received
@@ -120,7 +120,7 @@
         
         // netIncome
         NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
-        [monthDict setValue:@(netIncome.doubleValue + received.doubleValue) forKey:@"netIncome"];
+        [monthDict setValue:@(netIncome.doubleValue + transactionAmount) forKey:@"netIncome"];
     }
     
 }

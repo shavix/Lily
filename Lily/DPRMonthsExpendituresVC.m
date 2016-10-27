@@ -14,28 +14,31 @@
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRTransactionSingleton.h"
-#import "xAxisMonthValueFormatter.h"
 
-@interface DPRMonthsExpendituresVC () <ChartViewDelegate>
+@interface DPRMonthsExpendituresVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
 @property (strong, nonatomic) NSArray *transactionsByMonth;
+@property (strong, nonatomic) NSMutableArray *months;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @end
 
-@implementation DPRMonthsExpendituresVC
+@implementation DPRMonthsExpendituresVC{
+    NSInteger currMonth;
+    NSInteger currYear;
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
 
-    [self setupUI];
     [self setupData];
+    [self setupUI];
     [self setDataCount];
     [self setupChart];
     
@@ -43,34 +46,37 @@
 
 - (void)setDataCount
 {
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-    NSInteger currMonth = [components month];
 
     NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
     
-    NSInteger numMonths = self.transactionsByMonth.count;
+    NSInteger numMonths = 12;
+    NSInteger index2 = 0;
     
     // insert friends data
-    for (int i = 0; i < numMonths; i++)
+    for (NSInteger i = currMonth; i < numMonths + currMonth; i++)
     {
-        NSDictionary *monthDict = self.transactionsByMonth[i];
+        NSInteger index = i;
+        if(index >= numMonths){
+            index -= 12;
+        }
+        NSDictionary *monthDict = self.transactionsByMonth[index];
         NSNumber *sent = [monthDict objectForKey:@"sent"];
-        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:sent.integerValue]];
+        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:index2++ y:sent.integerValue]];
     }
     
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Months"];
-    
-    [set1 setColors:ChartColorTemplates.many];
+    [set1 setColors:ChartColorTemplates.material];
     
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:set1];
     
     BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
-    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
     [data setValueTextColor:[UIColor whiteColor]];
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
     axisFormatter.maximumFractionDigits = 0;
+    axisFormatter.positivePrefix = @"$";
     [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
     
     data.barWidth = 0.9f;
@@ -87,20 +93,23 @@
     _barChartView.drawValueAboveBarEnabled = YES;
     _barChartView.maxVisibleCount = 60;
     
+    NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
+    axisFormatter.minimumFractionDigits = 0;
+    axisFormatter.maximumFractionDigits = 1;
+    axisFormatter.positivePrefix = @"$";
+    
     ChartXAxis *xAxis = _barChartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
     xAxis.labelFont = [UIFont systemFontOfSize:11.f];
     xAxis.drawGridLinesEnabled = YES;
     xAxis.granularity = 1.0;
     xAxis.labelCount = 5;
-    xAxis.valueFormatter = [[xAxisMonthValueFormatter alloc] initForChart:_barChartView];
-    
-    NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
+    xAxis.valueFormatter = self;
     
     ChartYAxis *leftAxis = _barChartView.leftAxis;
     leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
     leftAxis.labelCount = 10;
-    leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
+    leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
     leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
     leftAxis.spaceTop = 0.15;
     leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
@@ -133,13 +142,32 @@
     self.user = [self.cdHelper fetchUser];
     DPRTransactionSingleton *transactionSingleton = [DPRTransactionSingleton sharedModel];
     self.transactionsByMonth = transactionSingleton.transactionsByMonth;
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    currMonth = [components month];
+    currYear = [components year];
+    
+    NSArray *months = @[
+                     @"Jan", @"Feb", @"Mar",
+                     @"Apr", @"May", @"Jun",
+                     @"Jul", @"Aug", @"Sep",
+                     @"Oct", @"Nov", @"Dec"
+                     ];
+    self.months = [[NSMutableArray alloc] init];
+    
+    for (NSInteger i = currMonth; i < 12 + currMonth; i++){
+        NSInteger index = i;
+        if(index >= 12){
+            index -= 12;
+        }
+        [self.months addObject:months[index]];
+    }
 
 }
 
 - (void)setupUI{
     
     self.title = @"Monthly";
-    self.titleLabel.text = @"Expenditures";
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     
     self.view.backgroundColor = [UIColor darkColor];
@@ -148,6 +176,22 @@
     
     self.uiHelper = [[DPRUIHelper alloc] init];
     [self.uiHelper setupBarChartView:_barChartView withTitle:@"Monthly"];
+    
+    NSString *title;
+    if(currMonth == 12){
+        title = [NSString stringWithFormat:@"Expenditures (%ld)", currYear];
+    }
+    else{
+        title = [NSString stringWithFormat:@"Expenditures (%ld - %ld)", (currYear - 1), currYear];
+    }
+    self.titleLabel.text = title;
+    
+}
+
+- (NSString *)stringForValue:(double)value
+                        axis:(ChartAxisBase *)axis{
+    
+    return self.months[(int)value];
     
 }
 
