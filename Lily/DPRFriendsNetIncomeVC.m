@@ -165,6 +165,7 @@
     
     ChartYAxis *leftAxis = _barChartView.leftAxis;
     leftAxis.drawLabelsEnabled = YES;
+    leftAxis.labelCount = 10;
     leftAxis.spaceTop = 0.25;
     leftAxis.spaceBottom = 0.25;
     leftAxis.drawAxisLineEnabled = YES;
@@ -176,6 +177,7 @@
     
     ChartYAxis *rightAxis = _barChartView.rightAxis;
     rightAxis.drawLabelsEnabled = YES;
+    rightAxis.labelCount = 10;
     rightAxis.spaceTop = 0.25;
     rightAxis.spaceBottom = 0.25;
     rightAxis.drawAxisLineEnabled = YES;

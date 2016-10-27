@@ -121,18 +121,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#warning clean
+    /*
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    
+     
     DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
     
-    #warning clean
     NSString *cellText = transaction.note;
     CGSize constraintSize = CGSizeMake(3*self.tableView.frame.size.width/5, MAXFLOAT);
     UIFont *fontText = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: fontText} context:nil];
     
-    //return labelSize.size.height + 40;
+    return labelSize.size.height + 40;
+    */
     return 70;
 }
 

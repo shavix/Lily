@@ -48,7 +48,7 @@
     
     self.view.backgroundColor = [UIColor darkColor];
     
-    [self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
+    //[self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 
     
@@ -82,7 +82,9 @@
     
     // transactionsByDate
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
-    self.transactionSingleton.transactionsByDate = [self.cdHelper setupTransactionsByDateWithUser:self.user];
+    NSArray *results = [self.cdHelper setupTransactionsByDateWithUser:self.user];
+    self.transactionSingleton.transactionsByDate = results[0];
+    self.transactionSingleton.transactionsByMonth = results[1];
     
 }
 
@@ -99,14 +101,32 @@
         if(row == 0){
             [self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
         }
-        // money
+        // net income
         else if(row == 1){
             [self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
         }
+        // full details
         else if(row == 2){
             [self performSegueWithIdentifier:@"friendsListSegue" sender:self];
         }
     }
+    // MONTHLY
+    else if(section == 1){
+        // expenditures
+        if(row == 0){
+            [self performSegueWithIdentifier:@"monthsExpendituresSegue" sender:self];
+        }
+        // net income
+        else if(row == 1){
+            //[self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
+        }
+        // full details
+        else if(row == 2){
+            //[self performSegueWithIdentifier:@"friendsListSegue" sender:self];
+        }
+    }
+    
+
     
 }
 
@@ -125,7 +145,7 @@
         if(row == 0){
             cell.image.image = [UIImage imageNamed:@"give_money.png"];
             cell.title.text = @"Number of Transactions";
-            cell.subtitle.text = @"An analysis of who, of your friends, you have the most transactions with on Venmo.";
+            cell.subtitle.text = @"An analysis of your transaction frequency with friends.";
         }
         else if(row == 1){
             cell.image.image = [UIImage imageNamed:@"money.png"];
@@ -135,7 +155,26 @@
         else if(row == 2){
             cell.image.image = [UIImage imageNamed:@"details.png"];
             cell.title.text = @"Full details";
-            cell.subtitle.text = @"All financial information between you and your friends";
+            cell.subtitle.text = @"All financial information between you and your friends.";
+        }
+    }
+    // MONTHLY
+    else if(section == 1)
+    {
+        if(row == 0){
+            cell.image.image = [UIImage imageNamed:@"give_money.png"];
+            cell.title.text = @"Expenditures";
+            cell.subtitle.text = @"An analysis of your expenditures on a monthly basis.";
+        }
+        else if(row == 1){
+            cell.image.image = [UIImage imageNamed:@"money.png"];
+            cell.title.text = @"Net Income";
+            cell.subtitle.text = @"An analysis of your net income on a monthly basis.";
+        }
+        else if(row == 2){
+            cell.image.image = [UIImage imageNamed:@"details.png"];
+            cell.title.text = @"Full details";
+            cell.subtitle.text = @"All your financial information on a monthly basis.";
         }
     }
     
@@ -168,7 +207,7 @@
         title = @"FRIENDS";
     }
     else{
-        title = @"MISCELLANEOUS";
+        title = @"MONTHLY";
     }
     
     return title;

@@ -1,62 +1,64 @@
 //
-//  DPRFriendsGraphVC.m
+//  DPRMonthsExpendituresVC.m
 //  Lily
 //
-//  Created by David Richardson on 10/24/16.
+//  Created by David Richardson on 10/26/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRFriendsTransactionsVC.h"
+#import "DPRMonthsExpendituresVC.h"
 #import "UIColor+CustomColors.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
 #import "DPRTarget.h"
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
-#import "xAxisValueFormatter.h"
+#import "DPRTransactionSingleton.h"
+#import "xAxisMonthValueFormatter.h"
 
-
-@interface DPRFriendsTransactionsVC () <ChartViewDelegate>
+@interface DPRMonthsExpendituresVC () <ChartViewDelegate>
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
+@property (strong, nonatomic) NSArray *transactionsByMonth;
 
-@property (strong, nonatomic) NSArray *transactionsByFriends;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-
 @end
 
-@implementation DPRFriendsTransactionsVC
+@implementation DPRMonthsExpendituresVC
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+
     [self setupUI];
     [self setupData];
-    [self setupGraph];
     [self setDataCount];
-
+    [self setupChart];
+    
 }
 
 - (void)setDataCount
 {
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    NSInteger currMonth = [components month];
+
     NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
     
-    NSInteger numFriends = self.transactionsByFriends.count;
+    NSInteger numMonths = self.transactionsByMonth.count;
     
     // insert friends data
-    for (int i = 0; i < numFriends; i++)
+    for (int i = 0; i < numMonths; i++)
     {
-        NSArray *transactionsArray = self.transactionsByFriends[i];
-        NSInteger numTransactions = transactionsArray.count;
-        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:numTransactions]];
+        NSDictionary *monthDict = self.transactionsByMonth[i];
+        NSNumber *sent = [monthDict objectForKey:@"sent"];
+        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:sent.integerValue]];
     }
     
-    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Friends"];
+    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Months"];
     
     [set1 setColors:ChartColorTemplates.many];
     
@@ -77,7 +79,7 @@
     
 }
 
-- (void)setupGraph{
+- (void)setupChart{
     
     _barChartView.delegate = self;
     
@@ -91,7 +93,7 @@
     xAxis.drawGridLinesEnabled = YES;
     xAxis.granularity = 1.0;
     xAxis.labelCount = 5;
-    xAxis.valueFormatter = [[xAxisValueFormatter alloc] initForChart:_barChartView andArray:self.transactionsByFriends];
+    xAxis.valueFormatter = [[xAxisMonthValueFormatter alloc] initForChart:_barChartView];
     
     NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
     
@@ -129,39 +131,31 @@
     
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
-    self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
-    
+    DPRTransactionSingleton *transactionSingleton = [DPRTransactionSingleton sharedModel];
+    self.transactionsByMonth = transactionSingleton.transactionsByMonth;
+
 }
 
 - (void)setupUI{
     
-    self.title = @"Friends";
-    self.titleLabel.text = @"Number of Transactions";
+    self.title = @"Monthly";
+    self.titleLabel.text = @"Expenditures";
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-
+    
     self.view.backgroundColor = [UIColor darkColor];
     self.barChartView.backgroundColor = [UIColor darkColor];
     self.topView.backgroundColor = [UIColor darkColor];
     
     self.uiHelper = [[DPRUIHelper alloc] init];
-    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
+    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Monthly"];
     
-}
-
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
-{
-    NSLog(@"chartValueSelected");
-}
-
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
-{
-    NSLog(@"chartValueNothingSelected");
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end

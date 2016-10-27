@@ -13,5 +13,6 @@
 + (instancetype)sharedModel;
 
 @property (strong, nonatomic) NSArray *transactionsByDate;
+@property (strong, nonatomic) NSArray *transactionsByMonth;
 
 @end

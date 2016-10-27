@@ -94,17 +94,90 @@
     
 }
 
-// transactionsByDate
+- (void)updateMonthDataWithTransaction:(DPRTransaction *)transaction andMonth:(NSMutableDictionary *)monthDict{
+    
+    double transactionAmount = transaction.amount.doubleValue;
+    
+    // transactions
+    NSNumber *transactions = [monthDict objectForKey:@"transactions"];
+    NSInteger amount = transactions.integerValue + 1;
+    [monthDict setValue:@(amount) forKey:@"transactions"];
+    
+    // sent
+    if(!transaction.isIncoming){
+        NSNumber *sent = [monthDict objectForKey:@"sent"];
+        [monthDict setValue:@(sent.doubleValue + transactionAmount) forKey:@"sent"];
+        
+        // netIncome
+        NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
+        [monthDict setValue:@(netIncome.doubleValue - sent.doubleValue) forKey:@"netIncome"];
+    }
+    
+    // received
+    else{
+        NSNumber *received = [monthDict objectForKey:@"received"];
+        [monthDict setValue:@(received.doubleValue + transactionAmount) forKey:@"received"];
+        
+        // netIncome
+        NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
+        [monthDict setValue:@(netIncome.doubleValue + received.doubleValue) forKey:@"netIncome"];
+    }
+    
+}
+
+
+// transactionsByDate & transactionsByMonth
 - (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user{
     
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateCompleted" ascending:NO];
-     NSArray *tempTransactionsByDate = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
+    // get current date
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    NSInteger currMonth = [components month];
+    NSInteger currYear = [components year];
     
+    // get core data transactions
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateCompleted" ascending:NO];
+     NSArray *coreDataTransactions = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    // transactionsByDate
     NSMutableArray *transactionsByDate = [[NSMutableArray alloc] init];
     [transactionsByDate addObject:[[NSMutableArray alloc] init]];
+    
+    
+    // transactionsByMonth
+    NSMutableArray *transactionsByMonth = [[NSMutableArray alloc] init];
+    for(int i = 0; i < 12; i++){
+        [transactionsByMonth addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        @(i), @"month",
+                                        @(0), @"transactions",
+                                        @(0), @"sent",
+                                        @(0), @"received",
+                                        @(0), @"netIncome",
+                                       nil]];
+    }
 
-    for(DPRTransaction *transaction in tempTransactionsByDate){
+    // iterate over all transactions
+    for(DPRTransaction *transaction in coreDataTransactions){
         
+        // TRANSACTIONSBYMONTH
+        NSDate *date = transaction.dateCompleted;
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear fromDate:date];
+        NSInteger tMonth = components.month;
+        NSInteger tYear = components.year;
+        
+        // good
+        if(tYear == currYear){
+            [self updateMonthDataWithTransaction:transaction andMonth:[transactionsByMonth objectAtIndex:tMonth-1]];
+        }
+        // last year
+        else if(tYear == currYear - 1){
+            // good
+            if(tMonth > currMonth){
+                [self updateMonthDataWithTransaction:transaction andMonth:[transactionsByMonth objectAtIndex:tMonth-1]];
+            }
+        }
+                
+        
+        // TRANSACTIONSBYDATE
         NSMutableArray *currentDateArray = transactionsByDate[transactionsByDate.count - 1];
         
         // current date is empty
@@ -127,10 +200,13 @@
                 [transactionsByDate addObject:newDateArray];
             }
         }
-        
     }
     
-    return transactionsByDate;
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    [results addObject:transactionsByDate];
+    [results addObject:transactionsByMonth];
+    
+    return results;
     
 }
 

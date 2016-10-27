@@ -55,6 +55,8 @@
 		6379F5CF1D1CA2490094ED24 /* DPRBalanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5CE1D1CA2490094ED24 /* DPRBalanceView.m */; };
 		6379F5D21D1CA2550094ED24 /* DPRTransactionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5D11D1CA2550094ED24 /* DPRTransactionsView.m */; };
 		6379F5D51D1CA2600094ED24 /* DPRCashFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5D41D1CA2600094ED24 /* DPRCashFlowView.m */; };
+		63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */; };
+		63C2DE501DC195E0009F64F8 /* xAxisMonthValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE4F1DC195E0009F64F8 /* xAxisMonthValueFormatter.m */; };
 		63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */; };
 		63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E31DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m */; };
 		63C765E71DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */; };
@@ -162,6 +164,10 @@
 		6379F5D11D1CA2550094ED24 /* DPRTransactionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionsView.m; sourceTree = "<group>"; };
 		6379F5D31D1CA2600094ED24 /* DPRCashFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRCashFlowView.h; sourceTree = "<group>"; };
 		6379F5D41D1CA2600094ED24 /* DPRCashFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRCashFlowView.m; sourceTree = "<group>"; };
+		63C2DE4B1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsExpendituresVC.h; sourceTree = "<group>"; };
+		63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsExpendituresVC.m; sourceTree = "<group>"; };
+		63C2DE4E1DC195E0009F64F8 /* xAxisMonthValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xAxisMonthValueFormatter.h; sourceTree = "<group>"; };
+		63C2DE4F1DC195E0009F64F8 /* xAxisMonthValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xAxisMonthValueFormatter.m; sourceTree = "<group>"; };
 		63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTVC.h; sourceTree = "<group>"; };
 		63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsListTVC.m; sourceTree = "<group>"; };
 		63C765E21DBEAD09005D55F6 /* DPRFriendsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTableViewCell.h; sourceTree = "<group>"; };
@@ -319,6 +325,8 @@
 				63782FAB1D220393003410D3 /* Core Data */,
 				63C765E81DBEFB94005D55F6 /* xAxisValueFormatter.h */,
 				63C765E91DBEFB94005D55F6 /* xAxisValueFormatter.m */,
+				63C2DE4E1DC195E0009F64F8 /* xAxisMonthValueFormatter.h */,
+				63C2DE4F1DC195E0009F64F8 /* xAxisMonthValueFormatter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -368,12 +376,8 @@
 		6379F59B1D1BA46E0094ED24 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */,
-				632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */,
-				63C765E51DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.h */,
-				63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */,
-				63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */,
-				63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */,
+				63C2DE4A1DC179F0009F64F8 /* Months */,
+				63C2DE491DC179E8009F64F8 /* Friends */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -414,6 +418,28 @@
 				6379F5D41D1CA2600094ED24 /* DPRCashFlowView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		63C2DE491DC179E8009F64F8 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */,
+				632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */,
+				63C765E51DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.h */,
+				63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */,
+				63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */,
+				63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		63C2DE4A1DC179F0009F64F8 /* Months */ = {
+			isa = PBXGroup;
+			children = (
+				63C2DE4B1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.h */,
+				63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */,
+			);
+			name = Months;
 			sourceTree = "<group>";
 		};
 		838A64B0F802517F87F070CF /* Frameworks */ = {
@@ -626,6 +652,7 @@
 				6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */,
 				6379F5541D1B9B9A0094ED24 /* main.m in Sources */,
 				6379F59E1D1BA47F0094ED24 /* DPRDashboardVC.m in Sources */,
+				63C2DE501DC195E0009F64F8 /* xAxisMonthValueFormatter.m in Sources */,
 				636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */,
 				63C765E71DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m in Sources */,
 				6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */,
@@ -635,6 +662,7 @@
 				6379F5A11D1BA48A0094ED24 /* DPRGraphListVC.m in Sources */,
 				6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */,
 				636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */,
+				63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */,
 				63782FC01D24AABC003410D3 /* DPRTransactionTableViewCell.m in Sources */,
 				6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */,
 				6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */,
