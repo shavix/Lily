@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@import Charts;
+
 @interface DPRFriendsNetIncomeVC : UIViewController
 
 @end

@@ -146,6 +146,7 @@
     self.uiHelper = [[DPRUIHelper alloc] init];
     [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
     
+    
 }
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight

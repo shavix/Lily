@@ -58,6 +58,8 @@
 		63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */; };
 		63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */; };
 		63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */; };
+		63C2DE5C1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE5B1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m */; };
+		63C2DE5F1DC2C392009F64F8 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE5E1DC2C392009F64F8 /* BalloonMarker.swift */; };
 		63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */; };
 		63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E31DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m */; };
 		63C765E71DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */; };
@@ -171,6 +173,9 @@
 		63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsNetIncomeVC.m; sourceTree = "<group>"; };
 		63C2DE571DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsDetailsTVC.h; sourceTree = "<group>"; };
 		63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsDetailsTVC.m; sourceTree = "<group>"; };
+		63C2DE5A1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsDetailsTableViewCell.h; sourceTree = "<group>"; };
+		63C2DE5B1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsDetailsTableViewCell.m; sourceTree = "<group>"; };
+		63C2DE5E1DC2C392009F64F8 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTVC.h; sourceTree = "<group>"; };
 		63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsListTVC.m; sourceTree = "<group>"; };
 		63C765E21DBEAD09005D55F6 /* DPRFriendsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTableViewCell.h; sourceTree = "<group>"; };
@@ -282,6 +287,7 @@
 		6379F5521D1B9B9A0094ED24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63C2DE5E1DC2C392009F64F8 /* BalloonMarker.swift */,
 				6379F5A81D1BA8DC0094ED24 /* Intro */,
 				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
 				6379F5611D1B9B9A0094ED24 /* Assets.xcassets */,
@@ -342,6 +348,8 @@
 				63C765E31DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m */,
 				63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */,
 				63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */,
+				63C2DE5A1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.h */,
+				63C2DE5B1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -655,7 +663,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */,
+				63C2DE5C1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m in Sources */,
 				6379F5541D1B9B9A0094ED24 /* main.m in Sources */,
+				63C2DE5F1DC2C392009F64F8 /* BalloonMarker.swift in Sources */,
 				6379F59E1D1BA47F0094ED24 /* DPRDashboardVC.m in Sources */,
 				636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */,
 				63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */,
@@ -829,11 +839,14 @@
 			baseConfigurationReference = 2EFB452003D621F7CCF38BB5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = VMJMB92Y2W;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -843,11 +856,13 @@
 			baseConfigurationReference = 95A1E323D74501F6C791D91E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = VMJMB92Y2W;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -855,6 +870,7 @@
 		6379F5831D1B9B9A0094ED24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LilyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -867,6 +883,7 @@
 		6379F5841D1B9B9A0094ED24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LilyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -879,6 +896,7 @@
 		6379F5861D1B9B9A0094ED24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = LilyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.LilyUITests;
@@ -890,6 +908,7 @@
 		6379F5871D1B9B9A0094ED24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = LilyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.LilyUITests;

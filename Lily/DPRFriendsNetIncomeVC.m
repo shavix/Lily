@@ -17,7 +17,6 @@
 
 @interface DPRFriendsNetIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
-
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
@@ -40,6 +39,8 @@
     [self setupData];
     [self setDataCount];
     [self setupChart];
+    
+    
     
 }
 
@@ -210,6 +211,8 @@
     
     self.uiHelper = [[DPRUIHelper alloc] init];
     [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
+    
+    
     
 }
 

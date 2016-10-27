@@ -51,7 +51,12 @@
     //[self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 
-    
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+
 }
 
 
@@ -122,7 +127,7 @@
         }
         // full details
         else if(row == 2){
-            //[self performSegueWithIdentifier:@"friendsListSegue" sender:self];
+            [self performSegueWithIdentifier:@"monthsDetailsSegue" sender:self];
         }
     }
     
@@ -183,8 +188,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    //NSInteger height = self.view.frame.size.height;
     
     NSInteger rowHeight = 100;
     

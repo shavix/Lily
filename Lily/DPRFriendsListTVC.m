@@ -27,6 +27,7 @@
 @implementation DPRFriendsListTVC
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     [self setupUI];
