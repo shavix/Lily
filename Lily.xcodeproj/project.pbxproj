@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630AAF3C1DC2CE0B0031BACD /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AAF3B1DC2CE0B0031BACD /* BalloonMarker.swift */; };
 		632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */; };
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; };
 		635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */; };
@@ -59,7 +60,7 @@
 		63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */; };
 		63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */; };
 		63C2DE5C1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE5B1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m */; };
-		63C2DE5F1DC2C392009F64F8 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE5E1DC2C392009F64F8 /* BalloonMarker.swift */; };
+		63C551141DC2E54A006B984F /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C551131DC2E54A006B984F /* XYMarkerView.swift */; };
 		63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */; };
 		63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E31DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m */; };
 		63C765E71DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */; };
@@ -87,13 +88,14 @@
 /* Begin PBXFileReference section */
 		2EFB452003D621F7CCF38BB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4F0C29715B4EBC41866695B6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		630AAF3A1DC2CE0A0031BACD /* Lily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lily-Bridging-Header.h"; sourceTree = "<group>"; };
+		630AAF3B1DC2CE0B0031BACD /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsNetIncomeVC.h; sourceTree = "<group>"; };
 		632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsNetIncomeVC.m; sourceTree = "<group>"; };
 		6324666B1D1CA5FD00512931 /* DPRUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUIHelper.h; sourceTree = "<group>"; };
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
 		635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphTableViewCell.h; sourceTree = "<group>"; };
 		635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphTableViewCell.m; sourceTree = "<group>"; };
-		635F86281DBD7FE5006C3CC6 /* Lily-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lily-Swift.h"; sourceTree = "<group>"; };
 		636326181D289679001CA480 /* DPRTransactionSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionSingleton.h; sourceTree = "<group>"; };
 		636326191D289679001CA480 /* DPRTransactionSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionSingleton.m; sourceTree = "<group>"; };
 		6363262B1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRTarget+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 		63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsDetailsTVC.m; sourceTree = "<group>"; };
 		63C2DE5A1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsDetailsTableViewCell.h; sourceTree = "<group>"; };
 		63C2DE5B1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsDetailsTableViewCell.m; sourceTree = "<group>"; };
-		63C2DE5E1DC2C392009F64F8 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		63C551131DC2E54A006B984F /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
 		63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTVC.h; sourceTree = "<group>"; };
 		63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsListTVC.m; sourceTree = "<group>"; };
 		63C765E21DBEAD09005D55F6 /* DPRFriendsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsListTableViewCell.h; sourceTree = "<group>"; };
@@ -287,17 +289,17 @@
 		6379F5521D1B9B9A0094ED24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				63C2DE5E1DC2C392009F64F8 /* BalloonMarker.swift */,
 				6379F5A81D1BA8DC0094ED24 /* Intro */,
 				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
+				63C551131DC2E54A006B984F /* XYMarkerView.swift */,
+				630AAF3B1DC2CE0B0031BACD /* BalloonMarker.swift */,
 				6379F5611D1B9B9A0094ED24 /* Assets.xcassets */,
 				6379F5631D1B9B9A0094ED24 /* LaunchScreen.storyboard */,
 				6379F5661D1B9B9A0094ED24 /* Info.plist */,
 				6379F55E1D1B9B9A0094ED24 /* Lily.xcdatamodeld */,
-				6379F5531D1B9B9A0094ED24 /* main.m */,
 				6379F58F1D1B9DA80094ED24 /* UIColor+CustomColors.h */,
 				6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */,
-				635F86281DBD7FE5006C3CC6 /* Lily-Swift.h */,
+				6379F5531D1B9B9A0094ED24 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -350,6 +352,7 @@
 				63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */,
 				63C2DE5A1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.h */,
 				63C2DE5B1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m */,
+				630AAF3A1DC2CE0A0031BACD /* Lily-Bridging-Header.h */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -663,9 +666,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */,
+				63C551141DC2E54A006B984F /* XYMarkerView.swift in Sources */,
 				63C2DE5C1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m in Sources */,
 				6379F5541D1B9B9A0094ED24 /* main.m in Sources */,
-				63C2DE5F1DC2C392009F64F8 /* BalloonMarker.swift in Sources */,
+				630AAF3C1DC2CE0B0031BACD /* BalloonMarker.swift in Sources */,
 				6379F59E1D1BA47F0094ED24 /* DPRDashboardVC.m in Sources */,
 				636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */,
 				63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */,
@@ -773,6 +777,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -817,6 +822,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -840,12 +846,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = VMJMB92Y2W;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -857,12 +866,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = VMJMB92Y2W;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

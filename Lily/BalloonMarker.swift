@@ -13,7 +13,7 @@ import Foundation
 import Charts
 
 
-open class BalloonMarker: MarkerImage
+@objc class BalloonMarker: MarkerImage
 {
     open var color: UIColor?
     open var arrowSize = CGSize(width: 15, height: 11)

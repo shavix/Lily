@@ -39,6 +39,7 @@
     [self retrieveData];
     [self setupData];
     
+    
 }
 
 - (void)setupUI{

@@ -14,7 +14,6 @@
 #import "DPRTarget.h"
 #import "UIColor+CustomColors.h"
 
-
 @interface DPRFriendsListTVC ()
 
 @property (strong, nonatomic) DPRUser *user;
@@ -32,6 +31,8 @@
     
     [self setupUI];
     [self setupData];
+    
+    
 }
 
 - (void)setupData{
@@ -98,6 +99,7 @@
 #pragma mark - UITableView
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 
     NSString *identifier = @"friendsCell";
     DPRFriendsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];

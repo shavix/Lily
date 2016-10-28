@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface DPRGraphTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;

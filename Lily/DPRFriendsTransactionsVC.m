@@ -14,6 +14,7 @@
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
 #import "xAxisValueFormatter.h"
+#import <Lily-Bridging-Header.h>
 
 
 @interface DPRFriendsTransactionsVC () <ChartViewDelegate>
@@ -123,6 +124,16 @@
     l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     l.xEntrySpace = 4.0;
     
+    XYMarkerView *marker = [[XYMarkerView alloc]
+                            initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
+                            font: [UIFont systemFontOfSize:12.0]
+                            textColor: UIColor.whiteColor
+                            insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
+                            xAxisValueFormatter: _barChartView.xAxis.valueFormatter];
+    marker.chartView = _barChartView;
+    marker.minimumSize = CGSizeMake(80.f, 40.f);
+    _barChartView.marker = marker;
+
 }
 
 - (void)setupData{

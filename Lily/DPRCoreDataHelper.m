@@ -23,6 +23,7 @@
 // user
 - (DPRUser *)fetchUser{
     
+    
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DPRUser"];
     NSError *error = nil;
     NSArray *users = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];

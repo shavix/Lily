@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+        
     self.cellImage.layer.cornerRadius = 0.75*70/2;
     self.cellImage.clipsToBounds = YES;
     

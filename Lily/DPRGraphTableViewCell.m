@@ -31,7 +31,7 @@
     
     [self.contentView.layer addSublayer:topBorder];
     [self.contentView.layer addSublayer:bottomBorder];
-    
+        
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

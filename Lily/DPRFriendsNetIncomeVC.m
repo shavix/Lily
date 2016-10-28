@@ -14,6 +14,7 @@
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
 #import "xAxisValueFormatter.h"
+#import <Lily-Bridging-Header.h>
 
 @interface DPRFriendsNetIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
@@ -39,8 +40,6 @@
     [self setupData];
     [self setDataCount];
     [self setupChart];
-    
-    
     
 }
 
@@ -188,6 +187,17 @@
     rightAxis.zeroLineColor = UIColor.whiteColor;
     rightAxis.zeroLineWidth = 0.7f;
     rightAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
+    
+    XYMarkerView *marker = [[XYMarkerView alloc]
+                            initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
+                            font: [UIFont systemFontOfSize:12.0]
+                            textColor: UIColor.whiteColor
+                            insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
+                            xAxisValueFormatter: _barChartView.xAxis.valueFormatter];
+    marker.chartView = _barChartView;
+    marker.minimumSize = CGSizeMake(80.f, 40.f);
+    _barChartView.marker = marker;
+
     
 }
 
