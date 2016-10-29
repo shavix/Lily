@@ -36,7 +36,8 @@
     
     [self.contentView.layer addSublayer:topBorder];
     [self.contentView.layer addSublayer:bottomBorder];
-    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

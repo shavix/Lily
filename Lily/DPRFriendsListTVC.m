@@ -13,6 +13,7 @@
 #import "DPRTransaction.h"
 #import "DPRTarget.h"
 #import "UIColor+CustomColors.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DPRFriendsListTVC ()
 
@@ -130,20 +131,8 @@
         cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
     }
     
-    
-#warning cache photos
-    // user image
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:transaction.target.picture_url]]];
-        
-        if(!image){
-            image = [UIImage imageNamed:@"UserImage"];
-        }
-        
-        dispatch_sync(dispatch_get_main_queue(), ^(void) {
-            cell.userImage.image = image;
-        });
-    });
+    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
+                 placeholderImage:[UIImage imageNamed:@"UserImage"]];
     
     return cell;
 }
@@ -173,10 +162,6 @@
     
     //Set the background color of the View
     view.tintColor = [UIColor darkColor];
-    
-    // Text Color
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor whiteColor]];
     
 }
 

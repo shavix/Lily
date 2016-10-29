@@ -13,12 +13,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
         
-    self.cellImage.layer.cornerRadius = 0.75*70/2;
+    self.cellImage.layer.cornerRadius = 0.75*70/8;
     self.cellImage.clipsToBounds = YES;
     
     self.transactionLabel.font = [UIFont boldSystemFontOfSize:12];
     self.amountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     self.noteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
 }
 

@@ -14,6 +14,7 @@
 #import "DPRTransactionTableViewCell.h"
 #import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DPRTransactionsVC()
 
@@ -102,22 +103,16 @@
 - (void)setupImageView:(UIImageView *)imageView withTransaction:(DPRTransaction *)transaction {
     
     
-    // target image
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:transaction.target.picture_url]]];
-        
-        if(!image){
-            image = [UIImage imageNamed:@"UserImage"];
-        }
-        
-        dispatch_sync(dispatch_get_main_queue(), ^(void) {
-            imageView.image = image;
-        });
-    });
+    // SDWebImage
+    [imageView sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
+                 placeholderImage:[UIImage imageNamed:@"UserImage"]];
 
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

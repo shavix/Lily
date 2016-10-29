@@ -35,6 +35,8 @@
     [[UILabel appearance] setTextColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor lightGreenColor]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    NSArray *classes = @[[UITableViewHeaderFooterView class]];
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:classes] setTextColor:[UIColor lightGreenColor]];
 
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];

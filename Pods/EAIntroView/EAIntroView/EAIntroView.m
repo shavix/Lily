@@ -67,7 +67,7 @@
     self.motionEffectsRelativeValue = 40.f;
     self.backgroundColor = [UIColor blackColor];
     _scrollingEnabled = YES;
-    _titleViewY = 20.f;
+    _titleViewY = 200.f;
     _pageControlY = 50.f;
     _skipButtonY = EA_EMPTY_PROPERTY;
     _skipButtonSideMargin = 10.f;

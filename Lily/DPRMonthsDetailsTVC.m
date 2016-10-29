@@ -161,10 +161,6 @@
     //Set the background color of the View
     view.tintColor = [UIColor darkColor];
     
-    // Text Color
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor whiteColor]];
-    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

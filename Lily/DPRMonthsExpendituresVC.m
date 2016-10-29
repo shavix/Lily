@@ -93,6 +93,10 @@
     _barChartView.drawBarShadowEnabled = NO;
     _barChartView.drawValueAboveBarEnabled = YES;
     _barChartView.maxVisibleCount = 60;
+    _barChartView.drawBordersEnabled = YES;
+    _barChartView.borderLineWidth = 1;
+    _barChartView.borderColor = [UIColor darkGrayColor];
+    
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
     axisFormatter.minimumFractionDigits = 0;

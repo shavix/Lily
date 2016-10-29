@@ -17,7 +17,7 @@
     self.backgroundColor = [UIColor charcoalColor];
     self.sentAmountLabel.textColor = [UIColor redColor];
     self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
-    self.userImage.layer.cornerRadius = 0.5*100/2;
+    self.userImage.layer.cornerRadius = 50/8;
     self.userImage.clipsToBounds = YES;
 
     
@@ -39,6 +39,7 @@
     
     [self.contentView.layer addSublayer:topBorder];
     [self.contentView.layer addSublayer:bottomBorder];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
 }
 

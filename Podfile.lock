@@ -5,14 +5,19 @@ PODS:
   - EAIntroView (2.9.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Charts (~> 3.0.0)
   - EAIntroView (~> 2.9.0)
+  - SDWebImage (~> 3.8.2)
 
 SPEC CHECKSUMS:
   Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
   EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
 COCOAPODS: 0.39.0

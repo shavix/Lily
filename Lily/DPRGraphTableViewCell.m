@@ -19,6 +19,9 @@
     self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
     self.backgroundColor = [UIColor charcoalColor];
     
+    self.image.layer.cornerRadius = 70/8;
+    self.image.clipsToBounds = YES;
+
     CALayer *topBorder = [CALayer layer];
     topBorder.borderColor = [UIColor lightGrayColor].CGColor;
     topBorder.borderWidth = 1;

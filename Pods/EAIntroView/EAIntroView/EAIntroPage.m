@@ -10,7 +10,6 @@
 #define DEFAULT_LABEL_COLOR [UIColor whiteColor]
 #define DEFAULT_BG_COLOR [UIColor clearColor]
 #define DEFAULT_DESCRIPTION_FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0]
-#define DEFAULT_TITLE_IMAGE_Y_POSITION 50.0f
 #define DEFAULT_TITLE_LABEL_Y_POSITION 160.0f
 #define DEFAULT_DESCRIPTION_LABEL_Y_POSITION 140.0f
 #define DEFAULT_DESCRIPTION_LABEL_SIDE_MARGIN 10.0f
@@ -25,7 +24,6 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _titleIconPositionY = DEFAULT_TITLE_IMAGE_Y_POSITION;
         _titlePositionY  = DEFAULT_TITLE_LABEL_Y_POSITION;
         _descPositionY   = DEFAULT_DESCRIPTION_LABEL_Y_POSITION;
         _descSideMargin   = DEFAULT_DESCRIPTION_LABEL_SIDE_MARGIN;

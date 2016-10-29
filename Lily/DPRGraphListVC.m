@@ -58,6 +58,20 @@
                                     action:nil];
     [[self navigationItem] setBackBarButtonItem:newBackButton];
 
+    //UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"\u2699" style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+
+    settingsButton.tintColor = [UIColor lightGreenColor];
+    
+    UIFont *customFont = [UIFont fontWithName:@"Helvetica" size:24.0];
+    NSDictionary *fontDictionary = @{NSFontAttributeName : customFont};
+    [settingsButton setTitleTextAttributes:fontDictionary forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = settingsButton;
+}
+
+- (void)showSettings{
+    
 }
 
 
@@ -151,12 +165,12 @@
         if(row == 0){
             cell.image.image = [UIImage imageNamed:@"handshake.png"];
             cell.title.text = @"Number of Transactions";
-            cell.subtitle.text = @"An analysis of your transaction frequency with friends.";
+            cell.subtitle.text = @"A graphical analysis of your transaction frequency with friends.";
         }
         else if(row == 1){
             cell.image.image = [UIImage imageNamed:@"businessman.png"];
             cell.title.text = @"Net Income";
-            cell.subtitle.text = @"An analysis of your net income with friends.";
+            cell.subtitle.text = @"A graphical analysis of your net income with friends.";
         }
         else if(row == 2){
             cell.image.image = [UIImage imageNamed:@"details.png"];
@@ -170,12 +184,12 @@
         if(row == 0){
             cell.image.image = [UIImage imageNamed:@"payment.png"];
             cell.title.text = @"Expenditures";
-            cell.subtitle.text = @"An analysis of your expenditures on a monthly basis.";
+            cell.subtitle.text = @"A graphical analysis of your expenditures on a monthly basis.";
         }
         else if(row == 1){
             cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
             cell.title.text = @"Net Income";
-            cell.subtitle.text = @"An analysis of your net income on a monthly basis.";
+            cell.subtitle.text = @"A graphical analysis of your net income on a monthly basis.";
         }
         else if(row == 2){
             cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
@@ -183,6 +197,7 @@
             cell.subtitle.text = @"All your financial information on a monthly basis.";
         }
     }
+    
     
     return cell;
 }
@@ -223,10 +238,6 @@
     
     //Set the background color of the View
     view.tintColor = [UIColor darkColor];
-    
-    // Text Color
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor whiteColor]];
     
 }
 

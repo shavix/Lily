@@ -112,6 +112,10 @@
     _barChartView.drawGridBackgroundEnabled = NO;
     _barChartView.rightAxis.enabled = YES;
     _barChartView.legend.enabled = NO;
+    _barChartView.drawBordersEnabled = YES;
+    _barChartView.borderLineWidth = 1;
+    _barChartView.borderColor = [UIColor darkGrayColor];
+    
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
     axisFormatter.minimumFractionDigits = 0;
