@@ -57,6 +57,8 @@
 		63811E661DC42717008C5874 /* DPRSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63811E651DC42717008C5874 /* DPRSettingsTableViewCell.m */; };
 		63811E691DC69157008C5874 /* DPRInformationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63811E681DC69157008C5874 /* DPRInformationVC.m */; };
 		63811E6C1DC695E9008C5874 /* DPRContentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63811E6B1DC695E9008C5874 /* DPRContentHelper.m */; };
+		63811E6E1DC6AACF008C5874 /* ApacheLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63811E6D1DC6AACF008C5874 /* ApacheLicense.txt */; };
+		63811E701DC6AB74008C5874 /* MITLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63811E6F1DC6AB74008C5874 /* MITLicense.txt */; };
 		63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */; };
 		63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */; };
 		63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */; };
@@ -178,6 +180,8 @@
 		63811E681DC69157008C5874 /* DPRInformationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRInformationVC.m; sourceTree = "<group>"; };
 		63811E6A1DC695E9008C5874 /* DPRContentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRContentHelper.h; sourceTree = "<group>"; };
 		63811E6B1DC695E9008C5874 /* DPRContentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRContentHelper.m; sourceTree = "<group>"; };
+		63811E6D1DC6AACF008C5874 /* ApacheLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApacheLicense.txt; sourceTree = "<group>"; };
+		63811E6F1DC6AB74008C5874 /* MITLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MITLicense.txt; sourceTree = "<group>"; };
 		63C2DE4B1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsExpendituresVC.h; sourceTree = "<group>"; };
 		63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsExpendituresVC.m; sourceTree = "<group>"; };
 		63C2DE541DC27B80009F64F8 /* DPRMonthsNetIncomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsNetIncomeVC.h; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 				6379F58F1D1B9DA80094ED24 /* UIColor+CustomColors.h */,
 				6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */,
 				6379F5531D1B9B9A0094ED24 /* main.m */,
+				63811E6D1DC6AACF008C5874 /* ApacheLicense.txt */,
+				63811E6F1DC6AB74008C5874 /* MITLicense.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -605,12 +611,14 @@
 				6379F5BB1D1BA8DC0094ED24 /* bg3@2x.png in Resources */,
 				63C551221DC30E9E006B984F /* athletics.png in Resources */,
 				6379F5B91D1BA8DC0094ED24 /* bg1@2x.png in Resources */,
+				63811E6E1DC6AACF008C5874 /* ApacheLicense.txt in Resources */,
 				6379F5BE1D1BA8DC0094ED24 /* icon1@2x.png in Resources */,
 				6379F5621D1B9B9A0094ED24 /* Assets.xcassets in Resources */,
 				6379F5C71D1BA8DC0094ED24 /* title3@2x.png in Resources */,
 				63C551251DC30E9E006B984F /* presentation.png in Resources */,
 				6379F55D1D1B9B9A0094ED24 /* Main.storyboard in Resources */,
 				63C551231DC30E9E006B984F /* free.png in Resources */,
+				63811E701DC6AB74008C5874 /* MITLicense.txt in Resources */,
 				6379F5C61D1BA8DC0094ED24 /* title2@2x.png in Resources */,
 				6379F5C01D1BA8DC0094ED24 /* icon3@2x.png in Resources */,
 				6379F5C51D1BA8DC0094ED24 /* title1@2x.png in Resources */,

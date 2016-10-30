@@ -13,6 +13,7 @@
 @interface DPRInformationVC ()
 
 @property (strong, nonatomic) DPRContentHelper *contentHelper;
+@property (weak, nonatomic) IBOutlet UILabel *bottomLabel;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
@@ -38,7 +39,15 @@
     self.view.backgroundColor = [UIColor darkColor];
     self.title = _pageType;
     
-    self.textView.text = [_contentHelper contentTextWithPageType:_pageType];
+    
+    if([_pageType isEqualToString:@"About"]){
+        NSString *text = [_contentHelper contentTextWithPageType:_pageType];
+        self.bottomLabel.text = text;
+        self.bottomLabel.textColor = [UIColor blackColor];
+    }
+    else{
+        self.textView.text = [_contentHelper contentTextWithPageType:_pageType];
+    }
     
 }
 

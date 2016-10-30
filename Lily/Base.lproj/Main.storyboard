@@ -733,16 +733,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxi-5M-glX">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="blA-Gg-wHl" firstAttribute="top" secondItem="dxi-5M-glX" secondAttribute="bottom" constant="20" id="75I-Kf-Zrm"/>
                             <constraint firstItem="M6H-uh-Rx7" firstAttribute="top" secondItem="mhO-40-Eex" secondAttribute="bottom" id="B8I-qO-NwC"/>
                             <constraint firstItem="blA-Gg-wHl" firstAttribute="top" secondItem="M6H-uh-Rx7" secondAttribute="bottom" id="DlQ-nT-yHc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M6H-uh-Rx7" secondAttribute="trailing" constant="-16" id="QKe-30-Z8a"/>
+                            <constraint firstItem="dxi-5M-glX" firstAttribute="centerX" secondItem="M6H-uh-Rx7" secondAttribute="centerX" id="V2n-9f-j1j"/>
                             <constraint firstAttribute="leadingMargin" secondItem="M6H-uh-Rx7" secondAttribute="leading" constant="16" id="s5y-ek-47A"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLabel" destination="dxi-5M-glX" id="YIR-lo-tVt"/>
                         <outlet property="textView" destination="M6H-uh-Rx7" id="86y-Te-5a0"/>
                     </connections>
                 </viewController>
