@@ -58,8 +58,6 @@
                                     action:nil];
     [[self navigationItem] setBackBarButtonItem:newBackButton];
 
-    //UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"\u2699" style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
-
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
 
     settingsButton.tintColor = [UIColor lightGreenColor];
@@ -71,7 +69,7 @@
 }
 
 - (void)showSettings{
-    
+    [self performSegueWithIdentifier:@"settingsSegue" sender:self];
 }
 
 
