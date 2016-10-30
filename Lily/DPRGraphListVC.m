@@ -22,6 +22,7 @@
 // data
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
+@property (strong, nonatomic) DPRUIHelper *uiHelper;
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSArray *transactionsByDate;
@@ -38,14 +39,23 @@
     [self setupUI];
     [self retrieveData];
     [self setupData];
+    [self alert];
     
+}
+
+- (void)alert{
+    
+    NSString *notificationsStatus = [[NSUserDefaults standardUserDefaults]stringForKey:@"notifications"];
+    if([notificationsStatus isEqualToString:@"y"]){
+        [_uiHelper helpAlertWithMessage:@"This is the dashboard screen, where you can find options for various analyses on your transactions." andTitle:@"Message" andVC:self];
+    }
     
 }
 
 - (void)setupUI{
     
-    DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
-    [UIHelper setupTabUI:self withTitle:@"Dashboard"];
+    self.uiHelper = [[DPRUIHelper alloc] init];
+    [_uiHelper setupTabUI:self withTitle:@"Dashboard"];
     
     self.view.backgroundColor = [UIColor darkColor];
     
@@ -97,6 +107,7 @@
 }
 
 - (void)setupData {
+    
     
     // transactionsByDate
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];

@@ -51,4 +51,22 @@
     
 }
 
+// help alert
+- (void)helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }]];
+    [vc presentViewController:alert animated:YES completion:nil];
+    
+}
+
+- (void)notificationsStatus:(NSString *)status {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:status forKey:@"notifications"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 @end
