@@ -9,6 +9,8 @@
 #import "DPRUIHelper.h"
 #import "UIColor+CustomColors.h"
 
+@import SCLAlertView_Objective_C;
+
 @implementation DPRUIHelper
 
 
@@ -54,11 +56,40 @@
 // help alert
 - (void)helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-    }]];
-    [vc presentViewController:alert animated:YES completion:nil];
+    UIColor *green = [UIColor lightGreenColor];
+    
+    SCLAlertViewBuilder *builder = [SCLAlertViewBuilder new]
+    .addButtonWithActionBlock(@"OK", ^{  })
+    .customViewColor(green);
+    
+    SCLAlertViewShowBuilder *showBuilder = [SCLAlertViewShowBuilder new]
+    .style(SCLAlertViewStyleNotice)
+    .title(@"Notice")
+    .subTitle(message)
+    .duration(0);
+    [showBuilder showAlertView:builder.alertView onViewController:vc];
+    
+}
+
+- (void)settingsHelpAlertWithTitle:(NSString *)title andMessage:(NSString *)message andVC:(UIViewController *)vc{
+    
+    // alert
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+
+    // buttons
+    SCLButton *yesButton = [alert addButton:@"Yes" actionBlock:^(void) {
+        [self notificationsStatus:@"y"];
+    }];
+    //Using Block
+    SCLButton *noButton = [alert addButton:@"No" actionBlock:^(void) {
+        [self notificationsStatus:@"n"];
+    }];
+    
+    yesButton.defaultBackgroundColor = [UIColor lightGreenColor];
+    noButton.defaultBackgroundColor = [UIColor colorWithRed:255/255 green:70/255 blue:70/255 alpha:1];
+
+    // show alert
+    [alert showQuestion:vc title:title subTitle:message closeButtonTitle:nil duration:0.0f];
     
 }
 

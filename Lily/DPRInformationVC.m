@@ -42,7 +42,6 @@
     self.view.backgroundColor = [UIColor darkColor];
     self.title = _pageType;
     
-    
     // about
     if([_pageType isEqualToString:@"About"]){
         NSString *text = [_contentHelper contentTextWithPageType:_pageType];
@@ -51,31 +50,17 @@
     }
     // help
     else if([_pageType isEqualToString:@"Help"]){
-        self.textView.hidden = YES;
-        self.bottomLabel.hidden = YES;
-        [self alertWithMessage:@"Would you like help notifications?" andTitle:@"Help"];
+        self.textView.attributedText = [_contentHelper helpContent];
+        _bottomLabel.hidden = YES;
     }
     // licenses
     else{
         self.textView.text = [_contentHelper contentTextWithPageType:_pageType];
+        _bottomLabel.hidden = YES;
     }
-    
+    self.textView.textAlignment = NSTextAlignmentJustified;
+
 }
-
-
-- (void) alertWithMessage:(NSString *)message andTitle:(NSString *)title {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [_uiHelper notificationsStatus:@"y"];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [_uiHelper notificationsStatus:@"n"];
-    }]];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

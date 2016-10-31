@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DPRContentHelper : NSObject
 
 - (NSString *)contentTextWithPageType:(NSString *)pageType;
+- (NSAttributedString *)helpContent;
 
 @end

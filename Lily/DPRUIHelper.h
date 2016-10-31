@@ -18,5 +18,6 @@
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;
 - (void) helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
 - (void)notificationsStatus:(NSString *)status;
+- (void)settingsHelpAlertWithTitle:(NSString *)title andMessage:(NSString *)message andVC:(UIViewController *)vc;
 
 @end

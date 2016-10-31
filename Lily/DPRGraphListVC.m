@@ -39,16 +39,6 @@
     [self setupUI];
     [self retrieveData];
     [self setupData];
-    [self alert];
-    
-}
-
-- (void)alert{
-    
-    NSString *notificationsStatus = [[NSUserDefaults standardUserDefaults]stringForKey:@"notifications"];
-    if([notificationsStatus isEqualToString:@"y"]){
-        [_uiHelper helpAlertWithMessage:@"This is the dashboard screen, where you can find options for various analyses on your transactions." andTitle:@"Message" andVC:self];
-    }
     
 }
 
@@ -247,6 +237,7 @@
     
     //Set the background color of the View
     view.tintColor = [UIColor darkColor];
+    view.layer.zPosition = -999;
     
 }
 
