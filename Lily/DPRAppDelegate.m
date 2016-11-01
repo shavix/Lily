@@ -40,7 +40,7 @@
 
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
-#warning change this back
+#warning PHONE ACQUIRED - change this back
     //NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
     NSString *username = @"davidpr";
     

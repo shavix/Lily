@@ -82,7 +82,7 @@
     // setup identifier set
     NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
     
-#warning incomplete
+#warning PHONE ACQUIRED - incomplete
     // retrieve recent transactions
     NSInteger numTransactions = 50;
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
