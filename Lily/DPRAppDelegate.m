@@ -26,7 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSLog(@"lo%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory  inDomains:NSUserDomainMask] lastObject]);
+    [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 
     // initial settings
     [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
@@ -56,7 +56,7 @@
     // not authorized
     else{
         
-        // check if stay logged in
+        // if user is stored in core data
         if(username) {
             self.cdHelper.username = username;
             DPRUser *user = [self.cdHelper fetchUser];
@@ -72,6 +72,7 @@
                 [self.window makeKeyAndVisible];
             }
         }
+        // if user is not in core data
         else {
             [self createWalkthrough];
         }
