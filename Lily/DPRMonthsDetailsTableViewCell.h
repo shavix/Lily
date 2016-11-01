@@ -10,6 +10,7 @@
 
 @interface DPRMonthsDetailsTableViewCell : UITableViewCell
 
+// UI
 @property (weak, nonatomic) IBOutlet UILabel *transactionsAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *receivedAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sentAmountLabel;

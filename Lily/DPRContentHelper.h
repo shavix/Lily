@@ -11,6 +11,7 @@
 
 @interface DPRContentHelper : NSObject
 
+// methods
 - (NSString *)contentTextWithPageType:(NSString *)pageType;
 - (NSAttributedString *)helpContent;
 

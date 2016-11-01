@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRTransaction : NSManagedObject
 
+// methods
 - (void)addInformation:(NSDictionary *)information withUserFullName:(NSString *)fullName;
 - (void)createTransactionDescription;
 

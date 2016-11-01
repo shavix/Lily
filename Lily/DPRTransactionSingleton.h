@@ -10,9 +10,11 @@
 
 @interface DPRTransactionSingleton : NSObject
 
-+ (instancetype)sharedModel;
-
+// properties
 @property (strong, nonatomic) NSArray *transactionsByDate;
 @property (strong, nonatomic) NSArray *transactionsByMonth;
+
+// methods
++ (instancetype)sharedModel;
 
 @end

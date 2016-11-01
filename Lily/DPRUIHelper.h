@@ -13,6 +13,8 @@
 
 @interface DPRUIHelper : NSObject
 
+
+// methods
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title;
 - (void)setupDashboardViewUI:(UIView *)view;
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface DPRFriendsListTableViewCell : UITableViewCell
+
+// UI
 @property (weak, nonatomic) IBOutlet UILabel *transactionsAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sentAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *receivedAmountLabel;

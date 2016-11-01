@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+#warning Useless? remove? - test image downloading + core data before deleting
 @interface DPRImageTansformer : NSValueTransformer
 
 @end

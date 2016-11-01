@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRTarget (CoreDataProperties)
 
+// properties
 @property (nullable, nonatomic, retain) NSString *username;
 @property (nullable, nonatomic, retain) NSString *picture_url;
 @property (nullable, nonatomic, retain) NSString *fullName;

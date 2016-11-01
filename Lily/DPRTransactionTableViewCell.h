@@ -10,6 +10,7 @@
 
 @interface DPRTransactionTableViewCell : UITableViewCell
 
+// UI
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 @property (weak, nonatomic) IBOutlet UILabel *transactionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;

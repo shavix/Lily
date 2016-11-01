@@ -35,8 +35,7 @@
     [[UILabel appearance] setTextColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor lightGreenColor]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    NSArray *classes = @[[UITableViewHeaderFooterView class]];
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:classes] setTextColor:[UIColor whiteColor]];
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setTextColor:[UIColor whiteColor]];
 
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
@@ -64,7 +63,7 @@
                 [self createWalkthrough];
             }
             else{
-                // set root view controller
+                // set root view controller to tabBarController - skip walkthrough
                 UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
                 UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
                 
@@ -86,7 +85,6 @@
 - (void)createLoginWithInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken {
     
     // create user
-    self.venmoHelper = [DPRVenmoHelper sharedModel];
     self.venmoHelper.managedObjectContext = self.managedObjectContext;
 
     // check if user exists in core data
@@ -94,8 +92,8 @@
     self.cdHelper.username = username;
     DPRUser *user = [self.cdHelper fetchUser];
     
-    // create new user - insert into Core Data
     if(!user){
+		// create new user - insert into Core Data
         user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
         [user userInformation:userInformation andAccessToken:accessToken];
 
@@ -105,6 +103,8 @@
             // handle error
         }
     }
+	
+	// set picture for singleton
     NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
     user.pictureImage = [self.venmoHelper fetchProfilePictureWithImageURL:pictureURL];
     
@@ -120,7 +120,6 @@
 - (void)createWalkthrough{
     
     // set venmoViewController as initialViewController
-    
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     DPRWalkthroughVC *vc = [aStoryboard instantiateViewControllerWithIdentifier:@"walkthroughVC"];
     

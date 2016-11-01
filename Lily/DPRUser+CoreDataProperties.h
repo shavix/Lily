@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRUser (CoreDataProperties)
 
+// properties
 @property (nullable, nonatomic, retain) NSString *username;
 @property (nullable, nonatomic, retain) NSString *accessToken;
 @property (nullable, nonatomic, retain) NSString *fullName;
@@ -26,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRUser (CoreDataGeneratedAccessors)
 
+// methods
 - (void)addTransactionListObject:(DPRTransaction *)value;
 - (void)removeTransactionListObject:(DPRTransaction *)value;
 - (void)addTransactionList:(NSSet<DPRTransaction *> *)values;

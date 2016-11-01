@@ -12,17 +12,15 @@
 
 @interface DPRVenmoHelper : NSObject
 
+
+// properties
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-// venmo calls
+// methods
 - (NSDictionary *)fetchUserInformation;
-
-// network calls
 - (UIImage *)fetchProfilePictureWithImageURL:(NSString *)imageURL;
-
 - (NSArray *)fetchTransactions:(NSInteger)count;
-
 + (instancetype)sharedModel;
 
 @end

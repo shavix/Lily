@@ -20,7 +20,6 @@
 		63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FAD1D220919003410D3 /* DPRCoreDataHelper.m */; };
 		63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */; };
 		63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB61D231BD9003410D3 /* DPRUser.m */; };
-		63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FBC1D231D00003410D3 /* DPRImageTansformer.m */; };
 		63782FC01D24AABC003410D3 /* DPRTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */; };
 		6379F5541D1B9B9A0094ED24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5531D1B9B9A0094ED24 /* main.m */; };
 		6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5561D1B9B9A0094ED24 /* DPRAppDelegate.m */; };
@@ -59,6 +58,7 @@
 		63811E6C1DC695E9008C5874 /* DPRContentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63811E6B1DC695E9008C5874 /* DPRContentHelper.m */; };
 		63811E6E1DC6AACF008C5874 /* ApacheLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63811E6D1DC6AACF008C5874 /* ApacheLicense.txt */; };
 		63811E701DC6AB74008C5874 /* MITLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63811E6F1DC6AB74008C5874 /* MITLicense.txt */; };
+		638730AA1DC9521100D26A10 /* DPRImageTansformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 638730A91DC9521100D26A10 /* DPRImageTansformer.m */; };
 		63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */; };
 		63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE551DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m */; };
 		63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE581DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m */; };
@@ -120,8 +120,6 @@
 		63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRUser+CoreDataProperties.m"; sourceTree = "<group>"; };
 		63782FB51D231BD9003410D3 /* DPRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUser.h; sourceTree = "<group>"; };
 		63782FB61D231BD9003410D3 /* DPRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUser.m; sourceTree = "<group>"; };
-		63782FBB1D231D00003410D3 /* DPRImageTansformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRImageTansformer.h; sourceTree = "<group>"; };
-		63782FBC1D231D00003410D3 /* DPRImageTansformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRImageTansformer.m; sourceTree = "<group>"; };
 		63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionTableViewCell.h; sourceTree = "<group>"; };
 		63782FBF1D24AABC003410D3 /* DPRTransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionTableViewCell.m; sourceTree = "<group>"; };
 		6379F54F1D1B9B9A0094ED24 /* Lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +180,8 @@
 		63811E6B1DC695E9008C5874 /* DPRContentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRContentHelper.m; sourceTree = "<group>"; };
 		63811E6D1DC6AACF008C5874 /* ApacheLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApacheLicense.txt; sourceTree = "<group>"; };
 		63811E6F1DC6AB74008C5874 /* MITLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MITLicense.txt; sourceTree = "<group>"; };
+		638730A81DC9521100D26A10 /* DPRImageTansformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRImageTansformer.h; sourceTree = "<group>"; };
+		638730A91DC9521100D26A10 /* DPRImageTansformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRImageTansformer.m; sourceTree = "<group>"; };
 		63C2DE4B1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsExpendituresVC.h; sourceTree = "<group>"; };
 		63C2DE4C1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsExpendituresVC.m; sourceTree = "<group>"; };
 		63C2DE541DC27B80009F64F8 /* DPRMonthsNetIncomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsNetIncomeVC.h; sourceTree = "<group>"; };
@@ -261,8 +261,8 @@
 				6363262C1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m */,
 				63782FB31D231BD9003410D3 /* DPRUser+CoreDataProperties.h */,
 				63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */,
-				63782FBB1D231D00003410D3 /* DPRImageTansformer.h */,
-				63782FBC1D231D00003410D3 /* DPRImageTansformer.m */,
+				638730A81DC9521100D26A10 /* DPRImageTansformer.h */,
+				638730A91DC9521100D26A10 /* DPRImageTansformer.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -294,6 +294,7 @@
 			children = (
 				6379F5551D1B9B9A0094ED24 /* DPRAppDelegate.h */,
 				6379F5561D1B9B9A0094ED24 /* DPRAppDelegate.m */,
+				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
 				6379F5881D1B9C090094ED24 /* Model */,
 				6379F5891D1B9C0E0094ED24 /* View */,
 				6379F58A1D1B9C120094ED24 /* Controller */,
@@ -307,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				6379F5A81D1BA8DC0094ED24 /* Intro */,
-				6379F55B1D1B9B9A0094ED24 /* Main.storyboard */,
 				63C551131DC2E54A006B984F /* XYMarkerView.swift */,
 				630AAF3B1DC2CE0B0031BACD /* BalloonMarker.swift */,
 				6379F5611D1B9B9A0094ED24 /* Assets.xcassets */,
@@ -715,6 +715,7 @@
 				6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */,
 				636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */,
 				63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */,
+				638730AA1DC9521100D26A10 /* DPRImageTansformer.m in Sources */,
 				63782FC01D24AABC003410D3 /* DPRTransactionTableViewCell.m in Sources */,
 				6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */,
 				6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */,
@@ -727,7 +728,6 @@
 				63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */,
 				635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */,
 				6379F5CF1D1CA2490094ED24 /* DPRBalanceView.m in Sources */,
-				63782FBD1D231D00003410D3 /* DPRImageTansformer.m in Sources */,
 				63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */,
 				63811E6C1DC695E9008C5874 /* DPRContentHelper.m in Sources */,
 				636326381D2A1EB6001CA480 /* DPRTransaction.m in Sources */,

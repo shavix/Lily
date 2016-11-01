@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DPRTransaction (CoreDataProperties)
 
+// properties
 @property (nullable, nonatomic, retain) NSNumber *amount;
 @property (nullable, nonatomic, retain) NSDate *dateCompleted;
 @property (nullable, nonatomic, retain) NSString *dateCompletedString;

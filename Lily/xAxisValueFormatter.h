@@ -12,8 +12,10 @@
 
 @interface xAxisValueFormatter : NSObject <IChartAxisValueFormatter>
 
+// properties
 @property (strong, nonatomic) NSArray *friends;
 
+// methods
 - (id)initForChart:(BarLineChartViewBase *)chart andArray:(NSArray *)arr;
 
 @end

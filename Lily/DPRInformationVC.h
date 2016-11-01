@@ -10,6 +10,7 @@
 
 @interface DPRInformationVC : UIViewController
 
+// properties
 @property (strong, nonatomic) NSString *pageType;
 
 @end
