@@ -98,7 +98,6 @@
 
 - (void)setupData {
     
-    
     // transactionsByDate
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
     NSArray *results = [self.cdHelper setupTransactionsByDateWithUser:self.user];
@@ -113,9 +112,13 @@
     
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
-    
+	
+	// TRANSACTIONS
+	if(section == 0){
+		
+	}
     // FRIENDS
-    if(section == 0){
+    else if(section == 1){
         // transactions
         if(row == 0){
             [self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
@@ -130,7 +133,7 @@
         }
     }
     // MONTHLY
-    else if(section == 1){
+    else if(section == 2){
         // expenditures
         if(row == 0){
             [self performSegueWithIdentifier:@"monthsExpendituresSegue" sender:self];
@@ -157,9 +160,16 @@
     
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
-    
+	
+	
+	// TRANSACTIONS
+	if(section == 0){
+		cell.image.image = [UIImage imageNamed:@"loading"];
+		cell.title.text = @"Load transactions";
+		cell.subtitle.text = @"Load more transactions beyond your most recent 100 (default setting).";
+	}
     // FRIENDS
-    if(section == 0)
+    else if(section == 1)
     {
         if(row == 0){
             cell.image.image = [UIImage imageNamed:@"handshake.png"];
@@ -178,7 +188,7 @@
         }
     }
     // MONTHLY
-    else if(section == 1)
+    else if(section == 2)
     {
         if(row == 0){
             cell.image.image = [UIImage imageNamed:@"payment.png"];
@@ -220,8 +230,12 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     NSString *title;
-    
-    if(section == 0){
+	
+	
+	if(section == 0){
+		title = @"TRANSACTIONS";
+	}
+    else if(section == 1){
         title = @"FRIENDS";
     }
     else{
@@ -242,10 +256,15 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	
+	if(section == 0){
+		return 1;
+	}
+	
     return 3;
 }
 

@@ -39,10 +39,8 @@
 
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
-#warning PHONE ACQUIRED - change this back
-    //NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
-    NSString *username = @"davidpr";
-    
+    NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
+	
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.venmoHelper = [DPRVenmoHelper sharedModel];
     self.venmoHelper.accessToken = accessToken;

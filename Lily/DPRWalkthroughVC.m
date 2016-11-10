@@ -122,21 +122,41 @@
     
     // get substring
     NSString *URLString = [[request URL] absoluteString];
-    NSString *firstPartOfURL = [URLString substringToIndex:22];
-    
-    // if web redirect - get access token
-    if ([firstPartOfURL isEqualToString:@"http://www.google.com/"]) {
-        
-        _accessToken = [URLString substringFromIndex:23];
-        NSArray *temp = [_accessToken componentsSeparatedByString:@"="];
-        _accessToken = temp[1];
-        
-        // store access token to NSUserDefaults
-        [self storeAccessToken];
-        
-        [self signedIn];
-        
-    }
+	
+	// already have access token, do nothing
+	if(_accessToken){
+		
+		// if web redirect - get access token
+		if ([URLString rangeOfString:@"webview-auth"].location != NSNotFound) {
+			
+			// store access token to NSUserDefaults
+			[self storeAccessToken];
+			
+			[self signedIn];
+		}
+
+	}
+	else{
+	
+		// redirect via google.com
+		if ([URLString rangeOfString:@"google.com"].location != NSNotFound) {
+			_accessToken = [URLString substringFromIndex:23];
+		}
+		
+		// if web redirect - get access token
+		if ([URLString rangeOfString:@"webview_auth"].location != NSNotFound) {
+	
+			NSArray *temp = [_accessToken componentsSeparatedByString:@"="];
+			_accessToken = temp[1];
+			
+			// store access token to NSUserDefaults
+			[self storeAccessToken];
+			
+			[self signedIn];
+			
+		}
+		
+	}
     return YES;
 }
 
