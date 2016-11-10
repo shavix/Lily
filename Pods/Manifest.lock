@@ -9,12 +9,14 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SwiftSpinner (1.1.0)
 
 DEPENDENCIES:
   - Charts (~> 3.0.0)
   - EAIntroView (~> 2.9.0)
   - SCLAlertView-Objective-C
   - SDWebImage (~> 3.8.2)
+  - SwiftSpinner
 
 SPEC CHECKSUMS:
   Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
@@ -22,5 +24,6 @@ SPEC CHECKSUMS:
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   SCLAlertView-Objective-C: ca78280817e66e74366b78579350dee2ff277e23
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
 
 COCOAPODS: 0.39.0

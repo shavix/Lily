@@ -57,9 +57,13 @@
 }
 
 - (void)insertIntoDatabse:(NSArray *)tempTransactionsArray withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user {
-    
+	
+	int count = 0;
+	
     for(NSDictionary *info in tempTransactionsArray){
-              
+		
+		
+		
          NSString *status = [info objectForKey:@"status"];
          // valid transaction
          if([status isEqualToString:@"settled"]){
@@ -81,6 +85,11 @@
              }
              
          }
+		
+		count++;
+		if(count > 50){
+			
+		}
          
      }
      

@@ -14,8 +14,9 @@
 #import "DPRVenmoHelper.h"
 #import "DPRGraphTableViewCell.h"
 #import "DPRFriendsTransactionsVC.h"
-
 #import "UIColor+CustomColors.h"
+
+#define NUM_TRANSACTIONS 500
 
 @interface DPRGraphListVC()
 
@@ -84,9 +85,8 @@
     
 #warning PHONE ACQUIRED - incomplete
     // retrieve recent transactions
-    NSInteger numTransactions = 50;
     DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
+    NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
     
     // organize transactions
     [self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];

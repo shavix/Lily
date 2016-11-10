@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/EARestrictedScrollView.framework"
   install_framework "Pods/SCLAlertView_Objective_C.framework"
   install_framework "Pods/SDWebImage.framework"
+  install_framework "Pods/SwiftSpinner.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Charts.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/EARestrictedScrollView.framework"
   install_framework "Pods/SCLAlertView_Objective_C.framework"
   install_framework "Pods/SDWebImage.framework"
+  install_framework "Pods/SwiftSpinner.framework"
 fi
