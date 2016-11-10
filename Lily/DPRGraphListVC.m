@@ -16,7 +16,7 @@
 #import "DPRFriendsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
 
-#define NUM_TRANSACTIONS 500
+#define NUM_TRANSACTIONS 50
 
 @interface DPRGraphListVC()
 
@@ -33,7 +33,6 @@
 
 @implementation DPRGraphListVC
 
-#pragma mark - on load
 
 - (void)viewDidLoad {
     
@@ -43,36 +42,8 @@
     
 }
 
-- (void)setupUI{
-    
-    self.uiHelper = [[DPRUIHelper alloc] init];
-    [_uiHelper setupTabUI:self withTitle:@"Dashboard"];
-    
-    self.view.backgroundColor = [UIColor darkColor];
-    
-    //[self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
-    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 
-    UIBarButtonItem *newBackButton =
-    [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-    [[self navigationItem] setBackBarButtonItem:newBackButton];
-
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
-
-    settingsButton.tintColor = [UIColor lightGreenColor];
-    
-    UIFont *customFont = [UIFont fontWithName:@"Helvetica" size:24.0];
-    NSDictionary *fontDictionary = @{NSFontAttributeName : customFont};
-    [settingsButton setTitleTextAttributes:fontDictionary forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = settingsButton;
-}
-
-- (void)showSettings{
-    [self performSegueWithIdentifier:@"settingsSegue" sender:self];
-}
-
+#pragma mark - Data
 
 - (void)retrieveData{
     
@@ -105,6 +76,41 @@
     self.transactionSingleton.transactionsByMonth = results[1];
     
 }
+
+
+
+#pragma mark - UI
+
+- (void)setupUI{
+	
+	self.uiHelper = [[DPRUIHelper alloc] init];
+	[_uiHelper setupTabUI:self withTitle:@"Dashboard"];
+	
+	self.view.backgroundColor = [UIColor darkColor];
+	
+	//[self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
+	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+	
+	UIBarButtonItem *newBackButton =
+	[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
+									target:nil
+									action:nil];
+	[[self navigationItem] setBackBarButtonItem:newBackButton];
+	
+	UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+	
+	settingsButton.tintColor = [UIColor lightGreenColor];
+	
+	UIFont *customFont = [UIFont fontWithName:@"Helvetica" size:24.0];
+	NSDictionary *fontDictionary = @{NSFontAttributeName : customFont};
+	[settingsButton setTitleTextAttributes:fontDictionary forState:UIControlStateNormal];
+	self.navigationItem.rightBarButtonItem = settingsButton;
+}
+
+- (void)showSettings{
+	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
+}
+
 
 #pragma mark - TableView
 

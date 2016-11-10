@@ -28,21 +28,12 @@
     
     [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 
-    // initial settings
-    [[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
-    [[UITabBar appearance] setBarTintColor:[UIColor darkishColor]];
-    [[UILabel appearance] setFont:[UIFont fontWithName:@"Helvetica-Light" size:14.0]];
-    [[UILabel appearance] setTextColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTintColor:[UIColor lightGreenColor]];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setTextColor:[UIColor whiteColor]];
+	[self uiSettings];
+	[self setupData];
 
     // check if user is logged in
     NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
     NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
-	
-    self.cdHelper = [DPRCoreDataHelper sharedModel];
-    self.venmoHelper = [DPRVenmoHelper sharedModel];
     self.venmoHelper.accessToken = accessToken;
     NSDictionary *userInformation = [self.venmoHelper fetchUserInformation];
     
@@ -52,38 +43,28 @@
     }
     // not authorized
     else{
-        
-        // if user is stored in core data
-        if(username) {
-            self.cdHelper.username = username;
-            DPRUser *user = [self.cdHelper fetchUser];
-            if(!user){
-                [self createWalkthrough];
-            }
-            else{
-                // set root view controller to tabBarController - skip walkthrough
-                UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-                UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-                
-                self.window.rootViewController = tabBarController;
-                [self.window makeKeyAndVisible];
-            }
-        }
-        // if user is not in core data
-        else {
-            [self createWalkthrough];
-        }
+
+		// search core data
+		self.cdHelper.username = username;
+		DPRUser *user = [self.cdHelper fetchUser];
+		
+		// no accesstoken, no user in core data - walkthrough
+		if(!user){
+			[self goToWalkthrough];
+		}
+		// no accesstoken, user in core data - skip walkthrough
+		else{
+			[self goToDashboard];
+		}
     }
-
     return YES;
-
 }
 
 
 - (void)createLoginWithInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken {
     
     // create user
-    self.venmoHelper.managedObjectContext = self.managedObjectContext;
+    _venmoHelper.managedObjectContext = _managedObjectContext;
 
     // check if user exists in core data
     NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
@@ -91,67 +72,64 @@
     DPRUser *user = [self.cdHelper fetchUser];
     
     if(!user){
-		// create new user - insert into Core Data
-        user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
-        [user userInformation:userInformation andAccessToken:accessToken];
-
-        NSError *error = nil;
-        [self.managedObjectContext save:&error];
-        if(error){
-            // handle error
-        }
+		[self createUser:user withInformation:userInformation andAccessToken:accessToken];
     }
 	
 	// set picture for singleton
-    NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
-    user.pictureImage = [self.venmoHelper fetchProfilePictureWithImageURL:pictureURL];
-    
-    // set root view controller
-    UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-    
-    self.window.rootViewController = tabBarController;
-    [self.window makeKeyAndVisible];
+	NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
+	user.pictureImage = [self.venmoHelper fetchProfilePictureWithImageURL:pictureURL];
+	
+	[self goToDashboard];
     
 }
 
-- (void)createWalkthrough{
-    
+- (void)createUser:(DPRUser *)user withInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken{
+	// create new user - insert into Core Data
+	user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
+	[user userInformation:userInformation andAccessToken:accessToken];
+	
+	NSError *error = nil;
+	[self.managedObjectContext save:&error];
+	if(error){
+		// handle error
+	}
+}
+
+- (void)goToDashboard{
+	// set root view controller
+	UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+	UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+	
+	self.window.rootViewController = tabBarController;
+	[self.window makeKeyAndVisible];
+}
+
+- (void)goToWalkthrough{
     // set venmoViewController as initialViewController
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     DPRWalkthroughVC *vc = [aStoryboard instantiateViewControllerWithIdentifier:@"walkthroughVC"];
-    
     UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:vc];
-    
     self.window.rootViewController = navCtrl;
     [self.window makeKeyAndVisible];
-    
-    
 }
 
-
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (void)uiSettings{
+	// initial settings
+	[[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
+	[[UITabBar appearance] setBarTintColor:[UIColor darkishColor]];
+	[[UILabel appearance] setFont:[UIFont fontWithName:@"Helvetica-Light" size:14.0]];
+	[[UILabel appearance] setTextColor:[UIColor whiteColor]];
+	[[UINavigationBar appearance] setTintColor:[UIColor lightGreenColor]];
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+	[[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setTextColor:[UIColor whiteColor]];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)setupData{
+	self.cdHelper = [DPRCoreDataHelper sharedModel];
+	self.venmoHelper = [DPRVenmoHelper sharedModel];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
 
@@ -234,5 +212,27 @@
         }
     }
 }
+
+
+#pragma mark - application states
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+	// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+	// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
 
 @end

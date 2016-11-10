@@ -17,6 +17,9 @@
 @interface DPRWalkthroughVC()
 
 @property (strong, nonatomic) UIWebView *webView;
+
+@property (weak, nonatomic) DPRVenmoHelper *venmoHelper;
+@property (weak, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) NSString *accessToken;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 
@@ -50,71 +53,6 @@
     
 }
 
-#pragma mark - EAIntro
-
-// perform web request when intro finishes
-- (void)introDidFinish:(EAIntroView *)introView wasSkipped:(BOOL)wasSkipped{
-    
-    self.navigationController.navigationBarHidden = NO;
-    
-    [self webRequest];
-    
-}
-
-
-- (void)EAIntro {
-    
-    self.navigationController.navigationBarHidden = YES;
-    
-    CGRect frame = CGRectMake(0, self.view.frame.size.height/8, self.view.frame.size.width/2, self.view.frame.size.width/2);
-    CGFloat height = self.view.frame.size.height/6;
-    
-    UIColor *backgroundColor = [UIColor darkishColor];
-    
-    EAIntroPage *page1 = [EAIntroPage page];
-    page1.title = @"Lily";
-    page1.desc = @"The world's first Venmo financial manager.";
-    //page1.bgImage = [UIImage imageNamed:@"bg1"];
-    page1.bgColor = backgroundColor;
-    page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"presentation"]];
-    page1.titleIconView.frame = frame;
-    page1.titleIconPositionY = height;
-
-    EAIntroPage *page2 = [EAIntroPage page];
-    page2.title = @"Analytics";
-    page2.desc = @"Lily delivers in-depth data analytics on all your previous transactions";
-    //page2.bgImage = [UIImage imageNamed:@"bg2"];
-    page2.bgColor = backgroundColor;
-    page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"graph"]];
-    page2.titleIconView.frame = frame;
-    page2.titleIconPositionY = height;
-
-    EAIntroPage *page3 = [EAIntroPage page];
-    page3.title = @"Free";
-    page3.desc = @"Lily is free forver. No ads. No subscription fees.";
-    //page3.bgImage = [UIImage imageNamed:@"bg3"];
-    page3.bgColor = backgroundColor;
-    page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"free"]];
-    page3.titleIconView.frame = frame;
-    page3.titleIconPositionY = height;
-
-    EAIntroPage *page4 = [EAIntroPage page];
-    page4.title = @"Let's start!";
-    page4.desc = @"Simply enter your Venmo credentials on the next page and start managing!";
-    //page4.bgImage = [UIImage imageNamed:@"bg4"];
-    page4.bgColor = backgroundColor;
-    page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"athletics"]];
-    page4.titleIconView.frame = frame;
-    page4.titleIconPositionY = height;
-
-    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page3,page4]];
-    
-    [intro setDelegate:self];
-    
-    [intro showInView:self.view animateDuration:0.3];
-    
-}
-
 
 #pragma mark - UIWebView
 
@@ -131,7 +69,6 @@
 			
 			// store access token to NSUserDefaults
 			[self storeAccessToken];
-			
 			[self signedIn];
 		}
 
@@ -151,9 +88,7 @@
 			
 			// store access token to NSUserDefaults
 			[self storeAccessToken];
-			
 			[self signedIn];
-			
 		}
 		
 	}
@@ -162,52 +97,129 @@
 
 #pragma mark - Sign In
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
-
 - (void)signedIn {
     
     // retrieve user information
-    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    venmoHelper.accessToken = self.accessToken;
-    NSDictionary *userInformation = [venmoHelper fetchUserInformation];
+	NSDictionary *userInformation = [self retrieveInformation];
     
-    // check if user exists in core data
-    DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
-    NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
-    cdHelper.username = username;
-    DPRUser *user = [cdHelper fetchUser];
+	[self checkCoreDataWithUserInformation:userInformation];
+    DPRUser *user = [_cdHelper fetchUser];
     
     // create new user - insert into Core Data
     if(!user){
-        user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
-        [user userInformation:userInformation andAccessToken:_accessToken];
-
-        NSError *error = nil;
-        [self.managedObjectContext save:&error];
-        if(error){
-            // handle error
-        }
+		[self createUser:user withInformation:userInformation andAccessToken:_accessToken];
     }
+	
+	// set picture for singleton
     NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
-    user.pictureImage = [venmoHelper fetchProfilePictureWithImageURL:pictureURL];
+    user.pictureImage = [_venmoHelper fetchProfilePictureWithImageURL:pictureURL];
     
     // venmo helper managedobjectcontext
-    venmoHelper.managedObjectContext = self.managedObjectContext;
-    
-    // segue to home page
-    self.navigationController.navigationBarHidden = YES;
-    
-    [self performSegueWithIdentifier:@"signedInSegue" sender:self];
+    _venmoHelper.managedObjectContext = self.managedObjectContext;
 
+	[self goToDashboard];
+	
+}
+
+- (NSDictionary *)retrieveInformation{
+	
+	self.venmoHelper = [DPRVenmoHelper sharedModel];
+	_venmoHelper.accessToken = self.accessToken;
+	
+	return [_venmoHelper fetchUserInformation];
+}
+
+- (void)checkCoreDataWithUserInformation:(NSDictionary *)userInformation{
+	// check if user exists in core data
+	self.cdHelper = [DPRCoreDataHelper sharedModel];
+	NSString *username = [[userInformation objectForKey:@"user"] objectForKey:@"username"];
+	_cdHelper.username = username;
+}
+
+- (void)createUser:(DPRUser *)user withInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken{
+	// create new user - insert into Core Data
+	user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
+	[user userInformation:userInformation andAccessToken:accessToken];
+	
+	NSError *error = nil;
+	[self.managedObjectContext save:&error];
+	if(error){
+		// handle error
+	}
+}
+
+- (void)goToDashboard{
+	// segue to home page
+	self.navigationController.navigationBarHidden = YES;
+	[self performSegueWithIdentifier:@"signedInSegue" sender:self];
+}
+
+#pragma mark - EAIntro
+
+// perform web request when intro finishes
+- (void)introDidFinish:(EAIntroView *)introView wasSkipped:(BOOL)wasSkipped{
+	self.navigationController.navigationBarHidden = NO;
+	[self webRequest];
+}
+
+
+- (void)EAIntro {
+	
+	// ui settings
+	self.navigationController.navigationBarHidden = YES;
+	CGRect frame = CGRectMake(0, self.view.frame.size.height/8, self.view.frame.size.width/2, self.view.frame.size.width/2);
+	CGFloat height = self.view.frame.size.height/6;
+	UIColor *backgroundColor = [UIColor darkishColor];
+	
+	EAIntroPage *page1 = [EAIntroPage page];
+	page1.title = @"Lily";
+	page1.desc = @"The world's first Venmo financial manager.";
+	//page1.bgImage = [UIImage imageNamed:@"bg1"];
+	page1.bgColor = backgroundColor;
+	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"presentation"]];
+	page1.titleIconView.frame = frame;
+	page1.titleIconPositionY = height;
+	
+	EAIntroPage *page2 = [EAIntroPage page];
+	page2.title = @"Analytics";
+	page2.desc = @"Lily delivers in-depth data analytics on all your previous transactions";
+	//page2.bgImage = [UIImage imageNamed:@"bg2"];
+	page2.bgColor = backgroundColor;
+	page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"graph"]];
+	page2.titleIconView.frame = frame;
+	page2.titleIconPositionY = height;
+	
+	EAIntroPage *page3 = [EAIntroPage page];
+	page3.title = @"Free";
+	page3.desc = @"Lily is free forver. No ads. No subscription fees.";
+	//page3.bgImage = [UIImage imageNamed:@"bg3"];
+	page3.bgColor = backgroundColor;
+	page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"free"]];
+	page3.titleIconView.frame = frame;
+	page3.titleIconPositionY = height;
+	
+	EAIntroPage *page4 = [EAIntroPage page];
+	page4.title = @"Let's start!";
+	page4.desc = @"Simply enter your Venmo credentials on the next page and start managing!";
+	//page4.bgImage = [UIImage imageNamed:@"bg4"];
+	page4.bgColor = backgroundColor;
+	page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"athletics"]];
+	page4.titleIconView.frame = frame;
+	page4.titleIconPositionY = height;
+	
+	EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page3,page4]];
+	
+	[intro setDelegate:self];
+	
+	[intro showInView:self.view animateDuration:0.3];
+	
 }
 
 
 #pragma mark - accessToken
 
 - (void)storeAccessToken {
-    
+	
     [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

@@ -22,8 +22,7 @@
 
 // user
 - (DPRUser *)fetchUser{
-    
-    
+	
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DPRUser"];
     NSError *error = nil;
     NSArray *users = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
@@ -61,8 +60,6 @@
 	int count = 0;
 	
     for(NSDictionary *info in tempTransactionsArray){
-		
-		
 		
          NSString *status = [info objectForKey:@"status"];
          // valid transaction
