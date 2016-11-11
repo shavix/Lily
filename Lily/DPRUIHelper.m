@@ -53,6 +53,38 @@
     
 }
 
+
+-(void) customizeMenuWithVC:(DropdownMenuController *)vc andBarChart:(BarChartView *)chart{
+	
+
+	
+	vc.menu.layer.cornerRadius = 10;
+	vc.menu.clipsToBounds = YES;
+	
+	
+	// Style menu buttons with IonIcons.
+	for (UIButton *button in vc.buttons) {
+		[button addTarget:vc action:@selector(animate) forControlEvents:UIControlEventTouchUpInside];
+		// Set the title and icon position
+		[button sizeToFit];
+		button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width-10, 0, button.imageView.frame.size.width);
+		button.imageEdgeInsets = UIEdgeInsetsMake(0, button.titleLabel.frame.size.width, 0, -button.titleLabel.frame.size.width);
+		
+		button.backgroundColor = [UIColor charcoalColor];
+		
+		// Set color to white
+		[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	}
+	
+	vc.menu.layer.zPosition = 999;
+	
+}
+
+- (void)animate{
+	
+}
+
+
 // help alert
 - (void)helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
     

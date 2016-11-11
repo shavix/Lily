@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSArray *transactionsByMonth;
 @property (strong, nonatomic) NSMutableArray *months;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @end
@@ -42,7 +42,7 @@
     [self setupUI];
     [self setDataCount];
     [self setupChart];
-    
+	
 }
 
 - (void)setDataCount
@@ -87,9 +87,9 @@
 }
 
 - (void)setupChart{
-    
+	
     _barChartView.delegate = self;
-    
+	
     _barChartView.drawBarShadowEnabled = NO;
     _barChartView.drawValueAboveBarEnabled = YES;
     _barChartView.maxVisibleCount = 60;
@@ -184,7 +184,7 @@
 - (void)setupUI{
     
     self.title = @"Monthly";
-    self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    self.labelTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     
     self.view.backgroundColor = [UIColor darkColor];
     self.barChartView.backgroundColor = [UIColor darkColor];
@@ -200,8 +200,20 @@
     else{
         title = [NSString stringWithFormat:@"Expenditures (%ld - %ld)", (currYear - 1), currYear];
     }
-    self.titleLabel.text = title;
-    
+    self.labelTitle.text = title;
+	
+	// add button
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
+	self.navigationItem.rightBarButtonItem = addButton;
+	
+	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
+	
+}
+
+- (void)menuShow{
+	
+	[self toggleMenu];
+	
 }
 
 - (NSString *)stringForValue:(double)value

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "DropdownMenuController.h"
 
 @import Charts;
 
@@ -21,5 +22,6 @@
 - (void) helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
 - (void)notificationsStatus:(NSString *)status;
 - (void)settingsHelpAlertWithTitle:(NSString *)title andMessage:(NSString *)message andVC:(UIViewController *)vc;
+-(void) customizeMenuWithVC:(DropdownMenuController *)vc andBarChart:(BarChartView *)chart;
 
 @end

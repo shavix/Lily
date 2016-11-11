@@ -532,11 +532,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgH-q2-ldT" userLabel="Menu">
+                                <rect key="frame" x="229" y="-86" width="150" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mk-rn-17c" userLabel="Button - X">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="GfW-T0-Ucv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Animate X">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyk-HG-HQN" userLabel="Button - Y">
+                                        <rect key="frame" x="0.0" y="50" width="150" height="50"/>
+                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kT8-7o-LBM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Animate Y">
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLd-vK-Sir" userLabel="Button - XY">
+                                        <rect key="frame" x="0.0" y="100" width="150" height="50"/>
+                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="rOD-GE-WoA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Animate XY">
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.049145817760000002" green="0.2156838328" blue="0.34421557190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="yyk-HG-HQN" firstAttribute="top" secondItem="6mk-rn-17c" secondAttribute="bottom" id="8jF-Oy-xnS"/>
+                                    <constraint firstItem="6mk-rn-17c" firstAttribute="top" secondItem="lgH-q2-ldT" secondAttribute="top" id="HaN-dW-DjF"/>
+                                    <constraint firstAttribute="trailing" secondItem="iLd-vK-Sir" secondAttribute="trailing" id="NKQ-g3-rCx"/>
+                                    <constraint firstItem="iLd-vK-Sir" firstAttribute="leading" secondItem="lgH-q2-ldT" secondAttribute="leading" id="R26-d3-J6g"/>
+                                    <constraint firstAttribute="trailing" secondItem="6mk-rn-17c" secondAttribute="trailing" id="Wym-uu-OhJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="yyk-HG-HQN" secondAttribute="trailing" id="b3l-ZW-6U2"/>
+                                    <constraint firstItem="6mk-rn-17c" firstAttribute="leading" secondItem="lgH-q2-ldT" secondAttribute="leading" id="d0R-cL-pNN"/>
+                                    <constraint firstItem="iLd-vK-Sir" firstAttribute="top" secondItem="yyk-HG-HQN" secondAttribute="bottom" id="qnC-Uy-94v"/>
+                                    <constraint firstAttribute="height" constant="150" id="t16-7v-iH2"/>
+                                    <constraint firstItem="yyk-HG-HQN" firstAttribute="leading" secondItem="lgH-q2-ldT" secondAttribute="leading" id="ukF-qS-r10"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-W4-xH0" userLabel="Menu Bar">
+                                <rect key="frame" x="16" y="-6" width="343" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ry-mm-s3E">
+                                        <rect key="frame" x="274" y="19" width="69" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="pgO-Yr-3NT"/>
+                                            <constraint firstAttribute="width" constant="69" id="uTN-ZW-ZHj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Menu">
+                                            <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJM-xB-xBG">
+                                        <rect key="frame" x="122.5" y="34" width="98" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="n2D-rZ-RW7"/>
+                                            <constraint firstAttribute="width" constant="98" id="uxX-d3-9jn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jJM-xB-xBG" secondAttribute="bottom" constant="15" id="KsS-kU-VvM"/>
+                                    <constraint firstAttribute="trailing" secondItem="3ry-mm-s3E" secondAttribute="trailing" id="LRZ-tK-o1C"/>
+                                    <constraint firstAttribute="bottom" secondItem="3ry-mm-s3E" secondAttribute="bottom" id="NBC-MZ-Oat"/>
+                                    <constraint firstAttribute="centerX" secondItem="jJM-xB-xBG" secondAttribute="centerX" id="nMc-2k-BU6"/>
+                                    <constraint firstAttribute="height" constant="70" id="xVE-Ir-WCV"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSW-KR-jgG">
-                                <rect key="frame" x="-4" y="64" width="383" height="66.5"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcK-7E-PaN">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -550,25 +646,33 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2t-Cw-48r" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="130.5" width="343" height="467.5"/>
+                                <rect key="frame" x="16" y="131" width="343" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lgH-q2-ldT" firstAttribute="bottom" secondItem="Rcr-W4-xH0" secondAttribute="bottom" placeholder="YES" id="20j-NZ-cFC"/>
+                            <constraint firstItem="Rcr-W4-xH0" firstAttribute="leading" secondItem="olf-gf-bq0" secondAttribute="leadingMargin" id="6hL-0l-ngf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y2t-Cw-48r" secondAttribute="trailing" id="Fq8-2b-TYa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TSW-KR-jgG" secondAttribute="trailing" constant="-20" id="M6D-ox-lrd"/>
                             <constraint firstItem="ObG-Rj-V4f" firstAttribute="top" secondItem="Y2t-Cw-48r" secondAttribute="bottom" constant="20" id="MrS-7X-ElX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lgH-q2-ldT" secondAttribute="trailing" constant="-20" id="SW8-s6-d0G"/>
+                            <constraint firstItem="lgH-q2-ldT" firstAttribute="width" secondItem="olf-gf-bq0" secondAttribute="width" multiplier="0.4" id="StD-tI-sC9"/>
+                            <constraint firstItem="TSW-KR-jgG" firstAttribute="top" secondItem="lgH-q2-ldT" secondAttribute="bottom" id="TiG-Dr-UFf"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="height" secondItem="olf-gf-bq0" secondAttribute="height" multiplier="0.1" id="ZpQ-ti-KnG"/>
+                            <constraint firstItem="TSW-KR-jgG" firstAttribute="top" secondItem="Rcr-W4-xH0" secondAttribute="bottom" id="eYt-oB-kJJ"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="leading" secondItem="olf-gf-bq0" secondAttribute="leadingMargin" constant="-20" id="erP-ia-oNB"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="top" secondItem="UyR-Cg-Qdw" secondAttribute="bottom" id="fOC-F4-Wpr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rcr-W4-xH0" secondAttribute="trailing" id="noL-Xj-Srk"/>
                             <constraint firstItem="Y2t-Cw-48r" firstAttribute="leading" secondItem="olf-gf-bq0" secondAttribute="leadingMargin" id="rvX-mx-0m4"/>
                             <constraint firstItem="Y2t-Cw-48r" firstAttribute="top" secondItem="TSW-KR-jgG" secondAttribute="bottom" id="w2w-o1-it7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="Y2t-Cw-48r" id="6e9-wM-Y4l"/>
-                        <outlet property="titleLabel" destination="kcK-7E-PaN" id="qZd-j5-XHX"/>
+                        <outlet property="labelTitle" destination="kcK-7E-PaN" id="x9q-P7-guT"/>
+                        <outlet property="menu" destination="lgH-q2-ldT" id="kfC-kA-IEZ"/>
                         <outlet property="topView" destination="TSW-KR-jgG" id="UwK-Q7-D9s"/>
                     </connections>
                 </viewController>

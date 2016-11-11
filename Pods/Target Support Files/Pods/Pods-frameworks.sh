@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Charts.framework"
+  install_framework "Pods/DropdownMenu.framework"
   install_framework "Pods/EAIntroView.framework"
   install_framework "Pods/EARestrictedScrollView.framework"
   install_framework "Pods/SCLAlertView_Objective_C.framework"
@@ -93,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Charts.framework"
+  install_framework "Pods/DropdownMenu.framework"
   install_framework "Pods/EAIntroView.framework"
   install_framework "Pods/EARestrictedScrollView.framework"
   install_framework "Pods/SCLAlertView_Objective_C.framework"

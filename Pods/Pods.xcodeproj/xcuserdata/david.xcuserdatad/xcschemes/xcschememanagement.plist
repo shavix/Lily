@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DropdownMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>EAIntroView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16F5A060E7833FCEAF531AA176BFE796</key>
+		<key>25A288F707E0C998C5711497E970BE5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>533280C6B8FC0623DAA3DA0542D9EBFD</key>
+		<key>2F67065E6592548900B64BC8131919CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50E0CB2368EEFD2C16F5447EE74A958F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5959CE4FBCE13368B5B35632FB662E44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5EF720A1F389435964F085210EDD5BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CA9809FC9EAEDD8E98CD4DE881A3B7DA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D8BF146EAE696DCA97C90C51BE045947</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB886D135705ECCB3268AD5660C95F9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

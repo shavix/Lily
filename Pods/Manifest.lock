@@ -2,6 +2,7 @@ PODS:
   - Charts (3.0.0):
     - Charts/Core (= 3.0.0)
   - Charts/Core (3.0.0)
+  - DropdownMenu (1.0.0)
   - EAIntroView (2.9.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
@@ -13,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Charts (~> 3.0.0)
+  - DropdownMenu
   - EAIntroView (~> 2.9.0)
   - SCLAlertView-Objective-C
   - SDWebImage (~> 3.8.2)
@@ -20,6 +22,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
+  DropdownMenu: 5777e17ac6ddbc69b151719b83a838da81440786
   EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   SCLAlertView-Objective-C: ca78280817e66e74366b78579350dee2ff277e23
