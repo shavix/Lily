@@ -111,6 +111,22 @@
 	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
 }
 
+- (void)loadMoreTransactions{
+	
+	int numTransactions = 10000;
+	
+	// setup identifier set
+	NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
+	
+	// retrieve recent transactions
+	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+	NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
+	
+	// organize transactions
+	[self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
+	
+}
+
 
 #pragma mark - TableView
 
@@ -121,7 +137,7 @@
 	
 	// TRANSACTIONS
 	if(section == 0){
-		
+		[self loadMoreTransactions];
 	}
     // FRIENDS
     else if(section == 1){
@@ -172,7 +188,7 @@
 	if(section == 0){
 		cell.image.image = [UIImage imageNamed:@"loading"];
 		cell.title.text = @"Load transactions";
-		cell.subtitle.text = @"Load more transactions beyond your most recent 100 (default setting).";
+		cell.subtitle.text = [NSString stringWithFormat:@"Load more transactions beyond your most recent (%ld transactions currently loaded).", _user.transactionList.count];
 	}
     // FRIENDS
     else if(section == 1)

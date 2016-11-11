@@ -77,17 +77,20 @@
 	
 		// redirect via google.com
 		if ([URLString rangeOfString:@"google.com"].location != NSNotFound) {
-			_accessToken = [URLString substringFromIndex:23];
+			NSArray *temp = [URLString componentsSeparatedByString:@"="];
+			_accessToken = temp[1];
+			
+			// sign in
+			[self signedIn];
 		}
 		
 		// if web redirect - get access token
-		if ([URLString rangeOfString:@"webview_auth"].location != NSNotFound) {
+		else if ([URLString rangeOfString:@"webview_auth"].location != NSNotFound) {
 	
-			NSArray *temp = [_accessToken componentsSeparatedByString:@"="];
+			NSArray *temp = [URLString componentsSeparatedByString:@"="];
 			_accessToken = temp[1];
 			
-			// store access token to NSUserDefaults
-			[self storeAccessToken];
+			// sign in
 			[self signedIn];
 		}
 		
@@ -98,7 +101,10 @@
 #pragma mark - Sign In
 
 - (void)signedIn {
-    
+	
+	// store access token to NSUserDefaults
+	[self storeAccessToken];
+	
     // retrieve user information
 	NSDictionary *userInformation = [self retrieveInformation];
     
