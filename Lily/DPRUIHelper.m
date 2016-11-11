@@ -57,12 +57,11 @@
 -(void) customizeMenuWithVC:(DropdownMenuController *)vc andBarChart:(BarChartView *)chart{
 	
 
-	
 	vc.menu.layer.cornerRadius = 10;
 	vc.menu.clipsToBounds = YES;
 	
 	
-	// Style menu buttons with IonIcons.
+	/*// Style menu buttons with IonIcons.
 	for (UIButton *button in vc.buttons) {
 		[button addTarget:vc action:@selector(animate) forControlEvents:UIControlEventTouchUpInside];
 		// Set the title and icon position
@@ -71,12 +70,13 @@
 		button.imageEdgeInsets = UIEdgeInsetsMake(0, button.titleLabel.frame.size.width, 0, -button.titleLabel.frame.size.width);
 		
 		button.backgroundColor = [UIColor charcoalColor];
+		button.layer.zPosition = 999;
 		
 		// Set color to white
 		[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	}
+	}*/
 	
-	vc.menu.layer.zPosition = 999;
+	//vc.menu.layer.zPosition = 900;
 	
 }
 

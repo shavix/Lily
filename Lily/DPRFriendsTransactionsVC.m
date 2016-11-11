@@ -159,8 +159,19 @@
     
     self.uiHelper = [[DPRUIHelper alloc] init];
     [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
+	
+	// add button
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
+	self.navigationItem.rightBarButtonItem = addButton;
+	
+	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
     
-    
+}
+
+- (void)menuShow{
+	
+	[self toggleMenu];
+	
 }
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight

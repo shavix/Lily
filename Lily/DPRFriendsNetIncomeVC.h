@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DropdownMenuController.h"
 
-@interface DPRFriendsNetIncomeVC : UIViewController
+@interface DPRFriendsNetIncomeVC : DropdownMenuController
 
 @end

@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 
 @property (strong, nonatomic) NSArray *transactionsByFriends;
 @property (strong, nonatomic) NSMutableArray *dataList;
@@ -226,8 +226,18 @@
     self.uiHelper = [[DPRUIHelper alloc] init];
     [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
     
-    
-    
+	// add button
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
+	self.navigationItem.rightBarButtonItem = addButton;
+	
+	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
+	
+}
+
+- (void)menuShow{
+	
+	[self toggleMenu];
+	
 }
 
 - (void)didReceiveMemoryWarning {

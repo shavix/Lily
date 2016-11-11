@@ -228,6 +228,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)animateX:(id)sender {
+	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION];
+}
 
+- (IBAction)animateY:(id)sender {
+	[_barChartView animateWithYAxisDuration:ANIMATE_DURATION];
+}
+- (IBAction)animateXY:(id)sender {
+	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION yAxisDuration:ANIMATE_DURATION];
+}
 
 @end
