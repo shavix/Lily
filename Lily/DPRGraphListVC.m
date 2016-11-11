@@ -16,7 +16,7 @@
 #import "DPRFriendsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
 
-#define NUM_TRANSACTIONS 50
+#define NUM_TRANSACTIONS 0
 
 @interface DPRGraphListVC()
 
@@ -135,42 +135,40 @@
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
 	
-	// TRANSACTIONS
+	// FRIENDS
 	if(section == 0){
-		[self loadMoreTransactions];
+		// transactions
+		if(row == 0){
+			[self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
+		}
+		// net income
+		else if(row == 1){
+			[self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
+		}
+		// full details
+		else if(row == 2){
+			[self performSegueWithIdentifier:@"friendsListSegue" sender:self];
+		}
 	}
-    // FRIENDS
-    else if(section == 1){
-        // transactions
-        if(row == 0){
-            [self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
-        }
-        // net income
-        else if(row == 1){
-            [self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
-        }
-        // full details
-        else if(row == 2){
-            [self performSegueWithIdentifier:@"friendsListSegue" sender:self];
-        }
-    }
     // MONTHLY
-    else if(section == 2){
-        // expenditures
-        if(row == 0){
-            [self performSegueWithIdentifier:@"monthsExpendituresSegue" sender:self];
-        }
-        // net income
-        else if(row == 1){
-            [self performSegueWithIdentifier:@"monthsNetIncomeSegue" sender:self];
-        }
-        // full details
-        else if(row == 2){
-            [self performSegueWithIdentifier:@"monthsDetailsSegue" sender:self];
-        }
+    else if(section == 1){
+		// expenditures
+		if(row == 0){
+			[self performSegueWithIdentifier:@"monthsExpendituresSegue" sender:self];
+		}
+		// net income
+		else if(row == 1){
+			[self performSegueWithIdentifier:@"monthsNetIncomeSegue" sender:self];
+		}
+		// full details
+		else if(row == 2){
+			[self performSegueWithIdentifier:@"monthsDetailsSegue" sender:self];
+		}
     }
-    
-
+    // TRANSACTIONS
+    else if(section == 2){
+		[self loadMoreTransactions];
+    }
     
 }
 
@@ -184,52 +182,52 @@
     NSInteger section = indexPath.section;
 	
 	
-	// TRANSACTIONS
+	// FRIENDS
 	if(section == 0){
+		if(row == 0){
+			cell.image.image = [UIImage imageNamed:@"handshake.png"];
+			cell.title.text = @"Number of Transactions";
+			cell.subtitle.text = @"A graphical analysis of your transaction frequency with friends.";
+		}
+		else if(row == 1){
+			cell.image.image = [UIImage imageNamed:@"businessman.png"];
+			cell.title.text = @"Net Income";
+			cell.subtitle.text = @"A graphical analysis of your net income with friends.";
+		}
+		else if(row == 2){
+			cell.image.image = [UIImage imageNamed:@"details.png"];
+			cell.title.text = @"Full details";
+			cell.subtitle.text = @"All financial information between you and your friends.";
+		}
+	}
+    // MONTHLY
+    else if(section == 1)
+    {
+		if(row == 0){
+			cell.image.image = [UIImage imageNamed:@"payment.png"];
+			cell.title.text = @"Expenditures";
+			cell.subtitle.text = @"A graphical analysis of your expenditures on a monthly basis.";
+		}
+		else if(row == 1){
+			cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
+			cell.title.text = @"Net Income";
+			cell.subtitle.text = @"A graphical analysis of your net income on a monthly basis.";
+		}
+		else if(row == 2){
+			cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
+			cell.title.text = @"Full details";
+			cell.subtitle.text = @"All your financial information on a monthly basis.";
+		}
+    }
+    // TRANSACTIONS
+    else if(section == 2)
+    {
 		cell.image.image = [UIImage imageNamed:@"loading"];
 		cell.title.text = @"Load transactions";
 		cell.subtitle.text = [NSString stringWithFormat:@"Load more transactions beyond your most recent (%ld transactions currently loaded).", _user.transactionList.count];
-	}
-    // FRIENDS
-    else if(section == 1)
-    {
-        if(row == 0){
-            cell.image.image = [UIImage imageNamed:@"handshake.png"];
-            cell.title.text = @"Number of Transactions";
-            cell.subtitle.text = @"A graphical analysis of your transaction frequency with friends.";
-        }
-        else if(row == 1){
-            cell.image.image = [UIImage imageNamed:@"businessman.png"];
-            cell.title.text = @"Net Income";
-            cell.subtitle.text = @"A graphical analysis of your net income with friends.";
-        }
-        else if(row == 2){
-            cell.image.image = [UIImage imageNamed:@"details.png"];
-            cell.title.text = @"Full details";
-            cell.subtitle.text = @"All financial information between you and your friends.";
-        }
     }
-    // MONTHLY
-    else if(section == 2)
-    {
-        if(row == 0){
-            cell.image.image = [UIImage imageNamed:@"payment.png"];
-            cell.title.text = @"Expenditures";
-            cell.subtitle.text = @"A graphical analysis of your expenditures on a monthly basis.";
-        }
-        else if(row == 1){
-            cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
-            cell.title.text = @"Net Income";
-            cell.subtitle.text = @"A graphical analysis of your net income on a monthly basis.";
-        }
-        else if(row == 2){
-            cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
-            cell.title.text = @"Full details";
-            cell.subtitle.text = @"All your financial information on a monthly basis.";
-        }
-    }
-    
-    
+	
+	
     return cell;
 }
 
@@ -255,13 +253,13 @@
 	
 	
 	if(section == 0){
-		title = @"TRANSACTIONS";
+		title = @"FRIENDS";
 	}
     else if(section == 1){
-        title = @"FRIENDS";
+        title = @"MONTHLY";
     }
     else{
-        title = @"MONTHLY";
+        title = @"TRANSACTIONS";
     }
     
     return title;
@@ -283,7 +281,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	if(section == 0){
+	if(section == 2){
 		return 1;
 	}
 	

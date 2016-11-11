@@ -32,7 +32,6 @@
 		6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F58D1D1B9CA40094ED24 /* DPRVenmoHelper.m */; };
 		6379F5911D1B9DA80094ED24 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */; };
 		6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */; };
-		6379F59A1D1BA4450094ED24 /* DPRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5991D1BA4450094ED24 /* DPRTabBarController.m */; };
 		6379F5A11D1BA48A0094ED24 /* DPRGraphListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A01D1BA48A0094ED24 /* DPRGraphListVC.m */; };
 		6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */; };
 		6379F5B91D1BA8DC0094ED24 /* bg1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5A91D1BA8DC0094ED24 /* bg1@2x.png */; };
@@ -143,8 +142,6 @@
 		6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		6379F5951D1B9E610094ED24 /* DPRWalkthroughVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRWalkthroughVC.h; sourceTree = "<group>"; };
 		6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRWalkthroughVC.m; sourceTree = "<group>"; };
-		6379F5981D1BA4450094ED24 /* DPRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTabBarController.h; sourceTree = "<group>"; };
-		6379F5991D1BA4450094ED24 /* DPRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTabBarController.m; sourceTree = "<group>"; };
 		6379F59F1D1BA48A0094ED24 /* DPRGraphListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphListVC.h; sourceTree = "<group>"; };
 		6379F5A01D1BA48A0094ED24 /* DPRGraphListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphListVC.m; sourceTree = "<group>"; };
 		6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionsVC.h; sourceTree = "<group>"; };
@@ -246,8 +243,6 @@
 			children = (
 				6379F5951D1B9E610094ED24 /* DPRWalkthroughVC.h */,
 				6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */,
-				6379F5981D1BA4450094ED24 /* DPRTabBarController.h */,
-				6379F5991D1BA4450094ED24 /* DPRTabBarController.m */,
 			);
 			name = Introduction;
 			sourceTree = "<group>";
@@ -721,7 +716,6 @@
 				6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */,
 				6379F5CC1D1CA23E0094ED24 /* DPRProfileView.m in Sources */,
 				63C765EA1DBEFB94005D55F6 /* xAxisValueFormatter.m in Sources */,
-				6379F59A1D1BA4450094ED24 /* DPRTabBarController.m in Sources */,
 				632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */,
 				63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */,
 				63811E691DC69157008C5874 /* DPRInformationVC.m in Sources */,
