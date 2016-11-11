@@ -18,6 +18,8 @@
 
 #define NUM_TRANSACTIONS 0
 
+@import SwiftSpinner;
+
 @interface DPRGraphListVC()
 
 // data
@@ -111,19 +113,37 @@
 	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
 }
 
-- (void)loadMoreTransactions{
+- (void)loadMoreTransactionsWithCell:(DPRGraphTableViewCell *)cell{
 	
-	int numTransactions = 10000;
+	// swiftspinner
+	[SwiftSpinner showing:0 title:@"loading transactions..." animated:YES];
+	
+	int numTransactions = 100;
 	
 	// setup identifier set
 	NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
 	
 	// retrieve recent transactions
 	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-	NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
 	
-	// organize transactions
-	[self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+
+		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
+		
+		// transactions loaded
+		dispatch_async(dispatch_get_main_queue(), ^{
+			// organize transactions
+			[self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
+			[self setupData];
+			
+			// update UI
+			[SwiftSpinner hide:nil];
+			cell.selected = false;
+			[self.tableView reloadData];
+		});
+		
+	});
+	
 	
 }
 
@@ -167,7 +187,8 @@
     }
     // TRANSACTIONS
     else if(section == 2){
-		[self loadMoreTransactions];
+		DPRGraphTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+		[self loadMoreTransactionsWithCell:cell];
     }
     
 }
