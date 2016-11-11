@@ -61,12 +61,14 @@
     SCLAlertViewBuilder *builder = [SCLAlertViewBuilder new]
     .addButtonWithActionBlock(@"OK", ^{  })
     .customViewColor(green);
-    
+	
+	
     SCLAlertViewShowBuilder *showBuilder = [SCLAlertViewShowBuilder new]
     .style(SCLAlertViewStyleNotice)
-    .title(@"Notice")
+    .title(title)
     .subTitle(message)
     .duration(0);
+	
     [showBuilder showAlertView:builder.alertView onViewController:vc];
     
 }

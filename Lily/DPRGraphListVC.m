@@ -16,7 +16,7 @@
 #import "DPRFriendsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
 
-#define NUM_TRANSACTIONS 0
+#define NUM_TRANSACTIONS 10000
 
 @import SwiftSpinner;
 
@@ -53,7 +53,8 @@
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
     
-    // setup identifier set
+    /*
+	 // setup identifier set
     NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
     
 #warning PHONE ACQUIRED - incomplete
@@ -63,6 +64,7 @@
     
     // organize transactions
     [self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
+	 */
     
     // store username
     [self storeUsername];
@@ -113,12 +115,32 @@
 	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
 }
 
-- (void)loadMoreTransactionsWithCell:(DPRGraphTableViewCell *)cell{
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+	
+	NSUInteger count =	_user.transactionList.count;
+	
+	// check transactions have loaded
+	if(count < 1){
+		
+		// haven't loaded, show notice
+		NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page.";
+		NSString *title = @"Notice";
+		[_uiHelper helpAlertWithMessage:message andTitle:title andVC:self.parentViewController];
+		
+		[self deselectCell];
+		
+		return false;
+		
+	}
+	
+	return true;
+	
+}
+
+- (void)loadMoreTransactions{
 	
 	// swiftspinner
 	[SwiftSpinner showing:0 title:@"loading transactions..." animated:YES];
-	
-	int numTransactions = 100;
 	
 	// setup identifier set
 	NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
@@ -126,9 +148,11 @@
 	// retrieve recent transactions
 	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
 	
+	
+	// background thread
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
 
-		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:numTransactions];
+		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
 		
 		// transactions loaded
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -138,7 +162,7 @@
 			
 			// update UI
 			[SwiftSpinner hide:nil];
-			cell.selected = false;
+			[self deselectCell];
 			[self.tableView reloadData];
 		});
 		
@@ -150,6 +174,22 @@
 
 #pragma mark - TableView
 
+- (void)deselectCell{
+	
+	NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+	DPRGraphTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	cell.selected = false;
+	
+}
+
+- (void)segueCheckWithIdentifier:(NSString *)identifier{
+
+	if([self shouldPerformSegueWithIdentifier:identifier sender:self]){
+		[self performSegueWithIdentifier:identifier sender:self];
+	}
+
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSInteger row = indexPath.row;
@@ -159,36 +199,35 @@
 	if(section == 0){
 		// transactions
 		if(row == 0){
-			[self performSegueWithIdentifier:@"friendsTransactionsSegue" sender:self];
+			[self segueCheckWithIdentifier:@"friendsTransactionsSegue"];
 		}
 		// net income
 		else if(row == 1){
-			[self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
+			[self segueCheckWithIdentifier:@"friendsNetIncomeSegue"];
 		}
 		// full details
 		else if(row == 2){
-			[self performSegueWithIdentifier:@"friendsListSegue" sender:self];
+			[self segueCheckWithIdentifier:@"friendsListSegue"];
 		}
 	}
     // MONTHLY
     else if(section == 1){
 		// expenditures
 		if(row == 0){
-			[self performSegueWithIdentifier:@"monthsExpendituresSegue" sender:self];
+			[self segueCheckWithIdentifier:@"monthsExpendituresSegue"];
 		}
 		// net income
 		else if(row == 1){
-			[self performSegueWithIdentifier:@"monthsNetIncomeSegue" sender:self];
+			[self segueCheckWithIdentifier:@"monthsNetIncomeSegue"];
 		}
 		// full details
 		else if(row == 2){
-			[self performSegueWithIdentifier:@"monthsDetailsSegue" sender:self];
+			[self segueCheckWithIdentifier:@"monthsDetailsSegue"];
 		}
     }
     // TRANSACTIONS
     else if(section == 2){
-		DPRGraphTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-		[self loadMoreTransactionsWithCell:cell];
+		[self loadMoreTransactions];
     }
     
 }
@@ -308,6 +347,8 @@
 	
     return 3;
 }
+
+
 
 #pragma mark - data persistence
 
