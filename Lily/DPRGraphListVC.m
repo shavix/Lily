@@ -52,20 +52,7 @@
     // retrieve user
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
-    
-    /*
-	 // setup identifier set
-    NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
-    
-#warning PHONE ACQUIRED - incomplete
-    // retrieve recent transactions
-    DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-    NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
-    
-    // organize transactions
-    [self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
-	 */
-    
+
     // store username
     [self storeUsername];
     
@@ -86,6 +73,8 @@
 #pragma mark - UI
 
 - (void)setupUI{
+	
+	self.tabBarController.delegate = self;
 	
 	self.uiHelper = [[DPRUIHelper alloc] init];
 	[_uiHelper setupTabUI:self withTitle:@"Dashboard"];
@@ -122,11 +111,7 @@
 	// check transactions have loaded
 	if(count < 1){
 		
-		// haven't loaded, show notice
-		NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page.";
-		NSString *title = @"Notice";
-		[_uiHelper helpAlertWithMessage:message andTitle:title andVC:self.parentViewController];
-		
+		[self noTransactions];
 		[self deselectCell];
 		
 		return false;
@@ -171,6 +156,12 @@
 	
 }
 
+- (void)noTransactions{
+	// haven't loaded, show notice
+	NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page.";
+	NSString *title = @"Notice";
+	[_uiHelper helpAlertWithMessage:message andTitle:title andVC:self.parentViewController];
+}
 
 #pragma mark - TableView
 
@@ -348,8 +339,14 @@
     return 3;
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
 
-
+	if(_user.transactionList.count < 1){
+		self.tabBarController.selectedIndex = 0;
+		[self noTransactions];
+	}
+	
+}
 #pragma mark - data persistence
 
 - (void)storeUsername {

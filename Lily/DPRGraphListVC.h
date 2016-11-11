@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DPRGraphListVC : UITableViewController
+@interface DPRGraphListVC : UITableViewController <UITabBarControllerDelegate>
 
 
 @end
