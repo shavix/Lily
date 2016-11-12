@@ -54,14 +54,104 @@
 }
 
 
--(void) customizeMenuWithVC:(DropdownMenuController *)vc{
+// returns button array
+-(NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type{
+	
+	
+	// make menu
+	CGFloat width = 160;
+	CGFloat height = 40;
+	CGRect frame = CGRectMake(vc.view.frame.size.width - width, -height * numButtons, width, height * numButtons);
+	UIView *menu = [[UIView alloc] initWithFrame:frame];
+	menu.backgroundColor = [UIColor darkishColor];
+	menu.layer.zPosition = 990;
+	[vc.view addSubview:menu];
+	vc.menu = menu;
+	vc.menu.hidden = YES;
 	
 	vc.menu.layer.cornerRadius = 10;
 	vc.menu.clipsToBounds = YES;
+
+	return [self createButtons:vc num:numButtons type:type];
 }
 
-- (void)animate{
+
+- (NSArray *)createButtons:(DropdownMenuController *)vc num:(int)numButtons type:(NSString *)type{
+	CGFloat width = 160;
+
+	NSMutableArray *buttons = [[NSMutableArray alloc] init];
+	for(int i = 0; i < numButtons; i++){
+		
+		CGFloat height = 40;
+		CGRect frame = CGRectMake(0, i*height, width, height);
+		UIButton *button = [[UIButton alloc] initWithFrame:frame];
+		button.layer.zPosition = 999;
+		button.titleLabel.textColor = [UIColor whiteColor];
+		button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+		
+		button.backgroundColor = [UIColor darkishColor];
+		
+		// list buttons
+		if(numButtons == 5){
+			switch (i) {
+				case 0:
+					if([type isEqualToString:@"months"]){
+						[button setTitle:@"Sort by Date" forState:UIControlStateNormal];
+						[button addTarget:vc action:@selector(sortByDate:) forControlEvents:UIControlEventTouchDown];
+						break;
+					}
+					else{
+						[button setTitle:@"Sort by Name" forState:UIControlStateNormal];
+						[button addTarget:vc action:@selector(sortByName:) forControlEvents:UIControlEventTouchDown];
+						break;
+					}
+				case 1:
+					[button setTitle:@"Sort by Transactions" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(sortByTransactions:) forControlEvents:UIControlEventTouchDown];
+					break;
+				case 2:
+					[button setTitle:@"Sort by Received" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(sortByReceived:) forControlEvents:UIControlEventTouchDown];
+					break;
+				case 3:
+					[button setTitle:@"Sort by Sent" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(sortBySent:) forControlEvents:UIControlEventTouchDown];
+					break;
+				case 4:
+					[button setTitle:@"Sort by Net Income" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(sortByNetIncome:) forControlEvents:UIControlEventTouchDown];
+					break;
+			}
+		}
+		// graph buttons
+		else{
+			switch(i){
+				case 0:
+					if([type isEqualToString:@"months"]){
+						[button setTitle:@"Sort by Date" forState:UIControlStateNormal];
+						[button addTarget:vc action:@selector(sortByDate:) forControlEvents:UIControlEventTouchDown];
+						break;
+					}
+					else{
+						[button setTitle:@"Sort by Name" forState:UIControlStateNormal];
+						[button addTarget:vc action:@selector(sortByName:) forControlEvents:UIControlEventTouchDown];
+						break;
+					}
+				case 1:
+					[button setTitle:@"Sort by Value" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(sortByValue:) forControlEvents:UIControlEventTouchDown];
+					break;
+					
+			}
+		}
+		
+		[buttons addObject:button];
+		
+		[vc.menu addSubview:button];
+		
+	}
 	
+	return buttons;
 }
 
 

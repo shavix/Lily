@@ -22,6 +22,6 @@
 - (void) helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
 - (void)notificationsStatus:(NSString *)status;
 - (void)settingsHelpAlertWithTitle:(NSString *)title andMessage:(NSString *)message andVC:(UIViewController *)vc;
--(void) customizeMenuWithVC:(DropdownMenuController *)vc;
+-(NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type;
 
 @end

@@ -165,8 +165,9 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[_uiHelper customizeMenuWithVC:self];
-    
+	[_uiHelper createMenuWithVC:self andNumButtons:2 andType:@"friends"];
+
+	
 }
 
 - (void)menuShow{
@@ -174,10 +175,15 @@
 	[self toggleMenu];
 	
 }
-- (IBAction)sortByName:(id)sender {
+
+- (void)sortByName:(UIButton *)sender{
+	
 }
-- (IBAction)sortByValue:(id)sender {
+
+- (void)sortByValue:(UIButton *)sender{
+	
 }
+
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {

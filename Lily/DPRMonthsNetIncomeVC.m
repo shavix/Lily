@@ -26,8 +26,10 @@
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
+
 @property (strong, nonatomic) NSArray *transactionsByMonth;
 @property (strong, nonatomic) NSMutableArray *months;
+@property (strong, nonatomic) NSArray *buttonList;
 
 @end
 
@@ -227,18 +229,24 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[_uiHelper customizeMenuWithVC:self];
+	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:2 andType:@"months"];
+	
 	
 }
+
+- (void)sortByDate:(UIButton *)sender{
+	
+}
+
+- (void)sortByValue:(UIButton *)sender{
+	
+}
+
 
 - (void)menuShow{
 	
 	[self toggleMenu];
 	
-}
-- (IBAction)sortByDate:(id)sender {
-}
-- (IBAction)sortByValue:(id)sender {
 }
 
 - (NSString *)stringForValue:(double)value

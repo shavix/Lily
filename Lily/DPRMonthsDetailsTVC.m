@@ -22,11 +22,13 @@
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
+
 @property (strong, nonatomic) NSArray *transactionsByMonth;
 @property (strong, nonatomic) NSDictionary *friendsData;
 @property (strong, nonatomic) NSArray *sortedKeys;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *buttonList;
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -98,21 +100,7 @@
 	
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
 	
-	// make menu
-	CGFloat width = 160;
-	CGFloat height = 40;
-	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 5, width, height * 5);
-	UIView *menu = [[UIView alloc] initWithFrame:frame];
-	menu.backgroundColor = [UIColor darkishColor];
-	menu.layer.zPosition = 990;
-	[self.view addSubview:menu];
-	self.menu = menu;
-	self.menu.hidden = YES;
-	
-	[uiHelper customizeMenuWithVC:self];
-	
-	// make buttons
-	[self setupButtons];
+	self.buttonList = [uiHelper createMenuWithVC:self andNumButtons:5 andType:@"months"];
 	
 }
 

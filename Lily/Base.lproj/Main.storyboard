@@ -299,76 +299,22 @@
                                 <rect key="frame" x="16" y="131" width="343" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hTR-3d-Kbg" userLabel="Menu">
-                                <rect key="frame" x="200" y="-200" width="112.5" height="120"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1Z-6I-FAv" userLabel="Button - Name">
-                                        <rect key="frame" x="0.0" y="0.0" width="113" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="wZJ-xV-xt8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Name">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByName:" destination="wU4-j3-An4" eventType="touchUpInside" id="gha-vV-SMU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGR-JZ-AOi" userLabel="Button - Value">
-                                        <rect key="frame" x="0.0" y="40" width="113" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="bfa-m4-j5m"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Value">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByValue:" destination="wU4-j3-An4" eventType="touchUpInside" id="2kP-IU-uBw"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.049145817760000002" green="0.2156838328" blue="0.34421557190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="5z6-hH-wUh"/>
-                                    <constraint firstItem="TGR-JZ-AOi" firstAttribute="top" secondItem="W1Z-6I-FAv" secondAttribute="bottom" id="EP3-IT-rm3"/>
-                                    <constraint firstItem="W1Z-6I-FAv" firstAttribute="top" secondItem="hTR-3d-Kbg" secondAttribute="top" id="I4S-2j-77Q"/>
-                                    <constraint firstAttribute="trailing" secondItem="W1Z-6I-FAv" secondAttribute="trailing" id="LCR-C0-qjS"/>
-                                    <constraint firstItem="TGR-JZ-AOi" firstAttribute="leading" secondItem="hTR-3d-Kbg" secondAttribute="leading" id="WZ9-V5-eUA"/>
-                                    <constraint firstAttribute="trailing" secondItem="TGR-JZ-AOi" secondAttribute="trailing" id="XaH-5z-r4G"/>
-                                    <constraint firstItem="W1Z-6I-FAv" firstAttribute="leading" secondItem="hTR-3d-Kbg" secondAttribute="leading" id="big-2P-8MD"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C9J-jI-XOz" firstAttribute="top" secondItem="Wo1-eX-agS" secondAttribute="bottom" id="20f-CA-DSt"/>
-                            <constraint firstItem="0rM-Se-a04" firstAttribute="top" secondItem="hTR-3d-Kbg" secondAttribute="bottom" id="3OW-QC-69W"/>
                             <constraint firstItem="Wo1-eX-agS" firstAttribute="top" secondItem="0rM-Se-a04" secondAttribute="bottom" id="6Ts-oV-OlB"/>
                             <constraint firstItem="Wo1-eX-agS" firstAttribute="leading" secondItem="Fxp-S1-YZr" secondAttribute="leadingMargin" id="AA9-id-6s4"/>
                             <constraint firstItem="0rM-Se-a04" firstAttribute="top" secondItem="YNB-AR-aTN" secondAttribute="bottom" id="Pzw-aH-QO5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wo1-eX-agS" secondAttribute="trailing" id="VEg-wx-PnX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hTR-3d-Kbg" secondAttribute="trailing" constant="-20" id="YuX-0I-d4x"/>
                             <constraint firstItem="0rM-Se-a04" firstAttribute="leading" secondItem="Fxp-S1-YZr" secondAttribute="leadingMargin" constant="-20" id="eUj-Bb-qwE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0rM-Se-a04" secondAttribute="trailing" constant="-20" id="eyh-Uz-Cn8"/>
-                            <constraint firstItem="hTR-3d-Kbg" firstAttribute="width" secondItem="Fxp-S1-YZr" secondAttribute="width" multiplier="0.3" id="vy2-zy-9fW"/>
                             <constraint firstItem="0rM-Se-a04" firstAttribute="height" secondItem="Fxp-S1-YZr" secondAttribute="height" multiplier="0.1" id="wbF-tX-3Ah"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="Wo1-eX-agS" id="pg8-Wz-V0C"/>
                         <outlet property="labelTitle" destination="vXy-a9-TJd" id="CRc-KJ-cam"/>
-                        <outlet property="menu" destination="hTR-3d-Kbg" id="bic-vA-nmM"/>
                         <outlet property="topView" destination="0rM-Se-a04" id="uEc-iB-5eC"/>
                     </connections>
                 </viewController>
@@ -554,66 +500,13 @@
                                 <rect key="frame" x="16" y="131" width="343" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v6d-D1-lcA" userLabel="Menu">
-                                <rect key="frame" x="131" y="-200" width="112.5" height="120"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4H-Wl-1tw" userLabel="Button - Name">
-                                        <rect key="frame" x="0.0" y="0.0" width="113" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="1DC-jM-MoO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Name">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByName:" destination="ljn-GY-Ac8" eventType="touchUpInside" id="gyc-bH-sRw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fax-aV-U5P" userLabel="Button - Value">
-                                        <rect key="frame" x="0.0" y="40" width="113" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="KBf-tU-vV9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Value">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByValue:" destination="ljn-GY-Ac8" eventType="touchUpInside" id="6KT-eo-eGE"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.049145817760000002" green="0.2156838328" blue="0.34421557190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="6uw-6c-v2D"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fax-aV-U5P" secondAttribute="trailing" id="7cG-5L-Ih7"/>
-                                    <constraint firstItem="Z4H-Wl-1tw" firstAttribute="top" secondItem="v6d-D1-lcA" secondAttribute="top" id="8Kq-4Y-Y3y"/>
-                                    <constraint firstItem="Fax-aV-U5P" firstAttribute="leading" secondItem="v6d-D1-lcA" secondAttribute="leading" id="G6B-08-pDB"/>
-                                    <constraint firstItem="Z4H-Wl-1tw" firstAttribute="leading" secondItem="v6d-D1-lcA" secondAttribute="leading" id="f2f-vy-HK8"/>
-                                    <constraint firstItem="Fax-aV-U5P" firstAttribute="top" secondItem="Z4H-Wl-1tw" secondAttribute="bottom" id="pLD-Xo-8Rm"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z4H-Wl-1tw" secondAttribute="trailing" id="zeo-NW-HZF"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="v6d-D1-lcA" secondAttribute="trailing" constant="-20" id="4Rp-Kf-9sq"/>
                             <constraint firstItem="jyv-vu-Cuz" firstAttribute="top" secondItem="uRp-k5-f2Y" secondAttribute="bottom" constant="20" id="CFx-rm-db4"/>
                             <constraint firstItem="Tgn-xz-fl2" firstAttribute="height" secondItem="j4U-Fr-2gn" secondAttribute="height" multiplier="0.1" id="DK5-TX-vgJ"/>
-                            <constraint firstItem="v6d-D1-lcA" firstAttribute="width" secondItem="j4U-Fr-2gn" secondAttribute="width" multiplier="0.3" id="JW8-Is-Zwt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tgn-xz-fl2" secondAttribute="trailing" constant="-20" id="Kbd-jd-CXZ"/>
                             <constraint firstItem="uRp-k5-f2Y" firstAttribute="top" secondItem="Tgn-xz-fl2" secondAttribute="bottom" id="UjX-Uw-jOZ"/>
-                            <constraint firstItem="Tgn-xz-fl2" firstAttribute="top" secondItem="v6d-D1-lcA" secondAttribute="bottom" id="hfa-sA-8qY"/>
                             <constraint firstItem="Tgn-xz-fl2" firstAttribute="leading" secondItem="j4U-Fr-2gn" secondAttribute="leadingMargin" constant="-20" id="mir-K4-sVw"/>
                             <constraint firstItem="Tgn-xz-fl2" firstAttribute="top" secondItem="uuc-55-zZn" secondAttribute="bottom" id="tyJ-Az-WkI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uRp-k5-f2Y" secondAttribute="trailing" id="wxo-cZ-vzg"/>
@@ -623,7 +516,6 @@
                     <connections>
                         <outlet property="barChartView" destination="uRp-k5-f2Y" id="Aoe-HB-Ii9"/>
                         <outlet property="labelTitle" destination="vsa-ra-89P" id="Mdi-e7-gMc"/>
-                        <outlet property="menu" destination="v6d-D1-lcA" id="op0-2f-hdY"/>
                         <outlet property="topView" destination="Tgn-xz-fl2" id="bG8-uu-Rg3"/>
                     </connections>
                 </viewController>
@@ -664,65 +556,12 @@
                                 <rect key="frame" x="16" y="131" width="343" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgH-q2-ldT" userLabel="Menu">
-                                <rect key="frame" x="266.5" y="-17" width="112.5" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mk-rn-17c" userLabel="Button - Date">
-                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="GfW-T0-Ucv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Date">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByDate:" destination="xOv-fr-RiQ" eventType="touchUpInside" id="o2Y-v6-rC1"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyk-HG-HQN" userLabel="Button - Value">
-                                        <rect key="frame" x="0.0" y="40" width="112.5" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="kT8-7o-LBM"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Value">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByValue:" destination="xOv-fr-RiQ" eventType="touchUpInside" id="s7n-Zq-bsG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.049145817760000002" green="0.2156838328" blue="0.34421557190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="yyk-HG-HQN" firstAttribute="top" secondItem="6mk-rn-17c" secondAttribute="bottom" id="8jF-Oy-xnS"/>
-                                    <constraint firstItem="6mk-rn-17c" firstAttribute="top" secondItem="lgH-q2-ldT" secondAttribute="top" id="HaN-dW-DjF"/>
-                                    <constraint firstAttribute="trailing" secondItem="6mk-rn-17c" secondAttribute="trailing" id="Wym-uu-OhJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="yyk-HG-HQN" secondAttribute="trailing" id="b3l-ZW-6U2"/>
-                                    <constraint firstItem="6mk-rn-17c" firstAttribute="leading" secondItem="lgH-q2-ldT" secondAttribute="leading" id="d0R-cL-pNN"/>
-                                    <constraint firstAttribute="height" constant="80" id="t16-7v-iH2"/>
-                                    <constraint firstItem="yyk-HG-HQN" firstAttribute="leading" secondItem="lgH-q2-ldT" secondAttribute="leading" id="ukF-qS-r10"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Y2t-Cw-48r" secondAttribute="trailing" id="Fq8-2b-TYa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TSW-KR-jgG" secondAttribute="trailing" constant="-20" id="M6D-ox-lrd"/>
                             <constraint firstItem="ObG-Rj-V4f" firstAttribute="top" secondItem="Y2t-Cw-48r" secondAttribute="bottom" constant="20" id="MrS-7X-ElX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lgH-q2-ldT" secondAttribute="trailing" constant="-20" id="SW8-s6-d0G"/>
-                            <constraint firstItem="lgH-q2-ldT" firstAttribute="width" secondItem="olf-gf-bq0" secondAttribute="width" multiplier="0.3" id="StD-tI-sC9"/>
-                            <constraint firstItem="TSW-KR-jgG" firstAttribute="top" secondItem="lgH-q2-ldT" secondAttribute="bottom" constant="1" id="TiG-Dr-UFf"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="height" secondItem="olf-gf-bq0" secondAttribute="height" multiplier="0.1" id="ZpQ-ti-KnG"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="leading" secondItem="olf-gf-bq0" secondAttribute="leadingMargin" constant="-20" id="erP-ia-oNB"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="top" secondItem="UyR-Cg-Qdw" secondAttribute="bottom" id="fOC-F4-Wpr"/>
@@ -733,7 +572,6 @@
                     <connections>
                         <outlet property="barChartView" destination="Y2t-Cw-48r" id="6e9-wM-Y4l"/>
                         <outlet property="labelTitle" destination="kcK-7E-PaN" id="x9q-P7-guT"/>
-                        <outlet property="menu" destination="lgH-q2-ldT" id="kfC-kA-IEZ"/>
                         <outlet property="topView" destination="TSW-KR-jgG" id="UwK-Q7-D9s"/>
                     </connections>
                 </viewController>
@@ -774,56 +612,6 @@
                                 <rect key="frame" x="16" y="130.5" width="343" height="467.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRW-wS-rNo" userLabel="Menu">
-                                <rect key="frame" x="266.5" y="-16" width="112.5" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYW-dG-rSm" userLabel="Button - Date">
-                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="f83-7X-Lhu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Date">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByDate:" destination="rhI-HP-BIR" eventType="touchUpInside" id="a6c-3C-hqD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUT-mW-8EY" userLabel="Button - Value">
-                                        <rect key="frame" x="0.0" y="40" width="112.5" height="40"/>
-                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="MVg-zK-KF0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <state key="normal" title="Sort by Value">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByValue:" destination="rhI-HP-BIR" eventType="touchUpInside" id="3Tp-zv-UnO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.049145817760000002" green="0.2156838328" blue="0.34421557190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Bz3-4w-YOC"/>
-                                    <constraint firstAttribute="trailing" secondItem="gYW-dG-rSm" secondAttribute="trailing" id="Cc8-xt-Y8f"/>
-                                    <constraint firstItem="gYW-dG-rSm" firstAttribute="top" secondItem="bRW-wS-rNo" secondAttribute="top" id="ZFl-LC-BAe"/>
-                                    <constraint firstItem="VUT-mW-8EY" firstAttribute="leading" secondItem="bRW-wS-rNo" secondAttribute="leading" id="a1U-b0-3Pb"/>
-                                    <constraint firstAttribute="trailing" secondItem="VUT-mW-8EY" secondAttribute="trailing" id="eHz-kd-TJo"/>
-                                    <constraint firstItem="gYW-dG-rSm" firstAttribute="leading" secondItem="bRW-wS-rNo" secondAttribute="leading" id="iKX-OS-0Ga"/>
-                                    <constraint firstItem="VUT-mW-8EY" firstAttribute="top" secondItem="gYW-dG-rSm" secondAttribute="bottom" id="q5F-ws-xaO"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -834,16 +622,12 @@
                             <constraint firstItem="tDB-lH-y1a" firstAttribute="leading" secondItem="W1S-Fc-dUG" secondAttribute="leadingMargin" id="WnC-Rw-Uor"/>
                             <constraint firstItem="BoA-dd-5eY" firstAttribute="leading" secondItem="W1S-Fc-dUG" secondAttribute="leadingMargin" constant="-20" id="dyf-t2-0j1"/>
                             <constraint firstItem="BoA-dd-5eY" firstAttribute="top" secondItem="AXZ-P0-tcM" secondAttribute="bottom" id="gN5-wk-8kq"/>
-                            <constraint firstItem="BoA-dd-5eY" firstAttribute="top" secondItem="bRW-wS-rNo" secondAttribute="bottom" id="h4J-J4-f0W"/>
                             <constraint firstItem="BoA-dd-5eY" firstAttribute="height" secondItem="W1S-Fc-dUG" secondAttribute="height" multiplier="0.1" id="nUs-U9-9dV"/>
-                            <constraint firstItem="bRW-wS-rNo" firstAttribute="width" secondItem="W1S-Fc-dUG" secondAttribute="width" multiplier="0.3" id="tCE-pi-UVG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bRW-wS-rNo" secondAttribute="trailing" constant="-20" id="vqy-cq-hto"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="tDB-lH-y1a" id="8oa-dP-yxR"/>
                         <outlet property="labelTitle" destination="woi-In-rdl" id="lY3-xp-VX0"/>
-                        <outlet property="menu" destination="bRW-wS-rNo" id="HWC-xw-yVU"/>
                         <outlet property="topView" destination="BoA-dd-5eY" id="jzI-IZ-gBA"/>
                     </connections>
                 </viewController>
