@@ -494,6 +494,9 @@
                             <outlet property="delegate" destination="zkL-3E-Vbk" id="Et9-jZ-zg7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="gJ7-1M-xPD" id="if4-Vj-6jn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sH-uf-opi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -805,6 +808,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sortByValue:" destination="rhI-HP-BIR" eventType="touchUpInside" id="3Tp-zv-UnO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.049145817760000002" green="0.2156838328" blue="0.34421557190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

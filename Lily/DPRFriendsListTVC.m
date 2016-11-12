@@ -22,6 +22,9 @@
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) NSArray *transactionsByFriends;
 @property (strong, nonatomic) NSDictionary *friendsData;
+@property (strong, nonatomic) NSArray *sortedKeys;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *buttonList;
 
 @end
 
@@ -43,6 +46,14 @@
     self.user = [self.cdHelper fetchUser];
     self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
     [self calculateFriendsData];
+	
+	
+	NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+	for(int i = 0 ;i < _transactionsByFriends.count; i ++){
+		DPRTransaction *transaction = self.transactionsByFriends[i][0];
+		[tempArr addObject:transaction.target.fullName];
+	}
+	self.sortedKeys = tempArr;
     
 }
 
@@ -69,8 +80,11 @@
             }
             
         }
+		
+		DPRTransaction *transaction = currArr[0];
+		NSString *picture_url = transaction.target.picture_url;
         
-        NSInteger netIncome = labs(amountReceived - amountSent);
+        NSInteger netIncome = amountReceived - amountSent;
         NSInteger transactions = currArr.count;
         
         NSDictionary *friend = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -78,10 +92,10 @@
                                 [NSNumber numberWithInteger:amountSent], @"sent",
                                 [NSNumber numberWithInteger:amountReceived], @"received",
                                 [NSNumber numberWithInteger:netIncome], @"netIncome",
+								picture_url, @"picture_url",
                                 nil];
         
-        DPRTransaction *transaction = currArr[0];
-        
+		
         [tempFriendsData setObject:friend forKey:transaction.target.fullName];
         
     }
@@ -96,14 +110,138 @@
     self.title = @"Friends";
     self.view.backgroundColor = [UIColor darkColor];
 	
-	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	
+	self.tableView.dataSource = self;
+	self.tableView.delegate = self;
+
 	// add button
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[uiHelper customizeMenuWithVC:self];
+	[self setupMenu];
 	
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
+	[self.tableView addGestureRecognizer:tap];
+
+	
+}
+
+- (void)setupMenu{
+	
+	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
+
+	// make menu
+	CGFloat width = 160;
+	CGFloat height = 60;
+	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 4, width, height * 4);
+	UIView *menu = [[UIView alloc] initWithFrame:frame];
+	menu.backgroundColor = [UIColor darkishColor];
+	menu.layer.zPosition = 990;
+	[self.view addSubview:menu];
+	self.menu = menu;
+	self.menu.hidden = YES;
+	
+	[uiHelper customizeMenuWithVC:self];
+
+	// make buttons
+	[self setupButtons];
+	
+}
+
+- (void)setupButtons{
+	
+	CGFloat width = 160;
+	
+	NSMutableArray *buttons = [[NSMutableArray alloc] init];
+	for(int i = 0; i < 4; i++){
+		
+		CGFloat height = 60;
+		CGRect frame = CGRectMake(0, i*height, width, height);
+		UIButton *button = [[UIButton alloc] initWithFrame:frame];
+		button.layer.zPosition = 999;
+		button.titleLabel.textColor = [UIColor whiteColor];
+		button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+		button.contentEdgeInsets = UIEdgeInsetsMake(-150, 0, -150, 0); //set as you require
+
+
+			button.backgroundColor = [UIColor darkishColor];
+		
+		switch (i) {
+			case 0:
+				[button setTitle:@"Sort by Transactions" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByTransactions:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 1:
+				[button setTitle:@"Sort by Received" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByReceived:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 2:
+				[button setTitle:@"Sort by Sent" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortBySent:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 3:
+				[button setTitle:@"Sort by Net Income" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByNetIncome:) forControlEvents:UIControlEventTouchDown];
+				break;
+		}
+		
+		[buttons addObject:button];
+		
+		[self.menu addSubview:button];
+		
+	}
+	
+	self.buttonList = buttons;
+	
+}
+
+- (void)sortTransactionsWithKey:(NSString *)key{
+	NSArray *keys = [self.friendsData allKeys];
+	NSArray *sortedKeys = [keys sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+		
+		NSDictionary *first = [self.friendsData objectForKey:a];
+		NSDictionary *second = [self.friendsData objectForKey:b];
+		
+		NSNumber *aTransactions = [first objectForKey:key];
+		NSNumber *bTransactions = [second objectForKey:key];
+		
+		return [bTransactions compare:aTransactions];
+	}];
+	
+	_sortedKeys = sortedKeys;
+	[self.tableView reloadData];
+	[self toggleMenu];
+}
+
+- (void)sortByTransactions:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"transactions"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
+}
+
+- (void)sortByReceived:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"received"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
+}
+
+- (void)sortBySent:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"sent"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
+}
+
+- (void)sortByNetIncome:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"netIncome"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
 }
 
 - (void)menuShow{
@@ -122,8 +260,8 @@
     
     NSInteger section = indexPath.section;
     
-    DPRTransaction *transaction = self.transactionsByFriends[section][0];
-    NSDictionary *friendData = [self.friendsData objectForKey:transaction.target.fullName];
+	NSString *name = [_sortedKeys objectAtIndex:section];
+    NSDictionary *friendData = [self.friendsData objectForKey:name];
     
     // format
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -134,8 +272,12 @@
     cell.transactionsAmountLabel.text = [NSString stringWithFormat:@"%@", [friendData objectForKey:@"transactions"]];
     cell.sentAmountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"sent"]]];
     cell.receivedAmountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"received"]]];
-    cell.netIncomeAmountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"netIncome"]]];
-    
+	
+	// netincome
+	NSString *netIncomeString = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"netIncome"]]];
+	cell.netIncomeAmountLabel.text = [netIncomeString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+
+	
     NSNumber *sentAmount = [friendData objectForKey:@"sent"];
     NSNumber *receivedAmount = [friendData objectForKey:@"received"];
     NSInteger netIncome = receivedAmount.integerValue - sentAmount.integerValue;
@@ -145,8 +287,9 @@
     else{
         cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
     }
-    
-    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
+	
+	NSString *picture_url = [friendData objectForKey:@"picture_url"];
+    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:picture_url]
                  placeholderImage:[UIImage imageNamed:@"UserImage"]];
     
     return cell;
@@ -155,13 +298,16 @@
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    NSArray *currentFriend = self.transactionsByFriends[section];
-    DPRTransaction *transaction = currentFriend[0];
-    
-    return [transaction.target.fullName uppercaseString];
+	NSString *name = [_sortedKeys objectAtIndex:section];
+	
+    return [name uppercaseString];
     
 }
 
+- (void)tableTapped:(UITapGestureRecognizer *)tap
+{
+	[self hideMenu];
+}
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,6 +320,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+	
+	view.userInteractionEnabled = NO;
     
     //Set the background color of the View
     view.tintColor = [UIColor darkColor];
