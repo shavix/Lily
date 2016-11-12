@@ -206,7 +206,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
+	[_uiHelper customizeMenuWithVC:self];
 	
 }
 
@@ -214,6 +214,10 @@
 	
 	[self toggleMenu];
 	
+}
+- (IBAction)sortByDate:(id)sender {
+}
+- (IBAction)sortByValue:(id)sender {
 }
 
 - (NSString *)stringForValue:(double)value
@@ -226,17 +230,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)animateX:(id)sender {
-	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION];
-}
-
-- (IBAction)animateY:(id)sender {
-	[_barChartView animateWithYAxisDuration:ANIMATE_DURATION];
-}
-- (IBAction)animateXY:(id)sender {
-	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION yAxisDuration:ANIMATE_DURATION];
 }
 
 @end

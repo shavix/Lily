@@ -12,6 +12,7 @@
 #import "DPRFriendsListTableViewCell.h"
 #import "DPRTransaction.h"
 #import "DPRTarget.h"
+#import "DPRUIHelper.h"
 #import "UIColor+CustomColors.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -94,7 +95,21 @@
     
     self.title = @"Friends";
     self.view.backgroundColor = [UIColor darkColor];
-    
+	
+	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
+	
+	// add button
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
+	self.navigationItem.rightBarButtonItem = addButton;
+	
+	[uiHelper customizeMenuWithVC:self];
+	
+}
+
+- (void)menuShow{
+	
+	[self toggleMenu];
+	
 }
 
 #pragma mark - UITableView

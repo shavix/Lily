@@ -225,7 +225,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
+	[_uiHelper customizeMenuWithVC:self];
 	
 }
 
@@ -234,6 +234,10 @@
 	[self toggleMenu];
 	
 }
+- (IBAction)sortByDate:(id)sender {
+}
+- (IBAction)sortByValue:(id)sender {
+}
 
 - (NSString *)stringForValue:(double)value
                         axis:(ChartAxisBase *)axis{
@@ -241,30 +245,12 @@
     return self.months[(int)value];
     
 }
-- (IBAction)animateX:(id)sender {
-	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION];
-}
 
-- (IBAction)animateY:(id)sender {
-	[_barChartView animateWithYAxisDuration:ANIMATE_DURATION];
-}
-- (IBAction)animateXY:(id)sender {
-	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION yAxisDuration:ANIMATE_DURATION];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

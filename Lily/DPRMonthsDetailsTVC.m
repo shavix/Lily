@@ -14,6 +14,7 @@
 #import "DPRTarget.h"
 #import "DPRTransactionSingleton.h"
 #import "DPRMonthsDetailsTableViewCell.h"
+#import "DPRUIHelper.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRMonthsDetailsTVC ()
@@ -74,7 +75,18 @@
     
     self.title = @"Friends";
     self.view.backgroundColor = [UIColor darkColor];
-    
+	
+	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
+	
+	// add button
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
+	self.navigationItem.rightBarButtonItem = addButton;
+	
+	[uiHelper customizeMenuWithVC:self];
+}
+
+- (void)menuShow{
+	[self toggleMenu];
 }
 
 - (void)didReceiveMemoryWarning {

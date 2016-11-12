@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSArray *transactionsByFriends;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 
 
 @end
@@ -164,7 +164,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
+	[_uiHelper customizeMenuWithVC:self];
     
 }
 
@@ -172,6 +172,10 @@
 	
 	[self toggleMenu];
 	
+}
+- (IBAction)sortByName:(id)sender {
+}
+- (IBAction)sortByValue:(id)sender {
 }
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight

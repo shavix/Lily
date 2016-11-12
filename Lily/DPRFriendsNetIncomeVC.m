@@ -230,7 +230,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	[_uiHelper customizeMenuWithVC:self andBarChart:_barChartView];
+	[_uiHelper customizeMenuWithVC:self];
 	
 }
 
@@ -238,6 +238,10 @@
 	
 	[self toggleMenu];
 	
+}
+- (IBAction)sortByName:(id)sender {
+}
+- (IBAction)sortByValue:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
