@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DropdownMenuController.h"
 
-@interface DPRMonthsDetailsTVC : DropdownMenuController
+@interface DPRMonthsDetailsTVC : DropdownMenuController <UITableViewDataSource, UITableViewDelegate>
 
 @end

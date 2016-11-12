@@ -24,13 +24,16 @@
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 @property (strong, nonatomic) NSArray *transactionsByMonth;
 @property (strong, nonatomic) NSDictionary *friendsData;
+@property (strong, nonatomic) NSArray *sortedKeys;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *buttonList;
 
 @end
 
 @implementation DPRMonthsDetailsTVC{
     NSInteger currMonth;
     NSInteger currYear;
-    NSMutableArray *months;
+    NSArray *months;
 }
 
 - (void)viewDidLoad {
@@ -47,27 +50,27 @@
     self.user = [self.cdHelper fetchUser];
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
     self.transactionsByMonth = _transactionSingleton.transactionsByMonth;
-    
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     currMonth = [components month];
     currYear = [components year];
     
-    NSArray *tempMonths = @[
-                        @"January", @"February", @"March",
-                        @"April", @"May", @"June",
-                        @"July", @"August", @"September",
-                        @"October", @"November", @"December"
-                        ];
-    months = [[NSMutableArray alloc] init];
-    
-    for (NSInteger i = currMonth - 1; i >= currMonth - 12; i--){
-        NSInteger index = i;
-        if(index < 0){
-            index += 12;
-        }
-        [months addObject:tempMonths[index]];
-    }
-    
+    months = @[ @"January", @"February", @"March",
+				@"April", @"May", @"June",
+				@"July", @"August", @"September",
+				@"October", @"November", @"December"
+				];
+	
+	// sorted keys
+	NSMutableArray *arr = [[NSMutableArray alloc] init];
+	for(int i = 0; i < 12; i++){
+		NSInteger index = currMonth - i - 1;
+		if(index < 0){
+			index += 12;
+		}
+		[arr addObject:[NSNumber numberWithInteger:index]];
+	}
+	_sortedKeys = arr;
+	
 }
 
 
@@ -76,13 +79,139 @@
     self.title = @"Friends";
     self.view.backgroundColor = [UIColor darkColor];
 	
-	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
+	self.tableView.dataSource = self;
+	self.tableView.delegate = self;
+	
 	
 	// add button
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
+	[self setupMenu];
+
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
+	[self.tableView addGestureRecognizer:tap];
+	
+}
+
+- (void)setupMenu{
+	
+	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
+	
+	// make menu
+	CGFloat width = 160;
+	CGFloat height = 40;
+	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 4, width, height * 4);
+	UIView *menu = [[UIView alloc] initWithFrame:frame];
+	menu.backgroundColor = [UIColor darkishColor];
+	menu.layer.zPosition = 990;
+	[self.view addSubview:menu];
+	self.menu = menu;
+	self.menu.hidden = YES;
+	
 	[uiHelper customizeMenuWithVC:self];
+	
+	// make buttons
+	[self setupButtons];
+	
+}
+
+- (void)setupButtons{
+	
+	CGFloat width = 160;
+	
+	NSMutableArray *buttons = [[NSMutableArray alloc] init];
+	for(int i = 0; i < 4; i++){
+		
+		CGFloat height = 40;
+		CGRect frame = CGRectMake(0, i*height, width, height);
+		UIButton *button = [[UIButton alloc] initWithFrame:frame];
+		button.layer.zPosition = 999;
+		button.titleLabel.textColor = [UIColor whiteColor];
+		button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+		button.contentEdgeInsets = UIEdgeInsetsMake(-150, 0, -150, 0); //set as you require
+		
+		
+		button.backgroundColor = [UIColor darkishColor];
+		
+		switch (i) {
+			case 0:
+				[button setTitle:@"Sort by Transactions" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByTransactions:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 1:
+				[button setTitle:@"Sort by Received" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByReceived:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 2:
+				[button setTitle:@"Sort by Sent" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortBySent:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 3:
+				[button setTitle:@"Sort by Net Income" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByNetIncome:) forControlEvents:UIControlEventTouchDown];
+				break;
+		}
+		
+		[buttons addObject:button];
+		
+		[self.menu addSubview:button];
+		
+	}
+	
+	self.buttonList = buttons;
+	
+}
+
+
+- (void)sortTransactionsWithKey:(NSString *)key{
+	
+	NSSortDescriptor *sortByKey = [NSSortDescriptor sortDescriptorWithKey:key
+																 ascending:NO];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByKey];
+	NSArray *sortedDictionaries = [_transactionsByMonth sortedArrayUsingDescriptors:sortDescriptors];
+	NSMutableArray *mutable = [[NSMutableArray alloc] init];
+	for(NSDictionary *dict in sortedDictionaries){
+		NSNumber *month = [dict objectForKey:@"month"];
+		[mutable addObject:month];
+	}
+	
+	_sortedKeys = mutable;
+	
+	[self.tableView reloadData];
+	[self toggleMenu];
+}
+
+- (void)sortByTransactions:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"transactions"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
+}
+
+- (void)sortByReceived:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"received"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
+}
+
+- (void)sortBySent:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"sent"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
+}
+
+- (void)sortByNetIncome:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"netIncome"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
 }
 
 - (void)menuShow{
@@ -94,6 +223,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)tableTapped:(UITapGestureRecognizer *)tap
+{
+	[self hideMenu];
+}
+
 #pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,14 +236,9 @@
     DPRMonthsDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
 
     // get data
-    NSInteger section = indexPath.section;
-    NSInteger index = currMonth - section - 1;
-    if(index < 0){
-        index += 12;
-    }
-    
-    NSDictionary *monthDict = _transactionsByMonth[index];
-    
+	NSNumber *index = _sortedKeys[indexPath.section];
+    NSDictionary *monthDict = _transactionsByMonth[index.integerValue];
+	
     NSNumber *transactions = [monthDict objectForKey:@"transactions"];
     NSNumber *sent = [monthDict objectForKey:@"sent"];
     NSNumber *received = [monthDict objectForKey:@"received"];
@@ -143,8 +272,9 @@
 
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    NSString *month = months[section];
+	
+	NSNumber *index = _sortedKeys[section];
+    NSString *month = months[index.integerValue];
     NSInteger year = currYear;
     
     if(section >= currMonth){
@@ -172,7 +302,8 @@
     
     //Set the background color of the View
     view.tintColor = [UIColor darkColor];
-    
+	view.userInteractionEnabled = NO;
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
