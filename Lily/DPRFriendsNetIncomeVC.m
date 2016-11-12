@@ -217,8 +217,8 @@
 - (void)setupUI{
     
     self.title = @"Friends";
-    self.titleLabel.text = @"Net Income";
-    self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    self.labelTitle.text = @"Net Income";
+    self.labelTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     
     self.view.backgroundColor = [UIColor darkColor];
     self.barChartView.backgroundColor = [UIColor darkColor];

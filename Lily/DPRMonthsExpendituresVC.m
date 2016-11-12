@@ -67,7 +67,7 @@
 	
 	// sorted keys
 	NSMutableArray *arr = [[NSMutableArray alloc] init];
-	for(int i = 0; i < 12; i++){
+	for(int i = 11; i >= 0; i--){
 		NSInteger index = currMonth - i - 1;
 		if(index < 0){
 			index += 12;
@@ -84,15 +84,13 @@
 
     NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
 	
-    NSInteger index2 = 0;
-    
     // insert friends data
     for (NSInteger i = 0; i < 12; i++)
     {
 		NSNumber *index = _sortedKeys[i];
         NSDictionary *monthDict = self.transactionsByMonth[index.integerValue];
         NSNumber *sent = [monthDict objectForKey:@"sent"];
-        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:index2++ y:sent.integerValue]];
+        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:sent.integerValue]];
     }
     
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Months"];
@@ -150,7 +148,7 @@
 - (void)sortByDate:(UIButton *)sender{
 	// sorted keys
 	NSMutableArray *arr = [[NSMutableArray alloc] init];
-	for(int i = 0; i < 12; i++){
+	for(int i = 11; i >= 0; i--){
 		NSInteger index = currMonth - i - 1;
 		if(index < 0){
 			index += 12;
