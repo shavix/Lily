@@ -20,8 +20,7 @@
 
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
-@property (strong, nonatomic) NSArray *transactionsByFriends;
-@property (strong, nonatomic) NSDictionary *friendsData;
+@property (strong, nonatomic) NSDictionary *transactionsByFriends;
 @property (strong, nonatomic) NSArray *sortedKeys;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *buttonList;
@@ -45,62 +44,13 @@
     self.cdHelper = [DPRCoreDataHelper sharedModel];
     self.user = [self.cdHelper fetchUser];
     self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
-    [self calculateFriendsData];
 	
 	
 	NSMutableArray *tempArr = [[NSMutableArray alloc] init];
-	for(int i = 0 ;i < _transactionsByFriends.count; i ++){
-		DPRTransaction *transaction = self.transactionsByFriends[i][0];
-		[tempArr addObject:transaction.target.fullName];
+	for(id key in self.transactionsByFriends){
+		[tempArr addObject:key];
 	}
 	self.sortedKeys = tempArr;
-    
-}
-
-- (void)calculateFriendsData{
-    
-    NSMutableDictionary *tempFriendsData = [[NSMutableDictionary alloc] init];
-    
-    // iterate through friends
-    for(NSArray *currArr in _transactionsByFriends){
-        
-        NSInteger amountSent = 0;
-        NSInteger amountReceived = 0;
-        
-        // iterate through transactions
-        for(DPRTransaction *transaction in currArr){
-            
-            NSNumber *amount = transaction.amount;
-            
-            if(transaction.isIncoming){
-                amountReceived += amount.integerValue;
-            }
-            else{
-                amountSent += amount.integerValue;
-            }
-            
-        }
-		
-		DPRTransaction *transaction = currArr[0];
-		NSString *picture_url = transaction.target.picture_url;
-        
-        NSInteger netIncome = amountReceived - amountSent;
-        NSInteger transactions = currArr.count;
-        
-        NSDictionary *friend = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNumber numberWithInteger:transactions], @"transactions",
-                                [NSNumber numberWithInteger:amountSent], @"sent",
-                                [NSNumber numberWithInteger:amountReceived], @"received",
-                                [NSNumber numberWithInteger:netIncome], @"netIncome",
-								picture_url, @"picture_url",
-                                nil];
-        
-		
-        [tempFriendsData setObject:friend forKey:transaction.target.fullName];
-        
-    }
-    
-    self.friendsData = tempFriendsData;
     
 }
 
@@ -134,15 +84,15 @@
 }
 
 - (void)sortTransactionsWithKey:(NSString *)key{
-	NSArray *keys = [self.friendsData allKeys];
+	NSArray *keys = [self.transactionsByFriends allKeys];
 	NSArray *sortedKeys = [keys sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
 		
 		if([key isEqualToString:@"names"]){
 			return [a compare:b];
 		}
 		
-		NSDictionary *first = [self.friendsData objectForKey:a];
-		NSDictionary *second = [self.friendsData objectForKey:b];
+		NSDictionary *first = [self.transactionsByFriends objectForKey:a];
+		NSDictionary *second = [self.transactionsByFriends objectForKey:b];
 		
 		NSNumber *aTransactions = [first objectForKey:key];
 		NSNumber *bTransactions = [second objectForKey:key];
@@ -212,7 +162,7 @@
     NSInteger section = indexPath.section;
     
 	NSString *name = [_sortedKeys objectAtIndex:section];
-    NSDictionary *friendData = [self.friendsData objectForKey:name];
+    NSDictionary *friendData = [self.transactionsByFriends objectForKey:name];
     
     // format
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

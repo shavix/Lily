@@ -17,13 +17,14 @@
 #import <Lily-Bridging-Header.h>
 
 
-@interface DPRFriendsTransactionsVC () <ChartViewDelegate>
+@interface DPRFriendsTransactionsVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
 
-@property (strong, nonatomic) NSArray *transactionsByFriends;
+@property (strong, nonatomic) NSDictionary *transactionsByFriends;
+@property (strong, nonatomic) NSMutableArray *dataList;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
@@ -46,17 +47,44 @@
 - (void)setDataCount
 {
     NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
-    
-    NSInteger numFriends = self.transactionsByFriends.count;
-    
+	self.dataList = [[NSMutableArray alloc] init];
+	
+	int index = 0;
     // insert friends data
-    for (int i = 0; i < numFriends; i++)
-    {
-        NSArray *transactionsArray = self.transactionsByFriends[i];
-        NSInteger numTransactions = transactionsArray.count;
-        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:numTransactions]];
+	for(id name in _transactionsByFriends)
+	{
+		
+		NSDictionary *friend = [_transactionsByFriends objectForKey:name];
+		
+		NSString *title = name;
+		NSArray *arr = [title componentsSeparatedByString:@" "];
+		NSString *firstName = arr[0];
+		NSString *newName;
+		
+		if(arr.count > 1){
+			NSString *lastName = arr[1];
+			NSString *initial = [NSString stringWithFormat:@"%c.", [lastName characterAtIndex:0]];
+			newName = [NSString stringWithFormat:@"%@ %@", firstName, initial];
+		}
+		else {
+			newName = firstName;
+		}
+		
+		NSNumber *transactions = [friend objectForKey:@"transactions"];
+		
+		[_dataList addObject:@{@"xValue":@(index++),
+							   @"yValue":transactions,
+							   @"xLabel":newName}];
+		
     }
-    
+	
+	for(int i = 0; i < _dataList.count; i++){
+		NSDictionary *transaction = _dataList[i];
+		NSNumber *numTransactions = [transaction objectForKey:@"yValue"];
+		NSNumber *x = transaction[@"xValue"];
+		[dataEntries addObject:[[BarChartDataEntry alloc] initWithX:x.integerValue y:numTransactions.integerValue]];
+	}
+	
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Friends"];
     
     [set1 setColors:ChartColorTemplates.many];
@@ -95,8 +123,8 @@
     xAxis.drawGridLinesEnabled = YES;
     xAxis.granularity = 1.0;
     xAxis.labelCount = 5;
-    xAxis.valueFormatter = [[xAxisValueFormatter alloc] initForChart:_barChartView andArray:self.transactionsByFriends];
-    
+	xAxis.valueFormatter = self;
+	
     NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
     
     ChartYAxis *leftAxis = _barChartView.leftAxis;
@@ -198,6 +226,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSString *)stringForValue:(double)value
+						axis:(ChartAxisBase *)axis
+{
+	if(value < 0){
+		return nil;
+	}
+	return _dataList[MIN(MAX((int) value, 0), _dataList.count - 1)][@"xLabel"];
 }
 
 

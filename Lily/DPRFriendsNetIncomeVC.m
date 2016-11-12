@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 
-@property (strong, nonatomic) NSArray *transactionsByFriends;
+@property (strong, nonatomic) NSDictionary *transactionsByFriends;
 @property (strong, nonatomic) NSMutableArray *dataList;
 
 @end
@@ -46,51 +46,32 @@
 - (void)setDataCount
 {
     self.dataList = [[NSMutableArray alloc] init];
-    int i = 0;
-    // iterate through friends
-    for(NSArray *currArr in _transactionsByFriends){
-        
-        double amountSent = 0;
-        double amountReceived = 0;
-        
-        // iterate through transactions
-        for(DPRTransaction *transaction in currArr){
-            
-            NSNumber *amount = transaction.amount;
-            
-            if(transaction.isIncoming){
-                amountReceived += amount.doubleValue;
-            }
-            else{
-                amountSent += amount.doubleValue;
-            }
-            
-        }
-        
-        double netIncome = amountReceived - amountSent;
-        
-        DPRTransaction *transaction = currArr[0];
-        
-        NSString *title = transaction.target.fullName;
-        NSArray *arr = [title componentsSeparatedByString:@" "];
-        NSString *firstName = arr[0];
-        NSString *name;
-        
-        if(arr.count > 1){
-            NSString *lastName = arr[1];
-            NSString *initial = [NSString stringWithFormat:@"%c.", [lastName characterAtIndex:0]];
-            name = [NSString stringWithFormat:@"%@ %@", firstName, initial];
-        }
-        else {
-            name = firstName;
-        }
-        
-        [_dataList addObject:@{@"xValue":@(i),
-                             @"yValue":@(netIncome),
-                              @"xLabel":name}];
-                                 
-         i++;
-        
+	
+	int index = 0;
+	for(id name in _transactionsByFriends){
+		
+		NSDictionary *friend = [_transactionsByFriends objectForKey:name];
+		
+		NSString *title = name;
+		NSArray *arr = [title componentsSeparatedByString:@" "];
+		NSString *firstName = arr[0];
+		NSString *newName;
+		
+		if(arr.count > 1){
+			NSString *lastName = arr[1];
+			NSString *initial = [NSString stringWithFormat:@"%c.", [lastName characterAtIndex:0]];
+			newName = [NSString stringWithFormat:@"%@ %@", firstName, initial];
+		}
+		else {
+			newName = firstName;
+		}
+		
+		NSNumber *netIncome = [friend objectForKey:@"netIncome"];
+		
+        [_dataList addObject:@{@"xValue":@(index++),
+                             @"yValue":netIncome,
+                              @"xLabel":newName}];
+                                         
     }
     
     NSMutableArray<BarChartDataEntry *> *values = [[NSMutableArray alloc] init];

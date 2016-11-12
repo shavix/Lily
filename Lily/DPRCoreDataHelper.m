@@ -213,7 +213,7 @@
     
 }
 
-- (NSArray *)setupTransactionsByFriendsWithUser:(DPRUser *)user{
+- (NSDictionary *)setupTransactionsByFriendsWithUser:(DPRUser *)user{
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"target.fullName" ascending:NO];
     NSArray *tempTransactionsByFriends = [user.transactionList sortedArrayUsingDescriptors:@[sortDescriptor]];
@@ -245,15 +245,50 @@
             }
         }
     }
-    
-    /*NSArray *sortedArray = [transactionsByFriends sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSInteger first = [(NSArray*)a count];
-        NSInteger second = [(NSArray*)b count];
-        return second > first;
-    }];*/
-    
-    return transactionsByFriends;
-    
+	
+	NSMutableDictionary *tempFriendsData = [[NSMutableDictionary alloc] init];
+	
+	// iterate through friends
+	for(NSArray *currArr in transactionsByFriends){
+		
+		NSInteger amountSent = 0;
+		NSInteger amountReceived = 0;
+		
+		// iterate through transactions
+		for(DPRTransaction *transaction in currArr){
+			
+			NSNumber *amount = transaction.amount;
+			
+			if(transaction.isIncoming){
+				amountReceived += amount.integerValue;
+			}
+			else{
+				amountSent += amount.integerValue;
+			}
+			
+		}
+		
+		DPRTransaction *transaction = currArr[0];
+		NSString *picture_url = transaction.target.picture_url;
+		
+		NSInteger netIncome = amountReceived - amountSent;
+		NSInteger transactions = currArr.count;
+		
+		NSDictionary *friend = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithInteger:transactions], @"transactions",
+								[NSNumber numberWithInteger:amountSent], @"sent",
+								[NSNumber numberWithInteger:amountReceived], @"received",
+								[NSNumber numberWithInteger:netIncome], @"netIncome",
+								picture_url, @"picture_url",
+								nil];
+		
+		
+		[tempFriendsData setObject:friend forKey:transaction.target.fullName];
+		
+	}
+	
+    return tempFriendsData;
+	
 }
 
 
@@ -262,11 +297,11 @@
 
 // shared instance
 + (instancetype)sharedModel {
-    
+	
     static DPRCoreDataHelper *_sharedModel = nil;
-    
+	
     static dispatch_once_t onceToken;
-    
+	
     dispatch_once (&onceToken, ^{
         _sharedModel = [[self alloc] init];
     });
