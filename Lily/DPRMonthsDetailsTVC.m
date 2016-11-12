@@ -101,7 +101,7 @@
 	// make menu
 	CGFloat width = 160;
 	CGFloat height = 40;
-	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 4, width, height * 4);
+	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 5, width, height * 5);
 	UIView *menu = [[UIView alloc] initWithFrame:frame];
 	menu.backgroundColor = [UIColor darkishColor];
 	menu.layer.zPosition = 990;
@@ -121,7 +121,7 @@
 	CGFloat width = 160;
 	
 	NSMutableArray *buttons = [[NSMutableArray alloc] init];
-	for(int i = 0; i < 4; i++){
+	for(int i = 0; i < 5; i++){
 		
 		CGFloat height = 40;
 		CGRect frame = CGRectMake(0, i*height, width, height);
@@ -136,18 +136,22 @@
 		
 		switch (i) {
 			case 0:
+				[button setTitle:@"Sort by Date" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByDate:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 1:
 				[button setTitle:@"Sort by Transactions" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortByTransactions:) forControlEvents:UIControlEventTouchDown];
 				break;
-			case 1:
+			case 2:
 				[button setTitle:@"Sort by Received" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortByReceived:) forControlEvents:UIControlEventTouchDown];
 				break;
-			case 2:
+			case 3:
 				[button setTitle:@"Sort by Sent" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortBySent:) forControlEvents:UIControlEventTouchDown];
 				break;
-			case 3:
+			case 4:
 				[button setTitle:@"Sort by Net Income" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortByNetIncome:) forControlEvents:UIControlEventTouchDown];
 				break;
@@ -180,6 +184,28 @@
 	
 	[self.tableView reloadData];
 	[self toggleMenu];
+}
+
+- (void)sortByDate:(UIButton *)sender{
+
+	// sorted keys
+	NSMutableArray *arr = [[NSMutableArray alloc] init];
+	for(int i = 0; i < 12; i++){
+		NSInteger index = currMonth - i - 1;
+		if(index < 0){
+			index += 12;
+		}
+		[arr addObject:[NSNumber numberWithInteger:index]];
+	}
+	_sortedKeys = arr;
+	
+	[self.tableView reloadData];
+	[self toggleMenu];
+	
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
 }
 
 - (void)sortByTransactions:(UIButton *)sender{

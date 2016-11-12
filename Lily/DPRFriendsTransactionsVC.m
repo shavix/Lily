@@ -137,6 +137,7 @@
     marker.minimumSize = CGSizeMake(80.f, 40.f);
     _barChartView.marker = marker;
 
+	[_barChartView animateWithXAxisDuration:2.0 yAxisDuration:2.0];
 }
 
 - (void)setupData{

@@ -132,7 +132,7 @@
 	// make menu
 	CGFloat width = 160;
 	CGFloat height = 40;
-	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 4, width, height * 4);
+	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 5, width, height * 5);
 	UIView *menu = [[UIView alloc] initWithFrame:frame];
 	menu.backgroundColor = [UIColor darkishColor];
 	menu.layer.zPosition = 990;
@@ -152,7 +152,7 @@
 	CGFloat width = 160;
 	
 	NSMutableArray *buttons = [[NSMutableArray alloc] init];
-	for(int i = 0; i < 4; i++){
+	for(int i = 0; i < 5; i++){
 		
 		CGFloat height = 40;
 		CGRect frame = CGRectMake(0, i*height, width, height);
@@ -167,18 +167,22 @@
 		
 		switch (i) {
 			case 0:
+				[button setTitle:@"Sort by Name" forState:UIControlStateNormal];
+				[button addTarget:self action:@selector(sortByName:) forControlEvents:UIControlEventTouchDown];
+				break;
+			case 1:
 				[button setTitle:@"Sort by Transactions" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortByTransactions:) forControlEvents:UIControlEventTouchDown];
 				break;
-			case 1:
+			case 2:
 				[button setTitle:@"Sort by Received" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortByReceived:) forControlEvents:UIControlEventTouchDown];
 				break;
-			case 2:
+			case 3:
 				[button setTitle:@"Sort by Sent" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortBySent:) forControlEvents:UIControlEventTouchDown];
 				break;
-			case 3:
+			case 4:
 				[button setTitle:@"Sort by Net Income" forState:UIControlStateNormal];
 				[button addTarget:self action:@selector(sortByNetIncome:) forControlEvents:UIControlEventTouchDown];
 				break;
@@ -198,6 +202,10 @@
 	NSArray *keys = [self.friendsData allKeys];
 	NSArray *sortedKeys = [keys sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
 		
+		if([key isEqualToString:@"names"]){
+			return [a compare:b];
+		}
+		
 		NSDictionary *first = [self.friendsData objectForKey:a];
 		NSDictionary *second = [self.friendsData objectForKey:b];
 		
@@ -210,6 +218,14 @@
 	_sortedKeys = sortedKeys;
 	[self.tableView reloadData];
 	[self toggleMenu];
+}
+
+- (void)sortByName:(UIButton *)sender{
+	[self sortTransactionsWithKey:@"names"];
+	for(UIButton *button in _buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	sender.backgroundColor = [UIColor grayColor];
 }
 
 - (void)sortByTransactions:(UIButton *)sender{

@@ -73,7 +73,8 @@
     
     BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
-    [data setValueTextColor:[UIColor whiteColor]];
+	UIColor *red = [UIColor colorWithRed:211/255.f green:74/255.f blue:88/255.f alpha:1.f];
+	[data setValueTextColor:red];
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
     axisFormatter.maximumFractionDigits = 0;
@@ -149,7 +150,7 @@
     marker.minimumSize = CGSizeMake(80.f, 40.f);
     _barChartView.marker = marker;
 
-    
+	[_barChartView animateWithXAxisDuration:2.0 yAxisDuration:2.0];
 }
 
 - (void)setupData{
