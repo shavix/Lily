@@ -131,7 +131,7 @@
 
 	// make menu
 	CGFloat width = 160;
-	CGFloat height = 60;
+	CGFloat height = 40;
 	CGRect frame = CGRectMake(self.view.frame.size.width - width, -height * 4, width, height * 4);
 	UIView *menu = [[UIView alloc] initWithFrame:frame];
 	menu.backgroundColor = [UIColor darkishColor];
@@ -154,7 +154,7 @@
 	NSMutableArray *buttons = [[NSMutableArray alloc] init];
 	for(int i = 0; i < 4; i++){
 		
-		CGFloat height = 60;
+		CGFloat height = 40;
 		CGRect frame = CGRectMake(0, i*height, width, height);
 		UIButton *button = [[UIButton alloc] initWithFrame:frame];
 		button.layer.zPosition = 999;
