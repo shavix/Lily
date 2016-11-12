@@ -110,7 +110,7 @@
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
 	}
-	sender.backgroundColor = [UIColor grayColor];
+	sender.backgroundColor = [UIColor lightGreenColor];
 }
 
 - (void)sortByTransactions:(UIButton *)sender{
@@ -118,7 +118,7 @@
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
 	}
-	sender.backgroundColor = [UIColor grayColor];
+	sender.backgroundColor = [UIColor lightGreenColor];
 }
 
 - (void)sortByReceived:(UIButton *)sender{
@@ -126,7 +126,7 @@
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
 	}
-	sender.backgroundColor = [UIColor grayColor];
+	sender.backgroundColor = [UIColor lightGreenColor];
 }
 
 - (void)sortBySent:(UIButton *)sender{
@@ -134,7 +134,7 @@
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
 	}
-	sender.backgroundColor = [UIColor grayColor];
+	sender.backgroundColor = [UIColor lightGreenColor];
 }
 
 - (void)sortByNetIncome:(UIButton *)sender{
@@ -142,7 +142,7 @@
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
 	}
-	sender.backgroundColor = [UIColor grayColor];
+	sender.backgroundColor = [UIColor lightGreenColor];
 }
 
 - (void)menuShow{

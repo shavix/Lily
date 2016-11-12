@@ -184,7 +184,7 @@
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
 	}
-	sender.backgroundColor = [UIColor grayColor];
+	sender.backgroundColor = [UIColor lightGreenColor];
 	[self toggleMenu];
 	
 	// update data
