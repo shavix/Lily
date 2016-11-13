@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
+@property (weak, nonatomic) UITableView *myTableView;
 
 - (IBAction) displayGestureForTapRecognizer:(UITapGestureRecognizer *) recognizer;
 - (IBAction) menuButtonAction: (UIButton *) sender;

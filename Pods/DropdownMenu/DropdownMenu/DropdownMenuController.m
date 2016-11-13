@@ -23,6 +23,7 @@
 #import "DropdownMenuController.h"
 #import "DropdownMenuSegue.h"
 
+
 @implementation DropdownMenuController
 
 CAShapeLayer *openMenuShape;
@@ -39,8 +40,8 @@ CAShapeLayer *closedMenuShape;
     self.currentViewController = self.childViewControllers.firstObject;
     
     // Draw the shapes for the open and close menu triangle.
-    [self drawOpenLayer];
-    [self drawClosedLayer];
+	//[self drawOpenLayer];
+	//[self drawClosedLayer];
 }
 
 - (void) setMenubarTitle:(NSString *) menubarTitle {
@@ -69,14 +70,19 @@ CAShapeLayer *closedMenuShape;
 
 - (void) showMenu {
     self.menu.hidden = NO;
-    
+	
     [closedMenuShape removeFromSuperlayer];
     [[[self view] layer] addSublayer:openMenuShape];
     
     // Set new origin of menu
     CGRect menuFrame = self.menu.frame;
-    menuFrame.origin.y = self.menubar.frame.size.height;
-    
+	if(self.myTableView){
+		menuFrame.origin.y = self.menubar.frame.size.height + self.myTableView.contentOffset.y;
+	}
+	else{
+		menuFrame.origin.y = self.menubar.frame.size.height;
+	}
+	
     // Set new alpha of Container View (to get fade effect)
     float containerAlpha = 0.5f;
     
@@ -102,7 +108,11 @@ CAShapeLayer *closedMenuShape;
     
     // Set new origin of menu
     CGRect menuFrame = self.menu.frame;
-    menuFrame.origin.y = self.menubar.frame.size.height-menuFrame.size.height;
+	if(self.myTableView){
+		menuFrame.origin.y = self.menubar.frame.size.height + self.myTableView.contentOffset.y - menuFrame.size.height;
+	}
+	else
+		menuFrame.origin.y = self.menubar.frame.size.height-menuFrame.size.height;
     
     // Set new alpha of Container View (to get fade effect)
     float containerAlpha = 1.0f;
@@ -133,13 +143,7 @@ CAShapeLayer *closedMenuShape;
     int trianglePosition = 0.87*width;
     
     // The path for the triangle (showing that the menu is open).
-    UIBezierPath *triangleShape = [[UIBezierPath alloc] init];
-    [triangleShape moveToPoint:CGPointMake(trianglePosition, height)];
-    [triangleShape addLineToPoint:CGPointMake(trianglePosition+triangleSize, height-triangleSize)];
-    [triangleShape addLineToPoint:CGPointMake(trianglePosition+2*triangleSize, height)];
-    [triangleShape addLineToPoint:CGPointMake(trianglePosition, height)];
-    
-    [openMenuShape setPath:triangleShape.CGPath];
+	
     //[openMenuShape setFillColor:[self.menubar.backgroundColor CGColor]];
     [openMenuShape setFillColor:[self.menu.backgroundColor CGColor]];
     UIBezierPath *borderPath = [[UIBezierPath alloc] init];

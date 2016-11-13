@@ -72,7 +72,8 @@
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
 	[self.tableView addGestureRecognizer:tap];
 
-	
+	self.myTableView = self.tableView;
+
 }
 
 - (void)setupMenu{
@@ -208,6 +209,12 @@
 - (void)tableTapped:(UITapGestureRecognizer *)tap
 {
 	[self hideMenu];
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	CGRect rect = self.menu.frame;
+	rect.origin.y =  scrollView.contentOffset.y;
+	
+	self.menu.frame = rect;
 }
 #pragma mark - Table view data source
 

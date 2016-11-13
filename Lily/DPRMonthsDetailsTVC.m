@@ -94,6 +94,8 @@
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
 	[self.tableView addGestureRecognizer:tap];
 	
+	self.myTableView = self.tableView;
+	
 }
 
 - (void)setupMenu{
@@ -102,59 +104,16 @@
 	
 	self.buttonList = [uiHelper createMenuWithVC:self andNumButtons:5 andType:@"months"];
 	
-}
-
-- (void)setupButtons{
-	
-	CGFloat width = 160;
-	
-	NSMutableArray *buttons = [[NSMutableArray alloc] init];
-	for(int i = 0; i < 5; i++){
-		
-		CGFloat height = 40;
-		CGRect frame = CGRectMake(0, i*height, width, height);
-		UIButton *button = [[UIButton alloc] initWithFrame:frame];
-		button.layer.zPosition = 999;
-		button.titleLabel.textColor = [UIColor whiteColor];
-		button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-		button.contentEdgeInsets = UIEdgeInsetsMake(-150, 0, -150, 0); //set as you require
-		
-		
-		button.backgroundColor = [UIColor darkishColor];
-		
-		switch (i) {
-			case 0:
-				[button setTitle:@"Sort by Date" forState:UIControlStateNormal];
-				[button addTarget:self action:@selector(sortByDate:) forControlEvents:UIControlEventTouchDown];
-				break;
-			case 1:
-				[button setTitle:@"Sort by Transactions" forState:UIControlStateNormal];
-				[button addTarget:self action:@selector(sortByTransactions:) forControlEvents:UIControlEventTouchDown];
-				break;
-			case 2:
-				[button setTitle:@"Sort by Received" forState:UIControlStateNormal];
-				[button addTarget:self action:@selector(sortByReceived:) forControlEvents:UIControlEventTouchDown];
-				break;
-			case 3:
-				[button setTitle:@"Sort by Sent" forState:UIControlStateNormal];
-				[button addTarget:self action:@selector(sortBySent:) forControlEvents:UIControlEventTouchDown];
-				break;
-			case 4:
-				[button setTitle:@"Sort by Net Income" forState:UIControlStateNormal];
-				[button addTarget:self action:@selector(sortByNetIncome:) forControlEvents:UIControlEventTouchDown];
-				break;
-		}
-		
-		[buttons addObject:button];
-		
-		[self.menu addSubview:button];
-		
-	}
-	
-	self.buttonList = buttons;
+	[self.tableView bringSubviewToFront:self.menu];
 	
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	CGRect rect = self.menu.frame;
+	rect.origin.y =  scrollView.contentOffset.y;
+	
+	self.menu.frame = rect;
+}
 
 - (void)sortTransactionsWithKey:(NSString *)key{
 	
@@ -229,6 +188,7 @@
 }
 
 - (void)menuShow{
+	
 	[self toggleMenu];
 }
 

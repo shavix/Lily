@@ -75,7 +75,7 @@
     data.barWidth = 0.9f;
     
     _barChartView.data = data;
-    
+
 }
 
 
