@@ -64,7 +64,7 @@
     [dataSets addObject:set1];
     
     BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
-    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
     [data setValueTextColor:[UIColor whiteColor]];
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];

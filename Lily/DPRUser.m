@@ -20,7 +20,6 @@
     
     self.fullName = [userInfo objectForKey:@"display_name"];
     self.username = [userInfo objectForKey:@"username"];
-    //self.dateJoined = [userInfo objectForKey:@"date_joined"];
     self.accessToken = accessToken;
     
     NSString *balanceString = [userInformation objectForKey:@"balance"];

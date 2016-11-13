@@ -86,7 +86,7 @@
     set.valueColors = colors;
     
     BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
-    [data setValueFont:[UIFont systemFontOfSize:11.f]];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
     axisFormatter.maximumFractionDigits = 0;
@@ -220,8 +220,21 @@
                         axis:(ChartAxisBase *)axis{
 	
 	NSNumber *index = _sortedKeys[(int)value];
-	return self.months[index.integerValue];
 	
+	NSString *month = self.months[index.integerValue];
+	NSInteger year;
+	NSString *title;
+	// find which year to add
+	if(index.integerValue >= currMonth){
+		year = currYear-1;
+	}
+	else {
+		year = currYear;
+	}
+	year-=2000;
+	title = [NSString stringWithFormat:@"%@ '%ld", month, year];
+	
+	return title;
 }
 
 

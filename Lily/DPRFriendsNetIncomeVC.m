@@ -75,7 +75,7 @@
     set.valueColors = colors;
     
     BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
-    [data setValueFont:[UIFont systemFontOfSize:11.f]];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
     
     NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
     axisFormatter.maximumFractionDigits = 0;

@@ -30,39 +30,33 @@
     // make content
     NSMutableString *content = [[NSMutableString alloc] init];
     
-    // login
-    [content appendString:@"\nLogin\n\n"];
-    [content appendString:@"Lily operates by contacting Venmo's servers and retrieving your account information. With that information, we can analyze your data and give you insights into your financial habits. To make this possible, you need to authenticate your account at the login screen. This is accomplished by:\n\n"];
-    [content appendString:@"1) Entering your Venmo credentials\n\n"];
-    [content appendString:@"2) Hitting \"Send Code\"\n\n"];
-    [content appendString:@"3) Entering the verification code sent to your code\n\n"];
-    
     // dashboard
     [content appendString:@"\nDashboard\n\n"];
-    [content appendString:@"The dashboard is the first screen that appears after you login to Lily. It contains a list of the available analysis options for your Venmo transactions. There are 6 options available that fall under 2 categories:\n\n"];
+    [content appendString:@"The dashboard is the first screen that appears after you login to Lily. It contains a list of the available analysis options for your Venmo transactions. There are 6 options available that fall under 3 categories:\n\n"];
     [content appendString:@"1) Friends - this section analyzes who you interact with the most and the least on Venmo.\n\n"];
     [content appendString:@"2) This Year - this section analyzes your financial habits on a month-by-month basis\n\n"];
+	[content appendString:@"3) Load Transactions - this section allows you to fetch more transactions from your profile using Venmo's servers in order to ensure all of your most recent transactions are factored in to your analyses.\n\n"];
     
     // graphs
     [content appendString:@"\nGraphs\n\n"];
     [content appendString:@"After selecting one of the analysis options, you will be taken to a screen containing a graphical display of your financial habits. There are 3 possible displays:\n\n"];
     [content appendString:@"1) Bar Chart - this is a simple bar chart that can be found under \"Friends:transactions\" and \"This Year:expenditures\"\n"];
-    [content appendString:@"Initially, the chart will only display a few values on the X-axis (this is to avoid clutter). By pinching to zoom, you can get a more detailed view of the data. Moreover, you can tap on any bar in the graph and view that entry's data.\n\n"];
+    [content appendString:@"Depending on the amount of data available, some information may not be immediately visible on the screen. By pinching to zoom, you can get a more detailed view of the data. You can also tap on any bar in the graph and view that entry's data.\n\n"];
     [content appendString:@"2) Bar (+/-) Chart - this is a bar chart displaying positive and negative values that can be found under \"Friends:net income\" and \"This Year:net income\"\n"];
-    [content appendString:@"Similar to (1), initially, the chart will only display a few values on the X-axis (this is to avoid clutter). By pinching to zoom, you can get a more detailed view of the data. Moreover, you can tap on any bar in the graph and view that entry's data.\n\n"];
+    [content appendString:@"Similar to (1), depending on the amount of data available, some information may not be immediately visible on the screen. By pinching to zoom, you can get a more detailed view of the data. You can also tap on any bar in the graph and view that entry's data.\n\n"];
     [content appendString:@"3) List View - this is a page displaying detailed information on given data, in a list form. It can be found under \"Friends:full details\" and \"This Year:full details\"\n"];
     [content appendString:@"Interact with this form of data simply by swiping up and down the screen, observing the values displayed.\n\n"];
     
     // transactions
-    [content appendString:@"\nTransactions\n\n"];
-    [content appendString:@"The second tab at the bottom of the screen is the transactions tab. This page contains information on all your transactions that have been fetched from Venmo's servers. They are organized by date and contain information on who you made the transaction with, the dollar amount of the transaction, and the transaction's description.\n"];
+    [content appendString:@"\nTransactions List\n\n"];
+    [content appendString:@"The second tab at the bottom of the screen is the transactions tab. This page contains information on all your loaded transactions. They are organized by date and contain information on who you made the transaction with, the dollar amount of the transaction, and the transaction's description.\n"];
 
     
     // attribute content
     NSMutableAttributedString *attributedContent = [[NSMutableAttributedString alloc] initWithString:content];
     
     // attributes
-    NSArray *words = @[@"Login", @"Dashboard", @"Graphs", @"Transactions"];
+    NSArray *words = @[@"Dashboard", @"Graphs", @"Transactions List"];
     
     for(NSString *word in words){
         NSRange range = [content rangeOfString:word];
