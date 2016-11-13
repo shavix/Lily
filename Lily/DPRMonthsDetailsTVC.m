@@ -129,7 +129,14 @@
 	
 	_sortedKeys = mutable;
 	
-	[self.tableView reloadData];
+	[UIView transitionWithView: self.tableView
+					  duration: 0.5f
+					   options: UIViewAnimationOptionTransitionCrossDissolve
+					animations: ^(void)
+	 {
+		 [self.tableView reloadData];
+	 }
+					completion: nil];
 	[self toggleMenu];
 }
 
@@ -146,7 +153,14 @@
 	}
 	_sortedKeys = arr;
 	
-	[self.tableView reloadData];
+	[UIView transitionWithView: self.tableView
+					  duration: 0.5f
+					   options: UIViewAnimationOptionTransitionCrossDissolve
+					animations: ^(void)
+	 {
+		 [self.tableView reloadData];
+	 }
+					completion: nil];
 	[self toggleMenu];
 	
 	for(UIButton *button in _buttonList){

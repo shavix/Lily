@@ -102,7 +102,14 @@
 	}];
 	
 	_sortedKeys = sortedKeys;
-	[self.tableView reloadData];
+	[UIView transitionWithView: self.tableView
+					  duration: 0.5f
+					   options: UIViewAnimationOptionTransitionCrossDissolve
+					animations: ^(void)
+	 {
+		 [self.tableView reloadData];
+	 }
+					completion: nil];
 	[self toggleMenu];
 }
 

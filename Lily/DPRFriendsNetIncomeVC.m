@@ -13,7 +13,6 @@
 #import "DPRTarget.h"
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
-#import "xAxisValueFormatter.h"
 #import <Lily-Bridging-Header.h>
 
 @interface DPRFriendsNetIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
