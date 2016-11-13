@@ -201,7 +201,7 @@
 			[self segueCheckWithIdentifier:@"friendsListSegue"];
 		}
 	}
-    // MONTHLY
+    // THIS YEAR
     else if(section == 1){
 		// expenditures
 		if(row == 0){
@@ -251,23 +251,23 @@
 			cell.subtitle.text = @"All financial information between you and your friends.";
 		}
 	}
-    // MONTHLY
+    // THIS YEAR
     else if(section == 1)
     {
 		if(row == 0){
 			cell.image.image = [UIImage imageNamed:@"payment.png"];
 			cell.title.text = @"Expenditures";
-			cell.subtitle.text = @"A graphical analysis of your expenditures on a monthly basis.";
+			cell.subtitle.text = @"A graphical analysis of your expenditures over the last year on a monthly basis.";
 		}
 		else if(row == 1){
 			cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
 			cell.title.text = @"Net Income";
-			cell.subtitle.text = @"A graphical analysis of your net income on a monthly basis.";
+			cell.subtitle.text = @"A graphical analysis of your net income over the last year on a monthly basis.";
 		}
 		else if(row == 2){
 			cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
 			cell.title.text = @"Full details";
-			cell.subtitle.text = @"All your financial information on a monthly basis.";
+			cell.subtitle.text = @"All your financial information over the last year on a monthly basis.";
 		}
     }
     // TRANSACTIONS
@@ -307,7 +307,7 @@
 		title = @"FRIENDS";
 	}
     else if(section == 1){
-        title = @"MONTHLY";
+        title = @"THIS YEAR";
     }
     else{
         title = @"TRANSACTIONS";

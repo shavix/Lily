@@ -132,7 +132,7 @@
 
 - (void)setupUI{
     
-    self.title = @"Monthly";
+    self.title = @"This Year";
     self.labelTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     
     self.view.backgroundColor = [UIColor darkColor];
@@ -140,7 +140,7 @@
     self.topView.backgroundColor = [UIColor darkColor];
     
     self.uiHelper = [[DPRUIHelper alloc] init];
-    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Monthly"];
+    [self.uiHelper setupBarChartView:_barChartView withTitle:@"This Year"];
     
     NSString *title;
     if(currMonth == 12){
