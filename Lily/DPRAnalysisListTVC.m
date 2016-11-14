@@ -149,9 +149,9 @@
 
 	// title
 	NSInteger index = section * (sectionNames.count-1) + row;
-	cell.title.text = _pageType;
-	cell.title.textColor = [UIColor lightGreenColor];
-	cell.title2.text = [NSString stringWithFormat:@"- %@",sectionNames[index]];
+	cell.title.text = [NSString stringWithFormat:@"%@ -", _pageType];
+	cell.title2.textColor = [UIColor lightGreenColor];
+	cell.title2.text = [NSString stringWithFormat:@"%@",sectionNames[index]];
 	
 	return cell;
 }

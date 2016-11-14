@@ -344,6 +344,7 @@
                         <segue destination="rhI-HP-BIR" kind="show" identifier="monthsNetIncomeSegue" id="nA9-xc-EEh"/>
                         <segue destination="dwA-TL-1Nt" kind="show" identifier="monthsDetailsSegue" id="oji-Zd-FKW"/>
                         <segue destination="rwC-Xg-Ofb" kind="show" identifier="friendsIncomeSegue" id="pLw-Xf-x3o"/>
+                        <segue destination="tDK-gL-VNb" kind="show" identifier="monthsIncomeSegue" id="TGd-bd-P1T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-co-FnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -832,7 +833,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDk-69-jcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6255" y="1348"/>
+            <point key="canvasLocation" x="6993" y="1348"/>
         </scene>
         <!--InformationVC-->
         <scene sceneID="3ln-hT-fCX">
@@ -1016,6 +1017,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtr-eU-Phz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6254" y="215"/>
+        </scene>
+        <!--Months IncomeVC-->
+        <scene sceneID="RLu-JV-Qnh">
+            <objects>
+                <viewController id="tDK-gL-VNb" customClass="DPRMonthsIncomeVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SK4-0O-bsn"/>
+                        <viewControllerLayoutGuide type="bottom" id="zdh-zH-hwB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4gz-bH-318">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRM-vs-vro">
+                                <rect key="frame" x="-4" y="20" width="383" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrc-OK-Ut7">
+                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Yrc-OK-Ut7" firstAttribute="centerY" secondItem="fRM-vs-vro" secondAttribute="centerY" multiplier="1.5" id="AcY-vU-HZg"/>
+                                    <constraint firstItem="Yrc-OK-Ut7" firstAttribute="width" secondItem="fRM-vs-vro" secondAttribute="width" id="Ytd-Vz-bVK"/>
+                                    <constraint firstItem="Yrc-OK-Ut7" firstAttribute="centerX" secondItem="fRM-vs-vro" secondAttribute="centerX" id="o1I-nh-EPv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci3-Ke-RXs" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="87" width="343" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fRM-vs-vro" firstAttribute="leading" secondItem="4gz-bH-318" secondAttribute="leadingMargin" constant="-20" id="5Vc-ev-h2B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fRM-vs-vro" secondAttribute="trailing" constant="-20" id="AKL-9w-nqa"/>
+                            <constraint firstItem="fRM-vs-vro" firstAttribute="top" secondItem="SK4-0O-bsn" secondAttribute="bottom" id="Hag-eV-Jsy"/>
+                            <constraint firstItem="zdh-zH-hwB" firstAttribute="top" secondItem="ci3-Ke-RXs" secondAttribute="bottom" constant="20" id="RwQ-fc-KPE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ci3-Ke-RXs" secondAttribute="trailing" id="hID-wg-6sK"/>
+                            <constraint firstItem="ci3-Ke-RXs" firstAttribute="top" secondItem="fRM-vs-vro" secondAttribute="bottom" id="t4r-eQ-cxt"/>
+                            <constraint firstItem="fRM-vs-vro" firstAttribute="height" secondItem="4gz-bH-318" secondAttribute="height" multiplier="0.1" id="x2p-4R-a8y"/>
+                            <constraint firstItem="ci3-Ke-RXs" firstAttribute="leading" secondItem="4gz-bH-318" secondAttribute="leadingMargin" id="yP0-8I-CE4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="ci3-Ke-RXs" id="REl-82-bBh"/>
+                        <outlet property="labelTitle" destination="Yrc-OK-Ut7" id="vHA-qj-FW2"/>
+                        <outlet property="topView" destination="fRM-vs-vro" id="zJS-Lc-yxJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="itV-Xa-KyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6254" y="1348"/>
         </scene>
     </scenes>
     <resources>
