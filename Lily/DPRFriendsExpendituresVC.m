@@ -55,11 +55,7 @@
 	self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
 	
 	// sorted keys
-	NSMutableArray *tempArr = [[NSMutableArray alloc] init];
-	for(id key in self.transactionsByFriends){
-		[tempArr addObject:key];
-	}
-	_sortedKeys = tempArr;
+	[self sortByName:_buttonList[0]];
 	
 	NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
 	
@@ -168,7 +164,7 @@
 		button.backgroundColor = [UIColor darkishColor];
 	}
 	sender.backgroundColor = [UIColor lightGreenColor];
-	[self toggleMenu];
+	[self hideMenu];
 	
 	// update data
 	[self setDataCount];

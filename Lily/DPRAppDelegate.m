@@ -13,6 +13,7 @@
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "UIColor+CustomColors.h"
+#import "UIFont+CustomFonts.h"
 
 @interface DPRAppDelegate ()
 
@@ -117,7 +118,7 @@
 	// initial settings
 	[[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
 	[[UITabBar appearance] setBarTintColor:[UIColor darkishColor]];
-	[[UILabel appearance] setFont:[UIFont fontWithName:@"Helvetica-Light" size:14.0]];
+	[[UILabel appearance] setFont:[UIFont helvetica14]];
 	[[UILabel appearance] setTextColor:[UIColor whiteColor]];
 	[[UINavigationBar appearance] setTintColor:[UIColor lightGreenColor]];
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

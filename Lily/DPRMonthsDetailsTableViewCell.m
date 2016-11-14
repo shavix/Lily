@@ -9,6 +9,7 @@
 #import "DPRMonthsDetailsTableViewCell.h"
 #import "DPRUIHelper.h"
 #import "UIColor+CustomColors.h"
+#import "UIFont+CustomFonts.h"
 
 @implementation DPRMonthsDetailsTableViewCell
 
@@ -24,12 +25,12 @@
     self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
     
     // fonts
-	UIFont *font = [UIFont fontWithName:@"Helvetica-Light" size:14];
+	UIFont *font = [UIFont helvetica14];
 	
-	self.transactionsAmountLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:14];
-    self.sentAmountLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:14];
-    self.receivedAmountLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:14];
-    self.netIncomeAmountLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:14];
+	self.transactionsAmountLabel.font = font;
+    self.sentAmountLabel.font = font;
+    self.receivedAmountLabel.font = font;
+    self.netIncomeAmountLabel.font = font;
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 

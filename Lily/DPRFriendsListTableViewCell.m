@@ -8,6 +8,7 @@
 
 #import "DPRFriendsListTableViewCell.h"
 #import "DPRUIHelper.h"
+#import "UIFont+CustomFonts.h"
 #import "UIColor+CustomColors.h"
 
 @implementation DPRFriendsListTableViewCell
@@ -25,7 +26,7 @@
     self.userImage.clipsToBounds = YES;
 
     // fonts
-	UIFont *font = [UIFont fontWithName:@"Helvetica-Light" size:14];
+	UIFont *font = [UIFont helvetica14];
 	self.transactionsAmountLabel.font = font;
 	self.sentAmountLabel.font = font;
     self.receivedAmountLabel.font = font;

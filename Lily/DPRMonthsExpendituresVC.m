@@ -42,8 +42,8 @@
     
     [super viewDidLoad];
 
-    [self setupData];
-    [self setupUI];
+	[self setupData];
+	[self setupUI];
     [self setDataCount];
     [self setupChartUI];
 	
@@ -66,19 +66,6 @@
 					@"Jul", @"Aug", @"Sep",
 					@"Oct", @"Nov", @"Dec"
 					];
-	
-	
-	// sorted keys
-	NSMutableArray *arr = [[NSMutableArray alloc] init];
-	for(int i = 11; i >= 0; i--){
-		NSInteger index = currMonth - i - 1;
-		if(index < 0){
-			index += 12;
-		}
-		[arr addObject:[NSNumber numberWithInteger:index]];
-	}
-	_sortedKeys = arr;
-	
 	
 }
 
@@ -115,6 +102,10 @@
 	self.navigationItem.rightBarButtonItem = addButton;
 	
 	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:2 andType:@"months"];
+	
+	
+	// sorted keys
+	[self sortByDate:_buttonList[0]];
 	
 }
 
@@ -158,7 +149,7 @@
 		button.backgroundColor = [UIColor darkishColor];
 	}
 	sender.backgroundColor = [UIColor lightGreenColor];
-	[self toggleMenu];
+	[self hideMenu];
 	
 	// update data
 	[self setDataCount];
@@ -195,7 +186,7 @@
 	else {
 		year = currYear;
 	}
-	year-=2000;
+	year -= 2000;
 	title = [NSString stringWithFormat:@"%@ '%ld", month, year];
 
 	return title;
