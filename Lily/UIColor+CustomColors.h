@@ -10,7 +10,6 @@
 
 @interface UIColor (CustomColors)
 
-
 // methods
 + (UIColor *)charcoalColor;
 + (UIColor *)lightGreenColor;

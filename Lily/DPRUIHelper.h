@@ -23,5 +23,6 @@
 - (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
 - (void)setupExpendituresChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
 - (void)setupCell:(UITableViewCell *)cell;
+- (void)setupDashboardCell:(UITableViewCell *)cell;
 
 @end

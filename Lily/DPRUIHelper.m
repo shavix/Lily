@@ -172,6 +172,23 @@
 	
 }
 
+- (void)setupCell:(UITableViewCell *)cell{
+	
+	CALayer *topBorder = [CALayer layer];
+	topBorder.borderColor = [UIColor lightGrayColor].CGColor;
+	topBorder.borderWidth = 1;
+	topBorder.frame = CGRectMake(0, 0, CGRectGetWidth(cell.contentView.frame), 1);
+	
+	CALayer *bottomBorder = [CALayer layer];
+	bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
+	bottomBorder.borderWidth = 1;
+	bottomBorder.frame = CGRectMake(0, 99, CGRectGetWidth(cell.contentView.frame), 1);
+	
+	[cell.contentView.layer addSublayer:topBorder];
+	[cell.contentView.layer addSublayer:bottomBorder];
+	
+}
+
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title{
 
     // setup navigationController
