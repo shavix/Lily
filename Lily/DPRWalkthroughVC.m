@@ -173,7 +173,7 @@
 	
 	EAIntroPage *page1 = [EAIntroPage page];
 	page1.title = @"Lily";
-	page1.desc = @"The world's first Venmo financial manager.";
+	page1.desc = @"The first Venmo financial manager.";
 	//page1.bgImage = [UIImage imageNamed:@"bg1"];
 	page1.bgColor = backgroundColor;
 	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lilies"]];
@@ -182,7 +182,7 @@
 	
 	EAIntroPage *page2 = [EAIntroPage page];
 	page2.title = @"Analytics";
-	page2.desc = @"Lily delivers in-depth data analytics on all your previous Venmo transactions";
+	page2.desc = @"Lily delivers in-depth data analytics on all your Venmo transactions.";
 	//page2.bgImage = [UIImage imageNamed:@"bg2"];
 	page2.bgColor = backgroundColor;
 	page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"graph"]];

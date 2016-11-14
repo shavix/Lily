@@ -559,8 +559,9 @@
 				TargetAttributes = {
 					6379F54E1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = VMJMB92Y2W;
+						DevelopmentTeam = UXV65ZCRFJ;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					6379F56A1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
@@ -879,12 +880,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = VMJMB92Y2W;
+				DEVELOPMENT_TEAM = UXV65ZCRFJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShavidApps.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Bridging-Header.h";
@@ -900,12 +902,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = VMJMB92Y2W;
+				DEVELOPMENT_TEAM = UXV65ZCRFJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.Lily;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShavidApps.Lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Bridging-Header.h";
