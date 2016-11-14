@@ -168,7 +168,7 @@
 	// ui settings
 	self.navigationController.navigationBarHidden = YES;
 	CGRect frame = CGRectMake(0, self.view.frame.size.height/8, self.view.frame.size.width/2, self.view.frame.size.width/2);
-	CGFloat height = self.view.frame.size.height/6;
+	CGFloat height = self.view.frame.size.height/4;
 	UIColor *backgroundColor = [UIColor darkishColor];
 	
 	EAIntroPage *page1 = [EAIntroPage page];
@@ -176,38 +176,39 @@
 	page1.desc = @"The world's first Venmo financial manager.";
 	//page1.bgImage = [UIImage imageNamed:@"bg1"];
 	page1.bgColor = backgroundColor;
-	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"presentation"]];
+	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lilies"]];
 	page1.titleIconView.frame = frame;
 	page1.titleIconPositionY = height;
 	
 	EAIntroPage *page2 = [EAIntroPage page];
 	page2.title = @"Analytics";
-	page2.desc = @"Lily delivers in-depth data analytics on all your previous transactions";
+	page2.desc = @"Lily delivers in-depth data analytics on all your previous Venmo transactions";
 	//page2.bgImage = [UIImage imageNamed:@"bg2"];
 	page2.bgColor = backgroundColor;
 	page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"graph"]];
 	page2.titleIconView.frame = frame;
 	page2.titleIconPositionY = height;
 	
-	EAIntroPage *page3 = [EAIntroPage page];
+	/*EAIntroPage *page3 = [EAIntroPage page];
 	page3.title = @"Free";
 	page3.desc = @"Lily is free forver. No ads. No subscription fees.";
 	//page3.bgImage = [UIImage imageNamed:@"bg3"];
 	page3.bgColor = backgroundColor;
 	page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"free"]];
 	page3.titleIconView.frame = frame;
-	page3.titleIconPositionY = height;
+	page3.titleIconPositionY = height;*/
 	
 	EAIntroPage *page4 = [EAIntroPage page];
 	page4.title = @"Let's start!";
-	page4.desc = @"Simply enter your Venmo credentials on the next page and start managing!";
+	page4.desc = @"Simply sign in to your Venmo account on the next page and start managing!";
 	//page4.bgImage = [UIImage imageNamed:@"bg4"];
 	page4.bgColor = backgroundColor;
 	page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"athletics"]];
 	page4.titleIconView.frame = frame;
 	page4.titleIconPositionY = height;
 	
-	EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page3,page4]];
+	//EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page3,page4]];
+	EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page4]];
 	
 	[intro setDelegate:self];
 	
