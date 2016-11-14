@@ -63,10 +63,8 @@
 	
 	// already have access token, do nothing
 	if(_accessToken){
-		
 		// if web redirect - get access token
 		if ([URLString rangeOfString:@"webview-auth"].location != NSNotFound) {
-			
 			// store access token to NSUserDefaults
 			[self storeAccessToken];
 			[self signedIn];
@@ -74,22 +72,18 @@
 
 	}
 	else{
-	
 		// redirect via google.com
 		if ([URLString rangeOfString:@"google.com"].location != NSNotFound) {
 			NSArray *temp = [URLString componentsSeparatedByString:@"="];
 			_accessToken = temp[1];
-			
 			// sign in
 			[self signedIn];
 		}
 		
 		// if web redirect - get access token
 		else if ([URLString rangeOfString:@"webview_auth"].location != NSNotFound) {
-	
 			NSArray *temp = [URLString componentsSeparatedByString:@"="];
 			_accessToken = temp[1];
-			
 			// sign in
 			[self signedIn];
 		}
@@ -123,7 +117,7 @@
     // venmo helper managedobjectcontext
     _venmoHelper.managedObjectContext = self.managedObjectContext;
 
-	[self goToDashboard];
+	[self setupDashboard];
 	
 }
 
@@ -154,7 +148,7 @@
 	}
 }
 
-- (void)goToDashboard{
+- (void)setupDashboard{
 	// segue to home page
 	self.navigationController.navigationBarHidden = YES;
 	[self performSegueWithIdentifier:@"signedInSegue" sender:self];

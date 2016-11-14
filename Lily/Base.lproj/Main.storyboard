@@ -140,24 +140,6 @@
             </objects>
             <point key="canvasLocation" x="2038" y="910"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="EkA-k2-yv3">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UMJ-zj-uJW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xgk-cR-gia">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zzn-wE-7r5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BnJ-hj-G0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="219" y="913"/>
-        </scene>
         <!--Dashboard-->
         <scene sceneID="mXF-Lh-tcR">
             <objects>

@@ -28,7 +28,7 @@
     
     [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 
-	[self uiSettings];
+	[self setupUI];
 	[self setupData];
 
     // check if user is logged in
@@ -50,11 +50,11 @@
 		
 		// no accesstoken, no user in core data - walkthrough
 		if(!user){
-			[self goToWalkthrough];
+			[self setupWalkthrough];
 		}
 		// no accesstoken, user in core data - skip walkthrough
 		else{
-			[self goToDashboard];
+			[self setupDashboard];
 		}
     }
     return YES;
@@ -79,7 +79,7 @@
 	NSString *imageURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
 	user.pictureImage = user.pictureImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
 	
-	[self goToDashboard];
+	[self setupDashboard];
     
 }
 
@@ -95,7 +95,7 @@
 	}
 }
 
-- (void)goToDashboard{
+- (void)setupDashboard{
 	// set root view controller
 	UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
@@ -104,7 +104,7 @@
 	[self.window makeKeyAndVisible];
 }
 
-- (void)goToWalkthrough{
+- (void)setupWalkthrough{
     // set venmoViewController as initialViewController
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     DPRWalkthroughVC *vc = [aStoryboard instantiateViewControllerWithIdentifier:@"walkthroughVC"];
@@ -113,7 +113,7 @@
     [self.window makeKeyAndVisible];
 }
 
-- (void)uiSettings{
+- (void)setupUI{
 	// initial settings
 	[[UITabBar appearance] setTintColor:[UIColor lightGreenColor]];
 	[[UITabBar appearance] setBarTintColor:[UIColor darkishColor]];
