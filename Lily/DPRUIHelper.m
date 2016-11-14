@@ -17,20 +17,19 @@
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title
 {
     chartView.chartDescription.enabled = NO;
-    
     chartView.drawGridBackgroundEnabled = NO;
-    
     chartView.dragEnabled = YES;
     [chartView setScaleEnabled:YES];
     chartView.pinchZoomEnabled = NO;
-    
+	
+	// axis
     ChartXAxis *xAxis = chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
     chartView.xAxis.labelTextColor = [UIColor whiteColor];
     chartView.leftAxis.labelTextColor = [UIColor whiteColor];
     chartView.rightAxis.labelTextColor = [UIColor whiteColor];
-    
     chartView.rightAxis.enabled = NO;
+	
 }
 
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title{
@@ -45,14 +44,6 @@
     viewController.view.backgroundColor = [UIColor darkColor];
     
 }
-
-- (void)setupDashboardViewUI:(UIView *)view {
-    
-    view.backgroundColor = [UIColor charcoalColor];
-    view.layer.cornerRadius = 5;
-    
-}
-
 
 // returns button array
 -(NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type{
@@ -175,33 +166,5 @@
     
 }
 
-- (void)settingsHelpAlertWithTitle:(NSString *)title andMessage:(NSString *)message andVC:(UIViewController *)vc{
-    
-    // alert
-    SCLAlertView *alert = [[SCLAlertView alloc] init];
-
-    // buttons
-    SCLButton *yesButton = [alert addButton:@"Yes" actionBlock:^(void) {
-        [self notificationsStatus:@"y"];
-    }];
-    //Using Block
-    SCLButton *noButton = [alert addButton:@"No" actionBlock:^(void) {
-        [self notificationsStatus:@"n"];
-    }];
-    
-    yesButton.defaultBackgroundColor = [UIColor lightGreenColor];
-    noButton.defaultBackgroundColor = [UIColor colorWithRed:255/255 green:70/255 blue:70/255 alpha:1];
-
-    // show alert
-    [alert showQuestion:vc title:title subTitle:message closeButtonTitle:nil duration:0.0f];
-    
-}
-
-- (void)notificationsStatus:(NSString *)status {
-    
-    [[NSUserDefaults standardUserDefaults] setObject:status forKey:@"notifications"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-}
 
 @end

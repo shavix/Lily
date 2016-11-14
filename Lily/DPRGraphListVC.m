@@ -133,7 +133,6 @@
 	// retrieve recent transactions
 	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
 	
-	
 	// background thread
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
 
@@ -158,7 +157,7 @@
 
 - (void)noTransactions{
 	// haven't loaded, show notice
-	NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page.";
+	NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page (network connection required).";
 	NSString *title = @"Notice";
 	[_uiHelper helpAlertWithMessage:message andTitle:title andVC:self.parentViewController];
 }

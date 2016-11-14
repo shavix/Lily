@@ -60,11 +60,6 @@
 
 }
 
-// network call to get profile picture
-- (UIImage *)fetchProfilePictureWithImageURL:(NSString *)imageURL {
-	return [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
-}
-
 
 #pragma mark - Init
 

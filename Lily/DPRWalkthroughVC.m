@@ -117,8 +117,8 @@
     }
 	
 	// set picture for singleton
-    NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
-    user.pictureImage = [_venmoHelper fetchProfilePictureWithImageURL:pictureURL];
+    NSString *imageURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
+	user.pictureImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
     
     // venmo helper managedobjectcontext
     _venmoHelper.managedObjectContext = self.managedObjectContext;

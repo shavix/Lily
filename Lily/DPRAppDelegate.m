@@ -76,8 +76,8 @@
     }
 	
 	// set picture for singleton
-	NSString *pictureURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
-	user.pictureImage = [self.venmoHelper fetchProfilePictureWithImageURL:pictureURL];
+	NSString *imageURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
+	user.pictureImage = user.pictureImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
 	
 	[self goToDashboard];
     

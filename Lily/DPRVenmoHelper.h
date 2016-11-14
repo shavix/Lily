@@ -19,7 +19,6 @@
 
 // methods
 - (NSDictionary *)fetchUserInformation;
-- (UIImage *)fetchProfilePictureWithImageURL:(NSString *)imageURL;
 - (NSArray *)fetchTransactions:(NSInteger)count;
 + (instancetype)sharedModel;
 

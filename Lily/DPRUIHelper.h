@@ -17,11 +17,8 @@
 
 // methods
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title;
-- (void)setupDashboardViewUI:(UIView *)view;
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;
-- (void) helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
-- (void)notificationsStatus:(NSString *)status;
-- (void)settingsHelpAlertWithTitle:(NSString *)title andMessage:(NSString *)message andVC:(UIViewController *)vc;
+- (void)helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
 -(NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type;
 
 
