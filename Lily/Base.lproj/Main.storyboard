@@ -343,6 +343,7 @@
                         <segue destination="xOv-fr-RiQ" kind="show" identifier="monthsExpendituresSegue" id="hkj-Bh-6aN"/>
                         <segue destination="rhI-HP-BIR" kind="show" identifier="monthsNetIncomeSegue" id="nA9-xc-EEh"/>
                         <segue destination="dwA-TL-1Nt" kind="show" identifier="monthsDetailsSegue" id="oji-Zd-FKW"/>
+                        <segue destination="rwC-Xg-Ofb" kind="show" identifier="friendsIncomeSegue" id="pLw-Xf-x3o"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-co-FnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -529,7 +530,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sH-uf-opi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6318" y="215"/>
+            <point key="canvasLocation" x="6993" y="215"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="5js-Vk-iAz">
@@ -959,6 +960,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ym7-fc-Iv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3630" y="215"/>
+        </scene>
+        <!--Friends IncomeVC-->
+        <scene sceneID="1CO-Zq-DMz">
+            <objects>
+                <viewController id="rwC-Xg-Ofb" customClass="DPRFriendsIncomeVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sXS-Mz-Td6"/>
+                        <viewControllerLayoutGuide type="bottom" id="wBi-c7-COM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nht-TU-pXi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-2x-8TN">
+                                <rect key="frame" x="-4" y="20" width="383" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksN-tP-hfq">
+                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ksN-tP-hfq" firstAttribute="centerX" secondItem="V8f-2x-8TN" secondAttribute="centerX" id="gCs-rv-8HE"/>
+                                    <constraint firstItem="ksN-tP-hfq" firstAttribute="width" secondItem="V8f-2x-8TN" secondAttribute="width" id="ufe-xI-jQO"/>
+                                    <constraint firstItem="ksN-tP-hfq" firstAttribute="centerY" secondItem="V8f-2x-8TN" secondAttribute="centerY" multiplier="1.5" id="xuA-PQ-m8z"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eR4-JC-yr3" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="87" width="343" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V8f-2x-8TN" firstAttribute="height" secondItem="nht-TU-pXi" secondAttribute="height" multiplier="0.1" id="88Q-Qe-eDP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eR4-JC-yr3" secondAttribute="trailing" id="Cis-kt-onu"/>
+                            <constraint firstItem="wBi-c7-COM" firstAttribute="top" secondItem="eR4-JC-yr3" secondAttribute="bottom" constant="20" id="EwI-fT-InT"/>
+                            <constraint firstItem="eR4-JC-yr3" firstAttribute="leading" secondItem="nht-TU-pXi" secondAttribute="leadingMargin" id="WE5-2x-h7K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V8f-2x-8TN" secondAttribute="trailing" constant="-20" id="aQN-WT-w5V"/>
+                            <constraint firstItem="V8f-2x-8TN" firstAttribute="top" secondItem="sXS-Mz-Td6" secondAttribute="bottom" id="f81-I5-swT"/>
+                            <constraint firstItem="V8f-2x-8TN" firstAttribute="leading" secondItem="nht-TU-pXi" secondAttribute="leadingMargin" constant="-20" id="fHJ-69-z6h"/>
+                            <constraint firstItem="eR4-JC-yr3" firstAttribute="top" secondItem="V8f-2x-8TN" secondAttribute="bottom" id="pfY-LO-xUd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="eR4-JC-yr3" id="5Al-u1-7LY"/>
+                        <outlet property="labelTitle" destination="ksN-tP-hfq" id="Vxr-24-aRa"/>
+                        <outlet property="topView" destination="V8f-2x-8TN" id="BxJ-Qb-zBy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jtr-eU-Phz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6254" y="215"/>
         </scene>
     </scenes>
     <resources>

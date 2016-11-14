@@ -71,7 +71,7 @@
 
 - (void)setDataCount
 {
-	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_transactionsByMonth andChartView:_barChartView andType:@"expenditures"];
+	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_transactionsByMonth andChartView:_barChartView andType:@"sent"];
 	
 }
 

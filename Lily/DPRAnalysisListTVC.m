@@ -30,6 +30,7 @@
 
 @implementation DPRAnalysisListTVC{
 	NSArray *sectionNames;
+	NSArray *segueIdentifiers;
 }
 
 - (void)viewDidLoad {
@@ -42,7 +43,16 @@
 
 - (void)setupData {
 	
-	sectionNames = @[@"Expenditures", @"Net Income", @"Full Details"];
+	sectionNames = @[@"Expenditures", @"Income", @"Net Income", @"Full Details"];
+	segueIdentifiers = @[@"friendsExpendituresSegue",
+				   @"friendsIncomeSegue",
+				   @"friendsNetIncomeSegue",
+				   @"friendsDetailsSegue",
+				   @"monthsExpendituresSegue",
+				   @"monthsIncomeSegue",
+				   @"monthsNetIncomeSegue",
+				   @"monthsDetailsSegue"
+				   ];
 	
 }
 
@@ -73,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if(section == 0){
-		return 2;
+		return 3;
 	}
 	else{
 		return 1;
@@ -101,11 +111,21 @@
 				subtitle = @"A graphical analysis of your expenditures over the last year on a monthly basis.";
 			}
 		}
-		// NET INCOME
+		// INCOME
 		else if(row == 1){
+			cell.image.image = [UIImage imageNamed:@"businessman"];
+			if([_pageType isEqualToString:@"Friends"]){
+				subtitle = @"A graphical analysis of your income from friends.";
+			}
+			else{
+				subtitle = @"A graphical analysis of your income over the last year on a monthly basis.";
+			}
+		}
+		// NET INCOME
+		else if(row == 2){
 			cell.image.image = [UIImage imageNamed:@"monthlyIncome"];
 			if([_pageType isEqualToString:@"Friends"]){
-				subtitle = @"A graphical analysis of your expenditures with friends.";
+				subtitle = @"A graphical analysis of your net income with friends.";
 			}
 			else{
 				subtitle = @"A graphical analysis of your net income over the last year on a monthly basis.";
@@ -128,7 +148,7 @@
 	cell.subtitle.text = subtitle;
 
 	// title
-	NSInteger index = section * 2 + row;
+	NSInteger index = section * (sectionNames.count-1) + row;
 	cell.title.text = _pageType;
 	cell.title.textColor = [UIColor lightGreenColor];
 	cell.title2.text = [NSString stringWithFormat:@"- %@",sectionNames[index]];
@@ -138,39 +158,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	NSInteger section = indexPath.row;
+	NSInteger row = indexPath.row;
+	NSInteger section = indexPath.section;
 	
+	NSString *segueIdentifier;
 	 // FRIENDS
 	 if([_pageType isEqualToString:@"Friends"]){
-		// transactions
-		if(section == 0){
-			[self performSegueWithIdentifier:@"friendsExpendituresSegue" sender:self];
-		}
-		// net income
-		else if(section == 1){
-			[self performSegueWithIdentifier:@"friendsNetIncomeSegue" sender:self];
-		}
-		// full details
-		else if(section == 2){
-			[self performSegueWithIdentifier:@"friendsDetailsSegue" sender:self];
-		}
+		 // GRAPHS
+		 if(section == 0){
+			 segueIdentifier = segueIdentifiers[row];
+		 }
+		 // LISTS
+		 else{
+			 segueIdentifier = segueIdentifiers[3];
+		 }
 	 }
 	 // THIS YEAR
 	 else if([_pageType isEqualToString:@"This Year"]){
-		// expenditures
-		if(section == 0){
-			[self performSegueWithIdentifier:@"monthsExpendituresSegue" sender:self];
-		}
-		// net income
-		else if(section == 1){
-			[self performSegueWithIdentifier:@"monthsNetIncomeSegue" sender:self];
-		}
-		// full details
-		else if(section == 2){
-			[self performSegueWithIdentifier:@"monthsDetailsSegue" sender:self];
-		}
+		 // GRAPHS
+		 if(section == 0){
+			 segueIdentifier = segueIdentifiers[row + 4];
+		 }
+		 // LISTS
+		 else{
+			 segueIdentifier = segueIdentifiers[7];
+		 }
 	 }
-	 
+	[self performSegueWithIdentifier:segueIdentifier sender:self];
 	
 }
 

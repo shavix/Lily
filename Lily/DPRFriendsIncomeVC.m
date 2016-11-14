@@ -1,12 +1,12 @@
 //
-//  DPRFriendsGraphVC.m
+//  DPRFriendsIncomeVC.m
 //  Lily
 //
-//  Created by David Richardson on 10/24/16.
+//  Created by David Richardson on 11/13/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRFriendsExpendituresVC.h"
+#import "DPRFriendsIncomeVC.h"
 #import "UIColor+CustomColors.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
@@ -16,8 +16,7 @@
 #import "DPRChartHelper.h"
 #import <Lily-Bridging-Header.h>
 
-
-@interface DPRFriendsExpendituresVC () <ChartViewDelegate, IChartAxisValueFormatter>
+@interface DPRFriendsIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
@@ -28,24 +27,25 @@
 @property (strong, nonatomic) NSDictionary *dataList;
 @property (strong, nonatomic) NSArray *sortedKeys;
 @property (strong, nonatomic) NSArray *buttonList;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
-
 
 @end
 
-@implementation DPRFriendsExpendituresVC
+@implementation DPRFriendsIncomeVC
 
 - (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    [self setupUI];
-    [self setupData];
-    [self setDataCount];
+	
+	[super viewDidLoad];
+	[self setupUI];
+	[self setupData];
+	[self setDataCount];
 	[self setupChartUI];
-
+	
 }
+
 
 - (void)setupData{
 	
@@ -80,10 +80,10 @@
 			newName = firstName;
 		}
 		
-		NSNumber *sent = [friend objectForKey:@"sent"];
+		NSNumber *received = [friend objectForKey:@"received"];
 		
 		NSDictionary *info = @{@"xValue":@(index++),
-							   @"sent":sent,
+							   @"received":received,
 							   @"name":newName};
 		[temp setObject:info forKey:name];
 		
@@ -96,28 +96,28 @@
 
 - (void)setDataCount
 {
-	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_dataList andChartView:_barChartView andType:@"sent"];
+	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_dataList andChartView:_barChartView andType:@"received"];
 }
 
 - (void)setupUI{
-    
-    self.title = @"Friends";
-    self.labelTitle.text = @"Expenditures";
-    self.labelTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-
-    self.view.backgroundColor = [UIColor darkColor];
-    self.barChartView.backgroundColor = [UIColor darkColor];
-    self.topView.backgroundColor = [UIColor darkColor];
-    
-    self.uiHelper = [[DPRUIHelper alloc] init];
-    [self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
+	
+	self.title = @"Friends";
+	self.labelTitle.text = @"Income";
+	self.labelTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+	
+	self.view.backgroundColor = [UIColor darkColor];
+	self.barChartView.backgroundColor = [UIColor darkColor];
+	self.topView.backgroundColor = [UIColor darkColor];
+	
+	self.uiHelper = [[DPRUIHelper alloc] init];
+	[self.uiHelper setupBarChartView:_barChartView withTitle:@"Friends"];
 	
 	// add button
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
 	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:3 andType:@"friends"];
-
+	
 	
 }
 
@@ -146,10 +146,10 @@
 		NSDictionary *first = [self.dataList objectForKey:a];
 		NSDictionary *second = [self.dataList objectForKey:b];
 		
-		NSNumber *aSent = [first objectForKey:@"sent"];
-		NSNumber *bSent = [second objectForKey:@"sent"];
+		NSNumber *aReceived = [first objectForKey:@"received"];
+		NSNumber *bReceived = [second objectForKey:@"received"];
 		
-		return [bSent compare:aSent];
+		return [bReceived compare:aReceived];
 	}];
 	
 	_sortedKeys = sortedKeys;
@@ -187,17 +187,17 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
-    NSLog(@"chartValueSelected");
+	NSLog(@"chartValueSelected");
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
 {
-    NSLog(@"chartValueNothingSelected");
+	NSLog(@"chartValueNothingSelected");
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 - (NSString *)stringForValue:(double)value
@@ -206,6 +206,7 @@
 	NSString *name = _sortedKeys[(int)value];
 	return [[_dataList objectForKey:name] objectForKey:@"name"];
 }
+
 
 
 @end

@@ -32,9 +32,9 @@
 		}
 		NSNumber *value;
 		
+		value = [transaction objectForKey:type];
 		// netIncome
 		if([type isEqualToString:@"netIncome"]){
-			value = [transaction objectForKey:@"netIncome"];
 			// specific colors
 			if (value.doubleValue <= 0.f)
 			{
@@ -50,11 +50,7 @@
 				[numberColors addObject:[UIColor greenColor]];
 			}
 		}
-		// expenditures
-		else{
-			value = [transaction objectForKey:@"sent"];
-		}
-
+	
 		[dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:value.doubleValue]];
 		
 		
@@ -76,9 +72,13 @@
 		set.colors = colors;
 		set.valueColors = numberColors;
 	}
-	else{
+	else if([type isEqualToString:@"sent"]){
 		set.colors = ChartColorTemplates.many;
 		[data setValueTextColor:[UIColor redColor]];
+	}
+	else if([type isEqualToString:@"received"]){
+		set.colors = ChartColorTemplates.many;
+		[data setValueTextColor:[UIColor greenColor]];
 	}
 	[data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
 	
