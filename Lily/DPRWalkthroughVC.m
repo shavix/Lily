@@ -176,7 +176,7 @@
 	page1.desc = @"The first Venmo financial manager.";
 	//page1.bgImage = [UIImage imageNamed:@"bg1"];
 	page1.bgColor = backgroundColor;
-	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lilies"]];
+	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"money_suitcase_circular"]];
 	page1.titleIconView.frame = frame;
 	page1.titleIconPositionY = height;
 	
