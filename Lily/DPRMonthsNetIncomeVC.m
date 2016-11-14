@@ -105,7 +105,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:2 andType:@"months"];
+	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:3 andType:@"months"];
 	
 	
 	// sorted keys
@@ -160,6 +160,12 @@
 	[self setDataCount];
 	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION yAxisDuration:ANIMATE_DURATION];
 	
+}
+
+- (void)saveToPhotos{
+	UIImageWriteToSavedPhotosAlbum([_barChartView getChartImageWithTransparent:NO], nil, nil, nil);
+	[self hideMenu];
+	[_uiHelper alertWithMessage:@"Photo saved!" andTitle:@"Success" andVC:self];
 }
 
 - (void)menuShow{

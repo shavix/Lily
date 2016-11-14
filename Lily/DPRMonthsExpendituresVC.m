@@ -101,7 +101,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:2 andType:@"months"];
+	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:3 andType:@"months"];
 	
 	
 	// sorted keys
@@ -126,7 +126,7 @@
 }
 
 - (void)sortByValue:(UIButton *)sender{
-	/*
+	
 	NSSortDescriptor *sortByKey = [NSSortDescriptor sortDescriptorWithKey:@"sent"
 																ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByKey];
@@ -140,8 +140,6 @@
 	_sortedKeys = mutable;
 	
 	[self reloadWithSender:sender];
-	*/
-	UIImageWriteToSavedPhotosAlbum([_barChartView getChartImageWithTransparent:NO], nil, nil, nil);
 
 }
 
@@ -166,7 +164,11 @@
 	
 }
 
-
+- (void)saveToPhotos{
+	UIImageWriteToSavedPhotosAlbum([_barChartView getChartImageWithTransparent:NO], nil, nil, nil);
+	[self hideMenu];
+	[_uiHelper alertWithMessage:@"Photo saved!" andTitle:@"Success" andVC:self];
+}
 
 
 - (void)setupChartUI{

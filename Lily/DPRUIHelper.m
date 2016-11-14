@@ -288,6 +288,10 @@
 					[button setTitle:@"Sort by Value" forState:UIControlStateNormal];
 					[button addTarget:vc action:@selector(sortByValue:) forControlEvents:UIControlEventTouchDown];
 					break;
+				case 2:
+					[button setTitle:@"Save to Photos" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(saveToPhotos) forControlEvents:UIControlEventTouchDown];
+					break;
 					
 			}
 		}
@@ -302,8 +306,8 @@
 }
 
 
-// help alert
-- (void)helpAlertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
+// alert
+- (void)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
     
     UIColor *green = [UIColor lightGreenColor];
     
@@ -313,10 +317,16 @@
 	
 	
     SCLAlertViewShowBuilder *showBuilder = [SCLAlertViewShowBuilder new]
-    .style(SCLAlertViewStyleNotice)
     .title(title)
     .subTitle(message)
     .duration(0);
+	
+	if([title isEqualToString:@"Sucess"]){
+		showBuilder.style(SCLAlertViewStyleSuccess);
+	}
+	else{
+		showBuilder.style(SCLAlertViewStyleNotice);
+	}
 	
     [showBuilder showAlertView:builder.alertView onViewController:vc];
     

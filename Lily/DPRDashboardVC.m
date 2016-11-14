@@ -160,7 +160,7 @@
 	// haven't loaded, show notice
 	NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page (network connection required).";
 	NSString *title = @"Notice";
-	[_uiHelper helpAlertWithMessage:message andTitle:title andVC:self.parentViewController];
+	[_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
 }
 
 #pragma mark - TableView

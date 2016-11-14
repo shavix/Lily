@@ -15,6 +15,7 @@
 	
 	NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
 	NSMutableArray *colors = [[NSMutableArray alloc] init];
+	NSMutableArray *numberColors = [[NSMutableArray alloc] init];
 	
 	
 	for(int i = 0; i < sortedKeys.count; i++){
@@ -38,6 +39,7 @@
 			if (value.doubleValue <= 0.f)
 			{
 				[colors addObject:[UIColor chartRed]];
+				[numberColors addObject:[UIColor redColor]];
 			}
 			else if(value.doubleValue == 0.f){
 				[colors addObject:[UIColor whiteColor]];
@@ -45,6 +47,7 @@
 			else
 			{
 				[colors addObject:[UIColor chartGreen]];
+				[numberColors addObject:[UIColor greenColor]];
 			}
 		}
 		// expenditures
@@ -71,11 +74,11 @@
 	
 	if([type isEqualToString:@"netIncome"]){
 		set.colors = colors;
-		set.valueColors = colors;
+		set.valueColors = numberColors;
 	}
 	else{
 		set.colors = ChartColorTemplates.many;
-		[data setValueTextColor:[UIColor chartRed]];
+		[data setValueTextColor:[UIColor redColor]];
 	}
 	[data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
 	
