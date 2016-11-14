@@ -35,8 +35,7 @@
     
     [self setupUI];
     [self setupData];
-    
-    
+	
 }
 
 - (void)setupData{
@@ -45,13 +44,8 @@
     self.user = [self.cdHelper fetchUser];
     self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
 	
-	
-	NSMutableArray *tempArr = [[NSMutableArray alloc] init];
-	for(id key in self.transactionsByFriends){
-		[tempArr addObject:key];
-	}
-	self.sortedKeys = tempArr;
-    
+	[self sortByName:_buttonList[0]];
+
 }
 
 
@@ -110,7 +104,7 @@
 		 [self.tableView reloadData];
 	 }
 					completion: nil];
-	[self toggleMenu];
+	[self hideMenu];
 }
 
 - (void)sortByName:(UIButton *)sender{

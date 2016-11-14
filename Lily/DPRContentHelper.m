@@ -32,19 +32,19 @@
     
     // dashboard
     [content appendString:@"\nDashboard\n\n"];
-    [content appendString:@"The dashboard is the first screen that appears after you login to Lily. It contains a list of the available analysis options for your Venmo transactions. There are 6 options available that fall under 3 categories:\n\n"];
+    [content appendString:@"The dashboard is the first screen that appears after you login to Lily. It contains a list of the available options for interacting with your Venmo transactions. There are 3 options:\n\n"];
     [content appendString:@"1) Friends - this section analyzes who you interact with the most and the least on Venmo.\n\n"];
-    [content appendString:@"2) This Year - this section analyzes your financial habits on a month-by-month basis\n\n"];
+    [content appendString:@"2) This Year - this section analyzes your financial habits on a month-by-month basis.\n\n"];
 	[content appendString:@"3) Load Transactions - this section allows you to fetch more transactions from your profile using Venmo's servers in order to ensure all of your most recent transactions are factored in to your analyses.\n\n"];
     
     // graphs
-    [content appendString:@"\nGraphs\n\n"];
+    [content appendString:@"\nCharts and Lists\n\n"];
     [content appendString:@"After selecting one of the analysis options, you will be taken to a screen containing a graphical display of your financial habits. There are 3 possible displays:\n\n"];
-    [content appendString:@"1) Bar Chart - this is a simple bar chart that can be found under \"Friends:transactions\" and \"This Year:expenditures\"\n"];
+    [content appendString:@"1) Bar Chart View - this is a simple bar chart that can be found under \"Transactions,\" \"Expenditures,\" and \"Income.\"\n"];
     [content appendString:@"Depending on the amount of data available, some information may not be immediately visible on the screen. By pinching to zoom, you can get a more detailed view of the data. You can also tap on any bar in the graph and view that entry's data.\n\n"];
-    [content appendString:@"2) Bar (+/-) Chart - this is a bar chart displaying positive and negative values that can be found under \"Friends:net income\" and \"This Year:net income\"\n"];
+    [content appendString:@"2) Bar (+/-) Chart View - this is a bar chart displaying positive and negative values that can be found under \"Net Income.\"\n"];
     [content appendString:@"Similar to (1), depending on the amount of data available, some information may not be immediately visible on the screen. By pinching to zoom, you can get a more detailed view of the data. You can also tap on any bar in the graph and view that entry's data.\n\n"];
-    [content appendString:@"3) List View - this is a page displaying detailed information on given data, in a list form. It can be found under \"Friends:full details\" and \"This Year:full details\"\n"];
+    [content appendString:@"3) List View - this is a page displaying detailed information on given data, in a list form. It can be found under \"Full Details.\"\n"];
     [content appendString:@"Interact with this form of data simply by swiping up and down the screen, observing the values displayed.\n\n"];
     
     // transactions
@@ -56,7 +56,7 @@
     NSMutableAttributedString *attributedContent = [[NSMutableAttributedString alloc] initWithString:content];
     
     // attributes
-    NSArray *words = @[@"Dashboard", @"Graphs", @"Transactions List"];
+    NSArray *words = @[@"Dashboard", @"Charts and Lists", @"Transactions List"];
     
     for(NSString *word in words){
         NSRange range = [content rangeOfString:word];

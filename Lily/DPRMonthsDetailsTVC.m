@@ -64,15 +64,7 @@
 				];
 	
 	// sorted keys
-	NSMutableArray *arr = [[NSMutableArray alloc] init];
-	for(int i = 0; i < 12; i++){
-		NSInteger index = currMonth - i - 1;
-		if(index < 0){
-			index += 12;
-		}
-		[arr addObject:[NSNumber numberWithInteger:index]];
-	}
-	_sortedKeys = arr;
+	[self sortByDate:_buttonList[0]];
 	
 }
 
@@ -162,7 +154,7 @@
 		 [self.tableView reloadData];
 	 }
 					completion: nil];
-	[self toggleMenu];
+	[self hideMenu];
 	
 	for(UIButton *button in _buttonList){
 		button.backgroundColor = [UIColor darkishColor];
