@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DropdownMenuController.h"
 
-@interface DPRFriendsTransactionsVC : DropdownMenuController
+@interface DPRFriendsExpendituresVC : DropdownMenuController
 
 @end

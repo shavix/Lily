@@ -13,7 +13,7 @@
 #import "DPRTransactionSingleton.h"
 #import "DPRVenmoHelper.h"
 #import "DPRDashboardTableViewCell.h"
-#import "DPRFriendsTransactionsVC.h"
+#import "DPRFriendsExpendituresVC.h"
 #import "UIColor+CustomColors.h"
 
 // number of transactions to fetch from server
@@ -190,7 +190,7 @@
 	if(section == 0){
 		// transactions
 		if(row == 0){
-			[self segueCheckWithIdentifier:@"friendsTransactionsSegue"];
+			[self segueCheckWithIdentifier:@"friendsExpendituresSegue"];
 		}
 		// net income
 		else if(row == 1){
@@ -237,8 +237,8 @@
 	if(section == 0){
 		if(row == 0){
 			cell.image.image = [UIImage imageNamed:@"handshake.png"];
-			cell.title.text = @"Number of Transactions";
-			cell.subtitle.text = @"A graphical analysis of your transaction frequency with friends.";
+			cell.title.text = @"Expenditures";
+			cell.subtitle.text = @"A graphical analysis of your expenditures with friends.";
 		}
 		else if(row == 1){
 			cell.image.image = [UIImage imageNamed:@"businessman.png"];

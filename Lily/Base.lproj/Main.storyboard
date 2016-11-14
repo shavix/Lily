@@ -44,10 +44,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="KRt-hP-HwZ" customClass="DPRTransactionTableViewCell">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRt-hP-HwZ" id="7Ci-ng-yqy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-Ij-ipT">
@@ -172,7 +172,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LI9-gZ-L7v" id="OiJ-cQ-B4X">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-1l-zwZ">
@@ -236,7 +236,7 @@
                     <navigationItem key="navigationItem" id="Qk8-kG-qWW"/>
                     <connections>
                         <segue destination="zkL-3E-Vbk" kind="show" identifier="friendsListSegue" id="agM-IP-C8h"/>
-                        <segue destination="wU4-j3-An4" kind="show" identifier="friendsTransactionsSegue" id="1Dk-Oh-5jI"/>
+                        <segue destination="wU4-j3-An4" kind="show" identifier="friendsExpendituresSegue" id="1Dk-Oh-5jI"/>
                         <segue destination="ljn-GY-Ac8" kind="show" identifier="friendsNetIncomeSegue" id="60h-vI-Bmw"/>
                         <segue destination="xOv-fr-RiQ" kind="show" identifier="monthsExpendituresSegue" id="BGa-fA-9T4"/>
                         <segue destination="rhI-HP-BIR" kind="show" identifier="monthsNetIncomeSegue" id="goa-yB-gqY"/>
@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="3630" y="910"/>
         </scene>
-        <!--Friends TransactionsVC-->
+        <!--Friends ExpendituresVC-->
         <scene sceneID="qbB-e2-6H7">
             <objects>
-                <viewController id="wU4-j3-An4" customClass="DPRFriendsTransactionsVC" sceneMemberID="viewController">
+                <viewController id="wU4-j3-An4" customClass="DPRFriendsExpendituresVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YNB-AR-aTN"/>
                         <viewControllerLayoutGuide type="bottom" id="C9J-jI-XOz"/>
@@ -317,7 +317,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xUb-JZ-8TB" id="apm-PX-Bua">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="8kU-Ex-egf">
@@ -630,7 +630,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="li6-cQ-Vig" id="3m3-3D-bcm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transactions:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6N-nV-8rC" userLabel="Transactions">
@@ -789,7 +789,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="keO-vX-eE4" id="eCH-Lu-ihF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="Epl-h5-9j5">

@@ -6,7 +6,7 @@
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRFriendsTransactionsVC.h"
+#import "DPRFriendsExpendituresVC.h"
 #import "UIColor+CustomColors.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
@@ -16,7 +16,7 @@
 #import <Lily-Bridging-Header.h>
 
 
-@interface DPRFriendsTransactionsVC () <ChartViewDelegate, IChartAxisValueFormatter>
+@interface DPRFriendsExpendituresVC () <ChartViewDelegate, IChartAxisValueFormatter>
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation DPRFriendsTransactionsVC
+@implementation DPRFriendsExpendituresVC
 
 - (void)viewDidLoad {
     
@@ -52,8 +52,8 @@
 	for(int i = 0; i < _sortedKeys.count; i++){
 		NSString *name = _sortedKeys[i];
 		NSDictionary *transaction = [_dataList objectForKey:name];
-		NSNumber *numTransactions = [transaction objectForKey:@"sent"];
-		[dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:numTransactions.integerValue]];
+		NSNumber *sent = [transaction objectForKey:@"sent"];
+		[dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:sent.integerValue]];
 	}
 	
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Friends"];
@@ -65,15 +65,18 @@
     
     BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
-    [data setValueTextColor:[UIColor whiteColor]];
-    
-    NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
-    axisFormatter.maximumFractionDigits = 0;
-    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
-    
+	UIColor *red = [UIColor colorWithRed:211/255.f green:74/255.f blue:88/255.f alpha:1.f];
+	[data setValueTextColor:red];
+	
+	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
+	axisFormatter.maximumFractionDigits = 0;
+	axisFormatter.positivePrefix = @"$";
+	[data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
+	
     data.barWidth = 0.9f;
     
     _barChartView.data = data;
+	_barChartView.maxVisibleCount = 20;
 
 }
 
@@ -114,10 +117,10 @@
 			newName = firstName;
 		}
 		
-		NSNumber *transactions = [friend objectForKey:@"sent"];
+		NSNumber *sent = [friend objectForKey:@"sent"];
 		
 		NSDictionary *info = @{@"xValue":@(index++),
-						   @"sent":transactions,
+						   @"sent":sent,
 						   @"name":newName};
 		[temp setObject:info forKey:name];
 		
@@ -130,7 +133,7 @@
 - (void)setupUI{
     
     self.title = @"Friends";
-    self.labelTitle.text = @"Number of Transactions";
+    self.labelTitle.text = @"Expenditures";
     self.labelTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
 
     self.view.backgroundColor = [UIColor darkColor];
@@ -174,10 +177,10 @@
 		NSDictionary *first = [self.dataList objectForKey:a];
 		NSDictionary *second = [self.dataList objectForKey:b];
 		
-		NSNumber *aTransactions = [first objectForKey:@"sent"];
-		NSNumber *bTransactions = [second objectForKey:@"sent"];
+		NSNumber *aSent = [first objectForKey:@"sent"];
+		NSNumber *bSent = [second objectForKey:@"sent"];
 		
-		return [bTransactions compare:aTransactions];
+		return [bSent compare:aSent];
 	}];
 	
 	_sortedKeys = sortedKeys;
