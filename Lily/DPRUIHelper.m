@@ -48,7 +48,6 @@
 // returns button array
 -(NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type{
 	
-	
 	// make menu
 	CGFloat width = 160;
 	CGFloat height = 40;
