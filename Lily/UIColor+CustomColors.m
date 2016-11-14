@@ -25,7 +25,6 @@
 
 + (UIColor *)charcoalColor {
     
-    //return [UIColor colorWithRed:54.f/255.f green:69.f/255.f blue:79.f/255.f alpha:1.f];
     return [UIColor colorWithRed:42.f/255.f green:46.f/255.f blue:59.f/255.f alpha:1.f];
 
 }

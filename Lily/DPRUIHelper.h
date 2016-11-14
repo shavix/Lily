@@ -22,5 +22,6 @@
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;
 - (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
 - (void)setupExpendituresChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
+- (void)setupCell:(UITableViewCell *)cell;
 
 @end
