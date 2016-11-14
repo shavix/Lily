@@ -93,7 +93,7 @@
     
     NSString *title;
     if(currMonth == 12){
-        title = [NSString stringWithFormat:@"Net Income (%ld)", currYear];
+        title = [NSString stringWithFormat:@"Net Income (%ld)", (long)currYear];
     }
     else{
         title = [NSString stringWithFormat:@"Net Income (%ld - %ld)", (currYear - 1), currYear];

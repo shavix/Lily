@@ -270,7 +270,7 @@
         year--;
     }
     
-    NSString *title = [NSString stringWithFormat:@"%@ %ld", month, year];
+    NSString *title = [NSString stringWithFormat:@"%@ %ld", month, (long)year];
     
     return [title uppercaseString];
     

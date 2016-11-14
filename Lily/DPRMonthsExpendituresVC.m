@@ -90,7 +90,7 @@
     
     NSString *title;
     if(currMonth == 12){
-        title = [NSString stringWithFormat:@"Expenditures (%ld)", currYear];
+        title = [NSString stringWithFormat:@"Expenditures (%ld)", (long)currYear];
     }
     else{
         title = [NSString stringWithFormat:@"Expenditures (%ld - %ld)", (currYear - 1), currYear];
@@ -126,6 +126,7 @@
 }
 
 - (void)sortByValue:(UIButton *)sender{
+	/*
 	NSSortDescriptor *sortByKey = [NSSortDescriptor sortDescriptorWithKey:@"sent"
 																ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByKey];
@@ -139,7 +140,9 @@
 	_sortedKeys = mutable;
 	
 	[self reloadWithSender:sender];
-	
+	*/
+	UIImageWriteToSavedPhotosAlbum([_barChartView getChartImageWithTransparent:NO], nil, nil, nil);
+
 }
 
 - (void)reloadWithSender:(UIButton *)sender{
@@ -187,7 +190,7 @@
 		year = currYear;
 	}
 	year -= 2000;
-	title = [NSString stringWithFormat:@"%@ '%ld", month, year];
+	title = [NSString stringWithFormat:@"%@ '%ld", month, (long)year];
 
 	return title;
 	
