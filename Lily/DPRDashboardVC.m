@@ -232,7 +232,6 @@
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
 	
-	
 	// FRIENDS
 	if(section == 0){
 		if(row == 0){

@@ -14,6 +14,7 @@
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRTransactionSingleton.h"
+#import "DPRChartHelper.h"
 #import <Lily-Bridging-Header.h>
 
 @interface DPRMonthsExpendituresVC () <ChartViewDelegate, IChartAxisValueFormatter>
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
+@property (strong, nonatomic) DPRChartHelper *chartHelper;
 @property (strong, nonatomic) NSArray *transactionsByMonth;
 @property (strong, nonatomic) NSArray *months;
 @property (strong, nonatomic) NSArray *sortedKeys;
@@ -43,7 +45,7 @@
     [self setupData];
     [self setupUI];
     [self setDataCount];
-    [self setupChart];
+    [self setupChartUI];
 	
 }
 
@@ -51,6 +53,7 @@
 	
 	self.cdHelper = [DPRCoreDataHelper sharedModel];
 	self.user = [self.cdHelper fetchUser];
+	self.chartHelper = [[DPRChartHelper alloc] init];
 	DPRTransactionSingleton *transactionSingleton = [DPRTransactionSingleton sharedModel];
 	self.transactionsByMonth = transactionSingleton.transactionsByMonth;
 	
@@ -81,37 +84,7 @@
 
 - (void)setDataCount
 {
-
-    NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
-	
-    // insert friends data
-    for (NSInteger i = 0; i < 12; i++)
-    {
-		NSNumber *index = _sortedKeys[i];
-        NSDictionary *monthDict = self.transactionsByMonth[index.integerValue];
-        NSNumber *sent = [monthDict objectForKey:@"sent"];
-        [dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:sent.integerValue]];
-    }
-    
-    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Months"];
-    [set1 setColors:ChartColorTemplates.material];
-    
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    
-    BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
-    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
-	UIColor *red = [UIColor colorWithRed:211/255.f green:74/255.f blue:88/255.f alpha:1.f];
-	[data setValueTextColor:red];
-	
-    NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
-    axisFormatter.maximumFractionDigits = 0;
-    axisFormatter.positivePrefix = @"$";
-	[data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
-    
-    data.barWidth = 0.9f;
-    
-    _barChartView.data = data;
+	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_transactionsByMonth andChartView:_barChartView andType:@"expenditures"];
 	
 }
 
@@ -202,70 +175,9 @@
 
 
 
-- (void)setupChart{
+- (void)setupChartUI{
 	
-	_barChartView.delegate = self;
-	
-	_barChartView.drawBarShadowEnabled = NO;
-	_barChartView.drawValueAboveBarEnabled = YES;
-	_barChartView.maxVisibleCount = 60;
-	_barChartView.drawBordersEnabled = YES;
-	_barChartView.borderLineWidth = 1;
-	_barChartView.borderColor = [UIColor darkGrayColor];
-	
-	
-	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
-	axisFormatter.minimumFractionDigits = 0;
-	axisFormatter.maximumFractionDigits = 1;
-	axisFormatter.positivePrefix = @"$";
-	
-	ChartXAxis *xAxis = _barChartView.xAxis;
-	xAxis.labelPosition = XAxisLabelPositionBottom;
-	xAxis.labelFont = [UIFont systemFontOfSize:11.f];
-	xAxis.drawGridLinesEnabled = YES;
-	xAxis.granularity = 1.0;
-	xAxis.labelCount = 5;
-	xAxis.valueFormatter = self;
-	
-	ChartYAxis *leftAxis = _barChartView.leftAxis;
-	leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-	leftAxis.labelCount = 10;
-	leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
-	leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
-	leftAxis.spaceTop = 0.15;
-	leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
-	
-	ChartYAxis *rightAxis = _barChartView.rightAxis;
-	rightAxis.enabled = YES;
-	rightAxis.drawGridLinesEnabled = NO;
-	rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
-	rightAxis.labelCount = 10;
-	rightAxis.valueFormatter = leftAxis.valueFormatter;
-	rightAxis.spaceTop = 0.15;
-	rightAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
-	
-	ChartLegend *l = _barChartView.legend;
-	l.textColor = [UIColor whiteColor];
-	l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
-	l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
-	l.orientation = ChartLegendOrientationHorizontal;
-	l.drawInside = NO;
-	l.form = ChartLegendFormSquare;
-	l.formSize = 9.0;
-	l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
-	l.xEntrySpace = 4.0;
-	
-	XYMarkerView *marker = [[XYMarkerView alloc]
-							initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
-							font: [UIFont systemFontOfSize:12.0]
-							textColor: UIColor.whiteColor
-							insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
-							xAxisValueFormatter: _barChartView.xAxis.valueFormatter];
-	marker.chartView = _barChartView;
-	marker.minimumSize = CGSizeMake(80.f, 40.f);
-	_barChartView.marker = marker;
-	
-	[_barChartView animateWithXAxisDuration:2.0 yAxisDuration:2.0];
+	[_uiHelper setupExpendituresChartView:_barChartView withVC:self];
 }
 
 - (NSString *)stringForValue:(double)value

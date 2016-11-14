@@ -13,6 +13,7 @@
 #import "DPRTarget.h"
 #import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
+#import "DPRChartHelper.h"
 #import <Lily-Bridging-Header.h>
 
 @interface DPRFriendsNetIncomeVC () <ChartViewDelegate, IChartAxisValueFormatter>
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
+@property (strong, nonatomic) DPRChartHelper *chartHelper;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
@@ -40,59 +42,21 @@
     [self setupUI];
     [self setupData];
     [self setDataCount];
-    [self setupChart];
+    [self setupChartUI];
     
 }
 
 - (void)setDataCount
 {
 	
-    NSMutableArray<BarChartDataEntry *> *dataEntries = [[NSMutableArray alloc] init];
-    NSMutableArray<UIColor *> *colors = [[NSMutableArray alloc] init];
-    
-    UIColor *green = [UIColor colorWithRed:110/255.f green:190/255.f blue:102/255.f alpha:1.f];
-    UIColor *red = [UIColor colorWithRed:211/255.f green:74/255.f blue:88/255.f alpha:1.f];
-	
-	for(int i = 0; i < _sortedKeys.count; i++){
-		NSString *name = _sortedKeys[i];
-		NSDictionary *transaction = [_dataList objectForKey:name];
-		NSNumber *netIncome = [transaction objectForKey:@"netIncome"];
-		[dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:netIncome.doubleValue]];
-		
-		// specific colors
-		if (netIncome.doubleValue <= 0.f)
-		{
-			[colors addObject:red];
-		}
-		else
-		{
-			[colors addObject:green];
-		}
-	}
-    
-    BarChartDataSet *set = set = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Values"];
-    set.colors = colors;
-    set.valueColors = colors;
-    
-    BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
-    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
-    
-    NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
-    axisFormatter.maximumFractionDigits = 0;
-    axisFormatter.negativePrefix = @"-$";
-    axisFormatter.positivePrefix = @"$";
-    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
-    
-    data.barWidth = 0.8;
-    
-    _barChartView.data = data;
-	_barChartView.maxVisibleCount = 20;
+	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_dataList andChartView:_barChartView andType:@"netIncome"];
 
 }
 
 - (void)setupData{
     
     self.cdHelper = [DPRCoreDataHelper sharedModel];
+	self.chartHelper = [[DPRChartHelper alloc] init];
     self.user = [self.cdHelper fetchUser];
     self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
 	
@@ -214,61 +178,9 @@
 
 
 
-- (void)setupChart{
+- (void)setupChartUI{
 	
 	[_uiHelper setupNetIncomeChartView:_barChartView withVC:self];
-	
-	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
-	axisFormatter.minimumFractionDigits = 0;
-	axisFormatter.maximumFractionDigits = 1;
-	axisFormatter.negativePrefix = @"-$";
-	axisFormatter.positivePrefix = @"$";
-	
-	ChartXAxis *xAxis = _barChartView.xAxis;
-	xAxis.labelPosition = XAxisLabelPositionBottom;
-	xAxis.labelFont = [UIFont systemFontOfSize:11.f];
-	xAxis.drawGridLinesEnabled = YES;
-	xAxis.drawAxisLineEnabled = YES;
-	xAxis.labelTextColor = [UIColor whiteColor];
-	xAxis.granularity = 1.0;
-	xAxis.valueFormatter = self;
-	xAxis.labelCount = 5;
-	
-	ChartYAxis *leftAxis = _barChartView.leftAxis;
-	leftAxis.drawLabelsEnabled = YES;
-	leftAxis.labelCount = 10;
-	leftAxis.spaceTop = 0.25;
-	leftAxis.spaceBottom = 0.25;
-	leftAxis.drawAxisLineEnabled = YES;
-	leftAxis.drawGridLinesEnabled = YES;
-	leftAxis.drawZeroLineEnabled = YES;
-	leftAxis.zeroLineColor = UIColor.whiteColor;
-	leftAxis.zeroLineWidth = 0.7f;
-	leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
-	
-	ChartYAxis *rightAxis = _barChartView.rightAxis;
-	rightAxis.drawLabelsEnabled = YES;
-	rightAxis.labelCount = 10;
-	rightAxis.spaceTop = 0.25;
-	rightAxis.spaceBottom = 0.25;
-	rightAxis.drawAxisLineEnabled = YES;
-	rightAxis.drawGridLinesEnabled = YES;
-	rightAxis.drawZeroLineEnabled = YES;
-	rightAxis.zeroLineColor = UIColor.whiteColor;
-	rightAxis.zeroLineWidth = 0.7f;
-	rightAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
-	
-	XYMarkerView *marker = [[XYMarkerView alloc]
-							initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
-							font: [UIFont systemFontOfSize:12.0]
-							textColor: UIColor.whiteColor
-							insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
-							xAxisValueFormatter: _barChartView.xAxis.valueFormatter];
-	marker.chartView = _barChartView;
-	marker.minimumSize = CGSizeMake(80.f, 40.f);
-	_barChartView.marker = marker;
-	
-	[_barChartView animateWithXAxisDuration:2.0 yAxisDuration:2.0];
 	
 }
 

@@ -52,6 +52,7 @@
     self.user = [self.cdHelper fetchUser];
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
     self.transactionsByMonth = _transactionSingleton.transactionsByMonth;
+	
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     currMonth = [components month];
     currYear = [components year];

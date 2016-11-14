@@ -42,6 +42,18 @@
     
 }
 
++ (UIColor *)chartGreen{
+	
+	return [UIColor colorWithRed:110/255.f green:190/255.f blue:102/255.f alpha:1.f];
+	
+}
+
++ (UIColor *)chartRed{
+	
+	return [UIColor colorWithRed:211/255.f green:74/255.f blue:88/255.f alpha:1.f];
+	
+}
+
 + (NSArray *)palet{
     
     NSArray *arr = [NSArray arrayWithObjects:

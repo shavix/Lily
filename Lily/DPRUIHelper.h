@@ -21,5 +21,6 @@
 - (NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type;
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;
 - (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
+- (void)setupExpendituresChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
 
 @end

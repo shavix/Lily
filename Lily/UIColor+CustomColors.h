@@ -17,6 +17,8 @@
 + (UIColor *)darkColor;
 + (UIColor *)lightColor;
 + (UIColor *)darkishColor;
++ (UIColor *)chartGreen;
++ (UIColor *)chartRed;
 + (NSArray *)palet;
 
 @end
