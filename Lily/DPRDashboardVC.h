@@ -1,5 +1,5 @@
 //
-//  DPRGraphsVC.h
+//  DPRDashboardVC.h
 //  Lily
 //
 //  Created by David Richardson on 6/22/16.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DPRGraphListVC : UITableViewController <UITabBarControllerDelegate>
+@interface DPRDashboardVC : UITableViewController <UITabBarControllerDelegate>
 
 
 @end

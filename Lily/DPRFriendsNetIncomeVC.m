@@ -216,19 +216,7 @@
 
 - (void)setupChart{
 	
-	_barChartView.delegate = self;
-	
-	_barChartView.drawBarShadowEnabled = NO;
-	_barChartView.drawValueAboveBarEnabled = YES;
-	_barChartView.chartDescription.enabled = NO;
-	_barChartView.pinchZoomEnabled = NO;
-	_barChartView.drawGridBackgroundEnabled = NO;
-	_barChartView.rightAxis.enabled = YES;
-	_barChartView.legend.enabled = NO;
-	
-	_barChartView.drawBordersEnabled = YES;
-	_barChartView.borderLineWidth = 1;
-	_barChartView.borderColor = [UIColor darkGrayColor];
+	[_uiHelper setupNetIncomeChartView:_barChartView withVC:self];
 	
 	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
 	axisFormatter.minimumFractionDigits = 0;

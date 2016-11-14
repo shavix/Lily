@@ -1,5 +1,5 @@
 //
-//  DPRGraphTableViewCell.h
+//  DPRDashboardTableViewCell.h
 //  Lily
 //
 //  Created by David Richardson on 10/21/16.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DPRGraphTableViewCell : UITableViewCell
+@interface DPRDashboardTableViewCell : UITableViewCell
 
 
 // UI

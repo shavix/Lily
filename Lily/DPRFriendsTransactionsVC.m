@@ -52,7 +52,7 @@
 	for(int i = 0; i < _sortedKeys.count; i++){
 		NSString *name = _sortedKeys[i];
 		NSDictionary *transaction = [_dataList objectForKey:name];
-		NSNumber *numTransactions = [transaction objectForKey:@"transactions"];
+		NSNumber *numTransactions = [transaction objectForKey:@"sent"];
 		[dataEntries addObject:[[BarChartDataEntry alloc] initWithX:i y:numTransactions.integerValue]];
 	}
 	
@@ -114,10 +114,10 @@
 			newName = firstName;
 		}
 		
-		NSNumber *transactions = [friend objectForKey:@"transactions"];
+		NSNumber *transactions = [friend objectForKey:@"sent"];
 		
 		NSDictionary *info = @{@"xValue":@(index++),
-						   @"transactions":transactions,
+						   @"sent":transactions,
 						   @"name":newName};
 		[temp setObject:info forKey:name];
 		
@@ -174,8 +174,8 @@
 		NSDictionary *first = [self.dataList objectForKey:a];
 		NSDictionary *second = [self.dataList objectForKey:b];
 		
-		NSNumber *aTransactions = [first objectForKey:@"transactions"];
-		NSNumber *bTransactions = [second objectForKey:@"transactions"];
+		NSNumber *aTransactions = [first objectForKey:@"sent"];
+		NSNumber *bTransactions = [second objectForKey:@"sent"];
 		
 		return [bTransactions compare:aTransactions];
 	}];

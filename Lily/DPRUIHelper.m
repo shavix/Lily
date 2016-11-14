@@ -32,6 +32,23 @@
 	
 }
 
+- (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc
+{
+	chartView.delegate = vc;
+	chartView.drawBarShadowEnabled = NO;
+	chartView.drawValueAboveBarEnabled = YES;
+	chartView.chartDescription.enabled = NO;
+	chartView.pinchZoomEnabled = NO;
+	chartView.drawGridBackgroundEnabled = NO;
+	chartView.rightAxis.enabled = YES;
+	chartView.legend.enabled = NO;
+	chartView.drawBordersEnabled = YES;
+	chartView.borderLineWidth = 1;
+	chartView.borderColor = [UIColor darkGrayColor];
+	
+	
+}
+
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title{
 
     // setup navigationController

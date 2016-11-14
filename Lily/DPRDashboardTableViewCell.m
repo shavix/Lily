@@ -1,15 +1,15 @@
 //
-//  DPRGraphTableViewCell.m
+//  DPRDashboardTableViewCell.m
 //  Lily
 //
 //  Created by David Richardson on 10/21/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRGraphTableViewCell.h"
+#import "DPRDashboardTableViewCell.h"
 #import "UIColor+CustomColors.h"
 
-@implementation DPRGraphTableViewCell
+@implementation DPRDashboardTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

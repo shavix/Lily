@@ -11,7 +11,7 @@
 		632007351DC314E2004CB6D5 /* circleLily.png in Resources */ = {isa = PBXBuildFile; fileRef = 632007341DC314E2004CB6D5 /* circleLily.png */; };
 		632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */; };
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */; };
+		635F85CE1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m */; };
 		6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326191D289679001CA480 /* DPRTransactionSingleton.m */; };
 		636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262C1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m */; };
 		636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262E1D2A1BC8001CA480 /* DPRTarget.m */; };
@@ -32,7 +32,7 @@
 		6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F58D1D1B9CA40094ED24 /* DPRVenmoHelper.m */; };
 		6379F5911D1B9DA80094ED24 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */; };
 		6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */; };
-		6379F5A11D1BA48A0094ED24 /* DPRGraphListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A01D1BA48A0094ED24 /* DPRGraphListVC.m */; };
+		6379F5A11D1BA48A0094ED24 /* DPRDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A01D1BA48A0094ED24 /* DPRDashboardVC.m */; };
 		6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */; };
 		6379F5B91D1BA8DC0094ED24 /* bg1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5A91D1BA8DC0094ED24 /* bg1@2x.png */; };
 		6379F5BA1D1BA8DC0094ED24 /* bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5AA1D1BA8DC0094ED24 /* bg2@2x.png */; };
@@ -89,8 +89,8 @@
 		6324666B1D1CA5FD00512931 /* DPRUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUIHelper.h; sourceTree = "<group>"; };
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
 		635792A71DD93981001ACC46 /* Lily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lily-Bridging-Header.h"; sourceTree = "<group>"; };
-		635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphTableViewCell.h; sourceTree = "<group>"; };
-		635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphTableViewCell.m; sourceTree = "<group>"; };
+		635F85CC1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRDashboardTableViewCell.h; sourceTree = "<group>"; };
+		635F85CD1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRDashboardTableViewCell.m; sourceTree = "<group>"; };
 		636326181D289679001CA480 /* DPRTransactionSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionSingleton.h; sourceTree = "<group>"; };
 		636326191D289679001CA480 /* DPRTransactionSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionSingleton.m; sourceTree = "<group>"; };
 		6363262B1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRTarget+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -130,8 +130,8 @@
 		6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		6379F5951D1B9E610094ED24 /* DPRWalkthroughVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRWalkthroughVC.h; sourceTree = "<group>"; };
 		6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRWalkthroughVC.m; sourceTree = "<group>"; };
-		6379F59F1D1BA48A0094ED24 /* DPRGraphListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRGraphListVC.h; sourceTree = "<group>"; };
-		6379F5A01D1BA48A0094ED24 /* DPRGraphListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRGraphListVC.m; sourceTree = "<group>"; };
+		6379F59F1D1BA48A0094ED24 /* DPRDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRDashboardVC.h; sourceTree = "<group>"; };
+		6379F5A01D1BA48A0094ED24 /* DPRDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRDashboardVC.m; sourceTree = "<group>"; };
 		6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionsVC.h; sourceTree = "<group>"; };
 		6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionsVC.m; sourceTree = "<group>"; };
 		6379F5A91D1BA8DC0094ED24 /* bg1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg1@2x.png"; sourceTree = "<group>"; };
@@ -224,8 +224,8 @@
 			children = (
 				63811E641DC42717008C5874 /* DPRSettingsTableViewCell.h */,
 				63811E651DC42717008C5874 /* DPRSettingsTableViewCell.m */,
-				635F85CC1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.h */,
-				635F85CD1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m */,
+				635F85CC1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.h */,
+				635F85CD1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m */,
 				63C765E21DBEAD09005D55F6 /* DPRFriendsListTableViewCell.h */,
 				63C765E31DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m */,
 				63782FBE1D24AABC003410D3 /* DPRTransactionTableViewCell.h */,
@@ -387,8 +387,8 @@
 		6379F59B1D1BA46E0094ED24 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				6379F59F1D1BA48A0094ED24 /* DPRGraphListVC.h */,
-				6379F5A01D1BA48A0094ED24 /* DPRGraphListVC.m */,
+				6379F59F1D1BA48A0094ED24 /* DPRDashboardVC.h */,
+				6379F5A01D1BA48A0094ED24 /* DPRDashboardVC.m */,
 				6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */,
 				6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */,
 			);
@@ -418,10 +418,10 @@
 		63C2DE491DC179E8009F64F8 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */,
-				632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */,
 				63C765E51DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.h */,
 				63C765E61DBEEC6A005D55F6 /* DPRFriendsTransactionsVC.m */,
+				632085F51DC0204500F64794 /* DPRFriendsNetIncomeVC.h */,
+				632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */,
 				63C765DF1DBEAC6A005D55F6 /* DPRFriendsListTVC.h */,
 				63C765E01DBEAC6A005D55F6 /* DPRFriendsListTVC.m */,
 			);
@@ -661,7 +661,7 @@
 				63811E631DC42673008C5874 /* DPRSettingsTVC.m in Sources */,
 				63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */,
 				63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */,
-				6379F5A11D1BA48A0094ED24 /* DPRGraphListVC.m in Sources */,
+				6379F5A11D1BA48A0094ED24 /* DPRDashboardVC.m in Sources */,
 				6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */,
 				636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */,
 				63C2DE4D1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.m in Sources */,
@@ -672,7 +672,7 @@
 				63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */,
 				63811E691DC69157008C5874 /* DPRInformationVC.m in Sources */,
 				63C765E41DBEAD09005D55F6 /* DPRFriendsListTableViewCell.m in Sources */,
-				635F85CE1DBAE3E1006C3CC6 /* DPRGraphTableViewCell.m in Sources */,
+				635F85CE1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m in Sources */,
 				63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */,
 				63811E6C1DC695E9008C5874 /* DPRContentHelper.m in Sources */,
 				636326381D2A1EB6001CA480 /* DPRTransaction.m in Sources */,

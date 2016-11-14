@@ -1,26 +1,27 @@
 //
-//  DPRGraphsVC.m
+//  DPRDashboardVC.m
 //  Lily
 //
 //  Created by David Richardson on 6/22/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRGraphListVC.h"
+#import "DPRDashboardVC.h"
 #import "DPRUIHelper.h"
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRTransactionSingleton.h"
 #import "DPRVenmoHelper.h"
-#import "DPRGraphTableViewCell.h"
+#import "DPRDashboardTableViewCell.h"
 #import "DPRFriendsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
 
+// number of transactions to fetch from server
 #define NUM_TRANSACTIONS 10000
 
 @import SwiftSpinner;
 
-@interface DPRGraphListVC()
+@interface DPRDashboardVC()
 
 // data
 @property (strong, nonatomic) DPRUser *user;
@@ -33,7 +34,7 @@
 
 @end
 
-@implementation DPRGraphListVC
+@implementation DPRDashboardVC
 
 
 - (void)viewDidLoad {
@@ -167,7 +168,7 @@
 - (void)deselectCell{
 	
 	NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-	DPRGraphTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	DPRDashboardTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	cell.selected = false;
 	
 }
@@ -226,7 +227,7 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString* CellIdentifier = @"GraphCell";
-    DPRGraphTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
