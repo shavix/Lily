@@ -1,12 +1,12 @@
 //
-//  DPRMonthsIncomeVC.m
+//  DPRMonthsTransactionsVC.m
 //  Lily
 //
 //  Created by David Richardson on 11/14/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRMonthsIncomeVC.h"
+#import "DPRMonthsTransactionsVC.h"
 #import "UIColor+CustomColors.h"
 #import "DPRTransaction.h"
 #import "DPRUser.h"
@@ -17,7 +17,7 @@
 #import "DPRChartHelper.h"
 #import <Lily-Bridging-Header.h>
 
-@interface DPRMonthsIncomeVC ()
+@interface DPRMonthsTransactionsVC ()
 
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUser *user;
@@ -28,12 +28,13 @@
 @property (strong, nonatomic) NSArray *sortedKeys;
 @property (strong, nonatomic) NSArray *buttonList;
 
-@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet BarChartView *barChartView;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+
 @end
 
-@implementation DPRMonthsIncomeVC{
+@implementation DPRMonthsTransactionsVC{
 	NSInteger currMonth;
 	NSInteger currYear;
 }
@@ -71,7 +72,7 @@
 
 - (void)setDataCount
 {
-	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_transactionsByMonth andChartView:_barChartView andType:@"received"];
+	[_chartHelper dataCountWithKeys:_sortedKeys andDataList:_transactionsByMonth andChartView:_barChartView andType:@"transactions"];
 	
 }
 
@@ -90,10 +91,10 @@
 	
 	NSString *title;
 	if(currMonth == 12){
-		title = [NSString stringWithFormat:@"Income (%ld)", (long)currYear];
+		title = [NSString stringWithFormat:@"Transactions (%ld)", (long)currYear];
 	}
 	else{
-		title = [NSString stringWithFormat:@"Income (%ld - %ld)", (currYear - 1), currYear];
+		title = [NSString stringWithFormat:@"Transactions (%ld - %ld)", (currYear - 1), currYear];
 	}
 	self.labelTitle.text = title;
 	
@@ -127,7 +128,7 @@
 
 - (void)sortByValue:(UIButton *)sender{
 	
-	NSSortDescriptor *sortByKey = [NSSortDescriptor sortDescriptorWithKey:@"received"
+	NSSortDescriptor *sortByKey = [NSSortDescriptor sortDescriptorWithKey:@"transactions"
 																ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByKey];
 	NSArray *sortedDictionaries = [_transactionsByMonth sortedArrayUsingDescriptors:sortDescriptors];
@@ -173,7 +174,7 @@
 
 - (void)setupChartUI{
 	
-	[_uiHelper setupChartView:_barChartView withVC:self andType:@"income"];
+	[_uiHelper setupChartView:_barChartView withVC:self andType:@"transactions"];
 }
 
 - (NSString *)stringForValue:(double)value

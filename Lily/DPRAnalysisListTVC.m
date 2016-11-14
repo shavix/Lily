@@ -43,17 +43,20 @@
 
 - (void)setupData {
 	
-	sectionNames = @[@"Expenditures", @"Income", @"Net Income", @"Full Details"];
-	segueIdentifiers = @[@"friendsExpendituresSegue",
-				   @"friendsIncomeSegue",
-				   @"friendsNetIncomeSegue",
-				   @"friendsDetailsSegue",
-				   @"monthsExpendituresSegue",
-				   @"monthsIncomeSegue",
-				   @"monthsNetIncomeSegue",
-				   @"monthsDetailsSegue"
-				   ];
-	
+	sectionNames = @[@"Transactions", @"Expenditures", @"Income", @"Net Income", @"Full Details"];
+	segueIdentifiers = @[
+						 @"friendsTransactionsSegue",
+						 @"friendsExpendituresSegue",
+						 @"friendsIncomeSegue",
+						 @"friendsNetIncomeSegue",
+						 @"friendsDetailsSegue",
+						 @"monthsTransactionsSegue",
+						 @"monthsExpendituresSegue",
+						 @"monthsIncomeSegue",
+						 @"monthsNetIncomeSegue",
+						 @"monthsDetailsSegue"
+							];
+
 }
 
 #pragma mark - UI
@@ -83,7 +86,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if(section == 0){
-		return 3;
+		return 4;
 	}
 	else{
 		return 1;
@@ -103,6 +106,15 @@
 	// CHARTS
 	if(section == 0){
 		if(row == 0){
+			cell.image.image = [UIImage imageNamed:@"handshake"];
+			if([_pageType isEqualToString:@"Friends"]){
+				subtitle = @"A graphical analysis of your transaction frequency with friends.";
+			}
+			else{
+				subtitle = @"A graphical analysis of your transaction frequency over the last year on a monthly basis.";
+			}
+		}
+		if(row == 1){
 			cell.image.image = [UIImage imageNamed:@"payment"];
 			if([_pageType isEqualToString:@"Friends"]){
 				subtitle = @"A graphical analysis of your expenditures with friends.";
@@ -112,7 +124,7 @@
 			}
 		}
 		// INCOME
-		else if(row == 1){
+		else if(row == 2){
 			cell.image.image = [UIImage imageNamed:@"businessman"];
 			if([_pageType isEqualToString:@"Friends"]){
 				subtitle = @"A graphical analysis of your income from friends.";
@@ -122,7 +134,7 @@
 			}
 		}
 		// NET INCOME
-		else if(row == 2){
+		else if(row == 3){
 			cell.image.image = [UIImage imageNamed:@"monthlyIncome"];
 			if([_pageType isEqualToString:@"Friends"]){
 				subtitle = @"A graphical analysis of your net income with friends.";
@@ -170,18 +182,18 @@
 		 }
 		 // LISTS
 		 else{
-			 segueIdentifier = segueIdentifiers[3];
+			 segueIdentifier = segueIdentifiers[4];
 		 }
 	 }
 	 // THIS YEAR
 	 else if([_pageType isEqualToString:@"This Year"]){
 		 // GRAPHS
 		 if(section == 0){
-			 segueIdentifier = segueIdentifiers[row + 4];
+			 segueIdentifier = segueIdentifiers[row + 5];
 		 }
 		 // LISTS
 		 else{
-			 segueIdentifier = segueIdentifiers[7];
+			 segueIdentifier = segueIdentifiers[9];
 		 }
 	 }
 	[self performSegueWithIdentifier:segueIdentifier sender:self];

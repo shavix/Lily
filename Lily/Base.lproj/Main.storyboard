@@ -345,6 +345,8 @@
                         <segue destination="dwA-TL-1Nt" kind="show" identifier="monthsDetailsSegue" id="oji-Zd-FKW"/>
                         <segue destination="rwC-Xg-Ofb" kind="show" identifier="friendsIncomeSegue" id="pLw-Xf-x3o"/>
                         <segue destination="tDK-gL-VNb" kind="show" identifier="monthsIncomeSegue" id="TGd-bd-P1T"/>
+                        <segue destination="xhx-gb-slD" kind="show" identifier="friendsTransactionsSegue" id="S4d-oz-YhN"/>
+                        <segue destination="lRz-1Z-I5J" kind="show" identifier="monthsTransactionsSegue" id="S2e-Rk-mhB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-co-FnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xY-ZQ-m0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4537" y="215"/>
+            <point key="canvasLocation" x="5366" y="215"/>
         </scene>
         <!--Friends ListTVC-->
         <scene sceneID="bfm-nW-sRf">
@@ -531,7 +533,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sH-uf-opi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6993" y="215"/>
+            <point key="canvasLocation" x="7822" y="215"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="5js-Vk-iAz">
@@ -606,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcD-YN-nnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5534" y="215"/>
+            <point key="canvasLocation" x="6362" y="215"/>
         </scene>
         <!--Months ExpendituresVC-->
         <scene sceneID="Vos-He-fa3">
@@ -662,7 +664,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8P-au-aMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4537" y="1348"/>
+            <point key="canvasLocation" x="5366" y="1342"/>
         </scene>
         <!--Months Net IncomeVC-->
         <scene sceneID="ruO-Nt-JOf">
@@ -718,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVL-iy-pSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5366" y="1348"/>
+            <point key="canvasLocation" x="6194" y="1342"/>
         </scene>
         <!--Months DetailsTVC-->
         <scene sceneID="qMl-rF-mD9">
@@ -833,7 +835,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDk-69-jcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6993" y="1348"/>
+            <point key="canvasLocation" x="7822" y="1342"/>
         </scene>
         <!--InformationVC-->
         <scene sceneID="3ln-hT-fCX">
@@ -1016,7 +1018,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtr-eU-Phz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6254" y="215"/>
+            <point key="canvasLocation" x="7082" y="215"/>
         </scene>
         <!--Months IncomeVC-->
         <scene sceneID="RLu-JV-Qnh">
@@ -1072,7 +1074,119 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itV-Xa-KyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6254" y="1348"/>
+            <point key="canvasLocation" x="7082" y="1342"/>
+        </scene>
+        <!--Friends TransactionsVC-->
+        <scene sceneID="Joh-9I-6v1">
+            <objects>
+                <viewController id="xhx-gb-slD" customClass="DPRFriendsTransactionsVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O0v-bg-l2j"/>
+                        <viewControllerLayoutGuide type="bottom" id="AEm-dO-q6R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eyw-oD-yyp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzu-Jy-EYM">
+                                <rect key="frame" x="-4" y="20" width="383" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOg-fA-iCY">
+                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FOg-fA-iCY" firstAttribute="width" secondItem="Tzu-Jy-EYM" secondAttribute="width" id="Xbd-Xk-IQL"/>
+                                    <constraint firstItem="FOg-fA-iCY" firstAttribute="centerX" secondItem="Tzu-Jy-EYM" secondAttribute="centerX" id="km6-Ec-u33"/>
+                                    <constraint firstItem="FOg-fA-iCY" firstAttribute="centerY" secondItem="Tzu-Jy-EYM" secondAttribute="centerY" multiplier="1.5" id="yMu-XP-PGz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIv-nR-aYI" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="87" width="343" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="dIv-nR-aYI" secondAttribute="trailing" id="0GL-eS-Qub"/>
+                            <constraint firstItem="Tzu-Jy-EYM" firstAttribute="height" secondItem="Eyw-oD-yyp" secondAttribute="height" multiplier="0.1" id="8bs-pE-EkM"/>
+                            <constraint firstItem="dIv-nR-aYI" firstAttribute="top" secondItem="Tzu-Jy-EYM" secondAttribute="bottom" id="9N8-9J-mqa"/>
+                            <constraint firstItem="AEm-dO-q6R" firstAttribute="top" secondItem="dIv-nR-aYI" secondAttribute="bottom" id="Ihp-gm-Dk2"/>
+                            <constraint firstItem="Tzu-Jy-EYM" firstAttribute="leading" secondItem="Eyw-oD-yyp" secondAttribute="leadingMargin" constant="-20" id="QG6-Is-uoj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tzu-Jy-EYM" secondAttribute="trailing" constant="-20" id="T1a-dJ-FWI"/>
+                            <constraint firstItem="Tzu-Jy-EYM" firstAttribute="top" secondItem="O0v-bg-l2j" secondAttribute="bottom" id="Tey-J6-sJ5"/>
+                            <constraint firstItem="dIv-nR-aYI" firstAttribute="leading" secondItem="Eyw-oD-yyp" secondAttribute="leadingMargin" id="hQc-AW-hkk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="dIv-nR-aYI" id="Cfg-lL-yL1"/>
+                        <outlet property="labelTitle" destination="FOg-fA-iCY" id="WG9-FP-rdl"/>
+                        <outlet property="topView" destination="Tzu-Jy-EYM" id="rLd-6n-jHr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5R-hW-9MT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4537" y="215"/>
+        </scene>
+        <!--Months TransactionsVC-->
+        <scene sceneID="g3e-7D-nII">
+            <objects>
+                <viewController id="lRz-1Z-I5J" customClass="DPRMonthsTransactionsVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hRy-Qc-0R1"/>
+                        <viewControllerLayoutGuide type="bottom" id="cde-rj-Egu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XVE-9V-pHe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-5a-akr">
+                                <rect key="frame" x="-4" y="20" width="383" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXS-9m-oAP">
+                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dXS-9m-oAP" firstAttribute="width" secondItem="7yY-5a-akr" secondAttribute="width" id="CX9-6A-b87"/>
+                                    <constraint firstItem="dXS-9m-oAP" firstAttribute="centerY" secondItem="7yY-5a-akr" secondAttribute="centerY" multiplier="1.5" id="qJK-wd-0MI"/>
+                                    <constraint firstItem="dXS-9m-oAP" firstAttribute="centerX" secondItem="7yY-5a-akr" secondAttribute="centerX" id="vKf-5C-o6A"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6J-uA-9vK" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="87" width="343" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u6J-uA-9vK" firstAttribute="top" secondItem="7yY-5a-akr" secondAttribute="bottom" id="3nc-Yy-FIU"/>
+                            <constraint firstItem="7yY-5a-akr" firstAttribute="height" secondItem="XVE-9V-pHe" secondAttribute="height" multiplier="0.1" id="7xc-Du-cNf"/>
+                            <constraint firstItem="7yY-5a-akr" firstAttribute="leading" secondItem="XVE-9V-pHe" secondAttribute="leadingMargin" constant="-20" id="NEB-Tu-AvS"/>
+                            <constraint firstItem="u6J-uA-9vK" firstAttribute="leading" secondItem="XVE-9V-pHe" secondAttribute="leadingMargin" id="XB2-xZ-GvA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u6J-uA-9vK" secondAttribute="trailing" id="bbr-a2-ncR"/>
+                            <constraint firstItem="7yY-5a-akr" firstAttribute="top" secondItem="hRy-Qc-0R1" secondAttribute="bottom" id="fuB-Ae-lI6"/>
+                            <constraint firstItem="cde-rj-Egu" firstAttribute="top" secondItem="u6J-uA-9vK" secondAttribute="bottom" constant="20" id="h9p-o5-eGH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7yY-5a-akr" secondAttribute="trailing" constant="-20" id="jKX-ay-ydK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="u6J-uA-9vK" id="pgp-zA-k8J"/>
+                        <outlet property="labelTitle" destination="dXS-9m-oAP" id="HVx-hQ-OYw"/>
+                        <outlet property="topView" destination="7yY-5a-akr" id="K1F-Pv-KNf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZB-3c-6el" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4537" y="1348"/>
         </scene>
     </scenes>
     <resources>

@@ -15,7 +15,7 @@
 @implementation DPRUIHelper
 
 
-- (void)setupExpendituresChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc{
+- (void)setupChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc andType:(NSString *)type{
 	
 	chartView.delegate = vc;
 	
@@ -29,7 +29,8 @@
 	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
 	axisFormatter.minimumFractionDigits = 0;
 	axisFormatter.maximumFractionDigits = 1;
-	axisFormatter.positivePrefix = @"$";
+	if(![type isEqualToString:@"transactions"])
+		axisFormatter.positivePrefix = @"$";
 	
 	ChartXAxis *xAxis = chartView.xAxis;
 	xAxis.labelPosition = XAxisLabelPositionBottom;

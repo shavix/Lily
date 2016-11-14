@@ -181,7 +181,7 @@
 
 - (void)setupChartUI{
 	
-	[_uiHelper setupExpendituresChartView:_barChartView withVC:self];
+	[_uiHelper setupChartView:_barChartView withVC:self andType:@"income"];
 	
 }
 

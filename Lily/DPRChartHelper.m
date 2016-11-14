@@ -68,6 +68,13 @@
 	
 	BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
 	
+	
+	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
+	axisFormatter.maximumFractionDigits = 0;
+	axisFormatter.negativePrefix = @"-$";
+	axisFormatter.positivePrefix = @"$";
+	
+	
 	if([type isEqualToString:@"netIncome"]){
 		set.colors = colors;
 		set.valueColors = numberColors;
@@ -80,14 +87,14 @@
 		set.colors = ChartColorTemplates.many;
 		[data setValueTextColor:[UIColor greenColor]];
 	}
+	else if([type isEqualToString:@"transactions"]){
+		axisFormatter.positivePrefix = @"";
+		set.colors = ChartColorTemplates.many;
+		[data setValueTextColor:[UIColor whiteColor]];
+	}
 	[data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
-	
-	NSNumberFormatter *axisFormatter = [[NSNumberFormatter alloc] init];
-	axisFormatter.maximumFractionDigits = 0;
-	axisFormatter.negativePrefix = @"-$";
-	axisFormatter.positivePrefix = @"$";
 	[data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:axisFormatter]];
-	
+
 	data.barWidth = 0.8;
 	
 	chartView.data = data;

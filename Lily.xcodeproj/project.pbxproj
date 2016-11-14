@@ -17,6 +17,8 @@
 		634C3BE01DD995D1001C6D5C /* DPRAnalysisListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BDF1DD995D1001C6D5C /* DPRAnalysisListTableViewCell.m */; };
 		634C3BE31DD9A42E001C6D5C /* DPRFriendsIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BE21DD9A42E001C6D5C /* DPRFriendsIncomeVC.m */; };
 		634C3BE61DD9A9C2001C6D5C /* DPRMonthsIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BE51DD9A9C2001C6D5C /* DPRMonthsIncomeVC.m */; };
+		634C3BE91DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BE81DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.m */; };
+		634C3BEC1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BEB1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.m */; };
 		635F85CE1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F85CD1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m */; };
 		6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326191D289679001CA480 /* DPRTransactionSingleton.m */; };
 		636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262C1D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m */; };
@@ -106,6 +108,10 @@
 		634C3BE21DD9A42E001C6D5C /* DPRFriendsIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsIncomeVC.m; sourceTree = "<group>"; };
 		634C3BE41DD9A9C2001C6D5C /* DPRMonthsIncomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsIncomeVC.h; sourceTree = "<group>"; };
 		634C3BE51DD9A9C2001C6D5C /* DPRMonthsIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsIncomeVC.m; sourceTree = "<group>"; };
+		634C3BE71DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRFriendsTransactionsVC.h; sourceTree = "<group>"; };
+		634C3BE81DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsTransactionsVC.m; sourceTree = "<group>"; };
+		634C3BEA1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRMonthsTransactionsVC.h; sourceTree = "<group>"; };
+		634C3BEB1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRMonthsTransactionsVC.m; sourceTree = "<group>"; };
 		635792A71DD93981001ACC46 /* Lily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lily-Bridging-Header.h"; sourceTree = "<group>"; };
 		635F85CC1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRDashboardTableViewCell.h; sourceTree = "<group>"; };
 		635F85CD1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRDashboardTableViewCell.m; sourceTree = "<group>"; };
@@ -444,6 +450,8 @@
 		63C2DE491DC179E8009F64F8 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				634C3BE71DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.h */,
+				634C3BE81DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.m */,
 				634C3BE11DD9A42E001C6D5C /* DPRFriendsIncomeVC.h */,
 				634C3BE21DD9A42E001C6D5C /* DPRFriendsIncomeVC.m */,
 				63C765E51DBEEC6A005D55F6 /* DPRFriendsExpendituresVC.h */,
@@ -459,6 +467,8 @@
 		63C2DE4A1DC179F0009F64F8 /* Months */ = {
 			isa = PBXGroup;
 			children = (
+				634C3BEA1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.h */,
+				634C3BEB1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.m */,
 				634C3BE41DD9A9C2001C6D5C /* DPRMonthsIncomeVC.h */,
 				634C3BE51DD9A9C2001C6D5C /* DPRMonthsIncomeVC.m */,
 				63C2DE4B1DC17A2D009F64F8 /* DPRMonthsExpendituresVC.h */,
@@ -686,6 +696,7 @@
 				630AAF3C1DC2CE0B0031BACD /* BalloonMarker.swift in Sources */,
 				636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */,
 				634C3BD91DD95D9E001C6D5C /* UIFont+CustomFonts.m in Sources */,
+				634C3BE91DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.m in Sources */,
 				63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */,
 				63C765E71DBEEC6A005D55F6 /* DPRFriendsExpendituresVC.m in Sources */,
 				6363261A1D289679001CA480 /* DPRTransactionSingleton.m in Sources */,
@@ -716,6 +727,7 @@
 				636326371D2A1EB6001CA480 /* DPRTransaction+CoreDataProperties.m in Sources */,
 				6379F5601D1B9B9A0094ED24 /* Lily.xcdatamodeld in Sources */,
 				63C2DE591DC2B2CA009F64F8 /* DPRMonthsDetailsTVC.m in Sources */,
+				634C3BEC1DD9ABE6001C6D5C /* DPRMonthsTransactionsVC.m in Sources */,
 				63811E661DC42717008C5874 /* DPRSettingsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
