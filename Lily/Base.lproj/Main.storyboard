@@ -32,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="913"/>
+            <point key="canvasLocation" x="206" y="919"/>
         </scene>
         <!--TransactionsVC-->
         <scene sceneID="b5L-vg-9Ah">
@@ -138,7 +138,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OV-xM-6cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2038" y="910"/>
+            <point key="canvasLocation" x="1071" y="916"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="mXF-Lh-tcR">
@@ -157,7 +157,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1I7-Dv-Qjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2868" y="910"/>
+            <point key="canvasLocation" x="1902" y="916"/>
         </scene>
         <!--DashboardVC-->
         <scene sceneID="o9I-3Y-cfV">
@@ -235,18 +235,119 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Qk8-kG-qWW"/>
                     <connections>
-                        <segue destination="zkL-3E-Vbk" kind="show" identifier="friendsListSegue" id="agM-IP-C8h"/>
-                        <segue destination="wU4-j3-An4" kind="show" identifier="friendsExpendituresSegue" id="1Dk-Oh-5jI"/>
-                        <segue destination="ljn-GY-Ac8" kind="show" identifier="friendsNetIncomeSegue" id="60h-vI-Bmw"/>
-                        <segue destination="xOv-fr-RiQ" kind="show" identifier="monthsExpendituresSegue" id="BGa-fA-9T4"/>
-                        <segue destination="rhI-HP-BIR" kind="show" identifier="monthsNetIncomeSegue" id="goa-yB-gqY"/>
-                        <segue destination="dwA-TL-1Nt" kind="show" identifier="monthsDetailsSegue" id="dce-th-69Y"/>
                         <segue destination="8wa-it-pTb" kind="show" identifier="settingsSegue" id="m5N-wp-dKL"/>
+                        <segue destination="iIg-0J-Bl5" kind="show" identifier="analysisSegue" id="qW1-DN-5bO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSI-e4-Irk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3630" y="910"/>
+            <point key="canvasLocation" x="2663" y="916"/>
+        </scene>
+        <!--Analysis ListTVC-->
+        <scene sceneID="lMt-aH-bw1">
+            <objects>
+                <tableViewController id="iIg-0J-Bl5" customClass="DPRAnalysisListTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4wT-Qb-GpS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnalysisCell" id="a6n-c9-958" customClass="DPRAnalysisListTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6n-c9-958" id="ixc-DM-vDK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="6qi-gb-C8d">
+                                            <rect key="frame" x="8" y="11" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="6qi-gb-C8d" secondAttribute="height" multiplier="1:1" id="l8C-n4-45s"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDv-Py-HqL">
+                                            <rect key="frame" x="45" y="32" width="38" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="k2n-CK-k6c"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="k2n-CK-k6c"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykb-TT-daX" userLabel="Title">
+                                            <rect key="frame" x="45" y="8" width="26" height="14"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="tsL-au-wRJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="tsL-au-wRJ"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlV-5Q-mJt" userLabel="Title">
+                                            <rect key="frame" x="76" y="8" width="32.5" height="13.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="cjt-gA-lcy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="cjt-gA-lcy"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6qi-gb-C8d" firstAttribute="centerY" secondItem="ixc-DM-vDK" secondAttribute="centerY" id="3Bw-XY-jmI"/>
+                                        <constraint firstAttribute="topMargin" secondItem="WlV-5Q-mJt" secondAttribute="top" id="4Sg-6T-saX"/>
+                                        <constraint firstItem="WlV-5Q-mJt" firstAttribute="leading" secondItem="Ykb-TT-daX" secondAttribute="trailing" constant="5" id="6mo-ih-sur"/>
+                                        <constraint firstItem="vDv-Py-HqL" firstAttribute="leading" secondItem="Ykb-TT-daX" secondAttribute="leading" id="DCc-nd-KsI"/>
+                                        <constraint firstItem="Ykb-TT-daX" firstAttribute="top" secondItem="ixc-DM-vDK" secondAttribute="topMargin" id="I3k-Sw-fG2"/>
+                                        <constraint firstItem="vDv-Py-HqL" firstAttribute="top" secondItem="Ykb-TT-daX" secondAttribute="bottom" constant="10" id="ebO-1K-xYV"/>
+                                        <constraint firstItem="6qi-gb-C8d" firstAttribute="leading" secondItem="ixc-DM-vDK" secondAttribute="leadingMargin" id="hgR-NG-wU4"/>
+                                        <constraint firstItem="Ykb-TT-daX" firstAttribute="leading" secondItem="6qi-gb-C8d" secondAttribute="trailing" constant="15" id="mIv-4r-RD9"/>
+                                        <constraint firstItem="6qi-gb-C8d" firstAttribute="width" secondItem="6qi-gb-C8d" secondAttribute="height" multiplier="1:1" id="zVT-Bk-zJM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="vDv-Py-HqL" firstAttribute="width" relation="lessThanOrEqual" secondItem="a6n-c9-958" secondAttribute="width" multiplier="0.6" id="tX9-uF-Jca"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="image" destination="6qi-gb-C8d" id="Ubu-Jt-ZMO"/>
+                                    <outlet property="subtitle" destination="vDv-Py-HqL" id="AIH-f2-dqH"/>
+                                    <outlet property="title" destination="Ykb-TT-daX" id="6CN-5V-oA5"/>
+                                    <outlet property="title2" destination="WlV-5Q-mJt" id="lgj-sz-mBl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iIg-0J-Bl5" id="qzd-91-waI"/>
+                            <outlet property="delegate" destination="iIg-0J-Bl5" id="n9m-02-P5A"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="wU4-j3-An4" kind="show" identifier="friendsExpendituresSegue" id="MfI-u2-9KZ"/>
+                        <segue destination="ljn-GY-Ac8" kind="show" identifier="friendsNetIncomeSegue" id="IAD-RO-Uyg"/>
+                        <segue destination="zkL-3E-Vbk" kind="show" identifier="friendsDetailsSegue" id="x79-um-9LF"/>
+                        <segue destination="xOv-fr-RiQ" kind="show" identifier="monthsExpendituresSegue" id="hkj-Bh-6aN"/>
+                        <segue destination="rhI-HP-BIR" kind="show" identifier="monthsNetIncomeSegue" id="nA9-xc-EEh"/>
+                        <segue destination="dwA-TL-1Nt" kind="show" identifier="monthsDetailsSegue" id="oji-Zd-FKW"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-co-FnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3630" y="915"/>
         </scene>
         <!--Friends ExpendituresVC-->
         <scene sceneID="qbB-e2-6H7">

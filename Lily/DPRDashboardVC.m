@@ -14,6 +14,7 @@
 #import "DPRVenmoHelper.h"
 #import "DPRDashboardTableViewCell.h"
 #import "DPRFriendsExpendituresVC.h"
+#import "DPRAnalysisListTVC.h"
 #import "UIColor+CustomColors.h"
 
 // number of transactions to fetch from server
@@ -82,7 +83,6 @@
 	
 	self.view.backgroundColor = [UIColor darkColor];
 	
-	//[self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
 	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 	
 	UIBarButtonItem *newBackButton =
@@ -181,46 +181,68 @@
 
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSInteger row = indexPath.row;
-    NSInteger section = indexPath.section;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 	
-	// FRIENDS
-	if(section == 0){
-		// transactions
-		if(row == 0){
-			[self segueCheckWithIdentifier:@"friendsExpendituresSegue"];
+	if([segue.identifier isEqualToString:@"analysisSegue"]){
+		DPRAnalysisListTVC *analysisListTVC = segue.destinationViewController;
+		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+		if(indexPath.section == 0){
+			analysisListTVC.pageType = @"Friends";
 		}
-		// net income
-		else if(row == 1){
-			[self segueCheckWithIdentifier:@"friendsNetIncomeSegue"];
-		}
-		// full details
-		else if(row == 2){
-			[self segueCheckWithIdentifier:@"friendsListSegue"];
+		else{
+			analysisListTVC.pageType = @"This Year";
 		}
 	}
-    // THIS YEAR
-    else if(section == 1){
-		// expenditures
+	
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSInteger section = indexPath.section;
+	
+	// NOT TRANSACTIONS
+	if(section != 2){
+		[self segueCheckWithIdentifier:@"analysisSegue"];
+	}
+
+    // TRANSACTIONS
+    else{
+		[self loadMoreTransactions];
+    }
+	
+	/*
+	 // FRIENDS
+	 if(section == 0){
+		// transactions
 		if(row == 0){
-			[self segueCheckWithIdentifier:@"monthsExpendituresSegue"];
+	 [self segueCheckWithIdentifier:@"friendsExpendituresSegue"];
 		}
 		// net income
 		else if(row == 1){
-			[self segueCheckWithIdentifier:@"monthsNetIncomeSegue"];
+	 [self segueCheckWithIdentifier:@"friendsNetIncomeSegue"];
 		}
 		// full details
 		else if(row == 2){
-			[self segueCheckWithIdentifier:@"monthsDetailsSegue"];
+	 [self segueCheckWithIdentifier:@"friendsListSegue"];
 		}
-    }
-    // TRANSACTIONS
-    else if(section == 2){
-		[self loadMoreTransactions];
-    }
-    
+	 }
+	 // THIS YEAR
+	 else if(section == 1){
+		// expenditures
+		if(row == 0){
+	 [self segueCheckWithIdentifier:@"monthsExpendituresSegue"];
+		}
+		// net income
+		else if(row == 1){
+	 [self segueCheckWithIdentifier:@"monthsNetIncomeSegue"];
+		}
+		// full details
+		else if(row == 2){
+	 [self segueCheckWithIdentifier:@"monthsDetailsSegue"];
+		}
+	 }
+	 */
+	
 }
 
 // get cell
@@ -229,46 +251,19 @@
     static NSString* CellIdentifier = @"GraphCell";
     DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
 	
-	// FRIENDS
+	
 	if(section == 0){
-		if(row == 0){
-			cell.image.image = [UIImage imageNamed:@"handshake.png"];
-			cell.title.text = @"Expenditures";
-			cell.subtitle.text = @"A graphical analysis of your expenditures with friends.";
-		}
-		else if(row == 1){
-			cell.image.image = [UIImage imageNamed:@"businessman.png"];
-			cell.title.text = @"Net Income";
-			cell.subtitle.text = @"A graphical analysis of your net income with friends.";
-		}
-		else if(row == 2){
-			cell.image.image = [UIImage imageNamed:@"details.png"];
-			cell.title.text = @"Full details";
-			cell.subtitle.text = @"All financial information between you and your friends.";
-		}
+		cell.image.image = [UIImage imageNamed:@"friends"];
+		cell.title.text = @"Friends";
+		cell.subtitle.text = @"Analyses on your financial habits with friends.";
 	}
-    // THIS YEAR
-    else if(section == 1)
-    {
-		if(row == 0){
-			cell.image.image = [UIImage imageNamed:@"payment.png"];
-			cell.title.text = @"Expenditures";
-			cell.subtitle.text = @"A graphical analysis of your expenditures over the last year on a monthly basis.";
-		}
-		else if(row == 1){
-			cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
-			cell.title.text = @"Net Income";
-			cell.subtitle.text = @"A graphical analysis of your net income over the last year on a monthly basis.";
-		}
-		else if(row == 2){
-			cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
-			cell.title.text = @"Full details";
-			cell.subtitle.text = @"All your financial information over the last year on a monthly basis.";
-		}
-    }
+	else if(section == 1){
+		cell.image.image = [UIImage imageNamed:@"monthlyDetails"];
+		cell.title.text = @"This Year";
+		cell.subtitle.text = @"Analyses on your financial habits over the last year on a monthly basis.";
+	}
     // TRANSACTIONS
     else if(section == 2)
     {
@@ -278,6 +273,45 @@
     }
 	
 	
+	/*
+	 // FRIENDS
+	 if(section == 0){
+		if(row == 0){
+	 cell.image.image = [UIImage imageNamed:@"handshake.png"];
+	 cell.title.text = @"Expenditures";
+	 cell.subtitle.text = @"A graphical analysis of your expenditures with friends.";
+		}
+		else if(row == 1){
+	 cell.image.image = [UIImage imageNamed:@"businessman.png"];
+	 cell.title.text = @"Net Income";
+	 cell.subtitle.text = @"A graphical analysis of your net income with friends.";
+		}
+		else if(row == 2){
+	 cell.image.image = [UIImage imageNamed:@"details.png"];
+	 cell.title.text = @"Full details";
+	 cell.subtitle.text = @"All financial information between you and your friends.";
+		}
+	 }
+	 // THIS YEAR
+	 else if(section == 1)
+	 {
+		if(row == 0){
+	 cell.image.image = [UIImage imageNamed:@"payment.png"];
+	 cell.title.text = @"Expenditures";
+	 cell.subtitle.text = @"A graphical analysis of your expenditures over the last year on a monthly basis.";
+		}
+		else if(row == 1){
+	 cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
+	 cell.title.text = @"Net Income";
+	 cell.subtitle.text = @"A graphical analysis of your net income over the last year on a monthly basis.";
+		}
+		else if(row == 2){
+	 cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
+	 cell.title.text = @"Full details";
+	 cell.subtitle.text = @"All your financial information over the last year on a monthly basis.";
+		}
+	 }
+	 */
     return cell;
 }
 
@@ -331,11 +365,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	if(section == 2){
-		return 1;
-	}
+	return 1;
 	
-    return 3;
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
