@@ -13,6 +13,7 @@
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
 #import "UIColor+CustomColors.h"
+#import "UIFont+CustomFonts.h"
 
 @interface DPRWalkthroughVC()
 
@@ -173,42 +174,35 @@
 	
 	EAIntroPage *page1 = [EAIntroPage page];
 	page1.title = @"Lily";
-	page1.desc = @"The first Venmo financial manager.";
-	//page1.bgImage = [UIImage imageNamed:@"bg1"];
-	page1.bgColor = backgroundColor;
+	page1.desc = @"The world's first financial manager for all your Venmo transactions.";
 	page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"money_suitcase_circular"]];
-	page1.titleIconView.frame = frame;
-	page1.titleIconPositionY = height;
 	
 	EAIntroPage *page2 = [EAIntroPage page];
 	page2.title = @"Analytics";
 	page2.desc = @"Lily delivers in-depth data analytics on all your Venmo transactions.";
-	//page2.bgImage = [UIImage imageNamed:@"bg2"];
 	page2.bgColor = backgroundColor;
 	page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"graph"]];
-	page2.titleIconView.frame = frame;
-	page2.titleIconPositionY = height;
 	
-	/*EAIntroPage *page3 = [EAIntroPage page];
-	page3.title = @"Free";
-	page3.desc = @"Lily is free forver. No ads. No subscription fees.";
-	//page3.bgImage = [UIImage imageNamed:@"bg3"];
+	EAIntroPage *page3 = [EAIntroPage page];
+	page3.title = @"Let's start!";
+	page3.desc = @"Simply sign in to your Venmo account on the next page and start managing!";
 	page3.bgColor = backgroundColor;
-	page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"free"]];
-	page3.titleIconView.frame = frame;
-	page3.titleIconPositionY = height;*/
+	page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"athletics"]];
 	
-	EAIntroPage *page4 = [EAIntroPage page];
-	page4.title = @"Let's start!";
-	page4.desc = @"Simply sign in to your Venmo account on the next page and start managing!";
-	//page4.bgImage = [UIImage imageNamed:@"bg4"];
-	page4.bgColor = backgroundColor;
-	page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"athletics"]];
-	page4.titleIconView.frame = frame;
-	page4.titleIconPositionY = height;
+	NSArray *pages = @[page1,page2,page3];
+	for(EAIntroPage *page in pages){
+		page.bgColor = backgroundColor;
+		
+		// title
+		page.titleFont = [UIFont helveticaBold32];
+		page.descFont = [UIFont helvetica20];
+		page.titleIconView.frame = frame;
+		page.titleIconPositionY = height;
+		page.descSideMargin = 40;
+		page.descPositionY += 60;
+	}
 	
-	//EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page3,page4]];
-	EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page4]];
+	EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:pages];
 	
 	[intro setDelegate:self];
 	

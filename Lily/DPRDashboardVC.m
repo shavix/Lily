@@ -139,6 +139,7 @@
 
 		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
 		
+		
 		// transactions loaded
 		dispatch_async(dispatch_get_main_queue(), ^{
 			// organize transactions
@@ -210,38 +211,6 @@
 		[self loadMoreTransactions];
     }
 	
-	/*
-	 // FRIENDS
-	 if(section == 0){
-		// transactions
-		if(row == 0){
-	 [self segueCheckWithIdentifier:@"friendsExpendituresSegue"];
-		}
-		// net income
-		else if(row == 1){
-	 [self segueCheckWithIdentifier:@"friendsNetIncomeSegue"];
-		}
-		// full details
-		else if(row == 2){
-	 [self segueCheckWithIdentifier:@"friendsListSegue"];
-		}
-	 }
-	 // THIS YEAR
-	 else if(section == 1){
-		// expenditures
-		if(row == 0){
-	 [self segueCheckWithIdentifier:@"monthsExpendituresSegue"];
-		}
-		// net income
-		else if(row == 1){
-	 [self segueCheckWithIdentifier:@"monthsNetIncomeSegue"];
-		}
-		// full details
-		else if(row == 2){
-	 [self segueCheckWithIdentifier:@"monthsDetailsSegue"];
-		}
-	 }
-	 */
 	
 }
 
@@ -271,47 +240,7 @@
 		cell.title.text = @"Load transactions";
 		cell.subtitle.text = [NSString stringWithFormat:@"Load more transactions beyond your most recent (%ld transactions currently loaded).", _user.transactionList.count];
     }
-	
-	
-	/*
-	 // FRIENDS
-	 if(section == 0){
-		if(row == 0){
-	 cell.image.image = [UIImage imageNamed:@"handshake.png"];
-	 cell.title.text = @"Expenditures";
-	 cell.subtitle.text = @"A graphical analysis of your expenditures with friends.";
-		}
-		else if(row == 1){
-	 cell.image.image = [UIImage imageNamed:@"businessman.png"];
-	 cell.title.text = @"Net Income";
-	 cell.subtitle.text = @"A graphical analysis of your net income with friends.";
-		}
-		else if(row == 2){
-	 cell.image.image = [UIImage imageNamed:@"details.png"];
-	 cell.title.text = @"Full details";
-	 cell.subtitle.text = @"All financial information between you and your friends.";
-		}
-	 }
-	 // THIS YEAR
-	 else if(section == 1)
-	 {
-		if(row == 0){
-	 cell.image.image = [UIImage imageNamed:@"payment.png"];
-	 cell.title.text = @"Expenditures";
-	 cell.subtitle.text = @"A graphical analysis of your expenditures over the last year on a monthly basis.";
-		}
-		else if(row == 1){
-	 cell.image.image = [UIImage imageNamed:@"monthlyIncome.png"];
-	 cell.title.text = @"Net Income";
-	 cell.subtitle.text = @"A graphical analysis of your net income over the last year on a monthly basis.";
-		}
-		else if(row == 2){
-	 cell.image.image = [UIImage imageNamed:@"monthlyDetails.png"];
-	 cell.title.text = @"Full details";
-	 cell.subtitle.text = @"All your financial information over the last year on a monthly basis.";
-		}
-	 }
-	 */
+
     return cell;
 }
 

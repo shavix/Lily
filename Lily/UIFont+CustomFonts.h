@@ -11,5 +11,7 @@
 @interface UIFont (CustomFonts)
 
 + (UIFont *)helvetica14;
++ (UIFont *)helvetica20;
++ (UIFont *)helveticaBold32;
 
 @end

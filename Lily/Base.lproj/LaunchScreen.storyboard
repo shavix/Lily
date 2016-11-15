@@ -24,17 +24,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money_suitcase_circular" translatesAutoresizingMaskIntoConstraints="NO" id="Eeg-9z-GFg">
-                                <rect key="frame" x="93.5" y="240" width="187.5" height="187.5"/>
+                                <rect key="frame" x="93.5" y="173" width="187.5" height="187.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Eeg-9z-GFg" secondAttribute="height" multiplier="1:1" id="m0I-Rv-05l"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ID-8v-80H">
+                                <rect key="frame" x="162" y="409" width="52.5" height="38.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.12941176470588234" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Eeg-9z-GFg" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="H08-3Q-h5w"/>
-                            <constraint firstItem="Eeg-9z-GFg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NGU-Ot-DH5"/>
+                            <constraint firstItem="Eeg-9z-GFg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.8" id="NGU-Ot-DH5"/>
                             <constraint firstItem="Eeg-9z-GFg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YBc-V0-Jxr"/>
+                            <constraint firstItem="6ID-8v-80H" firstAttribute="top" secondItem="Eeg-9z-GFg" secondAttribute="bottom" constant="48.5" id="abN-dj-BBk"/>
+                            <constraint firstItem="6ID-8v-80H" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kTm-4o-DFM"/>
                         </constraints>
                     </view>
                 </viewController>
