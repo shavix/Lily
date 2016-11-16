@@ -94,7 +94,8 @@
 		title = [NSString stringWithFormat:@"Transactions (%ld)", (long)currYear];
 	}
 	else{
-		title = [NSString stringWithFormat:@"Transactions (%ld - %ld)", (currYear - 1), currYear];
+		long year = currYear - 1;
+		title = [NSString stringWithFormat:@"Transactions (%ld - %ld)", year, (long) currYear];
 	}
 	self.labelTitle.text = title;
 	

@@ -146,7 +146,7 @@
         
         NSString *dateCompletedMonth = months[dateComponents.month - 1];
         
-        self.dateCompletedString = [[NSString stringWithFormat:@"%@ %ld, %ld", dateCompletedMonth, (long)dateComponents.day, dateComponents.year] uppercaseString];
+        self.dateCompletedString = [[NSString stringWithFormat:@"%@ %ld, %ld", dateCompletedMonth, (long)dateComponents.day, (long)dateComponents.year] uppercaseString];
     }
     
 }

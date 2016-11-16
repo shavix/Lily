@@ -96,7 +96,8 @@
         title = [NSString stringWithFormat:@"Net Income (%ld)", (long)currYear];
     }
     else{
-        title = [NSString stringWithFormat:@"Net Income (%ld - %ld)", (currYear - 1), currYear];
+		long year = currYear - 1;
+        title = [NSString stringWithFormat:@"Net Income (%ld - %ld)", year, (long)currYear];
     }
     self.labelTitle.text = title;
 	
@@ -190,7 +191,7 @@
 		year = currYear;
 	}
 	year -= 2000;
-	title = [NSString stringWithFormat:@"%@ '%ld", month, year];
+	title = [NSString stringWithFormat:@"%@ '%ld", month, (long)year];
 	
 	return title;
 }

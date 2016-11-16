@@ -39,6 +39,8 @@
 
 
 - (void)viewDidLoad {
+	
+	[super viewDidLoad];
     
     [self setupUI];
     [self retrieveData];
@@ -139,7 +141,6 @@
 
 		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
 		
-		
 		// transactions loaded
 		dispatch_async(dispatch_get_main_queue(), ^{
 			// organize transactions
@@ -238,7 +239,7 @@
     {
 		cell.image.image = [UIImage imageNamed:@"loading"];
 		cell.title.text = @"Load transactions";
-		cell.subtitle.text = [NSString stringWithFormat:@"Load more transactions beyond your most recent (%ld transactions currently loaded).", _user.transactionList.count];
+		cell.subtitle.text = [NSString stringWithFormat:@"Load more transactions beyond your most recent (%ld transactions currently loaded).", (long)_user.transactionList.count];
     }
 
     return cell;

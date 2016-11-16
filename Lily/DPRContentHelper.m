@@ -98,6 +98,7 @@
     [content appendString:@"Freepik: Agreement\n"];
     [content appendString:@"Freepik: Businessman\n"];
     [content appendString:@"Freepik: Lily\n"];
+	[content appendString:@"Freepik: Suitcase-with-money"];
     [content appendString:@"Freepik: Bonusprofit\n"];
     [content appendString:@"Freepik: Cashpayment\n"];
     [content appendString:@"Freepik: Fiscalyear\n"];

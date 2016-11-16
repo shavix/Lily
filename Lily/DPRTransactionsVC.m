@@ -27,7 +27,9 @@
 #pragma mark - on load
 
 - (void)viewDidLoad {
-    
+	
+	[super viewDidLoad];
+	
     [self setupData];
     [self setupUI];
     

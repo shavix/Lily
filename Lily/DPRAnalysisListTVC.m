@@ -186,7 +186,7 @@
 		 }
 	 }
 	 // THIS YEAR
-	 else if([_pageType isEqualToString:@"This Year"]){
+	 else{
 		 // GRAPHS
 		 if(section == 0){
 			 segueIdentifier = segueIdentifiers[row + 5];
