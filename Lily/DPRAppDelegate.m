@@ -78,7 +78,7 @@
 	
 	// set picture for singleton
 	NSString *imageURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
-	user.pictureImage = user.pictureImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
+	user.pictureImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
 	
 	[self setupDashboard];
     

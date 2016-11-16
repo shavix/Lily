@@ -108,7 +108,7 @@
     
     // create new user - insert into Core Data
     if(!user){
-		[self createUser:user withInformation:userInformation andAccessToken:_accessToken];
+		user = [self createUser:user withInformation:userInformation andAccessToken:_accessToken];
     }
 	
 	// set picture for singleton
@@ -137,7 +137,7 @@
 	_cdHelper.username = username;
 }
 
-- (void)createUser:(DPRUser *)user withInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken{
+- (DPRUser *)createUser:(DPRUser *)user withInformation:(NSDictionary *)userInformation andAccessToken:(NSString *)accessToken{
 	// create new user - insert into Core Data
 	user = [NSEntityDescription insertNewObjectForEntityForName:@"DPRUser" inManagedObjectContext:self.managedObjectContext];
 	[user userInformation:userInformation andAccessToken:accessToken];
@@ -147,6 +147,7 @@
 	if(error){
 		// handle error
 	}
+	return user;
 }
 
 - (void)setupDashboard{

@@ -93,7 +93,8 @@
     [content appendString:@"Madebyoliver: Presentation\n"];
     [content appendString:@"Madebyoliver: Graph\n"];
     [content appendString:@"Madebyoliver: Info\n"];
-    [content appendString:@"Madebyoliver: Financials\n"];
+	[content appendString:@"Madebyoliver: Financials\n"];
+	[content appendString:@"Madebyoliver: User\n"];
     [content appendString:@"Freepik: Athletics\n"];
     [content appendString:@"Freepik: Agreement\n"];
     [content appendString:@"Freepik: Businessman\n"];

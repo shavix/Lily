@@ -203,11 +203,11 @@
 	
 	if([segue.identifier isEqualToString:@"analysisSegue"]){
 		DPRAnalysisListTVC *analysisListTVC = segue.destinationViewController;
-		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-		if(indexPath.section == 0){
+		NSInteger section = [self.tableView indexPathForSelectedRow].section;
+		if(section == 1){
 			analysisListTVC.pageType = @"Friends";
 		}
-		else{
+		else if(section == 2){
 			analysisListTVC.pageType = @"This Year";
 		}
 	}
@@ -217,7 +217,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	// NOT TRANSACTIONS
-	if(indexPath.section != 2){
+	if(indexPath.section == 0){
+		[self performSegueWithIdentifier:@"profileSegue" sender:self];
+	}
+	else if(indexPath.section == 1 || indexPath.section == 2){
 		[self segueCheckWithIdentifier:@"analysisSegue"];
 	}
     // TRANSACTIONS
@@ -237,17 +240,22 @@
 	
 	
 	if(section == 0){
+		cell.image.image = _user.pictureImage;
+		cell.title.text = @"Profile";
+		cell.subtitle.text = @"Your profile with some personal financial facts.";
+	}
+	else if(section == 1){
 		cell.image.image = [UIImage imageNamed:@"friends"];
 		cell.title.text = @"Friends";
 		cell.subtitle.text = @"Analyses on your financial habits with friends.";
 	}
-	else if(section == 1){
+	else if(section == 2){
 		cell.image.image = [UIImage imageNamed:@"monthlyDetails"];
 		cell.title.text = @"This Year";
 		cell.subtitle.text = @"Analyses on your financial habits over the last year on a monthly basis.";
 	}
     // TRANSACTIONS
-    else if(section == 2)
+    else if(section == 3)
     {
 		cell.image.image = [UIImage imageNamed:@"loading"];
 		cell.title.text = @"Load transactions";
@@ -277,11 +285,13 @@
     
     NSString *title;
 	
-	
-	if(section == 0){
+	if(section == 0) {
+		title = @"PROFILE";
+	}
+	else if(section == 1){
 		title = @"FRIENDS";
 	}
-    else if(section == 1){
+    else if(section == 2){
         title = @"THIS YEAR";
     }
     else{
@@ -302,7 +312,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -11,6 +11,8 @@
 		632007351DC314E2004CB6D5 /* circleLily.png in Resources */ = {isa = PBXBuildFile; fileRef = 632007341DC314E2004CB6D5 /* circleLily.png */; };
 		632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */; };
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		632A88501DDCDB9D0028D81D /* DPRProfileTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */; };
+		632A88531DDCDC5E0028D81D /* DPRProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88521DDCDC5E0028D81D /* DPRProfileTableViewCell.m */; };
 		634C3BD11DD94CA4001C6D5C /* DPRChartHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BD01DD94CA4001C6D5C /* DPRChartHelper.m */; };
 		634C3BD91DD95D9E001C6D5C /* UIFont+CustomFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BD81DD95D9E001C6D5C /* UIFont+CustomFonts.m */; };
 		634C3BDD1DD98FA7001C6D5C /* DPRAnalysisListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BDC1DD98FA7001C6D5C /* DPRAnalysisListTVC.m */; };
@@ -96,6 +98,10 @@
 		632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRFriendsNetIncomeVC.m; sourceTree = "<group>"; };
 		6324666B1D1CA5FD00512931 /* DPRUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRUIHelper.h; sourceTree = "<group>"; };
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
+		632A884E1DDCDB9D0028D81D /* DPRProfileTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRProfileTVC.h; sourceTree = "<group>"; };
+		632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRProfileTVC.m; sourceTree = "<group>"; };
+		632A88511DDCDC5E0028D81D /* DPRProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRProfileTableViewCell.h; sourceTree = "<group>"; };
+		632A88521DDCDC5E0028D81D /* DPRProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRProfileTableViewCell.m; sourceTree = "<group>"; };
 		634C3BCF1DD94CA4001C6D5C /* DPRChartHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRChartHelper.h; sourceTree = "<group>"; };
 		634C3BD01DD94CA4001C6D5C /* DPRChartHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRChartHelper.m; sourceTree = "<group>"; };
 		634C3BD71DD95D9E001C6D5C /* UIFont+CustomFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+CustomFonts.h"; sourceTree = "<group>"; };
@@ -246,6 +252,8 @@
 		635792A91DD93AA1001ACC46 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				632A88511DDCDC5E0028D81D /* DPRProfileTableViewCell.h */,
+				632A88521DDCDC5E0028D81D /* DPRProfileTableViewCell.m */,
 				63811E641DC42717008C5874 /* DPRSettingsTableViewCell.h */,
 				63811E651DC42717008C5874 /* DPRSettingsTableViewCell.m */,
 				635F85CC1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.h */,
@@ -423,6 +431,8 @@
 				634C3BDC1DD98FA7001C6D5C /* DPRAnalysisListTVC.m */,
 				6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */,
 				6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */,
+				632A884E1DDCDB9D0028D81D /* DPRProfileTVC.h */,
+				632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -692,6 +702,7 @@
 				6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */,
 				634C3BD11DD94CA4001C6D5C /* DPRChartHelper.m in Sources */,
 				63C551141DC2E54A006B984F /* XYMarkerView.swift in Sources */,
+				632A88531DDCDC5E0028D81D /* DPRProfileTableViewCell.m in Sources */,
 				63C2DE5C1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m in Sources */,
 				6379F5541D1B9B9A0094ED24 /* main.m in Sources */,
 				630AAF3C1DC2CE0B0031BACD /* BalloonMarker.swift in Sources */,
@@ -721,6 +732,7 @@
 				635F85CE1DBAE3E1006C3CC6 /* DPRDashboardTableViewCell.m in Sources */,
 				63C765E11DBEAC6A005D55F6 /* DPRFriendsListTVC.m in Sources */,
 				63811E6C1DC695E9008C5874 /* DPRContentHelper.m in Sources */,
+				632A88501DDCDB9D0028D81D /* DPRProfileTVC.m in Sources */,
 				634C3BE01DD995D1001C6D5C /* DPRAnalysisListTableViewCell.m in Sources */,
 				636326381D2A1EB6001CA480 /* DPRTransaction.m in Sources */,
 				634C3BE61DD9A9C2001C6D5C /* DPRMonthsIncomeVC.m in Sources */,

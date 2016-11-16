@@ -63,11 +63,8 @@
 
 - (void)setupUI{
 	
-
 	self.title = _pageType;
-	
 	self.view.backgroundColor = [UIColor darkColor];
-	
 	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 	
 }
@@ -202,9 +199,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
-	return 100;
-	
+	return 100;	
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -217,7 +212,6 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
 	NSString *title;
-	
 	if(section == 0){
 		title = @"Charts";
 	}
@@ -226,16 +220,13 @@
 	}
 	
 	return [title uppercaseString];
-	
 }
 
 
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-	
 	//Set the background color of the View
 	view.tintColor = [UIColor darkColor];
 	view.layer.zPosition = -999;
-	
 }
 
 @end
