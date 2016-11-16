@@ -24,5 +24,7 @@
 - (void)setupChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc andType:(NSString *)type;
 - (void)setupCell:(UITableViewCell *)cell;
 - (void)setupDashboardCell:(UITableViewCell *)cell;
+- (void)refreshButtons:(NSArray *)buttonList withButton:(UIButton *)button andVC:(DropdownMenuController *)vc;
+- (void)refreshListButtons:(NSArray *)buttonList withButton:(UIButton *)button;
 
 @end

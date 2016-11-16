@@ -102,6 +102,27 @@
 	
 }
 
+- (void)refreshButtons:(NSArray *)buttonList withButton:(UIButton *)button andVC:(DropdownMenuController *)vc{
+	
+	// hide menu
+	for(UIButton *button in buttonList){
+		button.backgroundColor = [UIColor charcoalColor];
+	}
+	button.backgroundColor = [UIColor lightGreenColor];
+	[vc hideMenu];
+	
+}
+
+- (void)refreshListButtons:(NSArray *)buttonList withButton:(UIButton *)button{
+	
+	// hide menu
+	for(UIButton *button in buttonList){
+		button.backgroundColor = [UIColor darkishColor];
+	}
+	button.backgroundColor = [UIColor lightGreenColor];
+	
+}
+
 - (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc
 {
 	chartView.delegate = vc;
@@ -207,11 +228,11 @@
 -(NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type{
 	
 	// make menu
-	CGFloat width = 160;
+	CGFloat width = 130;
 	CGFloat height = 40;
 	CGRect frame = CGRectMake(vc.view.frame.size.width - width, -height * numButtons, width, height * numButtons);
 	UIView *menu = [[UIView alloc] initWithFrame:frame];
-	menu.backgroundColor = [UIColor darkishColor];
+	menu.backgroundColor = [UIColor charcoalColor];
 	menu.layer.zPosition = 990;
 	[vc.view addSubview:menu];
 	vc.menu = menu;
@@ -225,7 +246,7 @@
 
 
 - (NSArray *)createButtons:(DropdownMenuController *)vc num:(int)numButtons type:(NSString *)type{
-	CGFloat width = 160;
+	CGFloat width = 130;
 
 	NSMutableArray *buttons = [[NSMutableArray alloc] init];
 	for(int i = 0; i < numButtons; i++){
@@ -237,7 +258,7 @@
 		button.titleLabel.textColor = [UIColor whiteColor];
 		button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
 		
-		button.backgroundColor = [UIColor darkishColor];
+		button.backgroundColor = [UIColor charcoalColor];
 		
 		// list buttons
 		if(numButtons == 5){

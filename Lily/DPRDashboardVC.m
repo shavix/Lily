@@ -69,7 +69,10 @@
     NSArray *results = [self.cdHelper setupTransactionsByDateWithUser:self.user];
     self.transactionSingleton.transactionsByDate = results[0];
     self.transactionSingleton.transactionsByMonth = results[1];
-    
+ 
+	if(_user.transactionList.count < 1){
+		[self loadMoreTransactions];
+	}
 }
 
 
@@ -177,11 +180,9 @@
 }
 
 - (void)segueCheckWithIdentifier:(NSString *)identifier{
-
 	if([self shouldPerformSegueWithIdentifier:identifier sender:self]){
 		[self performSegueWithIdentifier:identifier sender:self];
 	}
-
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -200,19 +201,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSInteger section = indexPath.section;
 	
 	// NOT TRANSACTIONS
-	if(section != 2){
+	if(indexPath.section != 2){
 		[self segueCheckWithIdentifier:@"analysisSegue"];
 	}
-
     // TRANSACTIONS
     else{
 		[self loadMoreTransactions];
     }
-	
 	
 }
 

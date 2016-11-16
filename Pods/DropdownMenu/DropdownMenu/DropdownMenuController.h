@@ -21,9 +21,11 @@
  */
 
 #import <UIKit/UIKit.h>
-#define ANIMATE_DURATION 2.0
+#define ANIMATE_DURATION_X 2.0
+#define ANIMATE_DURATION_Y 4.0
 
 @interface DropdownMenuController : UIViewController
+
 
 @property (weak,nonatomic) UIViewController *currentViewController;
 @property (strong, nonatomic) NSString *currentSegueIdentifier;

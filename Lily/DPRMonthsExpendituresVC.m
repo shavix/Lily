@@ -146,16 +146,11 @@
 
 - (void)reloadWithSender:(UIButton *)sender{
 	
-	// hide menu
-	for(UIButton *button in _buttonList){
-		button.backgroundColor = [UIColor darkishColor];
-	}
-	sender.backgroundColor = [UIColor lightGreenColor];
-	[self hideMenu];
+	[_uiHelper refreshButtons:_buttonList withButton:sender andVC:self];
 	
 	// update data
 	[self setDataCount];
-	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION yAxisDuration:ANIMATE_DURATION];
+	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION_X yAxisDuration:ANIMATE_DURATION_Y];
 	
 }
 

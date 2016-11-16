@@ -20,6 +20,7 @@
 @interface DPRMonthsDetailsTVC ()
 
 @property (strong, nonatomic) DPRUser *user;
+@property (strong, nonatomic) DPRUIHelper *uiHelper;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
 
@@ -77,7 +78,8 @@
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
 	
-	
+	self.uiHelper = [[DPRUIHelper alloc] init];
+
 	// add button
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
@@ -93,9 +95,8 @@
 
 - (void)setupMenu{
 	
-	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
 	
-	self.buttonList = [uiHelper createMenuWithVC:self andNumButtons:5 andType:@"months"];
+	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:5 andType:@"months"];
 	
 	[self.tableView bringSubviewToFront:self.menu];
 	
@@ -164,34 +165,22 @@
 
 - (void)sortByTransactions:(UIButton *)sender{
 	[self sortTransactionsWithKey:@"transactions"];
-	for(UIButton *button in _buttonList){
-		button.backgroundColor = [UIColor darkishColor];
-	}
-	sender.backgroundColor = [UIColor lightGreenColor];
+	[_uiHelper refreshListButtons:_buttonList withButton:sender];
 }
 
 - (void)sortByReceived:(UIButton *)sender{
 	[self sortTransactionsWithKey:@"received"];
-	for(UIButton *button in _buttonList){
-		button.backgroundColor = [UIColor darkishColor];
-	}
-	sender.backgroundColor = [UIColor lightGreenColor];
+	[_uiHelper refreshListButtons:_buttonList withButton:sender];
 }
 
 - (void)sortBySent:(UIButton *)sender{
 	[self sortTransactionsWithKey:@"sent"];
-	for(UIButton *button in _buttonList){
-		button.backgroundColor = [UIColor darkishColor];
-	}
-	sender.backgroundColor = [UIColor lightGreenColor];
+	[_uiHelper refreshListButtons:_buttonList withButton:sender];
 }
 
 - (void)sortByNetIncome:(UIButton *)sender{
 	[self sortTransactionsWithKey:@"netIncome"];
-	for(UIButton *button in _buttonList){
-		button.backgroundColor = [UIColor darkishColor];
-	}
-	sender.backgroundColor = [UIColor lightGreenColor];
+	[_uiHelper refreshListButtons:_buttonList withButton:sender];
 }
 
 - (void)menuShow{

@@ -54,8 +54,6 @@
 	self.chartHelper = [[DPRChartHelper alloc] init];
 	self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
 	
-	// sorted keys
-	[self sortByName:_buttonList[0]];
 	
 	NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
 	
@@ -90,6 +88,9 @@
 	}
 	
 	self.dataList = temp;
+	
+	// sorted keys
+	[self sortByValue:_buttonList[1]];
 	
 }
 
@@ -159,16 +160,11 @@
 
 - (void)reloadWithSender:(UIButton *)sender{
 	
-	// hide menu
-	for(UIButton *button in _buttonList){
-		button.backgroundColor = [UIColor darkishColor];
-	}
-	sender.backgroundColor = [UIColor lightGreenColor];
-	[self hideMenu];
+	[_uiHelper refreshButtons:_buttonList withButton:sender andVC:self];
 	
 	// update data
 	[self setDataCount];
-	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION yAxisDuration:ANIMATE_DURATION];
+	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION_X yAxisDuration:ANIMATE_DURATION_Y];
 	
 }
 
