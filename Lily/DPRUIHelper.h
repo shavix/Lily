@@ -27,5 +27,6 @@
 - (void)setupDashboardCell:(UITableViewCell *)cell;
 - (void)refreshButtons:(NSArray *)buttonList withButton:(UIButton *)button andVC:(DropdownMenuController *)vc;
 - (void)refreshListButtons:(NSArray *)buttonList withButton:(UIButton *)button;
+- (void)savePhotoWithChart:(BarChartView *)chartView andVC:(DropdownMenuController *)vc;
 
 @end

@@ -17,7 +17,6 @@
 	NSMutableArray *colors = [[NSMutableArray alloc] init];
 	NSMutableArray *numberColors = [[NSMutableArray alloc] init];
 	
-	
 	for(int i = 0; i < sortedKeys.count; i++){
 		NSDictionary *transaction;
 		// friends
@@ -99,7 +98,7 @@
 	
 	chartView.data = data;
 	chartView.maxVisibleCount = 20;
-	
+	[chartView setVisibleXRangeMaximum:15];
 }
 
 @end

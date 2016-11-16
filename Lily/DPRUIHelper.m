@@ -10,6 +10,11 @@
 #import "UIColor+CustomColors.h"
 #import <Lily-Bridging-Header.h>
 
+@interface DPRUIHelper()
+
+@property (weak, nonatomic) DropdownMenuController *dropDownVC;
+
+@end
 
 @implementation DPRUIHelper
 
@@ -48,27 +53,10 @@
 	leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
 	
 	ChartYAxis *rightAxis = chartView.rightAxis;
-	rightAxis.enabled = YES;
-	rightAxis.drawGridLinesEnabled = NO;
-	rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
-	rightAxis.labelCount = 10;
-	rightAxis.valueFormatter = leftAxis.valueFormatter;
-	rightAxis.spaceTop = 0.15;
-	rightAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
-	
+	rightAxis.enabled = NO;
 	
 	ChartLegend *l = chartView.legend;
-	l.textColor = [UIColor whiteColor];
-	l.horizontalAlignment = ChartLegendHorizontalAlignmentLeft;
-	l.verticalAlignment = ChartLegendVerticalAlignmentBottom;
-	l.orientation = ChartLegendOrientationHorizontal;
-	l.drawInside = NO;
-	l.form = ChartLegendFormSquare;
-	l.formSize = 9.0;
-	l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
-	l.xEntrySpace = 4.0;
-	
-	
+	l.enabled = NO;
 	
 	XYMarkerView *marker = [[XYMarkerView alloc]
 							initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
@@ -326,6 +314,21 @@
 	return buttons;
 }
 
+- (void)savePhotoWithChart:(BarChartView *)chartView andVC:(DropdownMenuController *)vc{
+	
+	self.dropDownVC = vc;
+	UIImageWriteToSavedPhotosAlbum([chartView getChartImageWithTransparent:NO], self, @selector(thisImage:hasBeenSavedInPhotoAlbumWithError:usingContextInfo:), nil);
+	[vc hideMenu];
+	
+}
+
+- (void)thisImage:(UIImage *)image hasBeenSavedInPhotoAlbumWithError:(NSError *)error usingContextInfo:(void*)ctxInfo {
+	if (error) {
+		[self alertWithMessage:@"Unable to save image." andTitle:@"Error" andVC:self.dropDownVC];
+	} else {
+		[self alertWithMessage:@"Image saved!" andTitle:@"Success" andVC:self.dropDownVC];
+	}
+}
 
 // alert
 - (SCLAlertView *)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{

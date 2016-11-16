@@ -366,10 +366,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-Se-a04">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-a9-TJd">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -378,25 +378,25 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="vXy-a9-TJd" firstAttribute="width" secondItem="0rM-Se-a04" secondAttribute="width" id="1TU-ep-v9N"/>
+                                    <constraint firstAttribute="height" constant="50" id="GpY-xb-8bp"/>
                                     <constraint firstItem="vXy-a9-TJd" firstAttribute="centerY" secondItem="0rM-Se-a04" secondAttribute="centerY" multiplier="1.5" id="QxS-aS-jko"/>
                                     <constraint firstItem="vXy-a9-TJd" firstAttribute="centerX" secondItem="0rM-Se-a04" secondAttribute="centerX" id="v2J-Pd-joN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wo1-eX-agS" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="487"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="C9J-jI-XOz" firstAttribute="top" secondItem="Wo1-eX-agS" secondAttribute="bottom" id="20f-CA-DSt"/>
+                            <constraint firstItem="C9J-jI-XOz" firstAttribute="top" secondItem="Wo1-eX-agS" secondAttribute="bottom" constant="10" id="20f-CA-DSt"/>
                             <constraint firstItem="Wo1-eX-agS" firstAttribute="top" secondItem="0rM-Se-a04" secondAttribute="bottom" id="6Ts-oV-OlB"/>
                             <constraint firstItem="Wo1-eX-agS" firstAttribute="leading" secondItem="Fxp-S1-YZr" secondAttribute="leadingMargin" id="AA9-id-6s4"/>
                             <constraint firstItem="0rM-Se-a04" firstAttribute="top" secondItem="YNB-AR-aTN" secondAttribute="bottom" id="Pzw-aH-QO5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wo1-eX-agS" secondAttribute="trailing" id="VEg-wx-PnX"/>
                             <constraint firstItem="0rM-Se-a04" firstAttribute="leading" secondItem="Fxp-S1-YZr" secondAttribute="leadingMargin" constant="-20" id="eUj-Bb-qwE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0rM-Se-a04" secondAttribute="trailing" constant="-20" id="eyh-Uz-Cn8"/>
-                            <constraint firstItem="0rM-Se-a04" firstAttribute="height" secondItem="Fxp-S1-YZr" secondAttribute="height" multiplier="0.1" id="wbF-tX-3Ah"/>
                         </constraints>
                     </view>
                     <connections>
@@ -567,10 +567,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgn-xz-fl2">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsa-ra-89P">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -580,18 +580,18 @@
                                 <constraints>
                                     <constraint firstItem="vsa-ra-89P" firstAttribute="centerX" secondItem="Tgn-xz-fl2" secondAttribute="centerX" id="5Me-CZ-1Z0"/>
                                     <constraint firstItem="vsa-ra-89P" firstAttribute="width" secondItem="Tgn-xz-fl2" secondAttribute="width" id="EWI-b7-HWv"/>
+                                    <constraint firstAttribute="height" constant="50" id="TA3-Xt-4ex"/>
                                     <constraint firstItem="vsa-ra-89P" firstAttribute="centerY" secondItem="Tgn-xz-fl2" secondAttribute="centerY" multiplier="1.5" id="wD0-xS-alH"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRp-k5-f2Y" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="467"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jyv-vu-Cuz" firstAttribute="top" secondItem="uRp-k5-f2Y" secondAttribute="bottom" constant="20" id="CFx-rm-db4"/>
-                            <constraint firstItem="Tgn-xz-fl2" firstAttribute="height" secondItem="j4U-Fr-2gn" secondAttribute="height" multiplier="0.1" id="DK5-TX-vgJ"/>
+                            <constraint firstItem="jyv-vu-Cuz" firstAttribute="top" secondItem="uRp-k5-f2Y" secondAttribute="bottom" constant="10" id="CFx-rm-db4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tgn-xz-fl2" secondAttribute="trailing" constant="-20" id="Kbd-jd-CXZ"/>
                             <constraint firstItem="uRp-k5-f2Y" firstAttribute="top" secondItem="Tgn-xz-fl2" secondAttribute="bottom" id="UjX-Uw-jOZ"/>
                             <constraint firstItem="Tgn-xz-fl2" firstAttribute="leading" secondItem="j4U-Fr-2gn" secondAttribute="leadingMargin" constant="-20" id="mir-K4-sVw"/>
@@ -623,10 +623,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSW-KR-jgG">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcK-7E-PaN">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -634,13 +634,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0Gb-cy-Tfp"/>
                                     <constraint firstItem="kcK-7E-PaN" firstAttribute="centerX" secondItem="TSW-KR-jgG" secondAttribute="centerX" id="Kjb-e0-HDi"/>
                                     <constraint firstItem="kcK-7E-PaN" firstAttribute="width" secondItem="TSW-KR-jgG" secondAttribute="width" id="qx5-yO-s66"/>
                                     <constraint firstItem="kcK-7E-PaN" firstAttribute="centerY" secondItem="TSW-KR-jgG" secondAttribute="centerY" multiplier="1.5" id="vHj-yM-rlK"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2t-Cw-48r" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="467"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -648,8 +649,7 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Y2t-Cw-48r" secondAttribute="trailing" id="Fq8-2b-TYa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TSW-KR-jgG" secondAttribute="trailing" constant="-20" id="M6D-ox-lrd"/>
-                            <constraint firstItem="ObG-Rj-V4f" firstAttribute="top" secondItem="Y2t-Cw-48r" secondAttribute="bottom" constant="20" id="MrS-7X-ElX"/>
-                            <constraint firstItem="TSW-KR-jgG" firstAttribute="height" secondItem="olf-gf-bq0" secondAttribute="height" multiplier="0.1" id="ZpQ-ti-KnG"/>
+                            <constraint firstItem="ObG-Rj-V4f" firstAttribute="top" secondItem="Y2t-Cw-48r" secondAttribute="bottom" constant="10" id="MrS-7X-ElX"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="leading" secondItem="olf-gf-bq0" secondAttribute="leadingMargin" constant="-20" id="erP-ia-oNB"/>
                             <constraint firstItem="TSW-KR-jgG" firstAttribute="top" secondItem="UyR-Cg-Qdw" secondAttribute="bottom" id="fOC-F4-Wpr"/>
                             <constraint firstItem="Y2t-Cw-48r" firstAttribute="leading" secondItem="olf-gf-bq0" secondAttribute="leadingMargin" id="rvX-mx-0m4"/>
@@ -679,10 +679,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-dd-5eY">
-                                <rect key="frame" x="-4" y="64" width="383" height="66.5"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woi-In-rdl">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -691,25 +691,25 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="woi-In-rdl" firstAttribute="centerY" secondItem="BoA-dd-5eY" secondAttribute="centerY" multiplier="1.5" id="4WH-wQ-cVC"/>
+                                    <constraint firstAttribute="height" constant="50" id="NNr-Xk-ZOJ"/>
                                     <constraint firstItem="woi-In-rdl" firstAttribute="centerX" secondItem="BoA-dd-5eY" secondAttribute="centerX" id="Rbl-kx-SAp"/>
                                     <constraint firstItem="woi-In-rdl" firstAttribute="width" secondItem="BoA-dd-5eY" secondAttribute="width" id="vRh-Bq-VsC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-lH-y1a" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="130.5" width="343" height="467.5"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VWg-ix-DK2" firstAttribute="top" secondItem="tDB-lH-y1a" secondAttribute="bottom" constant="20" id="82u-n2-OFH"/>
+                            <constraint firstItem="VWg-ix-DK2" firstAttribute="top" secondItem="tDB-lH-y1a" secondAttribute="bottom" constant="10" id="82u-n2-OFH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tDB-lH-y1a" secondAttribute="trailing" id="9pR-Na-Hgf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BoA-dd-5eY" secondAttribute="trailing" constant="-20" id="SeD-ch-RkV"/>
                             <constraint firstItem="tDB-lH-y1a" firstAttribute="top" secondItem="BoA-dd-5eY" secondAttribute="bottom" id="T1t-72-mpv"/>
                             <constraint firstItem="tDB-lH-y1a" firstAttribute="leading" secondItem="W1S-Fc-dUG" secondAttribute="leadingMargin" id="WnC-Rw-Uor"/>
                             <constraint firstItem="BoA-dd-5eY" firstAttribute="leading" secondItem="W1S-Fc-dUG" secondAttribute="leadingMargin" constant="-20" id="dyf-t2-0j1"/>
                             <constraint firstItem="BoA-dd-5eY" firstAttribute="top" secondItem="AXZ-P0-tcM" secondAttribute="bottom" id="gN5-wk-8kq"/>
-                            <constraint firstItem="BoA-dd-5eY" firstAttribute="height" secondItem="W1S-Fc-dUG" secondAttribute="height" multiplier="0.1" id="nUs-U9-9dV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -977,10 +977,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-2x-8TN">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksN-tP-hfq">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -989,20 +989,20 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ksN-tP-hfq" firstAttribute="centerX" secondItem="V8f-2x-8TN" secondAttribute="centerX" id="gCs-rv-8HE"/>
+                                    <constraint firstAttribute="height" constant="50" id="iXh-mX-UJY"/>
                                     <constraint firstItem="ksN-tP-hfq" firstAttribute="width" secondItem="V8f-2x-8TN" secondAttribute="width" id="ufe-xI-jQO"/>
                                     <constraint firstItem="ksN-tP-hfq" firstAttribute="centerY" secondItem="V8f-2x-8TN" secondAttribute="centerY" multiplier="1.5" id="xuA-PQ-m8z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eR4-JC-yr3" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="467"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V8f-2x-8TN" firstAttribute="height" secondItem="nht-TU-pXi" secondAttribute="height" multiplier="0.1" id="88Q-Qe-eDP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eR4-JC-yr3" secondAttribute="trailing" id="Cis-kt-onu"/>
-                            <constraint firstItem="wBi-c7-COM" firstAttribute="top" secondItem="eR4-JC-yr3" secondAttribute="bottom" constant="20" id="EwI-fT-InT"/>
+                            <constraint firstItem="wBi-c7-COM" firstAttribute="top" secondItem="eR4-JC-yr3" secondAttribute="bottom" constant="10" id="EwI-fT-InT"/>
                             <constraint firstItem="eR4-JC-yr3" firstAttribute="leading" secondItem="nht-TU-pXi" secondAttribute="leadingMargin" id="WE5-2x-h7K"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V8f-2x-8TN" secondAttribute="trailing" constant="-20" id="aQN-WT-w5V"/>
                             <constraint firstItem="V8f-2x-8TN" firstAttribute="top" secondItem="sXS-Mz-Td6" secondAttribute="bottom" id="f81-I5-swT"/>
@@ -1033,10 +1033,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRM-vs-vro">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrc-OK-Ut7">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1046,11 +1046,12 @@
                                 <constraints>
                                     <constraint firstItem="Yrc-OK-Ut7" firstAttribute="centerY" secondItem="fRM-vs-vro" secondAttribute="centerY" multiplier="1.5" id="AcY-vU-HZg"/>
                                     <constraint firstItem="Yrc-OK-Ut7" firstAttribute="width" secondItem="fRM-vs-vro" secondAttribute="width" id="Ytd-Vz-bVK"/>
+                                    <constraint firstAttribute="height" constant="50" id="cW7-9O-b3t"/>
                                     <constraint firstItem="Yrc-OK-Ut7" firstAttribute="centerX" secondItem="fRM-vs-vro" secondAttribute="centerX" id="o1I-nh-EPv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci3-Ke-RXs" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="467"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -1059,10 +1060,9 @@
                             <constraint firstItem="fRM-vs-vro" firstAttribute="leading" secondItem="4gz-bH-318" secondAttribute="leadingMargin" constant="-20" id="5Vc-ev-h2B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fRM-vs-vro" secondAttribute="trailing" constant="-20" id="AKL-9w-nqa"/>
                             <constraint firstItem="fRM-vs-vro" firstAttribute="top" secondItem="SK4-0O-bsn" secondAttribute="bottom" id="Hag-eV-Jsy"/>
-                            <constraint firstItem="zdh-zH-hwB" firstAttribute="top" secondItem="ci3-Ke-RXs" secondAttribute="bottom" constant="20" id="RwQ-fc-KPE"/>
+                            <constraint firstItem="zdh-zH-hwB" firstAttribute="top" secondItem="ci3-Ke-RXs" secondAttribute="bottom" constant="10" id="RwQ-fc-KPE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ci3-Ke-RXs" secondAttribute="trailing" id="hID-wg-6sK"/>
                             <constraint firstItem="ci3-Ke-RXs" firstAttribute="top" secondItem="fRM-vs-vro" secondAttribute="bottom" id="t4r-eQ-cxt"/>
-                            <constraint firstItem="fRM-vs-vro" firstAttribute="height" secondItem="4gz-bH-318" secondAttribute="height" multiplier="0.1" id="x2p-4R-a8y"/>
                             <constraint firstItem="ci3-Ke-RXs" firstAttribute="leading" secondItem="4gz-bH-318" secondAttribute="leadingMargin" id="yP0-8I-CE4"/>
                         </constraints>
                     </view>
@@ -1089,10 +1089,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzu-Jy-EYM">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOg-fA-iCY">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1100,22 +1100,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FcA-8n-RLS"/>
                                     <constraint firstItem="FOg-fA-iCY" firstAttribute="width" secondItem="Tzu-Jy-EYM" secondAttribute="width" id="Xbd-Xk-IQL"/>
                                     <constraint firstItem="FOg-fA-iCY" firstAttribute="centerX" secondItem="Tzu-Jy-EYM" secondAttribute="centerX" id="km6-Ec-u33"/>
                                     <constraint firstItem="FOg-fA-iCY" firstAttribute="centerY" secondItem="Tzu-Jy-EYM" secondAttribute="centerY" multiplier="1.5" id="yMu-XP-PGz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIv-nR-aYI" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="487"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="dIv-nR-aYI" secondAttribute="trailing" id="0GL-eS-Qub"/>
-                            <constraint firstItem="Tzu-Jy-EYM" firstAttribute="height" secondItem="Eyw-oD-yyp" secondAttribute="height" multiplier="0.1" id="8bs-pE-EkM"/>
                             <constraint firstItem="dIv-nR-aYI" firstAttribute="top" secondItem="Tzu-Jy-EYM" secondAttribute="bottom" id="9N8-9J-mqa"/>
-                            <constraint firstItem="AEm-dO-q6R" firstAttribute="top" secondItem="dIv-nR-aYI" secondAttribute="bottom" id="Ihp-gm-Dk2"/>
+                            <constraint firstItem="AEm-dO-q6R" firstAttribute="top" secondItem="dIv-nR-aYI" secondAttribute="bottom" constant="10" id="Ihp-gm-Dk2"/>
                             <constraint firstItem="Tzu-Jy-EYM" firstAttribute="leading" secondItem="Eyw-oD-yyp" secondAttribute="leadingMargin" constant="-20" id="QG6-Is-uoj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tzu-Jy-EYM" secondAttribute="trailing" constant="-20" id="T1a-dJ-FWI"/>
                             <constraint firstItem="Tzu-Jy-EYM" firstAttribute="top" secondItem="O0v-bg-l2j" secondAttribute="bottom" id="Tey-J6-sJ5"/>
@@ -1145,10 +1145,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-5a-akr">
-                                <rect key="frame" x="-4" y="64" width="383" height="67"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXS-9m-oAP">
-                                        <rect key="frame" x="0.0" y="40" width="383" height="21"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="383" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1156,25 +1156,25 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3gI-N7-KLh"/>
                                     <constraint firstItem="dXS-9m-oAP" firstAttribute="width" secondItem="7yY-5a-akr" secondAttribute="width" id="CX9-6A-b87"/>
                                     <constraint firstItem="dXS-9m-oAP" firstAttribute="centerY" secondItem="7yY-5a-akr" secondAttribute="centerY" multiplier="1.5" id="qJK-wd-0MI"/>
                                     <constraint firstItem="dXS-9m-oAP" firstAttribute="centerX" secondItem="7yY-5a-akr" secondAttribute="centerX" id="vKf-5C-o6A"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6J-uA-9vK" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="131" width="343" height="467"/>
+                                <rect key="frame" x="16" y="114" width="343" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u6J-uA-9vK" firstAttribute="top" secondItem="7yY-5a-akr" secondAttribute="bottom" id="3nc-Yy-FIU"/>
-                            <constraint firstItem="7yY-5a-akr" firstAttribute="height" secondItem="XVE-9V-pHe" secondAttribute="height" multiplier="0.1" id="7xc-Du-cNf"/>
                             <constraint firstItem="7yY-5a-akr" firstAttribute="leading" secondItem="XVE-9V-pHe" secondAttribute="leadingMargin" constant="-20" id="NEB-Tu-AvS"/>
                             <constraint firstItem="u6J-uA-9vK" firstAttribute="leading" secondItem="XVE-9V-pHe" secondAttribute="leadingMargin" id="XB2-xZ-GvA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u6J-uA-9vK" secondAttribute="trailing" id="bbr-a2-ncR"/>
                             <constraint firstItem="7yY-5a-akr" firstAttribute="top" secondItem="hRy-Qc-0R1" secondAttribute="bottom" id="fuB-Ae-lI6"/>
-                            <constraint firstItem="cde-rj-Egu" firstAttribute="top" secondItem="u6J-uA-9vK" secondAttribute="bottom" constant="20" id="h9p-o5-eGH"/>
+                            <constraint firstItem="cde-rj-Egu" firstAttribute="top" secondItem="u6J-uA-9vK" secondAttribute="bottom" constant="10" id="h9p-o5-eGH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7yY-5a-akr" secondAttribute="trailing" constant="-20" id="jKX-ay-ydK"/>
                         </constraints>
                     </view>

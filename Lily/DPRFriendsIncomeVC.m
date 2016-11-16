@@ -169,9 +169,7 @@
 }
 
 - (void)saveToPhotos{
-	UIImageWriteToSavedPhotosAlbum([_barChartView getChartImageWithTransparent:NO], nil, nil, nil);
-	[self hideMenu];
-	[_uiHelper alertWithMessage:@"Photo saved!" andTitle:@"Success" andVC:self];
+	[_uiHelper savePhotoWithChart:_barChartView andVC:self];
 }
 
 
