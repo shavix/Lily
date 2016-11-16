@@ -20,6 +20,7 @@
 // number of transactions to fetch from server
 #define NUM_TRANSACTIONS 10000
 
+@import SCLAlertView_Objective_C;
 @import SwiftSpinner;
 
 @interface DPRDashboardVC()
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) DPRUIHelper *uiHelper;
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
+@property (strong, nonatomic) SCLAlertView *alertView;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSArray *transactionsByDate;
 
@@ -164,9 +166,21 @@
 
 - (void)noTransactions{
 	// haven't loaded, show notice
-	NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page (network connection required).";
-	NSString *title = @"Notice";
-	[_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
+	if(!_alertView){
+		NSString *message = @"No transactions have been loaded!\nTo load transactions, press \"load transactions\" at the bottom of the page (network connection required).";
+		NSString *title = @"Notice";
+		self.alertView = [_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
+		self.tabBarController.tabBar.items[0].enabled = false;
+		self.tabBarController.tabBar.items[1].enabled = false;
+		
+		// completion
+		[_alertView alertIsDismissed:^{
+			self.tabBarController.tabBar.items[0].enabled = true;
+			self.tabBarController.tabBar.items[1].enabled = true;
+			_alertView = nil;
+		}];
+	}
+
 }
 
 #pragma mark - TableView
@@ -298,8 +312,8 @@
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
-
-	if(_user.transactionList.count < 1){
+	
+	if(_user.transactionList.count < 1 && self.tabBarController.selectedIndex == 1){
 		self.tabBarController.selectedIndex = 0;
 		[self noTransactions];
 	}

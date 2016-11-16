@@ -10,7 +10,6 @@
 #import "UIColor+CustomColors.h"
 #import <Lily-Bridging-Header.h>
 
-@import SCLAlertView_Objective_C;
 
 @implementation DPRUIHelper
 
@@ -329,7 +328,7 @@
 
 
 // alert
-- (void)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
+- (SCLAlertView *)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
     
     UIColor *green = [UIColor lightGreenColor];
     
@@ -341,7 +340,7 @@
     SCLAlertViewShowBuilder *showBuilder = [SCLAlertViewShowBuilder new]
     .title(title)
     .subTitle(message)
-    .duration(0);
+	.duration(0);
 	
 	if([title isEqualToString:@"Sucess"]){
 		showBuilder.style(SCLAlertViewStyleSuccess);
@@ -351,7 +350,8 @@
 	}
 	
     [showBuilder showAlertView:builder.alertView onViewController:vc];
-    
+ 
+	return builder.alertView;
 }
 
 

@@ -11,13 +11,14 @@
 #import "DropdownMenuController.h"
 
 @import Charts;
+@import SCLAlertView_Objective_C;
 
 @interface DPRUIHelper : NSObject
 
 
 // methods
 - (void)setupTabUI:(UIViewController *)viewController withTitle:(NSString *)title;
-- (void)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
+- (SCLAlertView *)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc;
 - (NSArray *) createMenuWithVC:(DropdownMenuController *)vc andNumButtons:(int)numButtons andType:(NSString *)type;
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;
 - (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
