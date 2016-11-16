@@ -79,6 +79,7 @@
 - (void)setupUI{
 	
 	self.tabBarController.delegate = self;
+	self.navigationController.navigationBar.hidden = NO;
 	
 	self.uiHelper = [[DPRUIHelper alloc] init];
 	[_uiHelper setupTabUI:self withTitle:@"Dashboard"];
