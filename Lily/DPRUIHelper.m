@@ -68,7 +68,7 @@
 	marker.minimumSize = CGSizeMake(80.f, 40.f);
 	chartView.marker = marker;
 	
-	[chartView animateWithXAxisDuration:2.0 yAxisDuration:2.0];
+	[chartView animateWithXAxisDuration:2.0 yAxisDuration:3.0];
 }
 
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title
@@ -84,7 +84,6 @@
     xAxis.labelPosition = XAxisLabelPositionBottom;
     chartView.xAxis.labelTextColor = [UIColor whiteColor];
     chartView.leftAxis.labelTextColor = [UIColor whiteColor];
-    chartView.rightAxis.labelTextColor = [UIColor whiteColor];
     chartView.rightAxis.enabled = NO;
 	
 }
@@ -154,17 +153,7 @@
 	leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
 	
 	ChartYAxis *rightAxis = chartView.rightAxis;
-	rightAxis.drawLabelsEnabled = YES;
-	rightAxis.labelCount = 10;
-	rightAxis.spaceTop = 0.25;
-	rightAxis.spaceBottom = 0.25;
-	rightAxis.drawAxisLineEnabled = YES;
-	rightAxis.drawGridLinesEnabled = YES;
-	rightAxis.drawZeroLineEnabled = YES;
-	rightAxis.zeroLineColor = UIColor.whiteColor;
-	rightAxis.zeroLineWidth = 0.7f;
-	rightAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:axisFormatter];
-	
+	rightAxis.drawLabelsEnabled = NO;
 	
 	XYMarkerView *marker = [[XYMarkerView alloc]
 							initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
@@ -176,7 +165,7 @@
 	marker.minimumSize = CGSizeMake(80.f, 40.f);
 	chartView.marker = marker;
 	
-	[chartView animateWithXAxisDuration:2.0 yAxisDuration:2.0];
+	[chartView animateWithXAxisDuration:2.0 yAxisDuration:3.0];
 	
 	
 }
