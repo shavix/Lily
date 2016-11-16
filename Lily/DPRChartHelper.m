@@ -54,7 +54,6 @@
 		
 		
 	}
-	
 	BarChartDataSet *set = set = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Values"];
 	
 	// friends
@@ -101,6 +100,11 @@
 	
 	[chartView setVisibleXRangeMaximum:15];
 	
+	/*
+	NSInteger dataCount = chartView.data.entryCount;
+	[chartView moveViewToX:dataCount];
+	[chartView moveViewToAnimatedWithXValue:-1 yValue:0 axis:AxisDependencyLeft duration:4];
+	*/
 }
 
 @end
