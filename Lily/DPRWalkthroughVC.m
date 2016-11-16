@@ -152,7 +152,10 @@
 - (void)setupDashboard{
 	// segue to home page
 	self.navigationController.navigationBarHidden = YES;
-	[self performSegueWithIdentifier:@"signedInSegue" sender:self];
+	UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+	UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+
+	[self presentViewController:tabBarController animated:YES completion:nil];
 }
 
 #pragma mark - EAIntro
