@@ -56,7 +56,7 @@
 			  @"Recieved:", @"received",
 			  @"Net Income:", @"netIncome", nil];
 	
-	sectionTitles = @[@"Trends",
+	sectionTitles = @[@"History",
 					  @"Largest Transactions",
 					  @"Friends"];
 }
@@ -87,10 +87,10 @@
 		cell.subtitle.text = subtitle;
 		return cell;
 	}
-	// trends
+	// history
 	else if(section == 1){
 		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
-		cell.title.text = @"Aggregate (all time)";
+		cell.title.text = @"Aggregate";
 		cell.image.image = [UIImage imageNamed:@"aggregate"];
 		[self setupAggregateCell:cell];
 		return cell;
@@ -344,12 +344,8 @@
 {
 	NSInteger section = indexPath.section;
 	
-	// portrait
-	if(section == 0){
-		return 135;
-	}
-	// profile
-	if(section == 1){
+	// portrait && profile
+	if(section < 2){
 		return 120;
 	}
 	
@@ -359,8 +355,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 	if(section == 0)
-		return 20;
-	if(section == 1)
 		return 20;
 	return 40;
 }
