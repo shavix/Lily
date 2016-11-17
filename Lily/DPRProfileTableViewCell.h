@@ -12,8 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *subtitle;
-
-- (void)setupCell;
+@property (weak, nonatomic) IBOutlet UILabel *sentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *receivedLabel;
 
 @end

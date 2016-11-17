@@ -163,6 +163,12 @@
 
 #pragma mark - cell setup
 
+- (void)setupMonthlyCell:(DPRProfileTableViewCell *)cell{
+	
+	
+	
+}
+
 - (void)setupCell:(DPRProfileFriendTableViewCell *)cell withFriend:(NSDictionary *)friend andType:(NSString *)type{
 	
 	// SDWebImage
@@ -195,6 +201,8 @@
 	double sent = 0;
 	double received = 0;
 	double netIncome = 0;
+	int numSent = 0;
+	int numReceived = 0;
 	
 	for(DPRTransaction *transaction in transactionList){
 		
@@ -203,11 +211,13 @@
 		if(transaction.isIncoming){
 			received += amount;
 			netIncome += amount;
+			numReceived++;
 		}
 		// sent
 		else{
 			sent += amount;
 			netIncome -= amount;
+			numSent++;
 		}
 	}
 	
@@ -227,6 +237,24 @@
 	}
 	else{
 		cell.netIncomeAmountLabel.textColor = [UIColor redColor];
+	}
+	
+	double average = 0;
+	// averages
+	if(numSent == 0){
+		cell.sentAverageLabel.text = @"";
+	}
+	else{
+		average = sent/numSent;
+		cell.sentAverageLabel.text = [NSString stringWithFormat:@"(avg: $%.2f)",average];
+	}
+	// averages
+	if(numReceived == 0){
+		cell.receivedAverageLabel.text = @"";
+	}
+	else{
+		average = received/numReceived;
+		cell.receivedAverageLabel.text = [NSString stringWithFormat:@"(avg: $%.2f)",average];
 	}
 }
 

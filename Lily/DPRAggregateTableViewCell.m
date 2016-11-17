@@ -36,6 +36,8 @@
 	self.sentLabel.font = font;
 	self.receivedLabel.font = font;
 	self.netIncomeLabel.font = font;
+	self.sentAverageLabel.font = font;
+	self.receivedAverageLabel.font = font;
 	
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	

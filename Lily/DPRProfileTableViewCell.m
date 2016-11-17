@@ -16,12 +16,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 	
-	self.title.font = [UIFont helveticaBold13];
-	self.title.textColor = [UIColor lightGreenColor];
-	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.backgroundColor = [UIColor charcoalColor];
 	self.image.layer.cornerRadius = 70/8;
 	self.image.clipsToBounds = YES;
+	
+	self.title.font = [UIFont helveticaBold13];
+	self.title.textColor = [UIColor lightGreenColor];
+	self.sentLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+	self.receivedLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	
 	CALayer *topBorder = [CALayer layer];
 	topBorder.borderColor = [UIColor lightGrayColor].CGColor;
@@ -36,11 +38,6 @@
 	[self.contentView.layer addSublayer:topBorder];
 	[self.contentView.layer addSublayer:bottomBorder];
 	
-}
-
-- (void)setupCell{
-	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	[uiHelper setupCell:self];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
