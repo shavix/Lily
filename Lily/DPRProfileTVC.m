@@ -15,6 +15,7 @@
 #import "DPRTransaction.h"
 #import "DPRTarget.h"
 #import "DPRProfileFriendTableViewCell.h"
+#import "DPRAggregateTableViewCell.h"
 #import "UIColor+CustomColors.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -56,8 +57,7 @@
 			  @"Recieved:", @"received",
 			  @"Net Income:", @"netIncome", nil];
 	
-	sectionTitles = @[@"Information",
-					  @"Trends",
+	sectionTitles = @[@"Trends",
 					  @"Largest Transactions",
 					  @"Friends"];
 }
@@ -75,6 +75,7 @@
 	NSString *protraitIdentifier = @"PortraitCell";
 	NSString *profileTransactionIdentifier = @"ProfileTransactionCell";
 	NSString *friendIdentifier = @"ProfileFriendCell";
+	NSString *aggregateIdentifier = @"AggregateCell";
 	NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
 
@@ -88,22 +89,26 @@
 		cell.subtitle.text = subtitle;
 		return cell;
 	}
-	// information
-	if(section == 1){
-		DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
-		
-		[cell setupCell];
-		return cell;
-	}
 	// trends
-	else if(section == 2){
-		DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
+	else if(section == 1){
+
+		// aggregate
+		if(row == 0){
+			DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
+			cell.title.text = @"Aggregate (all time)";
+			[self setupAggregateCell:cell];
+			return cell;
+		}
+		// monthly
+		else{
+			DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
+			cell.title.text = @"Monthly trends";
+			return cell;
+		}
 		
-		[cell setupCell];
-		return cell;
 	}
 	// transactions
-	else if(section == 3){
+	else if(section == 2){
 		DPRProfileTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileTransactionIdentifier];
 		DPRTransaction *transaction;
 		// expenditures
@@ -182,6 +187,47 @@
 	
 	cell.amountLabel.text = amountLabel;
 	
+}
+
+- (void)setupAggregateCell:(DPRAggregateTableViewCell *)cell{
+	NSSet *transactionList = _user.transactionList;
+	NSInteger numTransactions = transactionList.count;
+	double sent = 0;
+	double received = 0;
+	double netIncome = 0;
+	
+	for(DPRTransaction *transaction in transactionList){
+		
+		double amount = transaction.amount.doubleValue;
+		// received
+		if(transaction.isIncoming){
+			received += amount;
+			netIncome += amount;
+		}
+		// sent
+		else{
+			sent += amount;
+			netIncome -= amount;
+		}
+	}
+	
+	NSString *transactionString = [NSString stringWithFormat:@"%ld", numTransactions];
+	NSString *sentString = [NSString stringWithFormat:@"$%.2f", sent];
+	NSString *receivedString = [NSString stringWithFormat:@"$%.2f", received];
+	NSString *netIncomeString = [NSString stringWithFormat:@"$%.2f", netIncome];
+	
+	cell.transactionsAmountLabel.text = transactionString;
+	cell.sentAmountLabel.text = sentString;
+	cell.receivedAmountLabel.text = receivedString;
+	cell.netIncomeAmountLabel.text = netIncomeString;
+	
+	// net income label
+	if(received > sent){
+		cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
+	}
+	else{
+		cell.netIncomeAmountLabel.textColor = [UIColor redColor];
+	}
 }
 
 
@@ -266,14 +312,14 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 5;
+	return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	if(section == 0 || section == 1)
+	if(section == 0)
 		return 1;
-	if(section == 4)
+	if(section == 3)
 		return 4;
 	
     return 2;
@@ -283,9 +329,13 @@
 {
 	NSInteger section = indexPath.section;
 	
-	// profile
+	// portrait
 	if(section == 0){
 		return 145;
+	}
+	// profile
+	if(section == 1){
+		return 120;
 	}
 	
 	return 100;

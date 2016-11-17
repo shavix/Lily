@@ -1,27 +1,43 @@
 //
-//  DPRProfileTableViewCell.m
+//  DPRAggregateTableViewCell.m
 //  Lily
 //
 //  Created by David Richardson on 11/16/16.
 //  Copyright © 2016 David Richardson. All rights reserved.
 //
 
-#import "DPRProfileTableViewCell.h"
+#import "DPRAggregateTableViewCell.h"
 #import "DPRUIHelper.h"
-#import "UIFont+CustomFonts.h"
 #import "UIColor+CustomColors.h"
+#import "UIFont+CustomFonts.h"
 
-@implementation DPRProfileTableViewCell
+@implementation DPRAggregateTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 	
 	self.title.font = [UIFont helveticaBold13];
 	self.title.textColor = [UIColor lightGreenColor];
-	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.backgroundColor = [UIColor charcoalColor];
+	self.sentAmountLabel.textColor = [UIColor redColor];
+	self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
 	self.image.layer.cornerRadius = 70/8;
 	self.image.clipsToBounds = YES;
+	
+	// fonts
+	UIFont *font = [UIFont helveticaBold13];
+	self.transactionsAmountLabel.font = font;
+	self.sentAmountLabel.font = font;
+	self.receivedAmountLabel.font = font;
+	self.netIncomeAmountLabel.font = font;
+	
+	font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+	self.transactionsLabel.font = font;
+	self.sentLabel.font = font;
+	self.receivedLabel.font = font;
+	self.netIncomeLabel.font = font;
+	
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	CALayer *topBorder = [CALayer layer];
 	topBorder.borderColor = [UIColor lightGrayColor].CGColor;
@@ -36,11 +52,6 @@
 	[self.contentView.layer addSublayer:topBorder];
 	[self.contentView.layer addSublayer:bottomBorder];
 	
-}
-
-- (void)setupCell{
-	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	[uiHelper setupCell:self];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
