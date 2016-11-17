@@ -18,6 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *bottomLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -41,25 +44,48 @@
     
     self.view.backgroundColor = [UIColor darkColor];
     self.title = _pageType;
-    
+	_bottomLabel.hidden = YES;
+	_facebookButton.hidden = YES;
+	_label.hidden = YES;
+	_imageView.hidden = YES;
+	
     // about
     if([_pageType isEqualToString:@"About"]){
-        NSString *text = [_contentHelper contentTextWithPageType:_pageType];
-        self.bottomLabel.text = text;
-        self.bottomLabel.textColor = [UIColor blackColor];
+		[self setupAboutPage];
     }
     // help
     else if([_pageType isEqualToString:@"Help"]){
         self.textView.attributedText = [_contentHelper helpContent];
-        _bottomLabel.hidden = YES;
     }
     // licenses
     else{
         self.textView.text = [_contentHelper contentTextWithPageType:_pageType];
-        _bottomLabel.hidden = YES;
     }
     self.textView.textAlignment = NSTextAlignmentJustified;
 
+}
+
+- (void)setupAboutPage{
+	
+	// text
+	NSString *text = [_contentHelper contentTextWithPageType:_pageType];
+	_bottomLabel.hidden = NO;
+	_imageView.hidden = NO;
+	self.bottomLabel.text = text;
+	self.bottomLabel.textColor = [UIColor whiteColor];
+	_textView.backgroundColor = [UIColor darkColor];
+	_label.hidden = NO;
+	_label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:28];
+	
+	// button
+	_facebookButton.hidden = NO;
+	_facebookButton.layer.cornerRadius = 5;
+	_facebookButton.clipsToBounds = YES;
+	
+}
+
+- (IBAction)facebookPressed:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/ShavidApps.Lily/"]];
 }
 
 - (void)didReceiveMemoryWarning {
