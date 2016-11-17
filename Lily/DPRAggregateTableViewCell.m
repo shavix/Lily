@@ -34,14 +34,15 @@
 	self.netIncomeAmountLabel.font = font;
 	self.sentAverageLabel.font = font;
 	self.receivedAverageLabel.font = font;
+	self.netIncomeAverageLabel.font = font;
 
 	font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.transactionsLabel.font = font;
 	self.sentLabel.font = font;
 	self.receivedLabel.font = font;
 	self.netIncomeLabel.font = font;
-	self.averageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0];;
-	
+	self.averageLabel.font = font;
+
 	// average label
 	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
 	self.averageLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Average"

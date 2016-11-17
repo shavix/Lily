@@ -24,10 +24,10 @@
 	self.backgroundColor = [UIColor charcoalColor];
 	
 	self.cellTitle.font = [UIFont helveticaBold13];
+	self.amountLabel.font = [UIFont helveticaBold13];
 	self.cellTitle.textColor = [UIColor lightGreenColor];
 	self.title.font = [UIFont boldSystemFontOfSize:12];
 	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
-	self.amountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
 	self.dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;

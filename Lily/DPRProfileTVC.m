@@ -217,15 +217,17 @@
 	// net income label
 	if(received > sent){
 		cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
+		cell.netIncomeAverageLabel.textColor = [UIColor lightGreenColor];
 	}
 	else{
 		cell.netIncomeAmountLabel.textColor = [UIColor redColor];
+		cell.netIncomeAverageLabel.textColor = [UIColor redColor];
 	}
 	
 	double average = 0;
 	// averages
 	if(numSent == 0){
-		cell.sentAverageLabel.text = @"";
+		cell.sentAverageLabel.text = @"$0.00";
 	}
 	else{
 		average = sent/numSent;
@@ -233,13 +235,18 @@
 	}
 	// averages
 	if(numReceived == 0){
-		cell.receivedAverageLabel.text = @"";
+		cell.receivedAverageLabel.text = @"$0.00";
 	}
 	else{
 		average = received/numReceived;
 		cell.receivedAverageLabel.text = [NSString stringWithFormat:@"$%.2f",average];
 	}
 	
+	double netIncomeAverage = 0;
+	if(numTransactions != 0){
+		netIncomeAverage = netIncome / (double) numTransactions;
+	}
+	cell.netIncomeAverageLabel.text = [NSString stringWithFormat:@"$%.2f", netIncomeAverage];
 
 }
 

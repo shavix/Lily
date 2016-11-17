@@ -108,8 +108,19 @@
     
     // sent
     if(!transaction.isIncoming){
+		// sent
         NSNumber *sent = [monthDict objectForKey:@"sent"];
-        [monthDict setValue:@(sent.doubleValue + transactionAmount) forKey:@"sent"];
+		double newSent = sent.doubleValue + transactionAmount;
+        [monthDict setValue:@(newSent) forKey:@"sent"];
+		
+		// transactions sent
+		NSNumber *transactionsSent = [monthDict objectForKey:@"transactionsSent"];
+		NSInteger newTransactions = transactionsSent.integerValue + 1;
+		[monthDict setValue:@(newTransactions) forKey:@"transactionsSent"];
+		
+		// sent average
+		double sentAverage = newSent / newTransactions;
+		[monthDict setValue:@(sentAverage) forKey:@"sentAverage"];
         
         // netIncome
         NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
@@ -118,9 +129,20 @@
     
     // received
     else{
+		// received
         NSNumber *received = [monthDict objectForKey:@"received"];
-        [monthDict setValue:@(received.doubleValue + transactionAmount) forKey:@"received"];
-        
+		double newReceived = received.doubleValue + transactionAmount;
+        [monthDict setValue:@(newReceived) forKey:@"received"];
+		
+		// transactions received
+		NSNumber *transactionsReceived = [monthDict objectForKey:@"transactionsReceived"];
+		NSInteger newTransactions = transactionsReceived.integerValue + 1;
+		[monthDict setValue:@(newTransactions) forKey:@"transactionsReceived"];
+		
+		// received average
+		double receivedAverage = newReceived / newTransactions;
+		[monthDict setValue:@(receivedAverage) forKey:@"receivedAverage"];
+		
         // netIncome
         NSNumber *netIncome = [monthDict objectForKey:@"netIncome"];
         [monthDict setValue:@(netIncome.doubleValue + transactionAmount) forKey:@"netIncome"];
@@ -153,7 +175,11 @@
                                         @(i), @"month",
                                         @(0), @"transactions",
                                         @(0), @"sent",
+										@(0), @"transactionsSent",
+										@(0), @"sentAverage",
                                         @(0), @"received",
+										@(0), @"transactionsReceived",
+										@(0), @"receivedAverage",
                                         @(0), @"netIncome",
                                        nil]];
     }
@@ -251,8 +277,10 @@
 	// iterate through friends
 	for(NSArray *currArr in transactionsByFriends){
 		
-		NSInteger amountSent = 0;
-		NSInteger amountReceived = 0;
+		double amountSent = 0;
+		double amountReceived = 0;
+		NSInteger numSent = 0;
+		NSInteger numReceived = 0;
 		
 		// iterate through transactions
 		for(DPRTransaction *transaction in currArr){
@@ -260,25 +288,38 @@
 			NSNumber *amount = transaction.amount;
 			
 			if(transaction.isIncoming){
-				amountReceived += amount.integerValue;
+				amountReceived += amount.doubleValue;
+				numReceived++;
 			}
 			else{
-				amountSent += amount.integerValue;
+				amountSent += amount.doubleValue;
+				numSent++;
 			}
 			
+		}
+		
+		double sentAverage = 0;
+		if(numSent > 0){
+			sentAverage = amountSent / numSent;
+		}
+		double receivedAverage = 0;
+		if(numReceived > 0){
+			receivedAverage = amountReceived / numReceived;
 		}
 		
 		DPRTransaction *transaction = currArr[0];
 		NSString *picture_url = transaction.target.picture_url;
 		
-		NSInteger netIncome = amountReceived - amountSent;
+		double netIncome = amountReceived - amountSent;
 		NSInteger transactions = currArr.count;
 		
 		NSDictionary *friend = [NSDictionary dictionaryWithObjectsAndKeys:
 								[NSNumber numberWithInteger:transactions], @"transactions",
-								[NSNumber numberWithInteger:amountSent], @"sent",
-								[NSNumber numberWithInteger:amountReceived], @"received",
-								[NSNumber numberWithInteger:netIncome], @"netIncome",
+								[NSNumber numberWithDouble:amountSent], @"sent",
+								[NSNumber numberWithDouble:sentAverage], @"sentAverage",
+								[NSNumber numberWithDouble:amountReceived], @"received",
+								[NSNumber numberWithDouble:receivedAverage], @"receivedAverage",
+								[NSNumber numberWithDouble:netIncome], @"netIncome",
 								picture_url, @"picture_url",
 								nil];
 		

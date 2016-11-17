@@ -23,4 +23,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *receivedAverageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sentAverageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *netIncomeAverageLabel;
 @end

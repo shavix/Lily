@@ -217,12 +217,15 @@
     double ni = netIncome.doubleValue;
     if(ni == 0){
         cell.netIncomeAmountLabel.textColor = [UIColor whiteColor];
+		cell.netIncomeAverage.textColor = [UIColor whiteColor];
     }
     else if(ni < 0){
-        cell.netIncomeAmountLabel.textColor = [UIColor redColor];
+		cell.netIncomeAmountLabel.textColor = [UIColor redColor];
+		cell.netIncomeAverage.textColor = [UIColor redColor];
     }
     else{
-        cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
+		cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
+		cell.netIncomeAverage.textColor = [UIColor lightGreenColor];
     }
     netIncome = [NSNumber numberWithDouble:fabs(ni)];
     
@@ -235,7 +238,20 @@
     cell.sentAmountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:sent]];
     cell.receivedAmountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:received]];
     cell.netIncomeAmountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:netIncome]];
-    
+	
+	NSNumber *receivedAverage = [monthDict objectForKey:@"receivedAverage"];
+	NSNumber *sentAverage = [monthDict objectForKey:@"sentAverage"];
+	cell.receivedAverageLabel.text = [NSString stringWithFormat:@"$%.2f", receivedAverage.doubleValue];
+	cell.sentAverageLabel.text = [NSString stringWithFormat:@"$%.2f", sentAverage.doubleValue];
+	
+	if(transactions == 0){
+		cell.netIncomeAverage.text = @"$0.00";
+	}
+	else{
+		double netIncomeAverage = netIncome.doubleValue / transactions.doubleValue;
+		cell.netIncomeAverage.text = [NSString stringWithFormat:@"$%.2f",netIncomeAverage];
+	}
+	
     return cell;
     
 }

@@ -21,21 +21,34 @@
 	[uiHelper setupCell:self];
     
     self.backgroundColor = [UIColor charcoalColor];
-    self.sentAmountLabel.textColor = [UIColor redColor];
-    self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
-    
+	self.sentAmountLabel.textColor = [UIColor redColor];
+	self.sentAverageLabel.textColor = [UIColor redColor];
+	self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
+	self.receivedAverageLabel.textColor = [UIColor lightGreenColor];
+	
     // fonts
 	UIFont *font = [UIFont helveticaBold13];
 	self.transactionsAmountLabel.font = font;
     self.sentAmountLabel.font = font;
     self.receivedAmountLabel.font = font;
     self.netIncomeAmountLabel.font = font;
+	self.sentAverageLabel.font = font;
+	self.receivedAverageLabel.font = font;
+	self.netIncomeAverage.font = font;
 	
 	font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.receivedLabel.font = font;
 	self.sentLabel.font = font;
 	self.netIncomeLabel.font = font;
 	self.transactionsLabel.font = font;
+	self.averageLabel.font = font;
+
+	// average label
+	//self.averageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0];;
+	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+	self.averageLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Average"
+																	   attributes:underlineAttribute];
+	
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 
