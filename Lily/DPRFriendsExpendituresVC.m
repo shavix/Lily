@@ -115,9 +115,16 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:3 andType:@"friends"];
+	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:4 andType:@"friends"];
 
 	
+}
+
+- (void)animate:(UIButton *)sender{
+	[_barChartView moveViewToX:_barChartView.data.entryCount];
+	[_barChartView moveViewToAnimatedWithXValue:-1 yValue:0 axis:AxisDependencyLeft duration:4.0];
+	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION_X_2 yAxisDuration:ANIMATE_DURATION_Y_2];
+	[self hideMenu];
 }
 
 - (void)menuShow{

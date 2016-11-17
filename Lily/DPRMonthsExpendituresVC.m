@@ -102,12 +102,17 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menuShow)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	
-	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:3 andType:@"months"];
+	self.buttonList = [_uiHelper createMenuWithVC:self andNumButtons:4 andType:@"months"];
 	
 	
 	// sorted keys
 	[self sortByDate:_buttonList[0]];
 	
+}
+
+- (void)animate:(UIButton *)sender{
+	[_barChartView animateWithXAxisDuration:ANIMATE_DURATION_X yAxisDuration:ANIMATE_DURATION_Y_3];
+	[self hideMenu];
 }
 
 - (void)sortByDate:(UIButton *)sender{

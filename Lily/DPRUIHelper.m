@@ -287,6 +287,10 @@
 					[button addTarget:vc action:@selector(sortByValue:) forControlEvents:UIControlEventTouchDown];
 					break;
 				case 2:
+					[button setTitle:@"Animate" forState:UIControlStateNormal];
+					[button addTarget:vc action:@selector(animate:) forControlEvents:UIControlEventTouchDown];
+					break;
+				case 3:
 					[button setTitle:@"Save to Photos" forState:UIControlStateNormal];
 					[button addTarget:vc action:@selector(saveToPhotos) forControlEvents:UIControlEventTouchDown];
 					break;
@@ -302,6 +306,7 @@
 	
 	return buttons;
 }
+
 
 - (void)savePhotoWithChart:(BarChartView *)chartView andVC:(DropdownMenuController *)vc{
 	

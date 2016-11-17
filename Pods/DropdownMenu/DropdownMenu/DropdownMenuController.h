@@ -22,7 +22,10 @@
 
 #import <UIKit/UIKit.h>
 #define ANIMATE_DURATION_X 2.0
+#define ANIMATE_DURATION_X_2 1.0
 #define ANIMATE_DURATION_Y 3.0
+#define ANIMATE_DURATION_Y_2 6.0
+#define ANIMATE_DURATION_Y_3 4.0
 
 @interface DropdownMenuController : UIViewController
 
