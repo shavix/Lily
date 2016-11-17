@@ -140,19 +140,19 @@
 		else if(row == 1){
 			type = @"sent";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Highest Expenditures";
+			cell.cellTitle.text = @"Highest Total Expenditures";
 		}
 		// income
 		else if(row == 2){
 			type = @"received";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Highest Income";
+			cell.cellTitle.text = @"Highest Total Income";
 		}
 		// net income
 		else {
 			type = @"netIncome";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Highest Net Income";
+			cell.cellTitle.text = @"Highest Total Net Income";
 		}
 		[self setupCell:cell withFriend:maxFriend andType:type];
 		return cell;
@@ -195,6 +195,8 @@
 	double sent = 0;
 	double received = 0;
 	double netIncome = 0;
+	int numSent = 0;
+	int numReceived = 0;
 	
 	for(DPRTransaction *transaction in transactionList){
 		
@@ -203,11 +205,13 @@
 		if(transaction.isIncoming){
 			received += amount;
 			netIncome += amount;
+			numReceived++;
 		}
 		// sent
 		else{
 			sent += amount;
 			netIncome -= amount;
+			numSent++;
 		}
 	}
 	
@@ -227,6 +231,24 @@
 	}
 	else{
 		cell.netIncomeAmountLabel.textColor = [UIColor redColor];
+	}
+	
+	double average = 0;
+	// averages
+	if(numSent == 0){
+		cell.sentAverageLabel.text = @"";
+	}
+	else{
+		average = sent/numSent;
+		cell.sentAverageLabel.text = [NSString stringWithFormat:@"(avg: $%.2f)",average];
+	}
+	// averages
+	if(numReceived == 0){
+		cell.receivedAverageLabel.text = @"";
+	}
+	else{
+		average = received/numReceived;
+		cell.receivedAverageLabel.text = [NSString stringWithFormat:@"(avg: $%.2f)",average];
 	}
 }
 
@@ -317,7 +339,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	if(section == 0)
+	if(section < 2)
 		return 1;
 	if(section == 3)
 		return 4;
