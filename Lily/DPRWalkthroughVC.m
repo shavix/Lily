@@ -190,7 +190,7 @@
 	page2.title = @"Analytics";
 	page2.desc = @"Lily delivers in-depth data analytics on all your Venmo transactions.";
 	page2.bgColor = backgroundColor;
-	page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"graph"]];
+	page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bars-chart"]];
 	
 	EAIntroPage *page3 = [EAIntroPage page];
 	page3.title = @"Let's start!";

@@ -7,7 +7,6 @@
 //
 
 #import "DPRProfileTVC.h"
-#import "DPRProfileTableViewCell.h"
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRPortraitTableViewCell.h"
@@ -71,7 +70,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	NSString *profileIdentifier = @"ProfileCell";
 	NSString *protraitIdentifier = @"PortraitCell";
 	NSString *profileTransactionIdentifier = @"ProfileTransactionCell";
 	NSString *friendIdentifier = @"ProfileFriendCell";
@@ -91,21 +89,11 @@
 	}
 	// trends
 	else if(section == 1){
-
-		// aggregate
-		if(row == 0){
-			DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
-			cell.title.text = @"Aggregate (all time)";
-			[self setupAggregateCell:cell];
-			return cell;
-		}
-		// monthly
-		else{
-			DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
-			cell.title.text = @"Monthly trends";
-			return cell;
-		}
-		
+		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
+		cell.title.text = @"Aggregate (all time)";
+		cell.image.image = [UIImage imageNamed:@"aggregate"];
+		[self setupAggregateCell:cell];
+		return cell;
 	}
 	// transactions
 	else if(section == 2){
@@ -367,6 +355,8 @@
 {
 	if(section == 0)
 		return 20;
+	if(section == 1)
+		return 30;
 	return 40;
 }
 

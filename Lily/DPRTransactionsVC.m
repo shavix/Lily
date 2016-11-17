@@ -133,6 +133,11 @@
     return [self.transactionSingleton.transactionsByDate count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	if(section == 0)
+		return 50;
+	return 25;
+}
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     

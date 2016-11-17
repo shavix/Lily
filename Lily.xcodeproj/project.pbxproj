@@ -52,7 +52,6 @@
 		6379F5BA1D1BA8DC0094ED24 /* bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5AA1D1BA8DC0094ED24 /* bg2@2x.png */; };
 		6379F5BB1D1BA8DC0094ED24 /* bg3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5AB1D1BA8DC0094ED24 /* bg3@2x.png */; };
 		6379F5BC1D1BA8DC0094ED24 /* bg4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5AC1D1BA8DC0094ED24 /* bg4@2x.png */; };
-		6379F5BE1D1BA8DC0094ED24 /* icon1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5AE1D1BA8DC0094ED24 /* icon1@2x.png */; };
 		6379F5C21D1BA8DC0094ED24 /* pageDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5B21D1BA8DC0094ED24 /* pageDot.png */; };
 		6379F5C31D1BA8DC0094ED24 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5B31D1BA8DC0094ED24 /* pageDot@2x.png */; };
 		63811E631DC42673008C5874 /* DPRSettingsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63811E621DC42673008C5874 /* DPRSettingsTVC.m */; };
@@ -180,7 +179,6 @@
 		6379F5AA1D1BA8DC0094ED24 /* bg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg2@2x.png"; sourceTree = "<group>"; };
 		6379F5AB1D1BA8DC0094ED24 /* bg3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg3@2x.png"; sourceTree = "<group>"; };
 		6379F5AC1D1BA8DC0094ED24 /* bg4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg4@2x.png"; sourceTree = "<group>"; };
-		6379F5AE1D1BA8DC0094ED24 /* icon1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1@2x.png"; sourceTree = "<group>"; };
 		6379F5B21D1BA8DC0094ED24 /* pageDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pageDot.png; sourceTree = "<group>"; };
 		6379F5B31D1BA8DC0094ED24 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		63811E611DC42673008C5874 /* DPRSettingsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRSettingsTVC.h; sourceTree = "<group>"; };
@@ -484,7 +482,6 @@
 				63C5511F1DC30E9E006B984F /* free.png */,
 				63C551201DC30E9E006B984F /* graph.png */,
 				63C551211DC30E9E006B984F /* presentation.png */,
-				6379F5AE1D1BA8DC0094ED24 /* icon1@2x.png */,
 				632007341DC314E2004CB6D5 /* circleLily.png */,
 				6379F5B21D1BA8DC0094ED24 /* pageDot.png */,
 				6379F5B31D1BA8DC0094ED24 /* pageDot@2x.png */,
@@ -655,7 +652,6 @@
 				63C551221DC30E9E006B984F /* athletics.png in Resources */,
 				6379F5B91D1BA8DC0094ED24 /* bg1@2x.png in Resources */,
 				63811E6E1DC6AACF008C5874 /* ApacheLicense.txt in Resources */,
-				6379F5BE1D1BA8DC0094ED24 /* icon1@2x.png in Resources */,
 				6379F5621D1B9B9A0094ED24 /* Assets.xcassets in Resources */,
 				63C551251DC30E9E006B984F /* presentation.png in Resources */,
 				6379F55D1D1B9B9A0094ED24 /* Main.storyboard in Resources */,
