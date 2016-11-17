@@ -73,7 +73,7 @@
     
     NSMutableString *content = [[NSMutableString alloc] init];
     [content appendString:@"2016 David Richardson\n"];
-    [content appendString:@"Software engineer, USC graduate."];
+	[content appendString:@"Facebook: https://www.facebook.com/ShavidApps.Lily/\n"];
 
     return content;
 }

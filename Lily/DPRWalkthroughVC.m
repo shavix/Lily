@@ -151,6 +151,10 @@
 }
 
 - (void)setupDashboard{
+	
+	// change status bar style back
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
 	// segue to home page
 	self.navigationController.navigationBarHidden = YES;
 	UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
@@ -164,6 +168,7 @@
 // perform web request when intro finishes
 - (void)introDidFinish:(EAIntroView *)introView wasSkipped:(BOOL)wasSkipped{
 	self.navigationController.navigationBarHidden = NO;
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 	[self webRequest];
 }
 

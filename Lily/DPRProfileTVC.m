@@ -10,6 +10,7 @@
 #import "DPRProfileTableViewCell.h"
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
+#import "DPRPortraitTableViewCell.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRProfileTVC ()
@@ -48,24 +49,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	NSString *identifier = @"ProfileCell";
-	DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-	
+	NSString *profileIdentifier = @"ProfileCell";
+	NSString *protraitIdentifier = @"PortraitCell";
 	NSInteger section = indexPath.section;
-	
-	// profile cell
+
+	// portrait cell
 	if(section == 0){
+		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
 		cell.image.image = _user.pictureImage;
+		cell.title.text = _user.fullName;
+		
+		NSString *subtitle = [NSString stringWithFormat:@"@%@",_user.username];
+		cell.subtitle.text = subtitle;
+		return cell;
+
 	}
-	else{
-		[cell setupCell];
-	}
+	DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
+	
+	[cell setupCell];
 	
 	return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
+	return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -78,7 +85,7 @@
 	
 	// profile
 	if(section == 0){
-		return 200;
+		return 145;
 	}
 	
 	return 100;
@@ -86,15 +93,34 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 40;
+	if(section == 0)
+		return 20;
+	return 30;
 }
 
 
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
-	NSString *title;
-	title = @"";
+	NSString *title = @"";
+	
+	switch (section) {
+		case 1:
+			title = @"Information";
+			break;
+		case 2:
+			title = @"Expenditures";
+			break;
+		case 3:
+			title = @"Income";
+			break;
+		case 4:
+			title = @"Net Income";
+			break;
+		default:
+			title = @"";
+			break;
+	}
 	
 	return [title uppercaseString];
 }

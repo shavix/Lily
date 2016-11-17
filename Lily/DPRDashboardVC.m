@@ -203,11 +203,11 @@
 	
 	if([segue.identifier isEqualToString:@"analysisSegue"]){
 		DPRAnalysisListTVC *analysisListTVC = segue.destinationViewController;
-		NSInteger section = [self.tableView indexPathForSelectedRow].section;
-		if(section == 1){
+		NSInteger row = [self.tableView indexPathForSelectedRow].row;
+		if(row == 0){
 			analysisListTVC.pageType = @"Friends";
 		}
-		else if(section == 2){
+		else if(row == 1){
 			analysisListTVC.pageType = @"This Year";
 		}
 	}
@@ -220,7 +220,7 @@
 	if(indexPath.section == 0){
 		[self performSegueWithIdentifier:@"profileSegue" sender:self];
 	}
-	else if(indexPath.section == 1 || indexPath.section == 2){
+	else if(indexPath.section == 1){
 		[self segueCheckWithIdentifier:@"analysisSegue"];
 	}
     // TRANSACTIONS
@@ -237,25 +237,27 @@
     DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSInteger section = indexPath.section;
-	
+	NSInteger row = indexPath.row;
 	
 	if(section == 0){
-		cell.image.image = _user.pictureImage;
+		cell.image.image = [UIImage imageNamed:@"user"];
 		cell.title.text = @"Profile";
 		cell.subtitle.text = @"Your profile with some personal financial facts.";
 	}
 	else if(section == 1){
-		cell.image.image = [UIImage imageNamed:@"friends"];
-		cell.title.text = @"Friends";
-		cell.subtitle.text = @"Analyses on your financial habits with friends.";
-	}
-	else if(section == 2){
-		cell.image.image = [UIImage imageNamed:@"monthlyDetails"];
-		cell.title.text = @"This Year";
-		cell.subtitle.text = @"Analyses on your financial habits over the last year on a monthly basis.";
+		if(row == 0){
+			cell.image.image = [UIImage imageNamed:@"friends"];
+			cell.title.text = @"Friends";
+			cell.subtitle.text = @"Analyses on your financial habits with friends.";
+		}
+		else{
+			cell.image.image = [UIImage imageNamed:@"monthlyDetails"];
+			cell.title.text = @"This Year";
+			cell.subtitle.text = @"Analyses on your financial habits over the last year on a monthly basis.";
+		}
 	}
     // TRANSACTIONS
-    else if(section == 3)
+    else if(section == 2)
     {
 		cell.image.image = [UIImage imageNamed:@"loading"];
 		cell.title.text = @"Load transactions";
@@ -289,11 +291,8 @@
 		title = @"PROFILE";
 	}
 	else if(section == 1){
-		title = @"FRIENDS";
+		title = @"ANALYTICS";
 	}
-    else if(section == 2){
-        title = @"THIS YEAR";
-    }
     else{
         title = @"TRANSACTIONS";
     }
@@ -312,10 +311,14 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	
+	// analytics
+	if(section == 1)
+		return 2;
 	
 	return 1;
 	
