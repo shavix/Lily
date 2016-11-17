@@ -12,6 +12,7 @@
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
+#import "Reachability.h"
 #import "UIColor+CustomColors.h"
 #import "UIFont+CustomFonts.h"
 

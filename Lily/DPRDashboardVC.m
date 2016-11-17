@@ -61,6 +61,10 @@
 
     // store username
     [self storeUsername];
+	
+	if(_user.transactionList.count < 1){
+		[self loadMoreTransactions];
+	}
     
 }
 
@@ -71,10 +75,7 @@
     NSArray *results = [self.cdHelper setupTransactionsByDateWithUser:self.user];
     self.transactionSingleton.transactionsByDate = results[0];
     self.transactionSingleton.transactionsByMonth = results[1];
- 
-	if(_user.transactionList.count < 1){
-		[self loadMoreTransactions];
-	}
+
 }
 
 
@@ -218,7 +219,7 @@
 	
 	// NOT TRANSACTIONS
 	if(indexPath.section == 0){
-		[self performSegueWithIdentifier:@"profileSegue" sender:self];
+		[self segueCheckWithIdentifier:@"profileSegue"];
 	}
 	else if(indexPath.section == 1){
 		[self segueCheckWithIdentifier:@"analysisSegue"];
