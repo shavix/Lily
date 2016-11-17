@@ -30,6 +30,7 @@
 		636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 6363262E1D2A1BC8001CA480 /* DPRTarget.m */; };
 		636326371D2A1EB6001CA480 /* DPRTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326341D2A1EB6001CA480 /* DPRTransaction+CoreDataProperties.m */; };
 		636326381D2A1EB6001CA480 /* DPRTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 636326361D2A1EB6001CA480 /* DPRTransaction.m */; };
+		637572E31DDE5ED600C9219F /* DPRReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 637572E11DDE5ED600C9219F /* DPRReachability.m */; };
 		63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FAD1D220919003410D3 /* DPRCoreDataHelper.m */; };
 		63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB41D231BD9003410D3 /* DPRUser+CoreDataProperties.m */; };
 		63782FBA1D231BD9003410D3 /* DPRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63782FB61D231BD9003410D3 /* DPRUser.m */; };
@@ -139,6 +140,8 @@
 		636326341D2A1EB6001CA480 /* DPRTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPRTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		636326351D2A1EB6001CA480 /* DPRTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransaction.h; sourceTree = "<group>"; };
 		636326361D2A1EB6001CA480 /* DPRTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransaction.m; sourceTree = "<group>"; };
+		637572E11DDE5ED600C9219F /* DPRReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRReachability.m; sourceTree = "<group>"; };
+		637572E21DDE5ED600C9219F /* DPRReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRReachability.h; sourceTree = "<group>"; };
 		63782FAC1D220919003410D3 /* DPRCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRCoreDataHelper.h; sourceTree = "<group>"; };
 		63782FAD1D220919003410D3 /* DPRCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRCoreDataHelper.m; sourceTree = "<group>"; };
 		63782FB31D231BD9003410D3 /* DPRUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPRUser+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 		6379F5521D1B9B9A0094ED24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				637572E11DDE5ED600C9219F /* DPRReachability.m */,
+				637572E21DDE5ED600C9219F /* DPRReachability.h */,
 				6379F5A81D1BA8DC0094ED24 /* Images */,
 				63C551131DC2E54A006B984F /* XYMarkerView.swift */,
 				630AAF3B1DC2CE0B0031BACD /* BalloonMarker.swift */,
@@ -735,6 +740,7 @@
 				636326321D2A1BC8001CA480 /* DPRTarget.m in Sources */,
 				634C3BD91DD95D9E001C6D5C /* UIFont+CustomFonts.m in Sources */,
 				634C3BE91DD9ABD9001C6D5C /* DPRFriendsTransactionsVC.m in Sources */,
+				637572E31DDE5ED600C9219F /* DPRReachability.m in Sources */,
 				63C2DE561DC27B80009F64F8 /* DPRMonthsNetIncomeVC.m in Sources */,
 				632A88561DDD25B60028D81D /* DPRPortraitTableViewCell.m in Sources */,
 				63C765E71DBEEC6A005D55F6 /* DPRFriendsExpendituresVC.m in Sources */,

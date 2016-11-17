@@ -9,17 +9,20 @@
 #import "DPRWalkthroughVC.h"
 #import "DPRVenmoHelper.h"
 #import "DPRUser.h"
-#import "DPRUser.h"
+#import "DPRUIHelper.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
-#import "Reachability.h"
+#import "DPRReachability.h"
 #import "UIColor+CustomColors.h"
 #import "UIFont+CustomFonts.h"
+
+@import SCLAlertView_Objective_C;
 
 @interface DPRWalkthroughVC()
 
 @property (strong, nonatomic) UIWebView *webView;
 
+@property (strong, nonatomic) DPRUIHelper *uiHelper;
 @property (weak, nonatomic) DPRVenmoHelper *venmoHelper;
 @property (weak, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) NSString *accessToken;
@@ -52,14 +55,14 @@
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [_webView loadRequest:nsrequest];
     [self.view addSubview:_webView];
-    
+	
 }
 
 
 #pragma mark - UIWebView
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
+	
     // get substring
     NSString *URLString = [[request URL] absoluteString];
 	
@@ -168,11 +171,40 @@
 
 // perform web request when intro finishes
 - (void)introDidFinish:(EAIntroView *)introView wasSkipped:(BOOL)wasSkipped{
-	self.navigationController.navigationBarHidden = NO;
-	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-	[self webRequest];
+	
+	self.uiHelper = [[DPRUIHelper alloc] init];
+	self.view.backgroundColor = [UIColor darkishColor];
+	[self checkConnectivity];
+	
 }
 
+- (void)checkConnectivity{
+	
+	// connection unavailable
+	if ([[DPRReachability reachabilityForInternetConnection]currentReachabilityStatus]==NotReachable)
+	{
+		// alert
+		NSString *message = @"Internet connection required.";
+		NSString *title = @"Error";
+		SCLAlertView *alertView = [_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
+		
+		// completion
+		[alertView alertIsDismissed:^{
+			[self checkConnectivity];
+		}];
+		
+	}
+	
+	// connection available
+	else
+	{
+		self.navigationController.navigationBarHidden = NO;
+		[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+		[self webRequest];
+	}
+
+	
+}
 
 - (void)EAIntro {
 	

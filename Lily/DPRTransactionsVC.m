@@ -65,9 +65,16 @@
     
     DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
 
-    // transactionLabel
-    cell.transactionLabel.text = transaction.transactionDescription;
-    
+	// description
+	NSDictionary *lightAttribute = @{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Light" size:12]};
+	NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:transaction.transactionDescription];
+	NSRange range = [transaction.transactionDescription rangeOfString:@"paid"];
+	if(range.location == NSNotFound){
+		range = [transaction.transactionDescription rangeOfString:@"charged"];
+	}
+	[attributedString addAttributes:lightAttribute range:range];
+	cell.transactionLabel.attributedText = attributedString;
+	
     // noteLabel
     cell.noteLabel.text = transaction.note;
     

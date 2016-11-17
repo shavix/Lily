@@ -257,7 +257,16 @@
 	[cell.image sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
 				 placeholderImage:[UIImage imageNamed:@"UserImage"]];
 	
-	cell.title.text = transaction.transactionDescription;
+	// description
+	NSDictionary *lightAttribute = @{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Light" size:12]};
+	NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:transaction.transactionDescription];
+	NSRange range = [transaction.transactionDescription rangeOfString:@"paid"];
+	if(range.location == NSNotFound){
+		range = [transaction.transactionDescription rangeOfString:@"charged"];
+	}
+	[attributedString addAttributes:lightAttribute range:range];
+	cell.title.attributedText = attributedString;
+	
 	cell.subtitle.text = transaction.note;
 	
 	NSString *dateCompleted = [transaction.dateCompletedString lowercaseString];
