@@ -14,6 +14,10 @@
 	return [UIFont fontWithName:@"Helvetica-Light" size:14];
 }
 
++ (UIFont *)helveticaBold13{
+	return [UIFont fontWithName:@"Helvetica-Bold" size:13];
+}
+
 + (UIFont *)helvetica20{
 	return [UIFont fontWithName:@"Helvetica-Light" size:16];
 }

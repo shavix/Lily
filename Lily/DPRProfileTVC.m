@@ -11,7 +11,11 @@
 #import "DPRUser.h"
 #import "DPRCoreDataHelper.h"
 #import "DPRPortraitTableViewCell.h"
+#import "DPRProfileTransactionTableViewCell.h"
+#import "DPRTransaction.h"
+#import "DPRTarget.h"
 #import "UIColor+CustomColors.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DPRProfileTVC ()
 
@@ -51,6 +55,7 @@
 	
 	NSString *profileIdentifier = @"ProfileCell";
 	NSString *protraitIdentifier = @"PortraitCell";
+	NSString *profileTransactionIdentifier = @"ProfileTransactionCell";
 	NSInteger section = indexPath.section;
 
 	// portrait cell
@@ -62,13 +67,87 @@
 		NSString *subtitle = [NSString stringWithFormat:@"@%@",_user.username];
 		cell.subtitle.text = subtitle;
 		return cell;
-
+	}
+	// profile transaction cell
+	if(section == 2 || section == 3){
+		DPRProfileTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileTransactionIdentifier];
+		DPRTransaction *transaction;
+		// expenditures
+		if(section == 2){
+			transaction = [self maxTransactionOfType:@"sent"];
+			cell.cellTitle.text = @"Largest expenditure";
+		}
+		// income
+		else{
+			transaction = [self maxTransactionOfType:@"received"];
+			cell.cellTitle.text = @"Largest income";
+		}
+		[self setupCell:cell withTransaction:transaction];
+		
+		return cell;
 	}
 	DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
 	
 	[cell setupCell];
 	
 	return cell;
+}
+
+- (DPRTransaction *)maxTransactionOfType:(NSString *)type{
+	
+	DPRTransaction *maxTransaction = [_user.transactionList anyObject];
+	double maxValue = maxTransaction.amount.doubleValue;
+	for(DPRTransaction *transaction in _user.transactionList){
+		
+		double amount = transaction.amount.doubleValue;
+
+		// received
+		if([type isEqualToString:@"received"]){
+			if(transaction.isIncoming){
+				if(amount > maxValue){
+					maxTransaction = transaction;
+					maxValue = amount;
+				}
+			}
+		}
+		// sent
+		else{
+			if(!transaction.isIncoming){
+				if(amount > maxValue){
+					maxTransaction = transaction;
+					maxValue = amount;
+				}
+			}
+		}
+		
+	}
+
+	return maxTransaction;
+}
+
+
+// image
+- (void)setupCell:(DPRProfileTransactionTableViewCell *)cell withTransaction:(DPRTransaction *)transaction {
+	// SDWebImage
+	[cell.image sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
+				 placeholderImage:[UIImage imageNamed:@"UserImage"]];
+	
+	cell.title.text = transaction.transactionDescription;
+	cell.subtitle.text = transaction.note;
+	
+	// color
+	if(transaction.isIncoming) {
+		cell.amountLabel.textColor = [UIColor lightGreenColor];
+	}
+	else{
+		cell.amountLabel.textColor = [UIColor redColor];
+	}
+	// format
+	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+	[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+	[formatter setPositiveFormat:@"0.00"];
+	cell.amountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:transaction.amount]];
+	
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

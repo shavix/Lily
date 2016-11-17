@@ -91,25 +91,18 @@
     else{
         amountLabel.textColor = [UIColor redColor];
     }
-    
     // format
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setPositiveFormat:@"0.00"];
-
     amountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:transaction.amount]];
-
 }
 
 // image
 - (void)setupImageView:(UIImageView *)imageView withTransaction:(DPRTransaction *)transaction {
-    
-    
     // SDWebImage
     [imageView sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
-                 placeholderImage:[UIImage imageNamed:@"UserImage"]];
-
-    
+                 placeholderImage:[UIImage imageNamed:@"UserImage"]];  
 }
 
 
