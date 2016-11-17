@@ -43,7 +43,12 @@
 	[self setupData];
 	[self setDataCount];
 	[self setupChartUI];
-	
+	[self animate];	
+}
+
+- (void)animate{
+	[_barChartView moveViewToX:15];
+	[_barChartView moveViewToAnimatedWithXValue:-1 yValue:0 axis:AxisDependencyLeft duration:2];
 }
 
 
