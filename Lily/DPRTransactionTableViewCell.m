@@ -21,7 +21,19 @@
     self.noteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+	CALayer *topBorder = [CALayer layer];
+	topBorder.borderColor = [UIColor lightGrayColor].CGColor;
+	topBorder.borderWidth = 1;
+	topBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.contentView.frame), 1);
+	
+	CALayer *bottomBorder = [CALayer layer];
+	bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
+	bottomBorder.borderWidth = 1;
+	bottomBorder.frame = CGRectMake(0, 69, CGRectGetWidth(self.contentView.frame), 1);
+	
+	[self.contentView.layer addSublayer:topBorder];
+	[self.contentView.layer addSublayer:bottomBorder];
+	
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -346,7 +346,7 @@
 	
 	// portrait
 	if(section == 0){
-		return 145;
+		return 135;
 	}
 	// profile
 	if(section == 1){
@@ -361,7 +361,7 @@
 	if(section == 0)
 		return 20;
 	if(section == 1)
-		return 30;
+		return 20;
 	return 40;
 }
 

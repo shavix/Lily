@@ -20,7 +20,8 @@
 	self.backgroundColor = [UIColor darkColor];
 	self.image.layer.cornerRadius = 70/8;
 	self.image.clipsToBounds = YES;
-	
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+
 }
 
 

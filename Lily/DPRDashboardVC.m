@@ -240,7 +240,8 @@
 	NSInteger row = indexPath.row;
 	
 	if(section == 0){
-		cell.image.image = [UIImage imageNamed:@"user"];
+		//cell.image.image = [UIImage imageNamed:@"user"];
+		cell.image.image = _user.pictureImage;
 		cell.title.text = @"Profile";
 		cell.subtitle.text = @"Your profile with some personal financial facts.";
 	}
