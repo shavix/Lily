@@ -12,7 +12,6 @@
 		632085F71DC0204500F64794 /* DPRFriendsNetIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632085F61DC0204500F64794 /* DPRFriendsNetIncomeVC.m */; };
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		632A88501DDCDB9D0028D81D /* DPRProfileTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */; };
-		632A88531DDCDC5E0028D81D /* DPRProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88521DDCDC5E0028D81D /* DPRProfileTableViewCell.m */; };
 		632A88561DDD25B60028D81D /* DPRPortraitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88551DDD25B60028D81D /* DPRPortraitTableViewCell.m */; };
 		632A88591DDD32B10028D81D /* DPRProfileTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88581DDD32B00028D81D /* DPRProfileTransactionTableViewCell.m */; };
 		632A885C1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A885B1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.m */; };
@@ -103,8 +102,6 @@
 		6324666C1D1CA5FD00512931 /* DPRUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRUIHelper.m; sourceTree = "<group>"; };
 		632A884E1DDCDB9D0028D81D /* DPRProfileTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRProfileTVC.h; sourceTree = "<group>"; };
 		632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRProfileTVC.m; sourceTree = "<group>"; };
-		632A88511DDCDC5E0028D81D /* DPRProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRProfileTableViewCell.h; sourceTree = "<group>"; };
-		632A88521DDCDC5E0028D81D /* DPRProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRProfileTableViewCell.m; sourceTree = "<group>"; };
 		632A88541DDD25B60028D81D /* DPRPortraitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRPortraitTableViewCell.h; sourceTree = "<group>"; };
 		632A88551DDD25B60028D81D /* DPRPortraitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRPortraitTableViewCell.m; sourceTree = "<group>"; };
 		632A88571DDD32B00028D81D /* DPRProfileTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRProfileTransactionTableViewCell.h; sourceTree = "<group>"; };
@@ -251,16 +248,14 @@
 		632A885D1DDD54A20028D81D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				632A88571DDD32B00028D81D /* DPRProfileTransactionTableViewCell.h */,
+				632A88581DDD32B00028D81D /* DPRProfileTransactionTableViewCell.m */,
 				632A885F1DDD69E30028D81D /* DPRAggregateTableViewCell.h */,
 				632A88601DDD69E30028D81D /* DPRAggregateTableViewCell.m */,
-				632A88511DDCDC5E0028D81D /* DPRProfileTableViewCell.h */,
-				632A88521DDCDC5E0028D81D /* DPRProfileTableViewCell.m */,
 				632A885A1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.h */,
 				632A885B1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.m */,
 				632A88541DDD25B60028D81D /* DPRPortraitTableViewCell.h */,
 				632A88551DDD25B60028D81D /* DPRPortraitTableViewCell.m */,
-				632A88571DDD32B00028D81D /* DPRProfileTransactionTableViewCell.h */,
-				632A88581DDD32B00028D81D /* DPRProfileTransactionTableViewCell.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -734,7 +729,6 @@
 				6379F5571D1B9B9A0094ED24 /* DPRAppDelegate.m in Sources */,
 				634C3BD11DD94CA4001C6D5C /* DPRChartHelper.m in Sources */,
 				63C551141DC2E54A006B984F /* XYMarkerView.swift in Sources */,
-				632A88531DDCDC5E0028D81D /* DPRProfileTableViewCell.m in Sources */,
 				63C2DE5C1DC2B334009F64F8 /* DPRMonthsDetailsTableViewCell.m in Sources */,
 				6379F5541D1B9B9A0094ED24 /* main.m in Sources */,
 				630AAF3C1DC2CE0B0031BACD /* BalloonMarker.swift in Sources */,

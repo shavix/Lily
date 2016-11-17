@@ -28,6 +28,7 @@
 	self.title.font = [UIFont boldSystemFontOfSize:12];
 	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
 	self.amountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+	self.dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

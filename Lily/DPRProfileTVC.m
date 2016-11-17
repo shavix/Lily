@@ -250,6 +250,11 @@
 	cell.title.text = transaction.transactionDescription;
 	cell.subtitle.text = transaction.note;
 	
+	NSString *dateCompleted = [transaction.dateCompletedString lowercaseString];
+	// capitalize first letter
+	cell.dateLabel.text = [dateCompleted stringByReplacingCharactersInRange:NSMakeRange(0,1)
+															  withString:[[dateCompleted substringToIndex:1] capitalizedString]];
+	
 	// color
 	if(transaction.isIncoming) {
 		cell.amountLabel.textColor = [UIColor lightGreenColor];
