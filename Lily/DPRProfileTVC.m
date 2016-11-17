@@ -14,6 +14,7 @@
 #import "DPRProfileTransactionTableViewCell.h"
 #import "DPRTransaction.h"
 #import "DPRTarget.h"
+#import "DPRProfileFriendTableViewCell.h"
 #import "UIColor+CustomColors.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -21,10 +22,15 @@
 
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
+@property (strong, nonatomic) NSDictionary *transactionsByFriends;
 
 @end
 
-@implementation DPRProfileTVC
+@implementation DPRProfileTVC{
+	NSDictionary *titles;
+	NSArray *sectionTitles;
+	
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +48,18 @@
 - (void)setupData{
 	self.cdHelper = [DPRCoreDataHelper sharedModel];
 	self.user = [self.cdHelper fetchUser];
+	self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
+	
+	titles = [NSDictionary dictionaryWithObjectsAndKeys:
+			  @"Transactions:", @"transactions",
+			  @"Sent:", @"sent",
+			  @"Recieved:", @"received",
+			  @"Net Income:", @"netIncome", nil];
+	
+	sectionTitles = @[@"Information",
+					  @"Trends",
+					  @"Largest Transactions",
+					  @"Friends"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +74,9 @@
 	NSString *profileIdentifier = @"ProfileCell";
 	NSString *protraitIdentifier = @"PortraitCell";
 	NSString *profileTransactionIdentifier = @"ProfileTransactionCell";
+	NSString *friendIdentifier = @"ProfileFriendCell";
 	NSInteger section = indexPath.section;
+	NSInteger row = indexPath.row;
 
 	// portrait cell
 	if(section == 0){
@@ -68,61 +88,100 @@
 		cell.subtitle.text = subtitle;
 		return cell;
 	}
-	// profile transaction cell
-	if(section == 2 || section == 3){
+	// information
+	if(section == 1){
+		DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
+		
+		[cell setupCell];
+		return cell;
+	}
+	// trends
+	else if(section == 2){
+		DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
+		
+		[cell setupCell];
+		return cell;
+	}
+	// transactions
+	else if(section == 3){
 		DPRProfileTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileTransactionIdentifier];
 		DPRTransaction *transaction;
 		// expenditures
-		if(section == 2){
+		if(row == 0){
 			transaction = [self maxTransactionOfType:@"sent"];
-			cell.cellTitle.text = @"Largest expenditure";
+			cell.cellTitle.text = @"By Expenditure";
 		}
 		// income
 		else{
 			transaction = [self maxTransactionOfType:@"received"];
-			cell.cellTitle.text = @"Largest income";
+			cell.cellTitle.text = @"By Income";
 		}
 		[self setupCell:cell withTransaction:transaction];
 		
 		return cell;
 	}
-	DPRProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileIdentifier];
-	
-	[cell setupCell];
-	
-	return cell;
-}
-
-- (DPRTransaction *)maxTransactionOfType:(NSString *)type{
-	
-	DPRTransaction *maxTransaction = [_user.transactionList anyObject];
-	double maxValue = maxTransaction.amount.doubleValue;
-	for(DPRTransaction *transaction in _user.transactionList){
-		
-		double amount = transaction.amount.doubleValue;
-
-		// received
-		if([type isEqualToString:@"received"]){
-			if(transaction.isIncoming){
-				if(amount > maxValue){
-					maxTransaction = transaction;
-					maxValue = amount;
-				}
-			}
+	// friends
+	else{
+		DPRProfileFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:friendIdentifier];
+		NSDictionary *maxFriend;
+		NSString *type;
+		// transactions
+		if(row == 0){
+			type = @"transactions";
+			maxFriend = [self maxFriendOfType:type];
+			cell.cellTitle.text = @"Most Transactions";
 		}
-		// sent
-		else{
-			if(!transaction.isIncoming){
-				if(amount > maxValue){
-					maxTransaction = transaction;
-					maxValue = amount;
-				}
-			}
+		// expenditures
+		else if(row == 1){
+			type = @"sent";
+			maxFriend = [self maxFriendOfType:type];
+			cell.cellTitle.text = @"Highest Expenditures";
 		}
-		
+		// income
+		else if(row == 2){
+			type = @"received";
+			maxFriend = [self maxFriendOfType:type];
+			cell.cellTitle.text = @"Highest Income";
+		}
+		// net income
+		else {
+			type = @"netIncome";
+			maxFriend = [self maxFriendOfType:type];
+			cell.cellTitle.text = @"Highest Net Income";
+		}
+		[self setupCell:cell withFriend:maxFriend andType:type];
+		return cell;
 	}
 
-	return maxTransaction;
+}
+
+
+#pragma mark - cell setup
+
+- (void)setupCell:(DPRProfileFriendTableViewCell *)cell withFriend:(NSDictionary *)friend andType:(NSString *)type{
+	
+	// SDWebImage
+	NSString *picture_url = [friend objectForKey:@"picture_url"];
+	[cell.image sd_setImageWithURL:[NSURL URLWithString:picture_url]
+				  placeholderImage:[UIImage imageNamed:@"UserImage"]];
+	
+	cell.title.text = [friend objectForKey:@"name"];
+	cell.subtitle.text = [titles objectForKey:type];
+	
+	// amount
+	NSNumber *amount = [friend objectForKey:type];
+	NSString *amountLabel;
+	if([type isEqualToString:@"transactions"]){
+		amountLabel = [NSString stringWithFormat:@"%@", amount];
+		cell.amountLabel.textColor = [UIColor whiteColor];
+	}
+	else
+		amountLabel = [NSString stringWithFormat:@"$%.2f", amount.doubleValue];
+	if([type isEqualToString:@"sent"])
+		cell.amountLabel.textColor = [UIColor redColor];
+	
+	cell.amountLabel.text = amountLabel;
+	
 }
 
 
@@ -150,12 +209,74 @@
 	
 }
 
+- (NSDictionary *)maxFriendOfType:(NSString *)type{
+	
+	NSString *friendName;
+	NSDictionary *maxFriend;
+	for(NSString *name in _transactionsByFriends){
+		maxFriend = [_transactionsByFriends objectForKey:name];
+		friendName = name;
+	}
+	
+	double maxValue = ((NSNumber *)[maxFriend objectForKey:type]).doubleValue;
+	for(NSString *name in _transactionsByFriends){
+		NSDictionary *friend = [_transactionsByFriends objectForKey:name];
+		
+		double val = ((NSNumber *)[friend objectForKey:type]).doubleValue;;
+		
+		if(val > maxValue){
+			maxValue = val;
+			maxFriend = friend;
+			friendName = name;
+		}
+	}
+	
+	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:maxFriend];
+	[dict setObject:friendName forKey:@"name"];
+	
+	return dict;
+}
+
+- (DPRTransaction *)maxTransactionOfType:(NSString *)type{
+	
+	DPRTransaction *maxTransaction = [_user.transactionList anyObject];
+	double maxValue = maxTransaction.amount.doubleValue;
+	for(DPRTransaction *transaction in _user.transactionList){
+		double amount = transaction.amount.doubleValue;
+		// received
+		if([type isEqualToString:@"received"]){
+			if(transaction.isIncoming){
+				if(amount > maxValue){
+					maxTransaction = transaction;
+					maxValue = amount;
+				}
+			}
+		}
+		// sent
+		else{
+			if(!transaction.isIncoming){
+				if(amount > maxValue){
+					maxTransaction = transaction;
+					maxValue = amount;
+				}
+			}
+		}
+	}
+	return maxTransaction;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+	
+	if(section == 0 || section == 1)
+		return 1;
+	if(section == 4)
+		return 4;
+	
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,7 +295,7 @@
 {
 	if(section == 0)
 		return 20;
-	return 30;
+	return 40;
 }
 
 
@@ -183,23 +304,8 @@
 	
 	NSString *title = @"";
 	
-	switch (section) {
-		case 1:
-			title = @"Information";
-			break;
-		case 2:
-			title = @"Expenditures";
-			break;
-		case 3:
-			title = @"Income";
-			break;
-		case 4:
-			title = @"Net Income";
-			break;
-		default:
-			title = @"";
-			break;
-	}
+	if(section != 0)
+		title = sectionTitles[section-1];
 	
 	return [title uppercaseString];
 }
