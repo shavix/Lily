@@ -22,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *receivedAverageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sentAverageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *averageLabel;
 @end

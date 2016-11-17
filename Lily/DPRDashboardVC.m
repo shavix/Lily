@@ -337,7 +337,7 @@
 
 - (void)storeUsername {
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.user.username forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.user.username forKey:@"DPRUsername"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }

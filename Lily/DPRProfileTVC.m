@@ -16,6 +16,7 @@
 #import "DPRProfileFriendTableViewCell.h"
 #import "DPRAggregateTableViewCell.h"
 #import "UIColor+CustomColors.h"
+#import "UIFont+CustomFonts.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DPRProfileTVC ()
@@ -228,7 +229,7 @@
 	}
 	else{
 		average = sent/numSent;
-		cell.sentAverageLabel.text = [NSString stringWithFormat:@"(avg: $%.2f)",average];
+		cell.sentAverageLabel.text = [NSString stringWithFormat:@"$%.2f",average];
 	}
 	// averages
 	if(numReceived == 0){
@@ -236,8 +237,10 @@
 	}
 	else{
 		average = received/numReceived;
-		cell.receivedAverageLabel.text = [NSString stringWithFormat:@"(avg: $%.2f)",average];
+		cell.receivedAverageLabel.text = [NSString stringWithFormat:@"$%.2f",average];
 	}
+	
+
 }
 
 

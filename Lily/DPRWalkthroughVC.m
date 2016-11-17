@@ -224,7 +224,7 @@
 
 - (void)storeAccessToken {
 	
-    [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"accessToken"];
+    [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"DPRAccessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }

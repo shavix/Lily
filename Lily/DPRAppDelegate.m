@@ -33,8 +33,8 @@
 	[self setupData];
 
     // check if user is logged in
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"accessToken"];
-    NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"username"];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults]stringForKey:@"DPRAccessToken"];
+    NSString *username = [[NSUserDefaults standardUserDefaults]stringForKey:@"DPRUsername"];
     self.venmoHelper.accessToken = accessToken;
     NSDictionary *userInformation = [self.venmoHelper fetchUserInformation];
     

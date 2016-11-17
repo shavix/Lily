@@ -25,12 +25,17 @@
     self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
     
     // fonts
-	UIFont *font = [UIFont helvetica14];
-	
+	UIFont *font = [UIFont helveticaBold13];
 	self.transactionsAmountLabel.font = font;
     self.sentAmountLabel.font = font;
     self.receivedAmountLabel.font = font;
     self.netIncomeAmountLabel.font = font;
+	
+	font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+	self.receivedLabel.font = font;
+	self.sentLabel.font = font;
+	self.netIncomeLabel.font = font;
+	self.transactionsLabel.font = font;
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 

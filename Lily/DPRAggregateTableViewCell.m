@@ -20,7 +20,9 @@
 	self.title.textColor = [UIColor lightGreenColor];
 	self.backgroundColor = [UIColor charcoalColor];
 	self.sentAmountLabel.textColor = [UIColor redColor];
+	self.sentAverageLabel.textColor = [UIColor redColor];
 	self.receivedAmountLabel.textColor = [UIColor lightGreenColor];
+	self.receivedAverageLabel.textColor = [UIColor lightGreenColor];
 	self.image.layer.cornerRadius = 70/8;
 	self.image.clipsToBounds = YES;
 	
@@ -30,15 +32,21 @@
 	self.sentAmountLabel.font = font;
 	self.receivedAmountLabel.font = font;
 	self.netIncomeAmountLabel.font = font;
-	
+	self.sentAverageLabel.font = font;
+	self.receivedAverageLabel.font = font;
+
 	font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.transactionsLabel.font = font;
 	self.sentLabel.font = font;
 	self.receivedLabel.font = font;
 	self.netIncomeLabel.font = font;
-	self.sentAverageLabel.font = font;
-	self.receivedAverageLabel.font = font;
+	self.averageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0];;
 	
+	// average label
+	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+	self.averageLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Average"
+																	   attributes:underlineAttribute];
+
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	CALayer *topBorder = [CALayer layer];

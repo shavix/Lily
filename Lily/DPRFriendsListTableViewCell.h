@@ -16,5 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *receivedAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *netIncomeAmountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *netIncomeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *receivedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *transactionsLabel;
 
 @end
