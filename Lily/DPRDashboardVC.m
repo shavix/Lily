@@ -162,7 +162,6 @@
 		
 	});
 	
-	
 }
 
 - (void)noTransactions{
