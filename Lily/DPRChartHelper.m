@@ -97,6 +97,7 @@
 	
 	chartView.data = data;
 	chartView.maxVisibleCount = 20;
+	chartView.scaleYEnabled = NO;
 	
 	[chartView setVisibleXRangeMaximum:15];
 	

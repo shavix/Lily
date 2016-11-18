@@ -48,8 +48,8 @@
 }
 
 - (void)animate{
-	[_barChartView moveViewToX:15];
-	[_barChartView moveViewToAnimatedWithXValue:-1 yValue:0 axis:AxisDependencyLeft duration:2];
+	[_barChartView moveViewToX:10];
+	[_barChartView moveViewToAnimatedWithXValue:-1 yValue:0 axis:AxisDependencyLeft duration:1.5];
 }
 
 - (void)setupData{

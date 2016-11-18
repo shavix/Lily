@@ -204,7 +204,7 @@
 		}
 	}
 	
-	NSString *transactionString = [NSString stringWithFormat:@"%ld", numTransactions];
+	NSString *transactionString = [NSString stringWithFormat:@"%ld", (long) numTransactions];
 	NSString *sentString = [NSString stringWithFormat:@"$%.2f", sent];
 	NSString *receivedString = [NSString stringWithFormat:@"$%.2f", received];
 	NSString *netIncomeString = [NSString stringWithFormat:@"$%.2f", netIncome];
