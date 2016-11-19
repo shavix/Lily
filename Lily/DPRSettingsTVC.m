@@ -82,13 +82,13 @@
         // help
         if(row == 0){
             cell.title.text = @"Help";
-            cell.subtitle.text = @"Information on how to navigate your way around the Lily application and use it effectively.";
+            cell.subtitle.text = @"Information on how to navigate your way around Lily and use it effectively.";
             cell.image.image = [UIImage imageNamed:@"help"];
         }
         // about
         else if(row == 1){
             cell.title.text = @"About";
-            cell.subtitle.text = @"Information about the creation of the Lily application.";
+            cell.subtitle.text = @"Additional information about Lily.";
             cell.image.image = [UIImage imageNamed:@"about"];
         }
     }
@@ -97,7 +97,7 @@
         // licenses
         if(row == 0){
             cell.title.text = @"Licenses";
-            cell.subtitle.text = @"Legal licenses on external products used in the creation of the Lily application.";
+            cell.subtitle.text = @"Legal licenses on external products used in the creation of Lily.";
             cell.image.image = [UIImage imageNamed:@"licenses"];
         }
     }

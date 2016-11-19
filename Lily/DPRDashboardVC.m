@@ -240,21 +240,20 @@
 	NSInteger row = indexPath.row;
 	
 	if(section == 0){
-		//cell.image.image = [UIImage imageNamed:@"user"];
 		cell.image.image = _user.pictureImage;
 		cell.title.text = @"Profile";
-		cell.subtitle.text = @"Your profile with some personal financial facts.";
+		cell.subtitle.text = @"An overview of your Venmo profile and transaction history.";
 	}
 	else if(section == 1){
 		if(row == 0){
 			cell.image.image = [UIImage imageNamed:@"friends"];
 			cell.title.text = @"Friends";
-			cell.subtitle.text = @"Analyses on your financial habits with friends.";
+			cell.subtitle.text = @"Analytics on your transaction history with friends.";
 		}
 		else{
 			cell.image.image = [UIImage imageNamed:@"monthlyDetails"];
 			cell.title.text = @"This Year";
-			cell.subtitle.text = @"Analyses on your financial habits over the last year on a monthly basis.";
+			cell.subtitle.text = @"Analytics on your transaction history over the last year on a monthly basis.";
 		}
 	}
     // TRANSACTIONS
@@ -262,7 +261,7 @@
     {
 		cell.image.image = [UIImage imageNamed:@"loading"];
 		cell.title.text = @"Load transactions";
-		cell.subtitle.text = [NSString stringWithFormat:@"Load more transactions beyond your most recent (%ld transactions currently loaded).", (long)_user.transactionList.count];
+		cell.subtitle.text = [NSString stringWithFormat:@"Load your most recent transactions.\n(%ld transactions currently loaded)", (long)_user.transactionList.count];
     }
 
     return cell;

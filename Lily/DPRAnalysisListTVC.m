@@ -146,7 +146,7 @@
 	{
 		cell.image.image = [UIImage imageNamed:@"friendDetails"];
 		if([_pageType isEqualToString:@"Friends"]){
-			subtitle = @"All financial information between you and your friends.";
+			subtitle = @"All financial information on your transaction history with friends.";
 		}
 		else{
 			subtitle = @"All your financial information over the last year on a monthly basis.";
