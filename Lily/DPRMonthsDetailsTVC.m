@@ -72,7 +72,7 @@
 
 - (void)setupUI{
     
-    self.title = @"Friends";
+    self.title = @"This Year";
     self.view.backgroundColor = [UIColor darkColor];
 	
 	self.tableView.dataSource = self;
