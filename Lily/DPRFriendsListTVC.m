@@ -174,6 +174,10 @@
 		cell.netIncomeAmountLabel.textColor = [UIColor redColor];
 		cell.netIncomeAverageLabel.textColor = [UIColor redColor];
     }
+	else if(netIncome == 0){
+		cell.netIncomeAmountLabel.textColor = [UIColor whiteColor];
+		cell.netIncomeAverageLabel.textColor = [UIColor whiteColor];
+	}
     else{
 		cell.netIncomeAmountLabel.textColor = [UIColor lightGreenColor];
 		cell.netIncomeAverageLabel.textColor = [UIColor lightGreenColor];
@@ -183,9 +187,13 @@
 	cell.sentAverageLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"sentAverage"]]];
 	cell.receivedAverageLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"receivedAverage"]]];
 	NSNumber *numTransactions = [friendData objectForKey:@"transactions"];
-	double netIncomeAverage = fabs(netIncome / numTransactions.doubleValue);
-	cell.netIncomeAverageLabel.text = [NSString stringWithFormat:@"$%.2f", netIncomeAverage];
-	
+	if(numTransactions == 0){
+		cell.netIncomeAverageLabel.text = @"$0.00";
+	}
+	else{
+		double netIncomeAverage = fabs(netIncome / numTransactions.doubleValue);
+		cell.netIncomeAverageLabel.text = [NSString stringWithFormat:@"$%.2f", netIncomeAverage];
+	}
 	// picture
 	NSString *picture_url = [friendData objectForKey:@"picture_url"];
     [cell.userImage sd_setImageWithURL:[NSURL URLWithString:picture_url]
