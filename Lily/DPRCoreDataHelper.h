@@ -17,7 +17,7 @@
 // methods
 + (instancetype)sharedModel;
 - (DPRUser *)fetchUser;
-- (NSMutableSet *)setupIdentifierSetWithUser:(DPRUser *)user;
+- (NSMutableSet *)setupIdentifierSet;
 - (void)insertIntoDatabse:(NSArray *)tempTransactionsArray withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user;
 - (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user;
 - (NSDictionary *)setupTransactionsByFriendsWithUser:(DPRUser *)user;

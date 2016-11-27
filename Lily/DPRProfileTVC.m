@@ -15,6 +15,8 @@
 #import "DPRTarget.h"
 #import "DPRProfileFriendTableViewCell.h"
 #import "DPRAggregateTableViewCell.h"
+#import "DPRVenmoHelper.h"
+#import "DPRDashboardTableViewCell.h"
 #import "UIColor+CustomColors.h"
 #import "UIFont+CustomFonts.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -59,7 +61,8 @@
 	
 	sectionTitles = @[@"History",
 					  @"Largest Transactions",
-					  @"Friends"];
+					  @"Friends",
+					  @"Transactions"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +78,7 @@
 	NSString *profileTransactionIdentifier = @"ProfileTransactionCell";
 	NSString *friendIdentifier = @"ProfileFriendCell";
 	NSString *aggregateIdentifier = @"AggregateCell";
+	NSString *dashboardIdentifier = @"DashboardCell";
 	NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
 
@@ -92,7 +96,7 @@
 	else if(section == 1){
 		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
 		cell.title.text = @"Aggregate";
-		cell.image.image = [UIImage imageNamed:@"aggregate"];
+		cell.image.image = [UIImage imageNamed:@"calculator"];
 		[self setupAggregateCell:cell];
 		return cell;
 	}
@@ -115,7 +119,7 @@
 		return cell;
 	}
 	// friends
-	else{
+	else if(section == 3){
 		DPRProfileFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:friendIdentifier];
 		NSDictionary *maxFriend;
 		NSString *type;
@@ -144,6 +148,13 @@
 			cell.cellTitle.text = @"Highest Total Net Income";
 		}
 		[self setupCell:cell withFriend:maxFriend andType:type];
+		return cell;
+	}
+	else{
+		DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:dashboardIdentifier];
+		cell.image.image = [UIImage imageNamed:@"loading"];
+		cell.title.text = @"Load transactions";
+		cell.subtitle.text = [NSString stringWithFormat:@"Load your most recent transactions.\n(%ld transactions currently loaded)", (long)_user.transactionList.count];
 		return cell;
 	}
 
@@ -345,13 +356,22 @@
 	return maxTransaction;
 }
 
+
+- (void)loadMoreTransactions{
+	
+	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+	[venmoHelper loadMoreTransactionsWithVC:self];
+	
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 4;
+	return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	if(section < 2)
+	if(section < 2 || section == 4)
 		return 1;
 	if(section == 3)
 		return 4;
@@ -376,6 +396,12 @@
 	if(section == 0)
 		return 20;
 	return 40;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	if(indexPath.section == 4){
+		[self loadMoreTransactions];
+	}
 }
 
 

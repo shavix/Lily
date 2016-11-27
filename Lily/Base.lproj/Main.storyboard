@@ -261,10 +261,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="6qi-gb-C8d">
-                                            <rect key="frame" x="13" y="9" width="25" height="25"/>
+                                            <rect key="frame" x="13" y="8.5" width="26" height="26"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDv-Py-HqL">
-                                            <rect key="frame" x="53" y="32" width="38" height="12"/>
+                                            <rect key="frame" x="54" y="32" width="38" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="k2n-CK-k6c"/>
                                             </constraints>
@@ -278,7 +278,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykb-TT-daX" userLabel="Title">
-                                            <rect key="frame" x="53" y="8" width="26" height="14"/>
+                                            <rect key="frame" x="54" y="8" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="tsL-au-wRJ"/>
                                             </constraints>
@@ -292,7 +292,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlV-5Q-mJt" userLabel="Title">
-                                            <rect key="frame" x="84" y="8" width="33" height="14"/>
+                                            <rect key="frame" x="85" y="8" width="33" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="cjt-gA-lcy"/>
                                             </constraints>
@@ -1753,6 +1753,65 @@
                                     <outlet property="title" destination="FZb-pK-wj2" id="Oqj-6O-zPF"/>
                                     <outlet property="transactionsAmountLabel" destination="cvw-1i-4p2" id="T2P-2e-aoa"/>
                                     <outlet property="transactionsLabel" destination="y9Z-wS-Hvd" id="SZS-Eu-PDg"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DashboardCell" id="mg2-ae-MeM" customClass="DPRDashboardTableViewCell">
+                                <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mg2-ae-MeM" id="O6b-HY-veZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="Gbj-PK-clu">
+                                            <rect key="frame" x="13" y="9" width="26" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Gbj-PK-clu" secondAttribute="height" multiplier="1:1" id="Ze7-2S-OsF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G4-yQ-iMK" userLabel="Title">
+                                            <rect key="frame" x="54" y="8" width="26" height="14"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="OvC-Yp-xyS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OvC-Yp-xyS"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcc-ez-nJR">
+                                            <rect key="frame" x="54" y="32" width="38" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="ltD-IZ-oP2"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ltD-IZ-oP2"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kcc-ez-nJR" firstAttribute="width" relation="lessThanOrEqual" secondItem="O6b-HY-veZ" secondAttribute="width" multiplier="0.6" id="2hj-ZP-TYZ"/>
+                                        <constraint firstItem="kcc-ez-nJR" firstAttribute="leading" secondItem="6G4-yQ-iMK" secondAttribute="leading" id="4tn-bD-gOJ"/>
+                                        <constraint firstItem="kcc-ez-nJR" firstAttribute="top" secondItem="6G4-yQ-iMK" secondAttribute="bottom" constant="10" id="Bgn-YF-0OD"/>
+                                        <constraint firstItem="6G4-yQ-iMK" firstAttribute="leading" secondItem="Gbj-PK-clu" secondAttribute="trailing" constant="15" id="JGu-G6-BgP"/>
+                                        <constraint firstItem="Gbj-PK-clu" firstAttribute="centerY" secondItem="O6b-HY-veZ" secondAttribute="centerY" id="Mce-2N-uO4"/>
+                                        <constraint firstItem="6G4-yQ-iMK" firstAttribute="top" secondItem="O6b-HY-veZ" secondAttribute="topMargin" id="NyK-8l-HvX"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Gbj-PK-clu" secondAttribute="leading" constant="-5" id="ewH-ui-Lep"/>
+                                        <constraint firstItem="Gbj-PK-clu" firstAttribute="height" secondItem="O6b-HY-veZ" secondAttribute="height" multiplier="0.6" id="joq-05-rKN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="image" destination="Gbj-PK-clu" id="wvV-Kw-vhe"/>
+                                    <outlet property="subtitle" destination="kcc-ez-nJR" id="bNO-N7-vSu"/>
+                                    <outlet property="title" destination="6G4-yQ-iMK" id="1mT-Oi-jcH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

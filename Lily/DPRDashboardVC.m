@@ -17,8 +17,6 @@
 #import "DPRAnalysisListTVC.h"
 #import "UIColor+CustomColors.h"
 
-// number of transactions to fetch from server
-#define NUM_TRANSACTIONS 10000
 
 @import SCLAlertView_Objective_C;
 @import SwiftSpinner;
@@ -120,47 +118,18 @@
 	
 	// check transactions have loaded
 	if(count < 1){
-		
 		[self noTransactions];
 		[self deselectCell];
-		
 		return false;
-		
 	}
-	
 	return true;
 	
 }
 
 - (void)loadMoreTransactions{
-	
-	// swiftspinner
-	[SwiftSpinner showing:0 title:@"loading transactions..." animated:YES];
-	
-	// setup identifier set
-	NSMutableSet *identifierSet = [self.cdHelper setupIdentifierSetWithUser:self.user];
-	
-	// retrieve recent transactions
-	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
-	
-	// background thread
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
 
-		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
-		
-		// transactions loaded
-		dispatch_async(dispatch_get_main_queue(), ^{
-			// organize transactions
-			[self.cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:self.user];
-			[self setupData];
-			
-			// update UI
-			[SwiftSpinner hide:nil];
-			[self deselectCell];
-			[self.tableView reloadData];
-		});
-		
-	});
+	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+	[venmoHelper loadMoreTransactionsWithVC:self];
 	
 }
 
@@ -221,11 +190,11 @@
 		[self segueCheckWithIdentifier:@"profileSegue"];
 	}
 	else if(indexPath.section == 1){
-		[self segueCheckWithIdentifier:@"analysisSegue"];
+		[self loadMoreTransactions];
 	}
     // TRANSACTIONS
     else{
-		[self loadMoreTransactions];
+		[self segueCheckWithIdentifier:@"analysisSegue"];
     }
 	
 }
@@ -239,12 +208,21 @@
     NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
 	
+	// PROFILE
 	if(section == 0){
 		cell.image.image = _user.pictureImage;
 		cell.title.text = @"Profile";
 		cell.subtitle.text = @"An overview of your Venmo profile and transaction history.";
 	}
-	else if(section == 1){
+    // TRANSACTIONS
+    else if(section == 1)
+    {
+		cell.image.image = [UIImage imageNamed:@"list"];
+		cell.title.text = @"Transaction List";
+		cell.subtitle.text = @"A list of all your transactions, grouped by date.";
+    }
+	// ANALYTICS
+	else if(section == 2){
 		if(row == 0){
 			cell.image.image = [UIImage imageNamed:@"friends"];
 			cell.title.text = @"Friends";
@@ -256,13 +234,6 @@
 			cell.subtitle.text = @"Analytics on your transaction history over the last year on a monthly basis.";
 		}
 	}
-    // TRANSACTIONS
-    else if(section == 2)
-    {
-		cell.image.image = [UIImage imageNamed:@"loading"];
-		cell.title.text = @"Load transactions";
-		cell.subtitle.text = [NSString stringWithFormat:@"Load your most recent transactions.\n(%ld transactions currently loaded)", (long)_user.transactionList.count];
-    }
 
     return cell;
 }
@@ -291,10 +262,10 @@
 		title = @"PROFILE";
 	}
 	else if(section == 1){
-		title = @"ANALYTICS";
+		title = @"TRANSACTIONS";
 	}
     else{
-        title = @"TRANSACTIONS";
+        title = @"ANALYTICS";
     }
     
     return title;
@@ -317,7 +288,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	// analytics
-	if(section == 1)
+	if(section == 2)
 		return 2;
 	
 	return 1;

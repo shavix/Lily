@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+// number of transactions to fetch from server
+#define NUM_TRANSACTIONS 10000
 
 @interface DPRDashboardVC : UITableViewController <UITabBarControllerDelegate>
 
+
+- (void)setupData;
 
 @end

@@ -8,6 +8,11 @@
 
 #import "DPRVenmoHelper.h"
 #import "DPRTransaction.h"
+#import "DPRCoreDataHelper.h"
+#import "DPRDashboardVC.h"
+#import "DPRProfileTVC.h"
+
+@import SwiftSpinner;
 
 @implementation DPRVenmoHelper
 
@@ -58,6 +63,55 @@
 	id json = [NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error: &error];
 	return json;
 
+}
+
+- (void)loadMoreTransactionsWithVC:(UITableViewController *)vc{
+	
+	DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
+	DPRUser *user = [cdHelper fetchUser];
+	// swiftspinner
+	[SwiftSpinner showing:0 title:@"loading transactions..." animated:YES];
+	
+	// setup identifier set
+	NSMutableSet *identifierSet = [cdHelper setupIdentifierSet];
+	
+	// retrieve recent transactions
+	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
+	
+	// background thread
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+		
+		NSArray *tempTransactionsArray = [venmoHelper fetchTransactions:NUM_TRANSACTIONS];
+		
+		// transactions loaded
+		dispatch_async(dispatch_get_main_queue(), ^{
+			// organize transactions
+			[cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:user];
+
+			// Dashboard
+			if([vc isKindOfClass:[DPRDashboardVC class]]){
+				DPRDashboardVC *dvc = (DPRDashboardVC *)vc;
+				[dvc setupData];
+			}
+			// Profile
+			else{
+				DPRProfileTVC *pvc = (DPRProfileTVC *)vc;
+				[pvc setupData];
+			}
+			
+			// update UI
+			[SwiftSpinner hide:nil];
+			
+			// deselect cell
+			NSIndexPath *indexPath = [vc.tableView indexPathForSelectedRow];
+			UITableViewCell *cell = [vc.tableView cellForRowAtIndexPath:indexPath];
+			cell.selected = false;
+			
+			[vc.tableView reloadData];
+		});
+		
+	});
+	
 }
 
 

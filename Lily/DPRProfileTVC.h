@@ -10,4 +10,6 @@
 
 @interface DPRProfileTVC : UITableViewController
 
+- (void)setupData;
+
 @end

@@ -20,6 +20,7 @@
 // methods
 - (NSDictionary *)fetchUserInformation;
 - (NSArray *)fetchTransactions:(NSInteger)count;
+- (void)loadMoreTransactionsWithVC:(UITableViewController *)vc;
 + (instancetype)sharedModel;
 
 @end

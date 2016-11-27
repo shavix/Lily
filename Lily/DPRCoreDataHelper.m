@@ -43,8 +43,9 @@
 }
 
 // populate identifierSet
-- (NSMutableSet *)setupIdentifierSetWithUser:(DPRUser *)user{
-    
+- (NSMutableSet *)setupIdentifierSet{
+	
+	DPRUser *user = [self fetchUser];
     NSMutableSet *identifierSet = [[NSMutableSet alloc] init];
     
     for(DPRTransaction *transaction in user.transactionList){
