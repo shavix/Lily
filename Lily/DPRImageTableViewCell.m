@@ -15,8 +15,8 @@
 	[super awakeFromNib];
 	
 	self.backgroundColor = [UIColor darkColor];
-	//self.customImageView.layer.cornerRadius = 70/8;
-	//self.customImageView.clipsToBounds = YES;
+	self.customImageView.layer.cornerRadius = 70/8;
+	self.customImageView.clipsToBounds = YES;
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 }

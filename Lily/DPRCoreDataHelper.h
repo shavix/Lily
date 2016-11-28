@@ -19,7 +19,7 @@
 - (DPRUser *)fetchUser;
 - (NSMutableSet *)setupIdentifierSet;
 - (void)insertIntoDatabse:(NSArray *)tempTransactionsArray withIdentifierSet:(NSMutableSet *)identifierSet andUser:(DPRUser *)user;
-- (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user;
+- (void)setupTransactionsByDateWithUser:(DPRUser *)user;
 - (NSDictionary *)setupTransactionsByFriendsWithUser:(DPRUser *)user;
 
 @end

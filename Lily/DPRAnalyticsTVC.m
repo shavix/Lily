@@ -65,7 +65,7 @@
 	// image cell
 	if(indexPath.section == 0){
 		DPRImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:imageCellIdentifier];
-		cell.customImageView.image = [UIImage imageNamed:@"money_suitcase_circular"];
+		cell.customImageView.image = [UIImage imageNamed:@"money_suitcase"];
 		
 		return cell;
 	}
@@ -107,8 +107,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	NSString *segueIdentifier = @"analysisSegue";
-	[self performSegueWithIdentifier:segueIdentifier sender:self];
+	if(indexPath.section != 0){
+		NSString *segueIdentifier = @"analysisSegue";
+		[self performSegueWithIdentifier:segueIdentifier sender:self];
+	}
 	
 }
 
@@ -122,6 +124,8 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+	if(section == 0)
+		return 10;
 	return 40;
 }
 

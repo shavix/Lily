@@ -88,17 +88,10 @@
 			// organize transactions
 			[cdHelper insertIntoDatabse:tempTransactionsArray withIdentifierSet:identifierSet andUser:user];
 
-			// Dashboard
-			if([vc isKindOfClass:[DPRDashboardVC class]]){
-				DPRDashboardVC *dvc = (DPRDashboardVC *)vc;
-				[dvc setupData];
-			}
 			// Profile
-			else{
-				DPRProfileTVC *pvc = (DPRProfileTVC *)vc;
-				[pvc setupData];
-			}
-			
+			DPRProfileTVC *pvc = (DPRProfileTVC *)vc;
+			[pvc setupData];
+		
 			// update UI
 			[SwiftSpinner hide:nil];
 			

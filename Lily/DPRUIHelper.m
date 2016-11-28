@@ -330,7 +330,7 @@
     UIColor *green = [UIColor lightGreenColor];
     
     SCLAlertViewBuilder *builder = [SCLAlertViewBuilder new]
-    .addButtonWithActionBlock(@"OK", ^{  })
+    .addButtonWithActionBlock(@"Load Transactions", ^{  })
     .customViewColor(green);
 	
 	

@@ -12,6 +12,7 @@
 #import "DPRPortraitTableViewCell.h"
 #import "DPRProfileTransactionTableViewCell.h"
 #import "DPRTransaction.h"
+#import "DPRUIHelper.h"
 #import "DPRTarget.h"
 #import "DPRProfileFriendTableViewCell.h"
 #import "DPRAggregateTableViewCell.h"
@@ -21,11 +22,15 @@
 #import "UIFont+CustomFonts.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+@import SCLAlertView_Objective_C;
+
 @interface DPRProfileTVC ()
 
 @property (strong, nonatomic) DPRUser *user;
 @property (strong, nonatomic) DPRCoreDataHelper *cdHelper;
 @property (strong, nonatomic) NSDictionary *transactionsByFriends;
+@property (strong, nonatomic) SCLAlertView *alertView;
+@property (strong, nonatomic) DPRUIHelper *uiHelper;
 
 @end
 
@@ -39,20 +44,51 @@
     [super viewDidLoad];
 	
 	[self setupUI];
-	[self setupData];
+	[self retrieveData];
+}
+
+- (void)retrieveData{
+	
+	// retrieve user
+	self.cdHelper = [DPRCoreDataHelper sharedModel];
+	self.user = [self.cdHelper fetchUser];
+	
+	// store username
+	[self storeUsername];
+	
+	if(_user.transactionList.count < 1){
+		[self loadMoreTransactions];
+	}
+	else{
+		[self setupData];
+	}
+	
 }
 
 - (void)setupUI{
-	self.title = @"Profile";
+	
+	self.tabBarController.delegate = self;
+	self.navigationController.navigationBar.hidden = NO;
+
+	self.uiHelper = [[DPRUIHelper alloc] init];
+	[_uiHelper setupTabUI:self withTitle:@"Profile"];
 	self.view.backgroundColor = [UIColor darkColor];
 	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-}
-
-- (void)setupData{
-	self.cdHelper = [DPRCoreDataHelper sharedModel];
-	self.user = [self.cdHelper fetchUser];
-	self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
 	
+	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
+									target:nil
+									action:nil];
+	[[self navigationItem] setBackBarButtonItem:newBackButton];
+	
+	UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+	
+	settingsButton.tintColor = [UIColor lightGreenColor];
+	
+	UIFont *customFont = [UIFont fontWithName:@"Helvetica" size:24.0];
+	NSDictionary *fontDictionary = @{NSFontAttributeName : customFont};
+	[settingsButton setTitleTextAttributes:fontDictionary forState:UIControlStateNormal];
+	self.navigationItem.rightBarButtonItem = settingsButton;
+
 	titles = [NSDictionary dictionaryWithObjectsAndKeys:
 			  @"Transactions:", @"transactions",
 			  @"Sent:", @"sent",
@@ -63,6 +99,22 @@
 					  @"Largest Transactions",
 					  @"Friends",
 					  @"Transactions"];
+}
+
+- (void)showSettings{
+	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
+}
+
+- (void)setupData{
+	
+	// transactionsByDate & byFriends
+	if(_user.transactionList.count > 0){
+		[self.cdHelper setupTransactionsByDateWithUser:self.user];
+		self.transactionsByFriends = [self.cdHelper setupTransactionsByFriendsWithUser:self.user];
+	}
+	else{
+		[self noTransactions];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +133,7 @@
 	NSString *dashboardIdentifier = @"DashboardCell";
 	NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
-
+	
 	// portrait cell
 	if(section == 0){
 		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
@@ -358,14 +410,15 @@
 
 
 - (void)loadMoreTransactions{
-	
 	DPRVenmoHelper *venmoHelper = [DPRVenmoHelper sharedModel];
 	[venmoHelper loadMoreTransactionsWithVC:self];
-	
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	if(_user.transactionList.count < 1){
+		return 0;
+	}
 	return 5;
 }
 
@@ -407,12 +460,9 @@
 
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
 	NSString *title = @"";
-	
 	if(section != 0)
 		title = sectionTitles[section-1];
-	
 	return [title uppercaseString];
 }
 
@@ -422,6 +472,40 @@
 	view.tintColor = [UIColor darkColor];
 	view.layer.zPosition = -999;
 }
+
+- (void)noTransactions{
+	// haven't loaded, show notice
+	if(!_alertView){
+		NSString *message = @"No transactions have been loaded. To continue, press \n\"Load Transactions\"\n(Network connection required)";
+		NSString *title = @"Notice";
+		self.alertView = [_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
+		[self flipTabs];
+		
+		// completion
+		[_alertView alertIsDismissed:^{
+			_alertView = nil;
+			[self flipTabs];
+			[self loadMoreTransactions];
+		}];
+	}
+}
+
+- (void)flipTabs{
+	bool enabled = self.tabBarController.tabBar.items[0].isEnabled;
+	for(int i = 0; i < 3; i++){
+		self.tabBarController.tabBar.items[i].enabled = !enabled;
+	}
+}
+
+#pragma mark - data persistence
+
+- (void)storeUsername {
+	
+	[[NSUserDefaults standardUserDefaults] setObject:self.user.username forKey:@"DPRUsername"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+}
+
 
 
 @end

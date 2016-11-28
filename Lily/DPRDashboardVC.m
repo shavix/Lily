@@ -44,7 +44,6 @@
     
     [self setupUI];
     [self retrieveData];
-    [self setupData];
     
 }
 
@@ -64,16 +63,6 @@
 		[self loadMoreTransactions];
 	}
     
-}
-
-- (void)setupData {
-    
-    // transactionsByDate
-    self.transactionSingleton = [DPRTransactionSingleton sharedModel];
-    NSArray *results = [self.cdHelper setupTransactionsByDateWithUser:self.user];
-    self.transactionSingleton.transactionsByDate = results[0];
-    self.transactionSingleton.transactionsByMonth = results[1];
-
 }
 
 

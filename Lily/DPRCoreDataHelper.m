@@ -8,6 +8,7 @@
 
 #import "DPRCoreDataHelper.h"
 #import "DPRAppDelegate.h"
+#import "DPRTransactionSingleton.h"
 #import "DPRTransaction.h"
 #import "DPRTarget.h"
 
@@ -153,7 +154,7 @@
 
 
 // transactionsByDate & transactionsByMonth
-- (NSArray *)setupTransactionsByDateWithUser:(DPRUser *)user{
+- (void) setupTransactionsByDateWithUser:(DPRUser *)user{
     
     // get current date
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
@@ -231,13 +232,11 @@
             }
         }
     }
-    
-    NSMutableArray *results = [[NSMutableArray alloc] init];
-    [results addObject:transactionsByDate];
-    [results addObject:transactionsByMonth];
-    
-    return results;
-    
+	
+	DPRTransactionSingleton *transactionSingleton = [DPRTransactionSingleton sharedModel];
+	transactionSingleton.transactionsByDate = transactionsByDate;
+	transactionSingleton.transactionsByMonth = transactionsByMonth;
+	
 }
 
 - (NSDictionary *)setupTransactionsByFriendsWithUser:(DPRUser *)user{

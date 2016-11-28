@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#define NUM_TRANSACTIONS 10000
 
-@interface DPRProfileTVC : UITableViewController
+@interface DPRProfileTVC : UITableViewController <UITabBarControllerDelegate>
+
 
 - (void)setupData;
 

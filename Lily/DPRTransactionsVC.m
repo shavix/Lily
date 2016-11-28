@@ -12,6 +12,7 @@
 #import "DPRUser.h"
 #import "DPRTarget.h"
 #import "DPRTransactionTableViewCell.h"
+
 #import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -58,10 +59,16 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString* CellIdentifier = @"TransactionCell";
+	static NSString* imageCellIdentifier = @"ImageCell";
+	NSInteger section = indexPath.section;
+	NSInteger row = indexPath.row;
+
+	if(section == 0){
+		
+	}
+
     DPRTransactionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
+	
     
     DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
 
@@ -115,13 +122,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	if(indexPath.section == 0)
+		return 120;
     return 70;
 }
 
 
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
+	
+	if(section == 0)
+		return @"";
+	
     DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][0];
     NSString *title = transaction.dateCompletedString;
     
@@ -131,25 +143,26 @@
 
 // num rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	if(section == 0)
+		return 1;
     return [self.transactionSingleton.transactionsByDate[section] count];
 }
 
 // num sections
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.transactionSingleton.transactionsByDate count];
+    return [self.transactionSingleton.transactionsByDate count] + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	if(section == 0)
+	
+	if(section == 1)
 		return 50;
 	return 25;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     cell.backgroundColor = [UIColor charcoalColor];
-    
 }
 
 @end
