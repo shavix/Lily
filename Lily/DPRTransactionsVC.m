@@ -45,7 +45,7 @@
     
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
     [UIHelper setupTabUI:self withTitle:@"Transactions"];
-    
+	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     self.view.backgroundColor = [UIColor darkColor];
 
 }
