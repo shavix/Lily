@@ -10,10 +10,15 @@
 #import "DPRDashboardTableViewCell.h"
 #import "DPRAnalysisListTVC.h"
 #import "DPRImageTableViewCell.h"
+#import "DPRPortraitTableViewCell.h"
 #import "DPRUIHelper.h"
+#import "DPRCoreDataHelper.h"
+#import "DPRUser.h"
 #import "UIColor+CustomColors.h"
 
 @interface DPRAnalyticsTVC ()
+
+@property (strong, nonatomic) DPRUser *user;
 
 @end
 
@@ -30,6 +35,8 @@
 
 - (void)setupData {
 	sectionNames = @[@"Friends", @"This Year"];
+	DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
+	self.user = [cdHelper fetchUser];
 }
 
 #pragma mark - UI
@@ -60,13 +67,15 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
 	static NSString* cellIdentifier = @"AnalyticsCell";
-	static NSString* imageCellIdentifier = @"ImageCell";
-	
+	static NSString *protraitIdentifier = @"PortraitCell";
+
 	// image cell
 	if(indexPath.section == 0){
-		DPRImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:imageCellIdentifier];
-		cell.customImageView.image = [UIImage imageNamed:@"money_suitcase"];
-		
+		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
+		cell.image.image = _user.pictureImage;
+		cell.title.text = _user.fullName;
+		NSString *subtitle = [NSString stringWithFormat:@"@%@",_user.username];
+		cell.subtitle.text = subtitle;
 		return cell;
 	}
 	
@@ -125,7 +134,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 	if(section == 0)
-		return 10;
+		return 20;
 	return 40;
 }
 

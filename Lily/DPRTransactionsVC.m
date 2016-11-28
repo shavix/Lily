@@ -10,17 +10,17 @@
 #import "DPRTransaction.h"
 #import "DPRUIHelper.h"
 #import "DPRUser.h"
+#import "DPRCoreDataHelper.h"
 #import "DPRTarget.h"
 #import "DPRTransactionTableViewCell.h"
-
+#import "DPRPortraitTableViewCell.h"
 #import "DPRTransactionSingleton.h"
 #import "UIColor+CustomColors.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DPRTransactionsVC()
-
 @property (strong, nonatomic) DPRTransactionSingleton *transactionSingleton;
-
+@property (strong, nonatomic) DPRUser *user;
 @end
 
 @implementation DPRTransactionsVC
@@ -37,18 +37,17 @@
 }
 
 - (void)setupData {
-    
     self.transactionSingleton = [DPRTransactionSingleton sharedModel];
-    
+	DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
+	self.user = [cdHelper fetchUser];
 }
 
 - (void)setupUI{
-    
     DPRUIHelper *UIHelper = [[DPRUIHelper alloc] init];
     [UIHelper setupTabUI:self withTitle:@"Transactions"];
 	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     self.view.backgroundColor = [UIColor darkColor];
-
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
@@ -59,18 +58,24 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString* CellIdentifier = @"TransactionCell";
-	static NSString* imageCellIdentifier = @"ImageCell";
+	static NSString *protraitIdentifier = @"PortraitCell";
 	NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
 
 	if(section == 0){
-		
+		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
+		cell.image.image = _user.pictureImage;
+		cell.title.text = _user.fullName;
+		cell.separatorInset = UIEdgeInsetsZero;
+		NSString *subtitle = [NSString stringWithFormat:@"@%@",_user.username];
+		cell.subtitle.text = subtitle;
+		return cell;
 	}
 
     DPRTransactionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
     
-    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][row];
+    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section - 1][row];
 
 	// description
 	NSDictionary *lightAttribute = @{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Light" size:12]};
@@ -133,20 +138,18 @@
 	
 	if(section == 0)
 		return @"";
-	
-    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section][0];
+    DPRTransaction *transaction = self.transactionSingleton.transactionsByDate[section - 1][0];
     NSString *title = transaction.dateCompletedString;
-    
     return title;
-    
 }
 
 // num rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if(section == 0)
 		return 1;
-    return [self.transactionSingleton.transactionsByDate[section] count];
+    return [self.transactionSingleton.transactionsByDate[section - 1] count];
 }
+
 
 // num sections
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -155,14 +158,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	
+	if(section == 0)
+		return 20;
 	if(section == 1)
-		return 50;
-	return 25;
+		return 30;
+	return 20;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor charcoalColor];
-}
 
 @end

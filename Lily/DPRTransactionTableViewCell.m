@@ -7,6 +7,7 @@
 //
 
 #import "DPRTransactionTableViewCell.h"
+#import "UIColor+CustomColors.h"
 #import "UIFont+CustomFonts.h"
 
 @implementation DPRTransactionTableViewCell
@@ -16,7 +17,8 @@
         
     self.cellImage.layer.cornerRadius = 0.75*70/8;
     self.cellImage.clipsToBounds = YES;
-    
+	self.backgroundColor = [UIColor charcoalColor];
+	
     self.transactionLabel.font = [UIFont boldSystemFontOfSize:12];
     self.amountLabel.font = [UIFont helveticaBold13];
     self.noteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
