@@ -17,8 +17,7 @@
     [super awakeFromNib];
 	
 	self.title.font = [UIFont boldSystemFontOfSize:12];
-	self.cellTitle.font = [UIFont helveticaBold13];
-	self.cellTitle.textColor = [UIColor lightGreenColor];
+	self.title.textColor = [UIColor whiteColor];
 	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.backgroundColor = [UIColor charcoalColor];
 	self.image.layer.cornerRadius = 70/8;

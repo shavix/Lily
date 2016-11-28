@@ -16,8 +16,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 	
-	self.title.font = [UIFont helveticaBold13];
-	self.title.textColor = [UIColor lightGreenColor];
+
 	self.backgroundColor = [UIColor charcoalColor];
 	self.sentAmountLabel.textColor = [UIColor redColor];
 	self.sentAverageLabel.textColor = [UIColor redColor];
@@ -47,7 +46,10 @@
 	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
 	self.averageLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Average"
 																	   attributes:underlineAttribute];
-
+	self.title.font = [UIFont helveticaBold13];
+	self.title.attributedText = [[NSAttributedString alloc] initWithString:@"Aggregate"
+															   attributes:underlineAttribute];
+	
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	CALayer *topBorder = [CALayer layer];

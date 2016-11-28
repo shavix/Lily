@@ -125,13 +125,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if(indexPath.section == 0)
-		return 120;
-    return 70;
-}
-
 
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -157,11 +150,20 @@
     return [self.transactionSingleton.transactionsByDate count] + 1;
 }
 
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if(indexPath.section == 0)
+		return 125;
+	return 70;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 	if(section == 0)
 		return 20;
 	if(section == 1)
-		return 30;
+		return 20;
 	return 20;
 }
 

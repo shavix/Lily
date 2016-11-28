@@ -134,6 +134,10 @@
 	NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
 	
+	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+	UIColor *titleColor = [UIColor lightGreenColor];
+	UIFont *titleFont = [UIFont helveticaBold13];
+	
 	// portrait cell
 	if(section == 0){
 		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
@@ -147,8 +151,10 @@
 	// history
 	else if(section == 1){
 		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
-		cell.title.text = @"Aggregate";
 		cell.image.image = [UIImage imageNamed:@"calculator"];
+		cell.title.textColor = titleColor;
+		cell.title.font = titleFont;
+		
 		[self setupAggregateCell:cell];
 		return cell;
 	}
@@ -156,16 +162,21 @@
 	else if(section == 2){
 		DPRProfileTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileTransactionIdentifier];
 		DPRTransaction *transaction;
+		NSString *title = @"";
 		// expenditures
 		if(row == 0){
 			transaction = [self maxTransactionOfType:@"sent"];
-			cell.cellTitle.text = @"By Expenditure";
+			title = @"By Expenditure";
 		}
 		// income
 		else{
 			transaction = [self maxTransactionOfType:@"received"];
-			cell.cellTitle.text = @"By Income";
+			title = @"By Income";
 		}
+		cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
+																		attributes:underlineAttribute];
+		cell.cellTitle.textColor = titleColor;
+		cell.cellTitle.font = titleFont;
 		[self setupCell:cell withTransaction:transaction];
 		
 		return cell;
@@ -175,30 +186,36 @@
 		DPRProfileFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:friendIdentifier];
 		NSDictionary *maxFriend;
 		NSString *type;
+		NSString *title = @"";
 		// transactions
 		if(row == 0){
 			type = @"transactions";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Most Transactions";
+			title = @"Most Transactions";
 		}
 		// expenditures
 		else if(row == 1){
 			type = @"sent";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Highest Total Expenditures";
+			title = @"Highest Total Expenditures";
 		}
 		// income
 		else if(row == 2){
 			type = @"received";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Highest Total Income";
+			title = @"Highest Total Income";
 		}
 		// net income
 		else {
 			type = @"netIncome";
 			maxFriend = [self maxFriendOfType:type];
-			cell.cellTitle.text = @"Highest Total Net Income";
+			title = @"Highest Total Net Income";
 		}
+		cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
+																		attributes:underlineAttribute];
+		cell.cellTitle.textColor = titleColor;
+		cell.cellTitle.font = titleFont;
+
 		[self setupCell:cell withFriend:maxFriend andType:type];
 		return cell;
 	}
@@ -434,13 +451,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSInteger section = indexPath.section;
-	
 	// portrait && profile
-	if(section < 2){
+	if(indexPath.section == 0)
+		return 125;
+	if(indexPath.section == 1)
 		return 120;
-	}
-	
 	return 100;
 }
 
@@ -452,9 +467,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.section == 4){
+	if(indexPath.section == 4)
 		[self loadMoreTransactions];
-	}
 }
 
 
@@ -492,9 +506,8 @@
 
 - (void)flipTabs{
 	bool enabled = self.tabBarController.tabBar.items[0].isEnabled;
-	for(int i = 0; i < 3; i++){
+	for(int i = 0; i < 3; i++)
 		self.tabBarController.tabBar.items[i].enabled = !enabled;
-	}
 }
 
 #pragma mark - data persistence
