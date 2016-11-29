@@ -449,8 +449,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	// portrait && profile
-	if(indexPath.section < 2)
+	if(indexPath.section ==0)
 		return 120;
+	if(indexPath.section == 1)
+		return 110;
 	if(indexPath.section < 4)
 		return 90;
 	return 100;

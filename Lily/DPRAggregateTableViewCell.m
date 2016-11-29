@@ -49,7 +49,7 @@
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	NSInteger cellHeight = 120;
+	NSInteger cellHeight = 110;
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
 	[uiHelper setupCell:self withHeight:cellHeight];
 	
