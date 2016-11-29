@@ -16,7 +16,7 @@
 	[super awakeFromNib];
 	
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	[uiHelper setupCell:self];
+	[uiHelper setupCell:self withHeight:100];
 	
 	self.title.font = [UIFont boldSystemFontOfSize:14];
 	self.title2.font = [UIFont boldSystemFontOfSize:14];

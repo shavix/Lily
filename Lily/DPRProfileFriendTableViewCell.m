@@ -25,7 +25,7 @@
 	self.amountLabel.textColor = [UIColor lightGreenColor];
 	self.amountLabel.font = [UIFont helveticaBold13];
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	[uiHelper setupCell:self];
+	[uiHelper setupCell:self withHeight:90];
 	
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

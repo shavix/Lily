@@ -170,7 +170,7 @@
 	
 }
 
-- (void)setupCell:(UITableViewCell *)cell{
+- (void)setupCell:(UITableViewCell *)cell withHeight:(NSInteger)height{
 	
 	CALayer *topBorder = [CALayer layer];
 	topBorder.borderColor = [UIColor lightGrayColor].CGColor;
@@ -180,7 +180,7 @@
 	CALayer *bottomBorder = [CALayer layer];
 	bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
 	bottomBorder.borderWidth = 1;
-	bottomBorder.frame = CGRectMake(0, 99, CGRectGetWidth(cell.contentView.frame)*2, 1);
+	bottomBorder.frame = CGRectMake(0, height-1, CGRectGetWidth(cell.contentView.frame)*2, 1);
 	
 	[cell.contentView.layer addSublayer:topBorder];
 	[cell.contentView.layer addSublayer:bottomBorder];

@@ -17,7 +17,7 @@
     [super awakeFromNib];
 	
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	[uiHelper setupCell:self];
+	[uiHelper setupCell:self withHeight:90];
 	
 	self.image.layer.cornerRadius = 0.75*70/8;
 	self.image.clipsToBounds = YES;

@@ -17,7 +17,7 @@
     [super awakeFromNib];
 	
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
-	[uiHelper setupCell:self];
+	[uiHelper setupCell:self withHeight:100];
 
     self.backgroundColor = [UIColor charcoalColor];
     self.sentAmountLabel.textColor = [UIColor redColor];

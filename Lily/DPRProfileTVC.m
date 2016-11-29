@@ -152,9 +152,6 @@
 	else if(section == 1){
 		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
 		cell.image.image = [UIImage imageNamed:@"calculator"];
-		cell.title.textColor = titleColor;
-		cell.title.font = titleFont;
-		
 		[self setupAggregateCell:cell];
 		return cell;
 	}
@@ -452,10 +449,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	// portrait && profile
-	if(indexPath.section == 0)
+	if(indexPath.section < 2)
 		return 120;
-	if(indexPath.section == 1)
-		return 120;
+	if(indexPath.section < 4)
+		return 90;
 	return 100;
 }
 

@@ -46,24 +46,12 @@
 	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
 	self.averageLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Average"
 																	   attributes:underlineAttribute];
-	self.title.font = [UIFont helveticaBold13];
-	self.title.attributedText = [[NSAttributedString alloc] initWithString:@"Aggregate"
-															   attributes:underlineAttribute];
-	
+
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	CALayer *topBorder = [CALayer layer];
-	topBorder.borderColor = [UIColor lightGrayColor].CGColor;
-	topBorder.borderWidth = 1;
-	topBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.contentView.frame) * 2, 1);
-	
-	CALayer *bottomBorder = [CALayer layer];
-	bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
-	bottomBorder.borderWidth = 1;
-	bottomBorder.frame = CGRectMake(0, 119, CGRectGetWidth(self.contentView.frame) * 2, 1);
-	
-	[self.contentView.layer addSublayer:topBorder];
-	[self.contentView.layer addSublayer:bottomBorder];
+	NSInteger cellHeight = 120;
+	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
+	[uiHelper setupCell:self withHeight:cellHeight];
 	
 }
 

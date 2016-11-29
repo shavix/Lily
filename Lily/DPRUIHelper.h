@@ -23,8 +23,7 @@
 - (void)setupBarChartView:(BarLineChartViewBase *)chartView withTitle:(NSString *)title;
 - (void)setupNetIncomeChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc;
 - (void)setupChartView:(BarChartView *)chartView withVC:(DropdownMenuController *)vc andType:(NSString *)type;
-- (void)setupCell:(UITableViewCell *)cell;
-- (void)setupDashboardCell:(UITableViewCell *)cell;
+- (void)setupCell:(UITableViewCell *)cell withHeight:(NSInteger) height;
 - (void)refreshButtons:(NSArray *)buttonList withButton:(UIButton *)button andVC:(DropdownMenuController *)vc;
 - (void)refreshListButtons:(NSArray *)buttonList withButton:(UIButton *)button;
 - (void)savePhotoWithChart:(BarChartView *)chartView andVC:(DropdownMenuController *)vc;
