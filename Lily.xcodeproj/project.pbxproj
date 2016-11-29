@@ -13,6 +13,7 @@
 		6324666D1D1CA5FD00512931 /* DPRUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6324666C1D1CA5FD00512931 /* DPRUIHelper.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		63274C771DEBE5FB00826A33 /* DPRAnalyticsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63274C761DEBE5FB00826A33 /* DPRAnalyticsTVC.m */; };
 		63274C7A1DEBE91500826A33 /* DPRImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63274C791DEBE91500826A33 /* DPRImageTableViewCell.m */; };
+		63274C7C1DED288800826A33 /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63274C7B1DED288800826A33 /* Help.txt */; };
 		632A88501DDCDB9D0028D81D /* DPRProfileTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */; };
 		632A88561DDD25B60028D81D /* DPRPortraitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88551DDD25B60028D81D /* DPRPortraitTableViewCell.m */; };
 		632A88591DDD32B10028D81D /* DPRProfileTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88581DDD32B00028D81D /* DPRProfileTransactionTableViewCell.m */; };
@@ -48,7 +49,6 @@
 		6379F58E1D1B9CA40094ED24 /* DPRVenmoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F58D1D1B9CA40094ED24 /* DPRVenmoHelper.m */; };
 		6379F5911D1B9DA80094ED24 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */; };
 		6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */; };
-		6379F5A11D1BA48A0094ED24 /* DPRDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A01D1BA48A0094ED24 /* DPRDashboardVC.m */; };
 		6379F5A71D1BA4D10094ED24 /* DPRTransactionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */; };
 		6379F5B91D1BA8DC0094ED24 /* bg1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5A91D1BA8DC0094ED24 /* bg1@2x.png */; };
 		6379F5BA1D1BA8DC0094ED24 /* bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379F5AA1D1BA8DC0094ED24 /* bg2@2x.png */; };
@@ -107,6 +107,7 @@
 		63274C761DEBE5FB00826A33 /* DPRAnalyticsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRAnalyticsTVC.m; sourceTree = "<group>"; };
 		63274C781DEBE91500826A33 /* DPRImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRImageTableViewCell.h; sourceTree = "<group>"; };
 		63274C791DEBE91500826A33 /* DPRImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRImageTableViewCell.m; sourceTree = "<group>"; };
+		63274C7B1DED288800826A33 /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		632A884E1DDCDB9D0028D81D /* DPRProfileTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRProfileTVC.h; sourceTree = "<group>"; };
 		632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRProfileTVC.m; sourceTree = "<group>"; };
 		632A88541DDD25B60028D81D /* DPRPortraitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRPortraitTableViewCell.h; sourceTree = "<group>"; };
@@ -177,8 +178,6 @@
 		6379F5901D1B9DA80094ED24 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		6379F5951D1B9E610094ED24 /* DPRWalkthroughVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRWalkthroughVC.h; sourceTree = "<group>"; };
 		6379F5961D1B9E610094ED24 /* DPRWalkthroughVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRWalkthroughVC.m; sourceTree = "<group>"; };
-		6379F59F1D1BA48A0094ED24 /* DPRDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRDashboardVC.h; sourceTree = "<group>"; };
-		6379F5A01D1BA48A0094ED24 /* DPRDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRDashboardVC.m; sourceTree = "<group>"; };
 		6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRTransactionsVC.h; sourceTree = "<group>"; };
 		6379F5A61D1BA4D10094ED24 /* DPRTransactionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRTransactionsVC.m; sourceTree = "<group>"; };
 		6379F5A91D1BA8DC0094ED24 /* bg1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg1@2x.png"; sourceTree = "<group>"; };
@@ -385,6 +384,7 @@
 				6379F5531D1B9B9A0094ED24 /* main.m */,
 				63811E6D1DC6AACF008C5874 /* ApacheLicense.txt */,
 				63811E6F1DC6AB74008C5874 /* MITLicense.txt */,
+				63274C7B1DED288800826A33 /* Help.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -471,8 +471,6 @@
 				63274C761DEBE5FB00826A33 /* DPRAnalyticsTVC.m */,
 				632A884E1DDCDB9D0028D81D /* DPRProfileTVC.h */,
 				632A884F1DDCDB9D0028D81D /* DPRProfileTVC.m */,
-				6379F59F1D1BA48A0094ED24 /* DPRDashboardVC.h */,
-				6379F5A01D1BA48A0094ED24 /* DPRDashboardVC.m */,
 				634C3BDB1DD98FA7001C6D5C /* DPRAnalysisListTVC.h */,
 				634C3BDC1DD98FA7001C6D5C /* DPRAnalysisListTVC.m */,
 				6379F5A51D1BA4D10094ED24 /* DPRTransactionsVC.h */,
@@ -665,6 +663,7 @@
 				6379F5621D1B9B9A0094ED24 /* Assets.xcassets in Resources */,
 				63C551251DC30E9E006B984F /* presentation.png in Resources */,
 				6379F55D1D1B9B9A0094ED24 /* Main.storyboard in Resources */,
+				63274C7C1DED288800826A33 /* Help.txt in Resources */,
 				63C551231DC30E9E006B984F /* free.png in Resources */,
 				63811E701DC6AB74008C5874 /* MITLicense.txt in Resources */,
 				632007351DC314E2004CB6D5 /* circleLily.png in Resources */,
@@ -760,7 +759,6 @@
 				63811E631DC42673008C5874 /* DPRSettingsTVC.m in Sources */,
 				63782FB91D231BD9003410D3 /* DPRUser+CoreDataProperties.m in Sources */,
 				63782FAE1D220919003410D3 /* DPRCoreDataHelper.m in Sources */,
-				6379F5A11D1BA48A0094ED24 /* DPRDashboardVC.m in Sources */,
 				6379F5971D1B9E610094ED24 /* DPRWalkthroughVC.m in Sources */,
 				636326311D2A1BC8001CA480 /* DPRTarget+CoreDataProperties.m in Sources */,
 				632A88591DDD32B10028D81D /* DPRProfileTransactionTableViewCell.m in Sources */,

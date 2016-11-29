@@ -453,7 +453,7 @@
 {
 	// portrait && profile
 	if(indexPath.section == 0)
-		return 125;
+		return 120;
 	if(indexPath.section == 1)
 		return 120;
 	return 100;

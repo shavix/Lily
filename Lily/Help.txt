@@ -1,0 +1,23 @@
+
+Tabs
+
+1) Profile - this section presents an overview of your Venmo profile and transaction history.
+2) Analytics - this section gives you several options for in-depth analytics on your transaction history.
+3) Transactions List - this section contains information on all your loaded transactions.
+
+
+Analytics Options
+
+1) Friends - this section analyzes who you interact with the most and the least on Venmo.
+2) This Year - this section analyzes your financial habits on a month-by-month basis.
+
+
+Charts and Lists
+
+After selecting one of the analysis options, you will be taken to a screen containing a graphical display of your financial habits. There are 3 possible displays:
+1) Bar Chart View - this is a simple bar chart that can be found under "Transactions" "Expenditures" and "Income."
+Depending on the amount of data available, some information may not be immediately visible on the screen. By pinching to zoom or panning across the graph, you can get a more detailed view of the data. You can also tap on any bar in the graph and view that entry's data.
+2) Bar (+/-) Chart View - this is a bar chart displaying positive and negative values that can be found under "Net Income."
+Similar to (1), depending on the amount of data available, some information may not be immediately visible on the screen. By pinching to zoom or panning across the graph, you can get a more detailed view of the data. You can also tap on any bar in the graph and view that entry's data.
+3) List View - this is a page displaying detailed information on given data, in a list form. It can be found under "Full Details."
+Interact with this form of data simply by swiping up and down the screen, observing the values displayed.

@@ -9,7 +9,6 @@
 #import "DPRVenmoHelper.h"
 #import "DPRTransaction.h"
 #import "DPRCoreDataHelper.h"
-#import "DPRDashboardVC.h"
 #import "DPRProfileTVC.h"
 
 @import SwiftSpinner;

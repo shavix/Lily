@@ -269,6 +269,13 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="PU8-zK-sq1">
+                                            <rect key="frame" x="350" y="13" width="17" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="17" id="C8f-HU-75E"/>
+                                                <constraint firstAttribute="height" constant="17" id="tUB-u3-E7l"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="JBp-kd-pzO" firstAttribute="top" secondItem="kEa-lW-r5R" secondAttribute="bottom" constant="10" id="2Rz-lT-cP4"/>
@@ -279,6 +286,8 @@
                                         <constraint firstItem="kEa-lW-r5R" firstAttribute="top" secondItem="3p5-eg-4Xi" secondAttribute="topMargin" id="BIS-XZ-Eot"/>
                                         <constraint firstItem="kEa-lW-r5R" firstAttribute="leading" secondItem="5Hc-J6-jkV" secondAttribute="trailing" constant="15" id="eLG-s8-mkV"/>
                                         <constraint firstItem="JBp-kd-pzO" firstAttribute="leading" secondItem="kEa-lW-r5R" secondAttribute="leading" id="ecU-Yd-cGX"/>
+                                        <constraint firstItem="PU8-zK-sq1" firstAttribute="top" secondItem="3p5-eg-4Xi" secondAttribute="topMargin" constant="5" id="gCm-TN-dHQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PU8-zK-sq1" secondAttribute="trailing" id="hgZ-sN-8HJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -446,6 +455,13 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="dmJ-cL-ljC">
+                                            <rect key="frame" x="350" y="13" width="17" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="17" id="QyH-bt-e0g"/>
+                                                <constraint firstAttribute="height" constant="17" id="ShV-jv-a0m"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="6qi-gb-C8d" firstAttribute="centerY" secondItem="ixc-DM-vDK" secondAttribute="centerY" id="3Bw-XY-jmI"/>
@@ -454,9 +470,11 @@
                                         <constraint firstItem="vDv-Py-HqL" firstAttribute="leading" secondItem="Ykb-TT-daX" secondAttribute="leading" id="DCc-nd-KsI"/>
                                         <constraint firstItem="Ykb-TT-daX" firstAttribute="top" secondItem="ixc-DM-vDK" secondAttribute="topMargin" id="I3k-Sw-fG2"/>
                                         <constraint firstItem="6qi-gb-C8d" firstAttribute="height" secondItem="ixc-DM-vDK" secondAttribute="height" multiplier="0.6" id="OEL-zh-L6F"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dmJ-cL-ljC" secondAttribute="trailing" id="TwF-jp-iQP"/>
                                         <constraint firstItem="vDv-Py-HqL" firstAttribute="top" secondItem="Ykb-TT-daX" secondAttribute="bottom" constant="10" id="ebO-1K-xYV"/>
                                         <constraint firstItem="6qi-gb-C8d" firstAttribute="leading" secondItem="ixc-DM-vDK" secondAttribute="leadingMargin" constant="5" id="hgR-NG-wU4"/>
                                         <constraint firstItem="Ykb-TT-daX" firstAttribute="leading" secondItem="6qi-gb-C8d" secondAttribute="trailing" constant="15" id="mIv-4r-RD9"/>
+                                        <constraint firstItem="dmJ-cL-ljC" firstAttribute="top" secondItem="ixc-DM-vDK" secondAttribute="topMargin" constant="5" id="twS-vb-lrO"/>
                                         <constraint firstItem="6qi-gb-C8d" firstAttribute="width" secondItem="6qi-gb-C8d" secondAttribute="height" multiplier="1:1" id="zVT-Bk-zJM"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -1995,6 +2013,7 @@
         <image name="UserIcon" width="30" height="30"/>
         <image name="UserImage" width="22" height="22"/>
         <image name="money_suitcase_circular" width="140" height="140"/>
+        <image name="rightArrow" width="22" height="22"/>
         <image name="transactions" width="30" height="28"/>
     </resources>
 </document>

@@ -55,7 +55,7 @@
 		}
 		// no accesstoken, user in core data - skip walkthrough
 		else{
-			[self setupDashboard];
+			[self setupProfilePage];
 		}
     }
     return YES;
@@ -80,7 +80,7 @@
 	NSString *imageURL = [[userInformation objectForKey:@"user"] objectForKey:@"profile_picture_url"];
 	user.pictureImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
 	
-	[self setupDashboard];
+	[self setupProfilePage];
     
 }
 
@@ -96,7 +96,7 @@
 	}
 }
 
-- (void)setupDashboard{
+- (void)setupProfilePage{
 	// set root view controller
 	UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	UITabBarController *tabBarController = [aStoryboard instantiateViewControllerWithIdentifier:@"tabBarController"];
