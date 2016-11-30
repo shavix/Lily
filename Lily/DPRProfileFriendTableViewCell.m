@@ -11,48 +11,57 @@
 #import "UIFont+CustomFonts.h"
 #import "UIColor+CustomColors.h"
 
+@interface DPRProfileFriendTableViewCell()
+
+@property (strong, nonatomic) CAShapeLayer *shapelayer;
+
+@end
+
 @implementation DPRProfileFriendTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 	
-	self.title.font = [UIFont boldSystemFontOfSize:12];
+	self.title.font = [UIFont fontWithName:@"Helvetica" size:12];
 	self.title.textColor = [UIColor whiteColor];
 	self.backgroundColor = [UIColor charcoalColor];
 	self.image.layer.cornerRadius = 70/8;
 	self.image.clipsToBounds = YES;
 	self.amountLabel.textColor = [UIColor lightGreenColor];
-	self.amountLabel.font = [UIFont helveticaBold13];
+	self.amountLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
 	DPRUIHelper *uiHelper = [[DPRUIHelper alloc] init];
 	[uiHelper setupCell:self withHeight:90];
 	
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+- (void)prepareForReuse{
+	CAShapeLayer *layer = self.shapelayer;
+	
+	[layer removeFromSuperlayer];
+}
+
 - (void)drawLine{
-	CGRect titleFrame = self.title.frame;
 	CGRect amountFrame = self.amountLabel.frame;
+	NSInteger startX = 75;
+	NSInteger startY = 63;
+	CGSize titleSize = self.title.intrinsicContentSize;
+	CGSize amountSize = self.amountLabel.intrinsicContentSize;
 	
-	float titleWidth = [self.title.text
-					 boundingRectWithSize:self.title.frame.size
-					 options:NSStringDrawingUsesLineFragmentOrigin
-					 attributes:@{ NSFontAttributeName:self.title.font }
-					 context:nil].size.width;
-	
-	CAShapeLayer *shapelayer = [CAShapeLayer layer];
+	self.shapelayer = [CAShapeLayer layer];
 	UIBezierPath *path = [UIBezierPath bezierPath];
 	
-	[path moveToPoint:CGPointMake(titleFrame.origin.x, titleFrame.origin.y + titleFrame.size.height)];
-	[path addLineToPoint:CGPointMake(amountFrame.origin.x + amountFrame.size.width, titleFrame.origin.y + titleFrame.size.height)];
+	[path moveToPoint:CGPointMake(startX +  titleSize.width, startY)];
+	[path addLineToPoint:CGPointMake(amountFrame.origin.x + amountFrame.size.width - amountSize.width - 2, startY)];
 	UIColor *fill = [UIColor colorWithRed:0.80f green:0.80f blue:0.80f alpha:1.00f];
-	shapelayer.strokeStart = 0.0;
-	shapelayer.strokeColor = fill.CGColor;
-	shapelayer.lineWidth = 2.0;
-	shapelayer.lineJoin = kCALineJoinRound;
-	shapelayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:2],[NSNumber numberWithInt:3 ], nil];
-	shapelayer.path = path.CGPath;
+	_shapelayer.strokeStart = 0.0;
+	_shapelayer.strokeColor = fill.CGColor;
+	_shapelayer.lineWidth = 2.0;
+	_shapelayer.lineJoin = kCALineJoinRound;
+	_shapelayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:2],[NSNumber numberWithInt:3 ], nil];
+	_shapelayer.path = path.CGPath;
 	
-	[self.layer addSublayer:shapelayer];
+	[self.layer addSublayer:_shapelayer];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

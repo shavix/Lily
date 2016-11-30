@@ -216,7 +216,6 @@
 
 		[self setupCell:cell withFriend:maxFriend andType:type];
 		[cell drawLine];
-
 		return cell;
 	}
 	else{
