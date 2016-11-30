@@ -135,7 +135,7 @@
 	NSInteger row = indexPath.row;
 	
 	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
-	UIColor *titleColor = [UIColor lightGreenColor];
+	UIColor *titleColor = [UIColor whiteColor];
 	UIFont *titleFont = [UIFont helveticaBold13];
 	
 	// portrait cell
@@ -208,12 +208,15 @@
 			maxFriend = [self maxFriendOfType:type];
 			title = @"Highest Total Net Income";
 		}
-		cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
-																		attributes:underlineAttribute];
+		//cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
+		//																attributes:underlineAttribute];
+		cell.cellTitle.text = title;
 		cell.cellTitle.textColor = titleColor;
 		cell.cellTitle.font = titleFont;
 
 		[self setupCell:cell withFriend:maxFriend andType:type];
+		[cell drawLine];
+
 		return cell;
 	}
 	else{
@@ -237,7 +240,6 @@
 				  placeholderImage:[UIImage imageNamed:@"UserImage"]];
 	
 	cell.title.text = [friend objectForKey:@"name"];
-	cell.subtitle.text = [titles objectForKey:type];
 	
 	// amount
 	NSNumber *amount = [friend objectForKey:type];

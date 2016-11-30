@@ -1587,8 +1587,8 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-VX-Sui" userLabel="Title">
-                                            <rect key="frame" x="50" y="35" width="26" height="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-VX-Sui" userLabel="Name">
+                                            <rect key="frame" x="50" y="45" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="Wan-KF-uCb"/>
                                             </constraints>
@@ -1601,22 +1601,8 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOJ-hz-FTE" userLabel="Type">
-                                            <rect key="frame" x="147" y="59" width="38" height="12"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="14" id="CIU-oZ-mFH"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="CIU-oZ-mFH"/>
-                                                </mask>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5L-sd-cYe" userLabel="Amount">
-                                            <rect key="frame" x="191" y="59" width="38" height="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5L-sd-cYe" userLabel="Amount">
+                                            <rect key="frame" x="319.5" y="46" width="37.5" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="fyL-do-Mqj"/>
                                             </constraints>
@@ -1639,27 +1625,23 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="IOJ-hz-FTE" firstAttribute="top" secondItem="2lG-VX-Sui" secondAttribute="bottom" constant="10" id="6UE-RJ-omL"/>
                                         <constraint firstItem="yfU-MO-5lD" firstAttribute="leading" secondItem="yEA-Tt-ZrX" secondAttribute="trailing" constant="15" id="LOm-GY-xGg"/>
                                         <constraint firstItem="yEA-Tt-ZrX" firstAttribute="height" secondItem="JbE-Nz-Hv7" secondAttribute="height" multiplier="0.5" id="MmG-kN-0dj"/>
-                                        <constraint firstItem="IOJ-hz-FTE" firstAttribute="width" relation="lessThanOrEqual" secondItem="JbE-Nz-Hv7" secondAttribute="width" multiplier="0.6" id="PSh-5p-p58"/>
                                         <constraint firstItem="Zlm-Ja-h53" firstAttribute="centerX" secondItem="JbE-Nz-Hv7" secondAttribute="centerX" id="RZT-O9-kCF"/>
                                         <constraint firstItem="Zlm-Ja-h53" firstAttribute="centerY" secondItem="JbE-Nz-Hv7" secondAttribute="centerY" id="T6b-aq-FMe"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="yEA-Tt-ZrX" secondAttribute="leading" constant="-5" id="Yqj-8M-miG"/>
-                                        <constraint firstItem="d5L-sd-cYe" firstAttribute="centerY" secondItem="IOJ-hz-FTE" secondAttribute="centerY" id="fB6-Lc-HNm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="d5L-sd-cYe" secondAttribute="trailing" constant="10" id="bCI-1B-N8N"/>
                                         <constraint firstItem="yEA-Tt-ZrX" firstAttribute="centerY" secondItem="JbE-Nz-Hv7" secondAttribute="centerY" id="fEJ-fE-Qlx"/>
-                                        <constraint firstItem="d5L-sd-cYe" firstAttribute="leading" secondItem="Zlm-Ja-h53" secondAttribute="leading" constant="3" id="hEa-Cb-qVO"/>
-                                        <constraint firstItem="IOJ-hz-FTE" firstAttribute="trailing" secondItem="Zlm-Ja-h53" secondAttribute="trailing" constant="-3" id="kLM-6S-0r0"/>
-                                        <constraint firstItem="2lG-VX-Sui" firstAttribute="top" secondItem="yfU-MO-5lD" secondAttribute="bottom" constant="10" id="stc-eE-iES"/>
+                                        <constraint firstItem="2lG-VX-Sui" firstAttribute="top" secondItem="yfU-MO-5lD" secondAttribute="bottom" constant="20" id="stc-eE-iES"/>
                                         <constraint firstItem="2lG-VX-Sui" firstAttribute="leading" secondItem="yEA-Tt-ZrX" secondAttribute="trailing" constant="15" id="uCQ-8g-X9f"/>
                                         <constraint firstItem="yfU-MO-5lD" firstAttribute="top" secondItem="JbE-Nz-Hv7" secondAttribute="topMargin" constant="3" id="uwS-H1-30d"/>
+                                        <constraint firstItem="d5L-sd-cYe" firstAttribute="centerY" secondItem="2lG-VX-Sui" secondAttribute="centerY" id="yaD-Bn-eq7"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="amountLabel" destination="d5L-sd-cYe" id="3OR-qM-VnX"/>
                                     <outlet property="cellTitle" destination="yfU-MO-5lD" id="Uvt-QR-xKU"/>
                                     <outlet property="image" destination="yEA-Tt-ZrX" id="dEC-QE-NgD"/>
-                                    <outlet property="subtitle" destination="IOJ-hz-FTE" id="tsy-Sf-KK7"/>
                                     <outlet property="title" destination="2lG-VX-Sui" id="Vzb-Im-1BP"/>
                                 </connections>
                             </tableViewCell>

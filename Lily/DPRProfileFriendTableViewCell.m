@@ -18,7 +18,6 @@
 	
 	self.title.font = [UIFont boldSystemFontOfSize:12];
 	self.title.textColor = [UIColor whiteColor];
-	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.backgroundColor = [UIColor charcoalColor];
 	self.image.layer.cornerRadius = 70/8;
 	self.image.clipsToBounds = YES;
@@ -28,6 +27,32 @@
 	[uiHelper setupCell:self withHeight:90];
 	
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)drawLine{
+	CGRect titleFrame = self.title.frame;
+	CGRect amountFrame = self.amountLabel.frame;
+	
+	float titleWidth = [self.title.text
+					 boundingRectWithSize:self.title.frame.size
+					 options:NSStringDrawingUsesLineFragmentOrigin
+					 attributes:@{ NSFontAttributeName:self.title.font }
+					 context:nil].size.width;
+	
+	CAShapeLayer *shapelayer = [CAShapeLayer layer];
+	UIBezierPath *path = [UIBezierPath bezierPath];
+	
+	[path moveToPoint:CGPointMake(titleFrame.origin.x, titleFrame.origin.y + titleFrame.size.height)];
+	[path addLineToPoint:CGPointMake(amountFrame.origin.x + amountFrame.size.width, titleFrame.origin.y + titleFrame.size.height)];
+	UIColor *fill = [UIColor colorWithRed:0.80f green:0.80f blue:0.80f alpha:1.00f];
+	shapelayer.strokeStart = 0.0;
+	shapelayer.strokeColor = fill.CGColor;
+	shapelayer.lineWidth = 2.0;
+	shapelayer.lineJoin = kCALineJoinRound;
+	shapelayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:2],[NSNumber numberWithInt:3 ], nil];
+	shapelayer.path = path.CGPath;
+	
+	[self.layer addSublayer:shapelayer];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
