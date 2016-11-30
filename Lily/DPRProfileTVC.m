@@ -215,7 +215,7 @@
 		cell.cellTitle.font = titleFont;
 
 		[self setupCell:cell withFriend:maxFriend andType:type];
-		[cell drawLine];
+		[cell drawLineWithView:self.view];
 		return cell;
 	}
 	else{

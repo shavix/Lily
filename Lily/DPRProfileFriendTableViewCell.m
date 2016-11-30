@@ -37,22 +37,21 @@
 
 - (void)prepareForReuse{
 	CAShapeLayer *layer = self.shapelayer;
-	
 	[layer removeFromSuperlayer];
 }
 
-- (void)drawLine{
-	CGRect amountFrame = self.amountLabel.frame;
-	NSInteger startX = 75;
-	NSInteger startY = 63;
+- (void)drawLineWithView:(UIView *)view{
 	CGSize titleSize = self.title.intrinsicContentSize;
 	CGSize amountSize = self.amountLabel.intrinsicContentSize;
 	
+	NSInteger startX = 75;
+	NSInteger finishX = view.frame.size.width - 10 - amountSize.width - 9;
+	NSInteger startY = 63;
 	self.shapelayer = [CAShapeLayer layer];
 	UIBezierPath *path = [UIBezierPath bezierPath];
 	
 	[path moveToPoint:CGPointMake(startX +  titleSize.width, startY)];
-	[path addLineToPoint:CGPointMake(amountFrame.origin.x + amountFrame.size.width - amountSize.width - 2, startY)];
+	[path addLineToPoint:CGPointMake(finishX, startY)];
 	UIColor *fill = [UIColor colorWithRed:0.80f green:0.80f blue:0.80f alpha:1.00f];
 	_shapelayer.strokeStart = 0.0;
 	_shapelayer.strokeColor = fill.CGColor;

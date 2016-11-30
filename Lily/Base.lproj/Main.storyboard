@@ -1574,7 +1574,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfU-MO-5lD" userLabel="CellTitle">
-                                            <rect key="frame" x="50" y="11" width="26" height="14"/>
+                                            <rect key="frame" x="50" y="17" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="srf-j8-r5P"/>
                                             </constraints>
@@ -1587,8 +1587,8 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-VX-Sui" userLabel="Name">
-                                            <rect key="frame" x="50" y="19" width="25.5" height="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-VX-Sui" userLabel="Name">
+                                            <rect key="frame" x="50" y="33" width="0.0" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="Wan-KF-uCb"/>
                                             </constraints>
@@ -1601,8 +1601,8 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5L-sd-cYe" userLabel="Amount">
-                                            <rect key="frame" x="319.5" y="21" width="37.5" height="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5L-sd-cYe" userLabel="Amount">
+                                            <rect key="frame" x="357" y="33" width="0.0" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="fyL-do-Mqj"/>
                                             </constraints>
@@ -1635,7 +1635,7 @@
                                         <constraint firstItem="yEA-Tt-ZrX" firstAttribute="centerY" secondItem="JbE-Nz-Hv7" secondAttribute="centerY" id="fEJ-fE-Qlx"/>
                                         <constraint firstItem="d5L-sd-cYe" firstAttribute="bottom" secondItem="2lG-VX-Sui" secondAttribute="bottom" id="h3z-e9-21O"/>
                                         <constraint firstItem="2lG-VX-Sui" firstAttribute="leading" secondItem="yEA-Tt-ZrX" secondAttribute="trailing" constant="15" id="uCQ-8g-X9f"/>
-                                        <constraint firstItem="yfU-MO-5lD" firstAttribute="top" secondItem="JbE-Nz-Hv7" secondAttribute="topMargin" constant="3" id="uwS-H1-30d"/>
+                                        <constraint firstItem="yfU-MO-5lD" firstAttribute="top" secondItem="JbE-Nz-Hv7" secondAttribute="topMargin" constant="9" id="uwS-H1-30d"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1680,7 +1680,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St0-ni-FZg">
-                                            <rect key="frame" x="84" y="44" width="38" height="12"/>
+                                            <rect key="frame" x="84" y="47" width="38" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="pFW-kw-sXT"/>
                                             </constraints>
@@ -1704,7 +1704,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="r4r-5E-r01" secondAttribute="trailing" id="4GL-je-QIa"/>
                                         <constraint firstItem="St0-ni-FZg" firstAttribute="width" relation="lessThanOrEqual" secondItem="p5j-jG-8MH" secondAttribute="width" multiplier="0.6" id="L0B-co-Ce2"/>
                                         <constraint firstItem="St0-ni-FZg" firstAttribute="leading" secondItem="hqT-qj-C8p" secondAttribute="trailing" constant="21" id="X7n-Ra-hSS"/>
-                                        <constraint firstItem="St0-ni-FZg" firstAttribute="top" secondItem="362-wm-A0h" secondAttribute="bottom" constant="2" id="YYd-nQ-CTd"/>
+                                        <constraint firstItem="St0-ni-FZg" firstAttribute="top" secondItem="362-wm-A0h" secondAttribute="bottom" constant="5" id="YYd-nQ-CTd"/>
                                         <constraint firstItem="362-wm-A0h" firstAttribute="top" secondItem="p5j-jG-8MH" secondAttribute="topMargin" constant="20" id="b3Y-b6-tp8"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="4EM-gf-kAZ" secondAttribute="trailing" id="fvc-E3-TDM"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="hqT-qj-C8p" secondAttribute="leading" constant="-5" id="hdG-AZ-RIN"/>
@@ -1884,7 +1884,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G4-yQ-iMK" userLabel="Title">
-                                            <rect key="frame" x="54" y="8" width="26" height="14"/>
+                                            <rect key="frame" x="54" y="17" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="OvC-Yp-xyS"/>
                                             </constraints>
@@ -1898,7 +1898,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcc-ez-nJR">
-                                            <rect key="frame" x="54" y="32" width="38" height="12"/>
+                                            <rect key="frame" x="54" y="41" width="38" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="ltD-IZ-oP2"/>
                                             </constraints>
@@ -1918,7 +1918,7 @@
                                         <constraint firstItem="kcc-ez-nJR" firstAttribute="top" secondItem="6G4-yQ-iMK" secondAttribute="bottom" constant="10" id="Bgn-YF-0OD"/>
                                         <constraint firstItem="6G4-yQ-iMK" firstAttribute="leading" secondItem="Gbj-PK-clu" secondAttribute="trailing" constant="15" id="JGu-G6-BgP"/>
                                         <constraint firstItem="Gbj-PK-clu" firstAttribute="centerY" secondItem="O6b-HY-veZ" secondAttribute="centerY" id="Mce-2N-uO4"/>
-                                        <constraint firstItem="6G4-yQ-iMK" firstAttribute="top" secondItem="O6b-HY-veZ" secondAttribute="topMargin" id="NyK-8l-HvX"/>
+                                        <constraint firstItem="6G4-yQ-iMK" firstAttribute="top" secondItem="O6b-HY-veZ" secondAttribute="topMargin" constant="9" id="NyK-8l-HvX"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="Gbj-PK-clu" secondAttribute="leading" constant="-5" id="ewH-ui-Lep"/>
                                         <constraint firstItem="Gbj-PK-clu" firstAttribute="height" secondItem="O6b-HY-veZ" secondAttribute="height" multiplier="0.6" id="joq-05-rKN"/>
                                     </constraints>

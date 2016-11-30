@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 
-- (void)drawLine;
+- (void)drawLineWithView:(UIView *)view;
 @end
