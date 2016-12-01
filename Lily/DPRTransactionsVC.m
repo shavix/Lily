@@ -89,12 +89,8 @@
 	
     // noteLabel
     cell.noteLabel.text = transaction.note;
-    
-    // amount
-    [self setupAmountLabel:cell.amountLabel withTransaction:transaction];
-    
-    // image
-    [self setupImageView:cell.cellImage withTransaction:transaction];
+	[self setupAmountLabel:cell.amountLabel withTransaction:transaction];
+	[self setupImageView:cell.cellImage withTransaction:transaction];
     
     return cell;
 }
@@ -123,8 +119,6 @@
     [imageView sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
                  placeholderImage:[UIImage imageNamed:@"UserImage"]];  
 }
-
-
 
 // section title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

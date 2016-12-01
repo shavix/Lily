@@ -61,13 +61,10 @@
 	_shapelayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:2],[NSNumber numberWithInt:3 ], nil];
 	_shapelayer.path = path.CGPath;
 	[self.layer addSublayer:_shapelayer];
-	
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

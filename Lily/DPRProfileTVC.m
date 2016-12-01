@@ -48,6 +48,7 @@
     [super viewDidLoad];
 	
 	[self setupUI];
+	[self setupGlobals];
 	[self retrieveData];
 }
 
@@ -80,23 +81,6 @@
 	
 	[self setupNavButtons];
 
-	titles = [NSDictionary dictionaryWithObjectsAndKeys:
-			  @"Transactions:", @"transactions",
-			  @"Sent:", @"sent",
-			  @"Recieved:", @"received",
-			  @"Net Income:", @"netIncome", nil];
-	
-	sectionTitles = @[@"History",
-					  @"Largest Transactions",
-					  @"Friends",
-					  @"Transactions"];
-	
-	titleColor = [UIColor whiteColor];
-	titleFont = [UIFont helveticaBold13];
-	
-	cellIdentifiers = @[@"PortraitCell", @"AggregateCell", @"ProfileTransactionCell", @"ProfileFriendCell", @"DashboardCell"];
-	transactionDataTypes = @[@"transactions", @"sent", @"received", @"netIncome"];
-	transactionTitles = @[@"Most Transactions", @"Highest Total Expenditures", @"Highest Total Income", @"Highest Total Net Income"];
 }
 
 - (void)setupData{
@@ -473,6 +457,25 @@
 	}
 }
 
+- (void)setupGlobals{
+	titles = [NSDictionary dictionaryWithObjectsAndKeys:
+			  @"Transactions:", @"transactions",
+			  @"Sent:", @"sent",
+			  @"Recieved:", @"received",
+			  @"Net Income:", @"netIncome", nil];
+	
+	sectionTitles = @[@"History",
+					  @"Largest Transactions",
+					  @"Friends",
+					  @"Transactions"];
+	
+	titleColor = [UIColor whiteColor];
+	titleFont = [UIFont helveticaBold13];
+	
+	cellIdentifiers = @[@"PortraitCell", @"AggregateCell", @"ProfileTransactionCell", @"ProfileFriendCell", @"DashboardCell"];
+	transactionDataTypes = @[@"transactions", @"sent", @"received", @"netIncome"];
+	transactionTitles = @[@"Most Transactions", @"Highest Total Expenditures", @"Highest Total Income", @"Highest Total Net Income"];
+}
 
 - (void)showSettings{
 	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
@@ -503,10 +506,8 @@
 #pragma mark - data persistence
 
 - (void)storeUsername {
-	
 	[[NSUserDefaults standardUserDefaults] setObject:self.user.username forKey:@"DPRUsername"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
-	
 }
 
 

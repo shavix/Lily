@@ -31,48 +31,24 @@
 @implementation DPRAnalysisListTVC{
 	NSArray *sectionNames;
 	NSArray *segueIdentifiers;
+	NSArray *sectionSubtitles;
+	NSArray *sectionImageNames;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 	[self setupUI];
-	[self setupData];
+	[self setupGlobals];
 	
-}
-
-- (void)setupData {
-	
-	sectionNames = @[@"Transactions", @"Expenditures", @"Income", @"Net Income", @"Full Details"];
-	segueIdentifiers = @[
-						 @"friendsTransactionsSegue",
-						 @"friendsExpendituresSegue",
-						 @"friendsIncomeSegue",
-						 @"friendsNetIncomeSegue",
-						 @"friendsDetailsSegue",
-						 @"monthsTransactionsSegue",
-						 @"monthsExpendituresSegue",
-						 @"monthsIncomeSegue",
-						 @"monthsNetIncomeSegue",
-						 @"monthsDetailsSegue"
-							];
-
 }
 
 #pragma mark - UI
 
 - (void)setupUI{
-	
 	self.title = _pageType;
 	self.view.backgroundColor = [UIColor darkColor];
 	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-	
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -102,54 +78,23 @@
 	NSString *subtitle;
 	// CHARTS
 	if(section == 0){
-		if(row == 0){
-			cell.image.image = [UIImage imageNamed:@"handshake"];
-			if([_pageType isEqualToString:@"Friends"]){
-				subtitle = @"A graphical analysis of your transaction frequency with friends.";
-			}
-			else{
-				subtitle = @"A graphical analysis of your transaction frequency over the last year on a monthly basis.";
-			}
+		if([_pageType isEqualToString:@"Friends"]){
+			subtitle = sectionSubtitles[2 * row];
 		}
-		if(row == 1){
-			cell.image.image = [UIImage imageNamed:@"payment"];
-			if([_pageType isEqualToString:@"Friends"]){
-				subtitle = @"A graphical analysis of your expenditures with friends.";
-			}
-			else{
-				subtitle = @"A graphical analysis of your expenditures over the last year on a monthly basis.";
-			}
+		else{
+			subtitle = sectionSubtitles[2 * row + 1];
 		}
-		// INCOME
-		else if(row == 2){
-			cell.image.image = [UIImage imageNamed:@"businessman"];
-			if([_pageType isEqualToString:@"Friends"]){
-				subtitle = @"A graphical analysis of your income from friends.";
-			}
-			else{
-				subtitle = @"A graphical analysis of your income over the last year on a monthly basis.";
-			}
-		}
-		// NET INCOME
-		else if(row == 3){
-			cell.image.image = [UIImage imageNamed:@"monthlyIncome"];
-			if([_pageType isEqualToString:@"Friends"]){
-				subtitle = @"A graphical analysis of your net income with friends.";
-			}
-			else{
-				subtitle = @"A graphical analysis of your net income over the last year on a monthly basis.";
-			}
-		}
+		cell.image.image = [UIImage imageNamed:sectionImageNames[row]];
 	}
 	// LISTS
 	else if(section == 1)
 	{
 		cell.image.image = [UIImage imageNamed:@"friendDetails"];
 		if([_pageType isEqualToString:@"Friends"]){
-			subtitle = @"All financial information on your transaction history with friends.";
+			subtitle = sectionSubtitles[11];
 		}
 		else{
-			subtitle = @"All your financial information over the last year on a monthly basis.";
+			subtitle = sectionSubtitles[12];
 		}
 	}
 	
@@ -218,15 +163,47 @@
 	else{
 		title = @"Lists";
 	}
-	
 	return [title uppercaseString];
 }
 
 
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-	//Set the background color of the View
 	view.tintColor = [UIColor darkColor];
 	view.layer.zPosition = -999;
 }
+
+- (void)setupGlobals{
+	sectionNames = @[@"Transactions", @"Expenditures", @"Income", @"Net Income", @"Full Details"];
+	segueIdentifiers = @[@"friendsTransactionsSegue",
+						 @"friendsExpendituresSegue",
+						 @"friendsIncomeSegue",
+						 @"friendsNetIncomeSegue",
+						 @"friendsDetailsSegue",
+						 @"monthsTransactionsSegue",
+						 @"monthsExpendituresSegue",
+						 @"monthsIncomeSegue",
+						 @"monthsNetIncomeSegue",
+						 @"monthsDetailsSegue"
+							];
+	sectionSubtitles = @[@"A graphical analysis of your transaction frequency with friends.",
+						 @"A graphical analysis of your transaction frequency over the last year on a monthly basis.",
+						 @"A graphical analysis of your expenditures with friends.",
+						 @"A graphical analysis of your expenditures over the last year on a monthly basis.",
+						 @"A graphical analysis of your income from friends.",
+						 @"A graphical analysis of your income over the last year on a monthly basis.",
+						 @"A graphical analysis of your net income with friends.",
+						 @"A graphical analysis of your net income over the last year on a monthly basis.",
+						 @"All financial information on your transaction history with friends.",
+						 @"All your financial information over the last year on a monthly basis.",
+						 @"All financial information on your transaction history with friends.",
+						 @"All your financial information over the last year on a monthly basis."];
+	
+	sectionImageNames = @[@"handshake",@"payment", @"businessman", @"monthlyIncome"];
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+}
+
 
 @end
