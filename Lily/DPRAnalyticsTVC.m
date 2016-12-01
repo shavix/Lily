@@ -24,6 +24,7 @@
 
 @implementation DPRAnalyticsTVC{
 	NSArray *sectionNames;
+	NSArray *subtitles;
 }
 
 
@@ -35,6 +36,7 @@
 
 - (void)setupData {
 	sectionNames = @[@"Friends", @"This Year"];
+	subtitles = @[@"Analytics on your transaction history with friends.", @"Analytics on your transaction history over the last year on a monthly basis."];
 	DPRCoreDataHelper *cdHelper = [DPRCoreDataHelper sharedModel];
 	self.user = [cdHelper fetchUser];
 }
@@ -68,9 +70,10 @@
 {
 	static NSString* cellIdentifier = @"AnalyticsCell";
 	static NSString *protraitIdentifier = @"PortraitCell";
+	NSInteger section = indexPath.section;
 
 	// image cell
-	if(indexPath.section == 0){
+	if(section == 0){
 		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
 		cell.image.image = _user.pictureImage;
 		cell.title.text = _user.fullName;
@@ -84,17 +87,17 @@
 		DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 		
 		// friends
-		if(indexPath.section == 1){
+		if(section == 1){
 			cell.image.image = [UIImage imageNamed:@"friends"];
-			cell.title.text = @"Friends";
-			cell.subtitle.text = @"Analytics on your transaction history with friends.";
+			cell.title.text = sectionNames[0];
+			cell.subtitle.text = subtitles[0];
 		}
 		
 		// this year
-		else if(indexPath.section == 2){
+		else if(section == 2){
 			cell.image.image = [UIImage imageNamed:@"monthlyDetails"];
-			cell.title.text = @"This Year";
-			cell.subtitle.text = @"Analytics on your transaction history over the last year on a monthly basis.";
+			cell.title.text = sectionNames[1];
+			cell.subtitle.text = subtitles[1];
 		}
 		return cell;
 	}
@@ -106,10 +109,10 @@
 	DPRAnalysisListTVC *analysisListTVC = segue.destinationViewController;
 	NSInteger section = [self.tableView indexPathForSelectedRow].section;
 	if(section == 1){
-		analysisListTVC.pageType = @"Friends";
+		analysisListTVC.pageType = sectionNames[0];
 	}
 	else if(section == 2){
-		analysisListTVC.pageType = @"This Year";
+		analysisListTVC.pageType = sectionNames[1];
 	}
 	
 }
@@ -144,10 +147,10 @@
 	
 	NSString *title = @"";
 	if(section == 1){
-		title = @"Friends";
+		title = sectionNames[0];
 	}
 	else if(section == 2){
-		title = @"This Year";
+		title = sectionNames[1];
 	}
 	
 	return [title uppercaseString];

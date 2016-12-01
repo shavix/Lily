@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lily/DPRProfileFriendTableViewCell.m"
-            timestampString = "502219542.204185"
+            timestampString = "502225782.435835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-drawLineWithView:"
             landmarkType = "7">
          </BreakpointContent>

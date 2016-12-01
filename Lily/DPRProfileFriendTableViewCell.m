@@ -41,6 +41,7 @@
 }
 
 - (void)drawLineWithView:(UIView *)view{
+	
 	CGSize titleSize = self.title.intrinsicContentSize;
 	CGSize amountSize = self.amountLabel.intrinsicContentSize;
 	
@@ -59,8 +60,8 @@
 	_shapelayer.lineJoin = kCALineJoinRound;
 	_shapelayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:2],[NSNumber numberWithInt:3 ], nil];
 	_shapelayer.path = path.CGPath;
-	
 	[self.layer addSublayer:_shapelayer];
+	
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -122,7 +122,7 @@
     // venmo helper managedobjectcontext
     _venmoHelper.managedObjectContext = self.managedObjectContext;
 
-	[self setupDashboard];
+	[self setupProfilePage];
 	
 }
 
@@ -154,7 +154,7 @@
 	return user;
 }
 
-- (void)setupDashboard{
+- (void)setupProfilePage{
 	
 	// change status bar style back
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

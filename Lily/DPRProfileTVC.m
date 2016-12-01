@@ -37,7 +37,11 @@
 @implementation DPRProfileTVC{
 	NSDictionary *titles;
 	NSArray *sectionTitles;
-	
+	UIFont *titleFont;
+	UIColor *titleColor;
+	NSArray *cellIdentifiers;
+	NSArray *transactionDataTypes;
+	NSArray *transactionTitles;
 }
 
 - (void)viewDidLoad {
@@ -69,25 +73,12 @@
 	
 	self.tabBarController.delegate = self;
 	self.navigationController.navigationBar.hidden = NO;
-
 	self.uiHelper = [[DPRUIHelper alloc] init];
 	[_uiHelper setupTabUI:self withTitle:@"Profile"];
 	self.view.backgroundColor = [UIColor darkColor];
 	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 	
-	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
-									target:nil
-									action:nil];
-	[[self navigationItem] setBackBarButtonItem:newBackButton];
-	
-	UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
-	
-	settingsButton.tintColor = [UIColor lightGreenColor];
-	
-	UIFont *customFont = [UIFont fontWithName:@"Helvetica" size:24.0];
-	NSDictionary *fontDictionary = @{NSFontAttributeName : customFont};
-	[settingsButton setTitleTextAttributes:fontDictionary forState:UIControlStateNormal];
-	self.navigationItem.rightBarButtonItem = settingsButton;
+	[self setupNavButtons];
 
 	titles = [NSDictionary dictionaryWithObjectsAndKeys:
 			  @"Transactions:", @"transactions",
@@ -99,10 +90,13 @@
 					  @"Largest Transactions",
 					  @"Friends",
 					  @"Transactions"];
-}
-
-- (void)showSettings{
-	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
+	
+	titleColor = [UIColor whiteColor];
+	titleFont = [UIFont helveticaBold13];
+	
+	cellIdentifiers = @[@"PortraitCell", @"AggregateCell", @"ProfileTransactionCell", @"ProfileFriendCell", @"DashboardCell"];
+	transactionDataTypes = @[@"transactions", @"sent", @"received", @"netIncome"];
+	transactionTitles = @[@"Most Transactions", @"Highest Total Expenditures", @"Highest Total Income", @"Highest Total Net Income"];
 }
 
 - (void)setupData{
@@ -126,104 +120,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	NSString *protraitIdentifier = @"PortraitCell";
-	NSString *profileTransactionIdentifier = @"ProfileTransactionCell";
-	NSString *friendIdentifier = @"ProfileFriendCell";
-	NSString *aggregateIdentifier = @"AggregateCell";
-	NSString *dashboardIdentifier = @"DashboardCell";
 	NSInteger section = indexPath.section;
 	NSInteger row = indexPath.row;
 	
-	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
-	UIColor *titleColor = [UIColor whiteColor];
-	UIFont *titleFont = [UIFont helveticaBold13];
-	
 	// portrait cell
 	if(section == 0){
-		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:protraitIdentifier];
-		cell.image.image = _user.pictureImage;
-		cell.title.text = _user.fullName;
-		
-		NSString *subtitle = [NSString stringWithFormat:@"@%@",_user.username];
-		cell.subtitle.text = subtitle;
-		return cell;
+		DPRPortraitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifiers[0]];
+		return [self setupPortraitCell:cell];
 	}
 	// history
 	else if(section == 1){
-		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:aggregateIdentifier];
-		cell.image.image = [UIImage imageNamed:@"calculator"];
-		[self setupAggregateCell:cell];
-		return cell;
+		DPRAggregateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifiers[1]];
+		return [self setupAggregateCell:cell];
 	}
 	// transactions
 	else if(section == 2){
-		DPRProfileTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileTransactionIdentifier];
-		DPRTransaction *transaction;
-		NSString *title = @"";
-		// expenditures
-		if(row == 0){
-			transaction = [self maxTransactionOfType:@"sent"];
-			title = @"By Expenditure";
-		}
-		// income
-		else{
-			transaction = [self maxTransactionOfType:@"received"];
-			title = @"By Income";
-		}
-		cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
-																		attributes:underlineAttribute];
-		cell.cellTitle.textColor = titleColor;
-		cell.cellTitle.font = titleFont;
-		[self setupCell:cell withTransaction:transaction];
-		
-		return cell;
+		DPRProfileTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifiers[2]];
+		return [self setupTransactionCell:cell withRow:row];
 	}
 	// friends
 	else if(section == 3){
-		DPRProfileFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:friendIdentifier];
-		NSDictionary *maxFriend;
-		NSString *type;
-		NSString *title = @"";
-		// transactions
-		if(row == 0){
-			type = @"transactions";
-			maxFriend = [self maxFriendOfType:type];
-			title = @"Most Transactions";
-		}
-		// expenditures
-		else if(row == 1){
-			type = @"sent";
-			maxFriend = [self maxFriendOfType:type];
-			title = @"Highest Total Expenditures";
-		}
-		// income
-		else if(row == 2){
-			type = @"received";
-			maxFriend = [self maxFriendOfType:type];
-			title = @"Highest Total Income";
-		}
-		// net income
-		else {
-			type = @"netIncome";
-			maxFriend = [self maxFriendOfType:type];
-			title = @"Highest Total Net Income";
-		}
-		//cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
-		//																attributes:underlineAttribute];
-		cell.cellTitle.text = title;
-		cell.cellTitle.textColor = titleColor;
-		cell.cellTitle.font = titleFont;
-
-		[self setupCell:cell withFriend:maxFriend andType:type];
-		[cell drawLineWithView:self.view];
-		return cell;
+		DPRProfileFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifiers[3]];
+		return [self setupFriendCell:cell withRow:row];
 	}
 	else{
-		DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:dashboardIdentifier];
-		cell.image.image = [UIImage imageNamed:@"loading"];
-		cell.title.text = @"Load transactions";
-		cell.subtitle.text = [NSString stringWithFormat:@"Load your most recent transactions.\n(%ld transactions currently loaded)", (long)_user.transactionList.count];
-		return cell;
+		DPRDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifiers[4]];
+		return [self setupDashboardCell:cell];
 	}
 
 }
@@ -231,32 +153,18 @@
 
 #pragma mark - cell setup
 
-- (void)setupCell:(DPRProfileFriendTableViewCell *)cell withFriend:(NSDictionary *)friend andType:(NSString *)type{
-	
-	// SDWebImage
-	NSString *picture_url = [friend objectForKey:@"picture_url"];
-	[cell.image sd_setImageWithURL:[NSURL URLWithString:picture_url]
-				  placeholderImage:[UIImage imageNamed:@"UserImage"]];
-	
-	cell.title.text = [friend objectForKey:@"name"];
-	
-	// amount
-	NSNumber *amount = [friend objectForKey:type];
-	NSString *amountLabel;
-	if([type isEqualToString:@"transactions"]){
-		amountLabel = [NSString stringWithFormat:@"%@", amount];
-		cell.amountLabel.textColor = [UIColor whiteColor];
-	}
-	else
-		amountLabel = [NSString stringWithFormat:@"$%.2f", amount.doubleValue];
-	if([type isEqualToString:@"sent"])
-		cell.amountLabel.textColor = [UIColor redColor];
-	
-	cell.amountLabel.text = amountLabel;
-	
+- (DPRPortraitTableViewCell *)setupPortraitCell:(DPRPortraitTableViewCell *)cell{
+	cell.image.image = _user.pictureImage;
+	cell.title.text = _user.fullName;
+	NSString *subtitle = [NSString stringWithFormat:@"@%@",_user.username];
+	cell.subtitle.text = subtitle;
+	return cell;
 }
 
-- (void)setupAggregateCell:(DPRAggregateTableViewCell *)cell{
+
+- (DPRAggregateTableViewCell *)setupAggregateCell:(DPRAggregateTableViewCell *)cell{
+	cell.image.image = [UIImage imageNamed:@"calculator"];
+	
 	NSSet *transactionList = _user.transactionList;
 	NSInteger numTransactions = transactionList.count;
 	double sent = 0;
@@ -325,12 +233,27 @@
 		netIncomeAverage = netIncome / (double) numTransactions;
 	}
 	cell.netIncomeAverageLabel.text = [NSString stringWithFormat:@"$%.2f", netIncomeAverage];
-
+	return cell;
 }
 
-
 // image
-- (void)setupCell:(DPRProfileTransactionTableViewCell *)cell withTransaction:(DPRTransaction *)transaction {
+- (DPRProfileTransactionTableViewCell *)setupTransactionCell:(DPRProfileTransactionTableViewCell *)cell withRow:(NSInteger)row {
+	
+	NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+	DPRTransaction *transaction;
+	NSString *title = @"";
+	// expenditures
+	if(row == 0){
+		transaction = [self maxTransactionOfType:@"sent"];
+		title = @"By Expenditure";
+	}
+	// income
+	else{
+		transaction = [self maxTransactionOfType:@"received"];
+		title = @"By Income";
+	}
+	cell.cellTitle.attributedText = [[NSAttributedString alloc] initWithString:title
+																	attributes:underlineAttribute];
 	// SDWebImage
 	[cell.image sd_setImageWithURL:[NSURL URLWithString:transaction.target.picture_url]
 				 placeholderImage:[UIImage imageNamed:@"UserImage"]];
@@ -363,8 +286,54 @@
 	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 	[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
 	[formatter setPositiveFormat:@"0.00"];
-	cell.amountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:transaction.amount]];
 	
+	cell.amountLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:transaction.amount]];
+	cell.cellTitle.textColor = titleColor;
+	cell.cellTitle.font = titleFont;
+	
+	return cell;
+}
+
+
+- (DPRProfileFriendTableViewCell *)setupFriendCell:(DPRProfileFriendTableViewCell *)cell withRow:(NSInteger)row{
+	
+	NSString *type = transactionDataTypes[row];
+	NSString *title = transactionTitles[row];
+	NSDictionary *friend = [self maxFriendOfType:type];
+	
+	// SDWebImage
+	NSString *picture_url = [friend objectForKey:@"picture_url"];
+	[cell.image sd_setImageWithURL:[NSURL URLWithString:picture_url]
+				  placeholderImage:[UIImage imageNamed:@"UserImage"]];
+	
+	cell.title.text = [friend objectForKey:@"name"];
+	
+	// amount
+	NSNumber *amount = [friend objectForKey:type];
+	NSString *amountLabel;
+	if([type isEqualToString:@"transactions"]){
+		amountLabel = [NSString stringWithFormat:@"%@", amount];
+		cell.amountLabel.textColor = [UIColor whiteColor];
+	}
+	else
+		amountLabel = [NSString stringWithFormat:@"$%.2f", amount.doubleValue];
+	if([type isEqualToString:@"sent"])
+		cell.amountLabel.textColor = [UIColor redColor];
+	
+	cell.amountLabel.text = amountLabel;
+	cell.cellTitle.text = title;
+	cell.cellTitle.textColor = titleColor;
+	cell.cellTitle.font = titleFont;
+	[cell drawLineWithView:self.view];
+	
+	return cell;
+}
+
+- (DPRDashboardTableViewCell *)setupDashboardCell:(DPRDashboardTableViewCell *)cell{
+	cell.image.image = [UIImage imageNamed:@"loading"];
+	cell.title.text = @"Load transactions";
+	cell.subtitle.text = [NSString stringWithFormat:@"Load your most recent transactions.\n(%ld transactions currently loaded)", (long)_user.transactionList.count];
+	return cell;
 }
 
 - (NSDictionary *)maxFriendOfType:(NSString *)type{
@@ -502,6 +471,27 @@
 			[self loadMoreTransactions];
 		}];
 	}
+}
+
+
+- (void)showSettings{
+	[self performSegueWithIdentifier:@"settingsSegue" sender:self];
+}
+
+- (void)setupNavButtons{
+	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
+																	 target:nil
+																	 action:nil];
+	[[self navigationItem] setBackBarButtonItem:newBackButton];
+	
+	UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+	
+	settingsButton.tintColor = [UIColor lightGreenColor];
+	
+	UIFont *customFont = [UIFont fontWithName:@"Helvetica" size:24.0];
+	NSDictionary *fontDictionary = @{NSFontAttributeName : customFont};
+	[settingsButton setTitleTextAttributes:fontDictionary forState:UIControlStateNormal];
+	self.navigationItem.rightBarButtonItem = settingsButton;
 }
 
 - (void)flipTabs{
