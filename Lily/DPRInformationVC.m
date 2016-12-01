@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *lilyButton;
 
 @end
 
@@ -47,7 +47,7 @@
 	_bottomLabel.hidden = YES;
 	_facebookButton.hidden = YES;
 	_label.hidden = YES;
-	_imageView.hidden = YES;
+	_lilyButton.hidden = YES;
 	
     // about
     if([_pageType isEqualToString:@"About"]){
@@ -70,7 +70,7 @@
 	// text
 	NSString *text = [_contentHelper contentTextWithPageType:_pageType];
 	_bottomLabel.hidden = NO;
-	_imageView.hidden = NO;
+	_lilyButton.hidden = NO;
 	self.bottomLabel.text = text;
 	self.bottomLabel.textColor = [UIColor whiteColor];
 	_textView.backgroundColor = [UIColor darkColor];
@@ -84,8 +84,15 @@
 	
 }
 
+
+// open facebook page in safari
 - (IBAction)facebookPressed:(id)sender {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/ShavidApps.Lily/"]];
+}
+
+// open lily page in safari
+- (IBAction)lilyButtonPressed:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.drich.us/lily.html"]];
 }
 
 - (void)didReceiveMemoryWarning {

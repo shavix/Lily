@@ -1143,41 +1143,45 @@
                                     <action selector="facebookPressed:" destination="swi-fs-GeD" eventType="touchUpInside" id="sfz-Bf-lBZ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money_suitcase_circular" translatesAutoresizingMaskIntoConstraints="NO" id="sJy-Q0-3Hz">
-                                <rect key="frame" x="98" y="124" width="180" height="180"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="sJy-Q0-3Hz" secondAttribute="height" multiplier="1:1" id="FlA-vs-4dg"/>
-                                    <constraint firstAttribute="width" constant="180" id="dX3-nL-8kR"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09X-5N-A2E">
                                 <rect key="frame" x="165" y="314" width="46" height="33.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIj-g9-kuT">
+                                <rect key="frame" x="98" y="124" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="MNV-oA-TbM"/>
+                                    <constraint firstAttribute="width" constant="180" id="cik-DC-SLs"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="money_suitcase_circular"/>
+                                <connections>
+                                    <action selector="lilyButtonPressed:" destination="swi-fs-GeD" eventType="touchUpInside" id="Rk6-Il-pvy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="blA-Gg-wHl" firstAttribute="top" secondItem="dxi-5M-glX" secondAttribute="bottom" id="75I-Kf-Zrm"/>
-                            <constraint firstItem="sJy-Q0-3Hz" firstAttribute="top" secondItem="mhO-40-Eex" secondAttribute="bottom" constant="60" id="8Qm-KA-kaM"/>
                             <constraint firstItem="M6H-uh-Rx7" firstAttribute="top" secondItem="mhO-40-Eex" secondAttribute="bottom" id="B8I-qO-NwC"/>
                             <constraint firstItem="blA-Gg-wHl" firstAttribute="top" secondItem="M6H-uh-Rx7" secondAttribute="bottom" id="DlQ-nT-yHc"/>
-                            <constraint firstItem="09X-5N-A2E" firstAttribute="top" secondItem="sJy-Q0-3Hz" secondAttribute="bottom" constant="10" id="MEK-KQ-b0n"/>
                             <constraint firstItem="dxi-5M-glX" firstAttribute="top" secondItem="OWm-hJ-arJ" secondAttribute="bottom" constant="20" id="QFd-6c-975"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M6H-uh-Rx7" secondAttribute="trailing" constant="-16" id="QKe-30-Z8a"/>
                             <constraint firstItem="dxi-5M-glX" firstAttribute="centerX" secondItem="M6H-uh-Rx7" secondAttribute="centerX" id="V2n-9f-j1j"/>
                             <constraint firstItem="OWm-hJ-arJ" firstAttribute="centerX" secondItem="Hxe-Mv-fpd" secondAttribute="centerX" id="ZMZ-ZY-th5"/>
-                            <constraint firstItem="sJy-Q0-3Hz" firstAttribute="centerX" secondItem="Hxe-Mv-fpd" secondAttribute="centerX" id="bqB-ab-By0"/>
-                            <constraint firstItem="09X-5N-A2E" firstAttribute="centerX" secondItem="sJy-Q0-3Hz" secondAttribute="centerX" id="rlf-V9-eG5"/>
+                            <constraint firstItem="09X-5N-A2E" firstAttribute="top" secondItem="sIj-g9-kuT" secondAttribute="bottom" constant="10" id="ZdK-wE-Nu7"/>
+                            <constraint firstItem="09X-5N-A2E" firstAttribute="centerX" secondItem="sIj-g9-kuT" secondAttribute="centerX" id="dvo-ta-RVi"/>
+                            <constraint firstItem="sIj-g9-kuT" firstAttribute="top" secondItem="mhO-40-Eex" secondAttribute="bottom" constant="60" id="fhO-ca-oAA"/>
+                            <constraint firstItem="sIj-g9-kuT" firstAttribute="centerX" secondItem="Hxe-Mv-fpd" secondAttribute="centerX" id="rTR-l0-EPA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="M6H-uh-Rx7" secondAttribute="leading" constant="16" id="s5y-ek-47A"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottomLabel" destination="dxi-5M-glX" id="YIR-lo-tVt"/>
                         <outlet property="facebookButton" destination="OWm-hJ-arJ" id="ZTO-r2-2d4"/>
-                        <outlet property="imageView" destination="sJy-Q0-3Hz" id="bnb-eb-d5T"/>
                         <outlet property="label" destination="09X-5N-A2E" id="fhM-91-Lab"/>
+                        <outlet property="lilyButton" destination="sIj-g9-kuT" id="tNc-Qv-g2P"/>
                         <outlet property="textView" destination="M6H-uh-Rx7" id="86y-Te-5a0"/>
                     </connections>
                 </viewController>
