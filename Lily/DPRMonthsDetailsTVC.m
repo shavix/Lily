@@ -244,7 +244,7 @@
 	cell.receivedAverageLabel.text = [NSString stringWithFormat:@"$%.2f", receivedAverage.doubleValue];
 	cell.sentAverageLabel.text = [NSString stringWithFormat:@"$%.2f", sentAverage.doubleValue];
 	
-	if(transactions == 0){
+	if(transactions.integerValue == 0){
 		cell.netIncomeAverage.text = @"$0.00";
 	}
 	else{

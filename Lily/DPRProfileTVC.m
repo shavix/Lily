@@ -445,7 +445,7 @@
 	if(!_alertView){
 		NSString *message = @"No transactions have been loaded. To continue, press \n\"Load Transactions\"\n(Network connection required)";
 		NSString *title = @"Notice";
-		self.alertView = [_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
+		self.alertView = [_uiHelper alertWithMessage:message andTitle:title andButtonText:@"Load Transactions" andVC:self.parentViewController];
 		[self flipTabs];
 		
 		// completion

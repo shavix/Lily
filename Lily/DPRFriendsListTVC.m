@@ -187,7 +187,7 @@
 	cell.sentAverageLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"sentAverage"]]];
 	cell.receivedAverageLabel.text = [NSString stringWithFormat:@"$%@", [formatter stringFromNumber:[friendData objectForKey:@"receivedAverage"]]];
 	NSNumber *numTransactions = [friendData objectForKey:@"transactions"];
-	if(numTransactions == 0){
+	if(numTransactions.integerValue == 0){
 		cell.netIncomeAverageLabel.text = @"$0.00";
 	}
 	else{

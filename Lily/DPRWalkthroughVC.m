@@ -186,7 +186,7 @@
 		// alert
 		NSString *message = @"Internet connection required.";
 		NSString *title = @"Error";
-		SCLAlertView *alertView = [_uiHelper alertWithMessage:message andTitle:title andVC:self.parentViewController];
+		SCLAlertView *alertView = [_uiHelper alertWithMessage:message andTitle:title andButtonText:@"OK" andVC:self.parentViewController];
 		
 		// completion
 		[alertView alertIsDismissed:^{

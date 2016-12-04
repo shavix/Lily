@@ -318,19 +318,19 @@
 
 - (void)thisImage:(UIImage *)image hasBeenSavedInPhotoAlbumWithError:(NSError *)error usingContextInfo:(void*)ctxInfo {
 	if (error) {
-		[self alertWithMessage:@"Unable to save image." andTitle:@"Error" andVC:self.dropDownVC];
+		[self alertWithMessage:@"Unable to save image." andTitle:@"Error" andButtonText:@"OK" andVC:self.dropDownVC];
 	} else {
-		[self alertWithMessage:@"Image saved!" andTitle:@"Success" andVC:self.dropDownVC];
+		[self alertWithMessage:@"Image saved!" andTitle:@"Success" andButtonText:@"OK" andVC:self.dropDownVC];
 	}
 }
 
 // alert
-- (SCLAlertView *)alertWithMessage:(NSString *)message andTitle:(NSString *)title andVC:(UIViewController *)vc{
+- (SCLAlertView *)alertWithMessage:(NSString *)message andTitle:(NSString *)title andButtonText:(NSString *)buttonText andVC:(UIViewController *)vc{
     
     UIColor *green = [UIColor lightGreenColor];
     
     SCLAlertViewBuilder *builder = [SCLAlertViewBuilder new]
-    .addButtonWithActionBlock(@"Load Transactions", ^{  })
+    .addButtonWithActionBlock(buttonText, ^{  })
     .customViewColor(green);
 	
 	
