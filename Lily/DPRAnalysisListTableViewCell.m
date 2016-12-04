@@ -22,7 +22,7 @@
 	self.title2.font = [UIFont boldSystemFontOfSize:14];
 	self.subtitle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 	self.backgroundColor = [UIColor charcoalColor];
-	self.image.layer.cornerRadius = 70/8;
+	self.image.layer.cornerRadius = self.image.frame.size.height /2;;
 	self.image.clipsToBounds = YES;
 	
 }

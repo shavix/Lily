@@ -91,10 +91,10 @@
 	{
 		cell.image.image = [UIImage imageNamed:@"friendDetails"];
 		if([_pageType isEqualToString:@"Friends"]){
-			subtitle = sectionSubtitles[11];
+			subtitle = sectionSubtitles[10];
 		}
 		else{
-			subtitle = sectionSubtitles[12];
+			subtitle = sectionSubtitles[11];
 		}
 	}
 	
