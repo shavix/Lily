@@ -36,6 +36,7 @@
 	// create transactions
 	NSManagedObjectContext *managedObjectContext = [(DPRAppDelegate *) [[UIApplication sharedApplication] delegate] managedObjectContext];
 	// create transaction
+	
 	DPRTransaction *transaction = [NSEntityDescription insertNewObjectForEntityForName:@"DPRTransaction" inManagedObjectContext:managedObjectContext];
 	NSDictionary *information = [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"sample action", @"action",
@@ -58,7 +59,32 @@
 								 nil];
 	[transaction addInformation:information withUserFullName:@"davidpr"];
 	
-	NSSet *set = [NSSet setWithObject:transaction];
+	NSMutableSet *set = [[NSMutableSet alloc] init];
+	for(int i = 0; i < 10000; i++){
+		DPRTransaction *transaction = [NSEntityDescription insertNewObjectForEntityForName:@"DPRTransaction" inManagedObjectContext:managedObjectContext];
+		NSDictionary *information = [NSDictionary dictionaryWithObjectsAndKeys:
+									 @"sample action", @"action",
+									 @(8.75), @"amount",
+									 @"sample note", @"note",
+									 @"sample status", @"status",
+									 @"10312903123", @"id",
+									 [NSDictionary dictionaryWithObjectsAndKeys:
+									  @"sample_display_name", @"display_name",
+									  nil], @"actor",
+									 @"2016-12-14T03:02:02",@"date_created",
+									 @"2016-12-14T03:02:02",@"date_completed",
+									 [NSDictionary dictionaryWithObjectsAndKeys:
+									  [NSDictionary dictionaryWithObjectsAndKeys:
+									   @"sample display name",@"display_name",
+									   @"sample username", @"username",
+									   @"", @"profile_picture_url",
+									   nil],@"user",
+									  nil], @"target",
+									 nil];
+		[transaction addInformation:information withUserFullName:@"davidpr"];
+		[set addObject:transaction];
+	}
+	
 	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 							  [NSDictionary dictionaryWithObjectsAndKeys:
 							   @"sample_username",@"username",
@@ -83,7 +109,8 @@
 	XCTAssertEqual([month count], 12);
 	
 	DPRTransaction *sampleTransaction = [[date objectAtIndex:0] objectAtIndex:0];
-	XCTAssertEqual(sampleTransaction, transaction);
+	XCTAssert([sampleTransaction.note isEqualToString:@"sample note"]);
+	
 	
 }
 
