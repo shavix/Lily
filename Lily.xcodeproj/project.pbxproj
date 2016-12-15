@@ -18,6 +18,7 @@
 		632A88591DDD32B10028D81D /* DPRProfileTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88581DDD32B00028D81D /* DPRProfileTransactionTableViewCell.m */; };
 		632A885C1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A885B1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.m */; };
 		632A88611DDD69E30028D81D /* DPRAggregateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A88601DDD69E30028D81D /* DPRAggregateTableViewCell.m */; };
+		6337468F1E0217270029157B /* SortingAlgorithmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6337468E1E0217270029157B /* SortingAlgorithmTests.m */; };
 		634C3BD11DD94CA4001C6D5C /* DPRChartHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BD01DD94CA4001C6D5C /* DPRChartHelper.m */; };
 		634C3BD91DD95D9E001C6D5C /* UIFont+CustomFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BD81DD95D9E001C6D5C /* UIFont+CustomFonts.m */; };
 		634C3BDD1DD98FA7001C6D5C /* DPRAnalysisListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C3BDC1DD98FA7001C6D5C /* DPRAnalysisListTVC.m */; };
@@ -70,6 +71,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		633746871E02165D0029157B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6379F5471D1B9B9A0094ED24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6379F54E1D1B9B9A0094ED24;
+			remoteInfo = Lily;
+		};
 		6379F56C1D1B9B9A0094ED24 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6379F5471D1B9B9A0094ED24 /* Project object */;
@@ -109,6 +117,8 @@
 		632A885B1DDD3EBE0028D81D /* DPRProfileFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRProfileFriendTableViewCell.m; sourceTree = "<group>"; };
 		632A885F1DDD69E30028D81D /* DPRAggregateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRAggregateTableViewCell.h; sourceTree = "<group>"; };
 		632A88601DDD69E30028D81D /* DPRAggregateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRAggregateTableViewCell.m; sourceTree = "<group>"; };
+		633746821E02165D0029157B /* LilySampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilySampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6337468E1E0217270029157B /* SortingAlgorithmTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortingAlgorithmTests.m; sourceTree = "<group>"; };
 		634C3BCF1DD94CA4001C6D5C /* DPRChartHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRChartHelper.h; sourceTree = "<group>"; };
 		634C3BD01DD94CA4001C6D5C /* DPRChartHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRChartHelper.m; sourceTree = "<group>"; };
 		634C3BD71DD95D9E001C6D5C /* UIFont+CustomFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+CustomFonts.h"; sourceTree = "<group>"; };
@@ -203,6 +213,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6337467F1E02165D0029157B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6379F54C1D1B9B9A0094ED24 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +350,7 @@
 				6379F54F1D1B9B9A0094ED24 /* Lily.app */,
 				6379F56B1D1B9B9A0094ED24 /* LilyTests.xctest */,
 				6379F5761D1B9B9A0094ED24 /* LilyUITests.xctest */,
+				633746821E02165D0029157B /* LilySampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -376,6 +394,7 @@
 		6379F56E1D1B9B9A0094ED24 /* LilyTests */ = {
 			isa = PBXGroup;
 			children = (
+				6337468E1E0217270029157B /* SortingAlgorithmTests.m */,
 				6379F56F1D1B9B9A0094ED24 /* LilyTests.m */,
 				6379F5711D1B9B9A0094ED24 /* Info.plist */,
 			);
@@ -519,6 +538,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		633746811E02165D0029157B /* LilySampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6337468B1E02165D0029157B /* Build configuration list for PBXNativeTarget "LilySampleTests" */;
+			buildPhases = (
+				6337467E1E02165D0029157B /* Sources */,
+				6337467F1E02165D0029157B /* Frameworks */,
+				633746801E02165D0029157B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				633746881E02165D0029157B /* PBXTargetDependency */,
+			);
+			name = LilySampleTests;
+			productName = LilySampleTests;
+			productReference = 633746821E02165D0029157B /* LilySampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6379F54E1D1B9B9A0094ED24 /* Lily */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6379F57F1D1B9B9A0094ED24 /* Build configuration list for PBXNativeTarget "Lily" */;
@@ -584,6 +621,12 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "David Richardson";
 				TargetAttributes = {
+					633746811E02165D0029157B = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VMJMB92Y2W;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6379F54E1D1B9B9A0094ED24;
+					};
 					6379F54E1D1B9B9A0094ED24 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = UXV65ZCRFJ;
@@ -618,11 +661,19 @@
 				6379F54E1D1B9B9A0094ED24 /* Lily */,
 				6379F56A1D1B9B9A0094ED24 /* LilyTests */,
 				6379F5751D1B9B9A0094ED24 /* LilyUITests */,
+				633746811E02165D0029157B /* LilySampleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		633746801E02165D0029157B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6379F54D1D1B9B9A0094ED24 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -704,6 +755,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6337467E1E02165D0029157B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6379F54B1D1B9B9A0094ED24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,6 +821,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6337468F1E0217270029157B /* SortingAlgorithmTests.m in Sources */,
 				6379F5701D1B9B9A0094ED24 /* LilyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -778,6 +837,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		633746881E02165D0029157B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6379F54E1D1B9B9A0094ED24 /* Lily */;
+			targetProxy = 633746871E02165D0029157B /* PBXContainerItemProxy */;
+		};
 		6379F56D1D1B9B9A0094ED24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6379F54E1D1B9B9A0094ED24 /* Lily */;
@@ -810,6 +874,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		633746891E02165D0029157B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = VMJMB92Y2W;
+				INFOPLIST_FILE = LilySampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShavidApps.LilySampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lily.app/Lily";
+			};
+			name = Debug;
+		};
+		6337468A1E02165D0029157B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = VMJMB92Y2W;
+				INFOPLIST_FILE = LilySampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShavidApps.LilySampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lily.app/Lily";
+			};
+			name = Release;
+		};
 		6379F57D1D1B9B9A0094ED24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -999,6 +1097,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6337468B1E02165D0029157B /* Build configuration list for PBXNativeTarget "LilySampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633746891E02165D0029157B /* Debug */,
+				6337468A1E02165D0029157B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		6379F54A1D1B9B9A0094ED24 /* Build configuration list for PBXProject "Lily" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

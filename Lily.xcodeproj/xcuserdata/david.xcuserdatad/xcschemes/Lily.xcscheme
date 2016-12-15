@@ -48,6 +48,16 @@
                ReferencedContainer = "container:Lily.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "633746811E02165D0029157B"
+               BuildableName = "LilySampleTests.xctest"
+               BlueprintName = "LilySampleTests"
+               ReferencedContainer = "container:Lily.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
